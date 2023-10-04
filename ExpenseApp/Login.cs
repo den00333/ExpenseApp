@@ -44,9 +44,24 @@ namespace ExpenseApp
             }
         }
 
-        private void guna2Panel1_Paint(object sender, PaintEventArgs e)
+        private void closeBTN_Click(object sender, EventArgs e)
         {
+            DialogResult result = MessageBox.Show("Do you really want to close the application?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes){
+                Application.Exit();
+            }
+        }
 
+        private void signupBTN_MouseHover(object sender, EventArgs e)
+        {
+            Label label = (Label)sender;
+            label.ForeColor = ColorTranslator.FromHtml("#4C96FF");
+        }
+
+        private void signupBTN_MouseLeave(object sender, EventArgs e)
+        {
+            Label label = (Label)sender;
+            label.ForeColor = DefaultForeColor;
         }
     }
 }
