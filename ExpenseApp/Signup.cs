@@ -20,25 +20,9 @@ namespace ExpenseApp
             InitializeComponent();
         }
 
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void guna2Panel1_Paint(object sender, PaintEventArgs e)
-        {
-           
-        }
-
-        private void guna2TextBox3_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void guna2TextBox3_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsLetter(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar) && !char.IsControl(e.KeyChar))
-            {
+            if (!char.IsLetter(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar) && !char.IsControl(e.KeyChar)){
                 e.Handled = true;
                 MessageBox.Show("Cannot Enter Numerical Values and Special Characters", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
@@ -47,18 +31,15 @@ namespace ExpenseApp
 
         private void guna2TextBox2_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsLetter(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar) && !char.IsControl(e.KeyChar))
-            {
+            if (!char.IsLetter(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar) && !char.IsControl(e.KeyChar)){
                 e.Handled = true;
                 MessageBox.Show("Cannot Enter Numerical Values and Special Characters", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
             }
         }
 
         private void guna2TextBox4_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsDigit(e.KeyChar) && e.KeyChar != 8)
-            {
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != 8){
                 e.Handled = true;
                 MessageBox.Show("Cannot Enter Characters", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -66,8 +47,7 @@ namespace ExpenseApp
 
         private void txtUsername_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsLetterOrDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
-            {
+            if (!char.IsLetterOrDigit(e.KeyChar) && !char.IsControl(e.KeyChar)){
                 e.Handled = true;
                 MessageBox.Show("Username cannot contain whitespaces and special characters", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -75,8 +55,7 @@ namespace ExpenseApp
 
         private void txtPassword_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (char.IsWhiteSpace(e.KeyChar))
-            {
+            if (char.IsWhiteSpace(e.KeyChar)){
                 e.Handled = true;
                 MessageBox.Show("Password cannot contain whitespaces and special characters", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -93,18 +72,12 @@ namespace ExpenseApp
         }
         private void UpdatePasswordMatchLabel()
         {
-            if (string.IsNullOrWhiteSpace(txtPassword.Text) && string.IsNullOrWhiteSpace(txtrepeatpass.Text))
-            {
+            if (string.IsNullOrWhiteSpace(txtPassword.Text) && string.IsNullOrWhiteSpace(txtrepeatpass.Text) || string.IsNullOrEmpty(txtrepeatpass.Text)) {
                 checkPass.Text = "";
-            }
-
-            else if (txtPassword.Text == txtrepeatpass.Text)
-            {
+            }else if (txtPassword.Text == txtrepeatpass.Text){
                 checkPass.Text = "Password Matched";
                 checkPass.ForeColor = System.Drawing.Color.Green;
-            }
-            else
-            {
+            }else{
                 checkPass.Text = "Password Doesn't Match";
                 checkPass.ForeColor = System.Drawing.Color.Red;
             }
