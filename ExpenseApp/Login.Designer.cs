@@ -56,7 +56,7 @@ namespace ExpenseApp
             // guna2Panel1
             // 
             this.guna2Panel1.AutoRoundedCorners = true;
-            this.guna2Panel1.BorderRadius = 162;
+            this.guna2Panel1.BorderRadius = 217;
             this.guna2Panel1.Controls.Add(this.closeBTN);
             this.guna2Panel1.Controls.Add(this.signupBTN);
             this.guna2Panel1.Controls.Add(this.passwordTB);
@@ -68,19 +68,20 @@ namespace ExpenseApp
             this.guna2Panel1.Controls.Add(this.btnLogin);
             this.guna2Panel1.Dock = System.Windows.Forms.DockStyle.Right;
             this.guna2Panel1.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2Panel1.Location = new System.Drawing.Point(484, 0);
+            this.guna2Panel1.Location = new System.Drawing.Point(645, 0);
+            this.guna2Panel1.Margin = new System.Windows.Forms.Padding(4);
             this.guna2Panel1.Name = "guna2Panel1";
-            this.guna2Panel1.Size = new System.Drawing.Size(327, 500);
+            this.guna2Panel1.Size = new System.Drawing.Size(436, 615);
             this.guna2Panel1.TabIndex = 0;
             // 
             // closeBTN
             // 
             this.closeBTN.Cursor = System.Windows.Forms.Cursors.Hand;
             this.closeBTN.Image = global::ExpenseApp.Properties.Resources.delete;
-            this.closeBTN.Location = new System.Drawing.Point(279, 6);
-            this.closeBTN.Margin = new System.Windows.Forms.Padding(2);
+            this.closeBTN.Location = new System.Drawing.Point(372, 7);
+            this.closeBTN.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.closeBTN.Name = "closeBTN";
-            this.closeBTN.Size = new System.Drawing.Size(43, 24);
+            this.closeBTN.Size = new System.Drawing.Size(57, 30);
             this.closeBTN.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.closeBTN.TabIndex = 15;
             this.closeBTN.TabStop = false;
@@ -90,11 +91,10 @@ namespace ExpenseApp
             // 
             this.signupBTN.AutoSize = true;
             this.signupBTN.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.signupBTN.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.signupBTN.Location = new System.Drawing.Point(93, 446);
-            this.signupBTN.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.signupBTN.Font = new System.Drawing.Font("Poppins", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.signupBTN.Location = new System.Drawing.Point(112, 549);
             this.signupBTN.Name = "signupBTN";
-            this.signupBTN.Size = new System.Drawing.Size(161, 23);
+            this.signupBTN.Size = new System.Drawing.Size(231, 32);
             this.signupBTN.TabIndex = 14;
             this.signupBTN.Text = "Don\'t have an account?";
             this.signupBTN.Click += new System.EventHandler(this.signupBTN_Click);
@@ -112,16 +112,16 @@ namespace ExpenseApp
             this.passwordTB.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.passwordTB.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.passwordTB.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.passwordTB.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.passwordTB.Font = new System.Drawing.Font("Poppins", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.passwordTB.ForeColor = System.Drawing.Color.Black;
             this.passwordTB.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.passwordTB.Location = new System.Drawing.Point(40, 292);
-            this.passwordTB.Margin = new System.Windows.Forms.Padding(3, 6, 3, 6);
+            this.passwordTB.Location = new System.Drawing.Point(53, 359);
+            this.passwordTB.Margin = new System.Windows.Forms.Padding(4, 7, 4, 7);
             this.passwordTB.Name = "passwordTB";
-            this.passwordTB.PasswordChar = '\0';
+            this.passwordTB.PasswordChar = '●';
             this.passwordTB.PlaceholderText = "Password";
             this.passwordTB.SelectedText = "";
-            this.passwordTB.Size = new System.Drawing.Size(246, 48);
+            this.passwordTB.Size = new System.Drawing.Size(328, 59);
             this.passwordTB.TabIndex = 13;
             // 
             // usernameTB
@@ -135,37 +135,36 @@ namespace ExpenseApp
             this.usernameTB.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.usernameTB.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.usernameTB.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.usernameTB.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.usernameTB.Font = new System.Drawing.Font("Poppins", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.usernameTB.ForeColor = System.Drawing.Color.Black;
             this.usernameTB.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.usernameTB.Location = new System.Drawing.Point(40, 233);
-            this.usernameTB.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.usernameTB.Location = new System.Drawing.Point(53, 287);
+            this.usernameTB.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.usernameTB.Name = "usernameTB";
             this.usernameTB.PasswordChar = '\0';
             this.usernameTB.PlaceholderText = "Username";
             this.usernameTB.SelectedText = "";
-            this.usernameTB.Size = new System.Drawing.Size(246, 48);
+            this.usernameTB.Size = new System.Drawing.Size(328, 59);
             this.usernameTB.TabIndex = 12;
             // 
             // forgotPassBTN
             // 
             this.forgotPassBTN.AutoSize = true;
             this.forgotPassBTN.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.forgotPassBTN.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.forgotPassBTN.Location = new System.Drawing.Point(160, 346);
-            this.forgotPassBTN.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.forgotPassBTN.Font = new System.Drawing.Font("Poppins", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.forgotPassBTN.Location = new System.Drawing.Point(192, 430);
             this.forgotPassBTN.Name = "forgotPassBTN";
-            this.forgotPassBTN.Size = new System.Drawing.Size(126, 23);
+            this.forgotPassBTN.Size = new System.Drawing.Size(173, 32);
             this.forgotPassBTN.TabIndex = 10;
             this.forgotPassBTN.Text = "Forgot Password?";
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::ExpenseApp.Properties.Resources.logo;
-            this.pictureBox1.Location = new System.Drawing.Point(100, 45);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox1.Location = new System.Drawing.Point(133, 55);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(132, 128);
+            this.pictureBox1.Size = new System.Drawing.Size(176, 158);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 9;
             this.pictureBox1.TabStop = false;
@@ -174,11 +173,10 @@ namespace ExpenseApp
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(32, 185);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Font = new System.Drawing.Font("Poppins SemiBold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(43, 231);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(264, 33);
+            this.label1.Size = new System.Drawing.Size(315, 41);
             this.label1.TabIndex = 8;
             this.label1.Text = "Welcome to Smart Spend";
             this.label1.Click += new System.EventHandler(this.label1_Click);
@@ -187,7 +185,8 @@ namespace ExpenseApp
             // 
             this.guna2HtmlLabel3.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel3.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2HtmlLabel3.Location = new System.Drawing.Point(53, 58);
+            this.guna2HtmlLabel3.Location = new System.Drawing.Point(71, 71);
+            this.guna2HtmlLabel3.Margin = new System.Windows.Forms.Padding(4);
             this.guna2HtmlLabel3.Name = "guna2HtmlLabel3";
             this.guna2HtmlLabel3.Size = new System.Drawing.Size(3, 2);
             this.guna2HtmlLabel3.TabIndex = 7;
@@ -197,7 +196,7 @@ namespace ExpenseApp
             // 
             this.btnLogin.AutoRoundedCorners = true;
             this.btnLogin.BorderColor = System.Drawing.Color.Transparent;
-            this.btnLogin.BorderRadius = 21;
+            this.btnLogin.BorderRadius = 26;
             this.btnLogin.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnLogin.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnLogin.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -205,22 +204,23 @@ namespace ExpenseApp
             this.btnLogin.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(123)))), ((int)(((byte)(47)))));
             this.btnLogin.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLogin.ForeColor = System.Drawing.Color.White;
-            this.btnLogin.Location = new System.Drawing.Point(40, 385);
+            this.btnLogin.Location = new System.Drawing.Point(53, 474);
+            this.btnLogin.Margin = new System.Windows.Forms.Padding(4);
             this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(246, 45);
+            this.btnLogin.Size = new System.Drawing.Size(328, 55);
             this.btnLogin.TabIndex = 2;
             this.btnLogin.Text = "Login";
             // 
             // Login
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::ExpenseApp.Properties.Resources.Untitled_1;
-            this.ClientSize = new System.Drawing.Size(811, 500);
+            this.ClientSize = new System.Drawing.Size(1081, 615);
             this.Controls.Add(this.guna2Panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2);
-            this.MinimumSize = new System.Drawing.Size(811, 500);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.MinimumSize = new System.Drawing.Size(1081, 615);
             this.Name = "Login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Expense Tracker";
