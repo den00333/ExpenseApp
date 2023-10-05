@@ -63,5 +63,16 @@ namespace ExpenseApp
             Label label = (Label)sender;
             label.ForeColor = DefaultForeColor;
         }
+
+        private void signupBTN_Click(object sender, EventArgs e)
+        {
+            Signup signup = new Signup();
+            signup.ShowDialog();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

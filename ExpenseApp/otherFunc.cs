@@ -8,6 +8,10 @@ using FireSharp;
 using FireSharp.Interfaces;
 using FireSharp.Config;
 using FireSharp.Response;
+using System.ComponentModel.Design;
+using System.Runtime.InteropServices;
+using System.Text.RegularExpressions;
+
 namespace ExpenseApp
 {
     internal class otherFunc
