@@ -161,7 +161,7 @@ namespace ExpenseApp
             // pictureBox1
             // 
             this.pictureBox1.Image = global::ExpenseApp.Properties.Resources.logo;
-            this.pictureBox1.Location = new System.Drawing.Point(133, 55);
+            this.pictureBox1.Location = new System.Drawing.Point(128, 55);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(176, 158);
@@ -220,6 +220,7 @@ namespace ExpenseApp
             this.Controls.Add(this.guna2Panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.MaximumSize = new System.Drawing.Size(1081, 615);
             this.MinimumSize = new System.Drawing.Size(1081, 615);
             this.Name = "Login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
