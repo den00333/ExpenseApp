@@ -32,14 +32,12 @@ namespace ExpenseApp
         {
             cliente = otherFunc.conn();
             /*checking connection*/
-            if(cliente != null)
-            {
+            if(cliente != null){
                 /*it can be changed*/
                 /*IDEA 1: pedeng makita sa login form kung connected o hindi, gamit yung label*/
                 MessageBox.Show("Connection","Connected Successfully", MessageBoxButtons.OK);
             }
-            else
-            {
+            else{
                 MessageBox.Show("Connection error","No connection", MessageBoxButtons.OK);
             }
         }

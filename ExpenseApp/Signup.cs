@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Guna.UI2.WinForms.Internal;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.Design;
@@ -19,7 +20,26 @@ namespace ExpenseApp
         {
             InitializeComponent();
         }
+        private void closeBTN_Click(object sender, EventArgs e)
+        {
+            /*bool notEmptyTextBox = false;
+            foreach (Control control in signupPanel.Controls){
+                if (control is Guna.UI2.WinForms.Internal.PlaceholderTextBox textbox){
+                    if (!string.IsNullOrEmpty(textbox.Text)){
+                        notEmptyTextBox = true;
+                        break;
+                    }
+                }
+            }
+            if (notEmptyTextBox) {
+                DialogResult result = MessageBox.Show("Are you sure you want to close?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (result == DialogResult.No){
+                    return;
+                }
 
+            }*/
+            this.Close();
+        }
         private void guna2TextBox3_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsLetter(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar) && !char.IsControl(e.KeyChar)){
@@ -59,11 +79,6 @@ namespace ExpenseApp
                 e.Handled = true;
                 MessageBox.Show("Password cannot contain whitespaces and special characters", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-
-        private void pictureBox2_Click(object sender, EventArgs e)
-        {
-            this.Hide();
         }
 
         private void Signup_Load(object sender, EventArgs e)
