@@ -11,11 +11,15 @@ using System.ComponentModel.Design;
 using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
 using Google.Cloud.Firestore;
+using System.Web.Caching;
+using System.Windows.Forms;
+using System.Runtime.Remoting.Messaging;
 
 namespace ExpenseApp
 {
     internal class otherFunc
     {
+        
         public static IFirebaseClient conn()
         {
             IFirebaseConfig config = new FirebaseConfig(){
@@ -31,10 +35,92 @@ namespace ExpenseApp
             FirestoreDb db = FirestoreDb.Create("xpnsetracker");
             return db;
         }
-        public bool isValidEmail(string email)
+        public static bool isValidEmail(string email)
         {
             string pattern = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
             return Regex.IsMatch(email, pattern);
         }
+
+        public async Task<DocumentSnapshot> logInFunc(String username)
+        {
+            FirestoreDb database = FirestoreConn();
+            DocumentReference docRef = database.Collection("Users").Document(username);
+            DocumentSnapshot docSnap = await docRef.GetSnapshotAsync();
+            return docSnap;
+
+        }
+
+        public static async Task<bool> isUsernameExistingAsync(String username)
+        {
+            var database = FirestoreConn();
+            DocumentReference docRef = database.Collection("Users").Document(username);
+            DocumentSnapshot docSnap = await docRef.GetSnapshotAsync();
+
+            return docSnap.Exists;
+        }
+
+        
+        public bool isValidData(Dictionary<String, bool> data)
+        {
+            List<String> L = new List<String>();
+            foreach (var row in data)
+            {
+                if (!row.Value)
+                {
+                    L.Add(row.Key);
+                }
+            }
+
+            if(L.Count == 0)
+            {
+                return true;
+            }
+            Signup.runErrorMsg(L);
+            return false;
+        }
+
+        public async void signingUp(String username, String fname, String lname, String email, String password, Signup s)
+        {
+            var database = FirestoreConn();
+
+            bool validEmail = otherFunc.isValidEmail(email);
+            bool validUsername = await otherFunc.isUsernameExistingAsync(username);
+
+            Dictionary<String, bool> validatingData = new Dictionary<string, bool>()
+            {
+                { "username", !validUsername},
+                { "email", validEmail}
+            };
+
+            otherFunc o = new otherFunc();
+            bool validData = o.isValidData(validatingData);
+            
+            if (validData)
+            {
+                try
+                {
+                    DocumentReference docRef = database.Collection("Users").Document(username);
+                    Dictionary<string, object> data = new Dictionary<string, object>(){
+                        {"First Name", fname },
+                        {"Last Name", lname },
+                        {"Username", username },
+                        {"Email", email },
+                        {"Password", password}
+                    };
+                    await docRef.SetAsync(data);
+                    DialogResult res = MessageBox.Show("Successfully created your account!", "Success", MessageBoxButtons.OK);
+                    if(res == DialogResult.OK)
+                    {
+                        
+                        s.Close();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Cannot process your account", ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            
+        } 
     }
 }

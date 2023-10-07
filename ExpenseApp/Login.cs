@@ -12,6 +12,8 @@ using FireSharp.Config;
 using FireSharp.Interfaces;
 using FireSharp.Response;
 
+using Google.Cloud.Firestore;
+
 
 namespace ExpenseApp
 {
@@ -69,9 +71,41 @@ namespace ExpenseApp
         }
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            Home home = new Home();
-            home.Show();
+            logIn();
         }
+
+        async void logIn()
+        {
+            String username = usernameTB.Text.ToString().Trim();
+            String password = passwordTB.Text.ToString();
+
+            otherFunc o = new otherFunc();
+            DocumentSnapshot docSnap = await o.logInFunc(username);
+
+            if (docSnap.Exists)
+            {
+                
+                FirebaseData userData = docSnap.ConvertTo<FirebaseData>();
+                if (password == Security.Decrypt(userData.Password.ToString()))
+                {
+                    this.Hide();
+                    Home home = new Home();
+                    home.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Invalid username or password", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
+            {
+                MessageBox.Show("Please fill in the required information. \n Your username & password", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                MessageBox.Show("Invalid username or password!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
     }
 }
