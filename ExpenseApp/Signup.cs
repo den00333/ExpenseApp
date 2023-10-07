@@ -1,4 +1,5 @@
-﻿using Guna.UI2.WinForms.Internal;
+﻿using Google.Cloud.Firestore;
+using Guna.UI2.WinForms.Internal;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,6 +17,8 @@ namespace ExpenseApp
 {
     public partial class Signup : Form
     {
+        FirestoreDb database;
+        String fname, lname, email, username, password;
         public Signup()
         {
             InitializeComponent();
@@ -106,6 +109,33 @@ namespace ExpenseApp
         private void txtrepeatpass_TextChanged(object sender, EventArgs e)
         {
             UpdatePasswordMatchLabel();
+        }
+
+        private void btnSignup_Click(object sender, EventArgs e)
+        {
+            username = txtUsername.Text.ToString().Trim();
+            fname = txtFirstname.Text.ToString().Trim();
+            lname = txtLastname.Text.ToString().Trim();
+            email = txtEmail.Text.ToString().Trim();
+            password = txtPassword.Text.ToString();
+            database = otherFunc.FirestoreConn();
+
+            DocumentReference docRef = database.Collection("Users").Document(username);
+            Dictionary<string, object> data = new Dictionary<string, object>(){
+                {"First Name", fname },
+                {"Last Name", lname },
+                {"Username", username },
+                {"Email", email },
+                {"Password", password}
+            };
+            try{
+                docRef.SetAsync(data);
+                MessageBox.Show("Successfully created your account!", "Success");
+                this.Close();
+            }
+            catch (Exception ex){
+                MessageBox.Show("Cannot process your account", ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

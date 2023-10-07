@@ -22,6 +22,11 @@ namespace ExpenseApp
 
         }
 
+        private void guna2Panel3_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
         private void btnDashboard_Click(object sender, EventArgs e)
         {
             dashboard1.Show();
@@ -46,11 +51,10 @@ namespace ExpenseApp
             tips1.BringToFront();
         }
 
-        private void btnLogout_Click(object sender, EventArgs e)
+        private void btnLogut_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("Do you really want to logout?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (result == DialogResult.Yes)
-            {
+            if (result == DialogResult.Yes){
                 this.Hide();
                 Login login = new Login();
                 login.Show();
