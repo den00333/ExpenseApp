@@ -181,7 +181,6 @@ namespace ExpenseApp
             this.label1.Size = new System.Drawing.Size(263, 33);
             this.label1.TabIndex = 8;
             this.label1.Text = "Welcome to Smart Spend";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // guna2HtmlLabel3
             // 

@@ -67,15 +67,11 @@ namespace ExpenseApp
             Signup signup = new Signup();
             signup.ShowDialog();
         }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            
+            this.Close();
+            Home home = new Home();
+            home.Show();
         }
     }
 }
