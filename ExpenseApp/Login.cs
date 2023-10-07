@@ -69,7 +69,7 @@ namespace ExpenseApp
         }
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            this.Close();
+            this.Hide();
             Home home = new Home();
             home.Show();
         }

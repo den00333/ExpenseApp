@@ -120,21 +120,28 @@ namespace ExpenseApp
             password = txtPassword.Text.ToString();
             database = otherFunc.FirestoreConn();
 
-            DocumentReference docRef = database.Collection("Users").Document(username);
-            Dictionary<string, object> data = new Dictionary<string, object>(){
-                {"First Name", fname },
-                {"Last Name", lname },
-                {"Username", username },
-                {"Email", email },
-                {"Password", password}
-            };
-            try{
-                docRef.SetAsync(data);
-                MessageBox.Show("Successfully created your account!", "Success");
-                this.Close();
+            otherFunc validation = new otherFunc();
+            bool validEmail = validation.isValidEmail(email);
+            if (validEmail){
+                try{
+                    DocumentReference docRef = database.Collection("Users").Document(username);
+                    Dictionary<string, object> data = new Dictionary<string, object>(){
+                        {"First Name", fname },
+                        {"Last Name", lname },
+                        {"Username", username },
+                        {"Email", email },
+                        {"Password", password}
+                    };
+                    docRef.SetAsync(data);
+                    MessageBox.Show("Successfully created your account!", "Success");
+                    this.Close();
+                }
+                catch(Exception ex){
+                    MessageBox.Show("Cannot process your account", ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }  
             }
-            catch (Exception ex){
-                MessageBox.Show("Cannot process your account", ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            else{
+                MessageBox.Show("Invalid Email", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

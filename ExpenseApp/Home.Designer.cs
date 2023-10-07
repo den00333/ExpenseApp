@@ -33,11 +33,11 @@
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.btnLogout = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Panel3 = new Guna.UI2.WinForms.Guna2Panel();
-            this.btnDashboard = new Guna.UI2.WinForms.Guna2Button();
-            this.btnWallet = new Guna.UI2.WinForms.Guna2Button();
-            this.btnGroup = new Guna.UI2.WinForms.Guna2Button();
-            this.btnTips = new Guna.UI2.WinForms.Guna2Button();
             this.btnLogut = new Guna.UI2.WinForms.Guna2Button();
+            this.btnTips = new Guna.UI2.WinForms.Guna2Button();
+            this.btnGroup = new Guna.UI2.WinForms.Guna2Button();
+            this.btnWallet = new Guna.UI2.WinForms.Guna2Button();
+            this.btnDashboard = new Guna.UI2.WinForms.Guna2Button();
             this.dashboard1 = new ExpenseApp.dashboard();
             this.wallet1 = new ExpenseApp.wallet();
             this.group1 = new ExpenseApp.group();
@@ -121,74 +121,28 @@
             this.guna2Panel3.Size = new System.Drawing.Size(244, 725);
             this.guna2Panel3.TabIndex = 7;
             // 
-            // btnDashboard
+            // btnLogut
             // 
-            this.btnDashboard.BorderColor = System.Drawing.Color.Empty;
-            this.btnDashboard.BorderRadius = 20;
-            this.btnDashboard.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnDashboard.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnDashboard.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnDashboard.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnDashboard.FillColor = System.Drawing.SystemColors.Control;
-            this.btnDashboard.Font = new System.Drawing.Font("Poppins SemiBold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDashboard.ForeColor = System.Drawing.Color.Black;
-            this.btnDashboard.Image = global::ExpenseApp.Properties.Resources.dashboard;
-            this.btnDashboard.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnDashboard.Location = new System.Drawing.Point(16, 91);
-            this.btnDashboard.Margin = new System.Windows.Forms.Padding(4);
-            this.btnDashboard.Name = "btnDashboard";
-            this.btnDashboard.Padding = new System.Windows.Forms.Padding(27, 0, 0, 0);
-            this.btnDashboard.Size = new System.Drawing.Size(221, 55);
-            this.btnDashboard.TabIndex = 0;
-            this.btnDashboard.Text = "Dashboard";
-            this.btnDashboard.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnDashboard.Click += new System.EventHandler(this.btnDashboard_Click);
-            // 
-            // btnWallet
-            // 
-            this.btnWallet.BorderColor = System.Drawing.Color.Empty;
-            this.btnWallet.BorderRadius = 20;
-            this.btnWallet.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnWallet.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnWallet.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnWallet.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnWallet.FillColor = System.Drawing.SystemColors.Control;
-            this.btnWallet.Font = new System.Drawing.Font("Poppins SemiBold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnWallet.ForeColor = System.Drawing.Color.Black;
-            this.btnWallet.Image = global::ExpenseApp.Properties.Resources.wallet1;
-            this.btnWallet.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnWallet.Location = new System.Drawing.Point(16, 154);
-            this.btnWallet.Margin = new System.Windows.Forms.Padding(4);
-            this.btnWallet.Name = "btnWallet";
-            this.btnWallet.Padding = new System.Windows.Forms.Padding(27, 0, 0, 0);
-            this.btnWallet.Size = new System.Drawing.Size(221, 55);
-            this.btnWallet.TabIndex = 7;
-            this.btnWallet.Text = "Wallet";
-            this.btnWallet.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnWallet.Click += new System.EventHandler(this.btnWallet_Click);
-            // 
-            // btnGroup
-            // 
-            this.btnGroup.BorderColor = System.Drawing.Color.Empty;
-            this.btnGroup.BorderRadius = 20;
-            this.btnGroup.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnGroup.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnGroup.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnGroup.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnGroup.FillColor = System.Drawing.SystemColors.Control;
-            this.btnGroup.Font = new System.Drawing.Font("Poppins SemiBold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGroup.ForeColor = System.Drawing.Color.Black;
-            this.btnGroup.Image = global::ExpenseApp.Properties.Resources.group;
-            this.btnGroup.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnGroup.Location = new System.Drawing.Point(16, 217);
-            this.btnGroup.Margin = new System.Windows.Forms.Padding(4);
-            this.btnGroup.Name = "btnGroup";
-            this.btnGroup.Padding = new System.Windows.Forms.Padding(27, 0, 0, 0);
-            this.btnGroup.Size = new System.Drawing.Size(221, 55);
-            this.btnGroup.TabIndex = 8;
-            this.btnGroup.Text = "Group";
-            this.btnGroup.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnGroup.Click += new System.EventHandler(this.btnGroup_Click);
+            this.btnLogut.BorderColor = System.Drawing.Color.Empty;
+            this.btnLogut.BorderRadius = 20;
+            this.btnLogut.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnLogut.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnLogut.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnLogut.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnLogut.FillColor = System.Drawing.SystemColors.Control;
+            this.btnLogut.Font = new System.Drawing.Font("Poppins SemiBold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogut.ForeColor = System.Drawing.Color.Black;
+            this.btnLogut.Image = global::ExpenseApp.Properties.Resources.logout;
+            this.btnLogut.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnLogut.Location = new System.Drawing.Point(12, 664);
+            this.btnLogut.Margin = new System.Windows.Forms.Padding(4);
+            this.btnLogut.Name = "btnLogut";
+            this.btnLogut.Padding = new System.Windows.Forms.Padding(27, 0, 0, 0);
+            this.btnLogut.Size = new System.Drawing.Size(221, 55);
+            this.btnLogut.TabIndex = 10;
+            this.btnLogut.Text = "Logout";
+            this.btnLogut.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnLogut.Click += new System.EventHandler(this.btnLogut_Click);
             // 
             // btnTips
             // 
@@ -213,28 +167,74 @@
             this.btnTips.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnTips.Click += new System.EventHandler(this.btnTips_Click);
             // 
-            // btnLogut
+            // btnGroup
             // 
-            this.btnLogut.BorderColor = System.Drawing.Color.Empty;
-            this.btnLogut.BorderRadius = 20;
-            this.btnLogut.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnLogut.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnLogut.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnLogut.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnLogut.FillColor = System.Drawing.SystemColors.Control;
-            this.btnLogut.Font = new System.Drawing.Font("Poppins SemiBold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogut.ForeColor = System.Drawing.Color.Black;
-            this.btnLogut.Image = global::ExpenseApp.Properties.Resources.logout;
-            this.btnLogut.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnLogut.Location = new System.Drawing.Point(12, 664);
-            this.btnLogut.Margin = new System.Windows.Forms.Padding(4);
-            this.btnLogut.Name = "btnLogut";
-            this.btnLogut.Padding = new System.Windows.Forms.Padding(27, 0, 0, 0);
-            this.btnLogut.Size = new System.Drawing.Size(221, 55);
-            this.btnLogut.TabIndex = 10;
-            this.btnLogut.Text = "Logout";
-            this.btnLogut.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnLogut.Click += new System.EventHandler(this.btnLogut_Click);
+            this.btnGroup.BorderColor = System.Drawing.Color.Empty;
+            this.btnGroup.BorderRadius = 20;
+            this.btnGroup.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnGroup.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnGroup.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnGroup.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnGroup.FillColor = System.Drawing.SystemColors.Control;
+            this.btnGroup.Font = new System.Drawing.Font("Poppins SemiBold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGroup.ForeColor = System.Drawing.Color.Black;
+            this.btnGroup.Image = global::ExpenseApp.Properties.Resources.group;
+            this.btnGroup.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnGroup.Location = new System.Drawing.Point(16, 217);
+            this.btnGroup.Margin = new System.Windows.Forms.Padding(4);
+            this.btnGroup.Name = "btnGroup";
+            this.btnGroup.Padding = new System.Windows.Forms.Padding(27, 0, 0, 0);
+            this.btnGroup.Size = new System.Drawing.Size(221, 55);
+            this.btnGroup.TabIndex = 8;
+            this.btnGroup.Text = "Group";
+            this.btnGroup.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnGroup.Click += new System.EventHandler(this.btnGroup_Click);
+            // 
+            // btnWallet
+            // 
+            this.btnWallet.BorderColor = System.Drawing.Color.Empty;
+            this.btnWallet.BorderRadius = 20;
+            this.btnWallet.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnWallet.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnWallet.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnWallet.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnWallet.FillColor = System.Drawing.SystemColors.Control;
+            this.btnWallet.Font = new System.Drawing.Font("Poppins SemiBold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnWallet.ForeColor = System.Drawing.Color.Black;
+            this.btnWallet.Image = global::ExpenseApp.Properties.Resources.wallet1;
+            this.btnWallet.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnWallet.Location = new System.Drawing.Point(16, 154);
+            this.btnWallet.Margin = new System.Windows.Forms.Padding(4);
+            this.btnWallet.Name = "btnWallet";
+            this.btnWallet.Padding = new System.Windows.Forms.Padding(27, 0, 0, 0);
+            this.btnWallet.Size = new System.Drawing.Size(221, 55);
+            this.btnWallet.TabIndex = 7;
+            this.btnWallet.Text = "Wallet";
+            this.btnWallet.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnWallet.Click += new System.EventHandler(this.btnWallet_Click);
+            // 
+            // btnDashboard
+            // 
+            this.btnDashboard.BorderColor = System.Drawing.Color.Empty;
+            this.btnDashboard.BorderRadius = 20;
+            this.btnDashboard.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnDashboard.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnDashboard.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnDashboard.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnDashboard.FillColor = System.Drawing.SystemColors.Control;
+            this.btnDashboard.Font = new System.Drawing.Font("Poppins SemiBold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDashboard.ForeColor = System.Drawing.Color.Black;
+            this.btnDashboard.Image = global::ExpenseApp.Properties.Resources.dashboard;
+            this.btnDashboard.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnDashboard.Location = new System.Drawing.Point(16, 91);
+            this.btnDashboard.Margin = new System.Windows.Forms.Padding(4);
+            this.btnDashboard.Name = "btnDashboard";
+            this.btnDashboard.Padding = new System.Windows.Forms.Padding(27, 0, 0, 0);
+            this.btnDashboard.Size = new System.Drawing.Size(221, 55);
+            this.btnDashboard.TabIndex = 0;
+            this.btnDashboard.Text = "Dashboard";
+            this.btnDashboard.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnDashboard.Click += new System.EventHandler(this.btnDashboard_Click);
             // 
             // dashboard1
             // 
@@ -291,7 +291,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "Home";
-            this.Text = "Home";
+            this.Text = "Smart Spend";
             this.Load += new System.EventHandler(this.Home_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.guna2Panel1.ResumeLayout(false);
