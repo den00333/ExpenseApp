@@ -60,5 +60,15 @@ namespace ExpenseApp
                 login.Show();
             }
         }
+
+        private void guna2Panel3_Paint_1(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
