@@ -109,25 +109,6 @@ namespace ExpenseApp
             }
         }
 
-        private void termsConditions_CheckedChanged(object sender, EventArgs e)
-        {
-            if (termsConditions.Checked)
-            {
-                Terms termsForm = new Terms();
-                termsForm.ShowDialog();
-
-                if (termsForm.Accepted)
-                {
-                    termsConditions.Checked = true;
-                }
-                else
-                {
-                    termsConditions.Checked = false;
-                }
-
-            }
-        }
-
         private void UpdatePasswordMatchLabel()
         {
             if (string.IsNullOrWhiteSpace(txtPassword.Text) && string.IsNullOrWhiteSpace(txtrepeatpass.Text) || string.IsNullOrEmpty(txtrepeatpass.Text)) {
@@ -159,13 +140,9 @@ namespace ExpenseApp
             email = txtEmail.Text.ToString().Trim();
             password = Security.Encrypt(txtPassword.Text.ToString());
 
-            
-
             otherFunc o = new otherFunc();
             o.signingUp(username, fname, lname, email, password, this);
-            
         }
-
         public static void runErrorMsg(List<String> lst)
         {
             String Lval = string.Join(Environment.NewLine, lst);

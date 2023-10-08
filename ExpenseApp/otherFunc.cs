@@ -43,6 +43,9 @@ namespace ExpenseApp
 
         public async Task<DocumentSnapshot> logInFunc(String username)
         {
+            if (string.IsNullOrEmpty(username)){
+                return null;
+            }
             FirestoreDb database = FirestoreConn();
             DocumentReference docRef = database.Collection("Users").Document(username);
             DocumentSnapshot docSnap = await docRef.GetSnapshotAsync();
@@ -52,6 +55,10 @@ namespace ExpenseApp
 
         public static async Task<bool> isUsernameExistingAsync(String username)
         {
+            if (string.IsNullOrEmpty(username))
+            {
+                return false;
+            }
             var database = FirestoreConn();
             DocumentReference docRef = database.Collection("Users").Document(username);
             DocumentSnapshot docSnap = await docRef.GetSnapshotAsync();

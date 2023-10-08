@@ -82,9 +82,12 @@ namespace ExpenseApp
             otherFunc o = new otherFunc();
             DocumentSnapshot docSnap = await o.logInFunc(username);
 
-            if (docSnap.Exists)
+            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
             {
-                
+                MessageBox.Show("Please fill in the required information. \n Your username & password", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else if (docSnap.Exists)
+            {
                 FirebaseData userData = docSnap.ConvertTo<FirebaseData>();
                 if (password == Security.Decrypt(userData.Password.ToString()))
                 {
@@ -97,15 +100,10 @@ namespace ExpenseApp
                     MessageBox.Show("Invalid username or password", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            else if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
-            {
-                MessageBox.Show("Please fill in the required information. \n Your username & password", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
             else
             {
                 MessageBox.Show("Invalid username or password!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
     }
 }

@@ -310,7 +310,6 @@
             this.termsConditions.UncheckedState.BorderThickness = 0;
             this.termsConditions.UncheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
             this.termsConditions.UseVisualStyleBackColor = false;
-            this.termsConditions.CheckedChanged += new System.EventHandler(this.termsConditions_CheckedChanged);
             this.termsConditions.Click += new System.EventHandler(this.termsConditions_Click);
             // 
             // signupPanel
