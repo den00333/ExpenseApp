@@ -62,7 +62,7 @@
             this.closeBTN.Cursor = System.Windows.Forms.Cursors.Hand;
             this.closeBTN.Image = global::ExpenseApp.Properties.Resources.delete;
             this.closeBTN.Location = new System.Drawing.Point(909, 9);
-            this.closeBTN.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.closeBTN.Margin = new System.Windows.Forms.Padding(2);
             this.closeBTN.Name = "closeBTN";
             this.closeBTN.Size = new System.Drawing.Size(43, 24);
             this.closeBTN.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -85,7 +85,7 @@
             this.txtUsername.ForeColor = System.Drawing.Color.Black;
             this.txtUsername.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtUsername.Location = new System.Drawing.Point(19, 268);
-            this.txtUsername.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtUsername.Margin = new System.Windows.Forms.Padding(4);
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.PasswordChar = '\0';
             this.txtUsername.PlaceholderText = "Username";
@@ -109,7 +109,7 @@
             this.txtPassword.ForeColor = System.Drawing.Color.Black;
             this.txtPassword.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtPassword.Location = new System.Drawing.Point(19, 326);
-            this.txtPassword.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtPassword.Margin = new System.Windows.Forms.Padding(4);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '●';
             this.txtPassword.PlaceholderText = "Password";
@@ -135,7 +135,7 @@
             this.txtrepeatpass.ForeColor = System.Drawing.Color.Black;
             this.txtrepeatpass.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtrepeatpass.Location = new System.Drawing.Point(194, 326);
-            this.txtrepeatpass.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtrepeatpass.Margin = new System.Windows.Forms.Padding(4);
             this.txtrepeatpass.Name = "txtrepeatpass";
             this.txtrepeatpass.PasswordChar = '●';
             this.txtrepeatpass.PlaceholderText = "Confirm Password";
@@ -178,7 +178,7 @@
             this.txtFirstname.ForeColor = System.Drawing.Color.Black;
             this.txtFirstname.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtFirstname.Location = new System.Drawing.Point(19, 110);
-            this.txtFirstname.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtFirstname.Margin = new System.Windows.Forms.Padding(4);
             this.txtFirstname.Name = "txtFirstname";
             this.txtFirstname.PasswordChar = '\0';
             this.txtFirstname.PlaceholderText = "First name";
@@ -202,7 +202,7 @@
             this.txtLastname.ForeColor = System.Drawing.Color.Black;
             this.txtLastname.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtLastname.Location = new System.Drawing.Point(208, 110);
-            this.txtLastname.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtLastname.Margin = new System.Windows.Forms.Padding(4);
             this.txtLastname.Name = "txtLastname";
             this.txtLastname.PasswordChar = '\0';
             this.txtLastname.PlaceholderText = "Last name";
@@ -226,7 +226,7 @@
             this.txtEmail.ForeColor = System.Drawing.Color.Black;
             this.txtEmail.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtEmail.Location = new System.Drawing.Point(19, 167);
-            this.txtEmail.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtEmail.Margin = new System.Windows.Forms.Padding(4);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
             this.txtEmail.PasswordChar = '\0';
@@ -284,7 +284,7 @@
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.panel1.Location = new System.Drawing.Point(28, 95);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(324, 1);
             this.panel1.TabIndex = 21;
@@ -300,7 +300,7 @@
             this.termsConditions.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.termsConditions.ForeColor = System.Drawing.SystemColors.AppWorkspace;
             this.termsConditions.Location = new System.Drawing.Point(25, 410);
-            this.termsConditions.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.termsConditions.Margin = new System.Windows.Forms.Padding(2);
             this.termsConditions.Name = "termsConditions";
             this.termsConditions.Size = new System.Drawing.Size(333, 25);
             this.termsConditions.TabIndex = 22;
@@ -310,6 +310,7 @@
             this.termsConditions.UncheckedState.BorderThickness = 0;
             this.termsConditions.UncheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
             this.termsConditions.UseVisualStyleBackColor = false;
+            this.termsConditions.CheckedChanged += new System.EventHandler(this.termsConditions_CheckedChanged);
             this.termsConditions.Click += new System.EventHandler(this.termsConditions_Click);
             // 
             // signupPanel
@@ -380,12 +381,12 @@
         private System.Windows.Forms.Label label4;
         private Guna.UI2.WinForms.Guna2TextBox txtEmail;
         private Guna.UI2.WinForms.Guna2TextBox txtLastname;
-        private Guna.UI2.WinForms.Guna2TextBox txtFirstname;
         private Guna.UI2.WinForms.Guna2Button btnSignup;
-        private Guna.UI2.WinForms.Guna2TextBox txtrepeatpass;
         private Guna.UI2.WinForms.Guna2TextBox txtPassword;
         private Guna.UI2.WinForms.Guna2TextBox txtUsername;
         private Guna.UI2.WinForms.Guna2ContextMenuStrip guna2ContextMenuStrip1;
         public Guna.UI2.WinForms.Guna2CheckBox termsConditions;
+        public Guna.UI2.WinForms.Guna2TextBox txtFirstname;
+        public Guna.UI2.WinForms.Guna2TextBox txtrepeatpass;
     }
 }
