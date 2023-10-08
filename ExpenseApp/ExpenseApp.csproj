@@ -195,6 +195,7 @@
     <Compile Include="dashboard.Designer.cs">
       <DependentUpon>dashboard.cs</DependentUpon>
     </Compile>
+    <Compile Include="FirebaseData.cs" />
     <Compile Include="group.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -216,6 +217,7 @@
     <Compile Include="otherFunc.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Security.cs" />
     <Compile Include="Signup.cs">
       <SubType>Form</SubType>
     </Compile>

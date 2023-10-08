@@ -17,12 +17,13 @@ namespace ExpenseApp
 {
     public partial class Signup : Form
     {
-        FirestoreDb database;
         String fname, lname, email, username, password;
         public Signup()
         {
             InitializeComponent();
         }
+
+        
         private void closeBTN_Click(object sender, EventArgs e)
         {
             /*bool notEmptyTextBox = false;
@@ -108,25 +109,6 @@ namespace ExpenseApp
             }
         }
 
-        private void termsConditions_CheckedChanged(object sender, EventArgs e)
-        {
-            if (termsConditions.Checked)
-            {
-                Terms termsForm = new Terms();
-                termsForm.ShowDialog();
-
-                if (termsForm.Accepted)
-                {
-                    termsConditions.Checked = true;
-                }
-                else
-                {
-                    termsConditions.Checked = false;
-                }
-
-            }
-        }
-
         private void UpdatePasswordMatchLabel()
         {
             if (string.IsNullOrWhiteSpace(txtPassword.Text) && string.IsNullOrWhiteSpace(txtrepeatpass.Text) || string.IsNullOrEmpty(txtrepeatpass.Text)) {
@@ -156,32 +138,16 @@ namespace ExpenseApp
             fname = txtFirstname.Text.ToString().Trim();
             lname = txtLastname.Text.ToString().Trim();
             email = txtEmail.Text.ToString().Trim();
-            password = txtPassword.Text.ToString();
-            database = otherFunc.FirestoreConn();
+            password = Security.Encrypt(txtPassword.Text.ToString());
 
-            otherFunc validation = new otherFunc();
-            bool validEmail = validation.isValidEmail(email);
-            if (validEmail){
-                try{
-                    DocumentReference docRef = database.Collection("Users").Document(username);
-                    Dictionary<string, object> data = new Dictionary<string, object>(){
-                        {"First Name", fname },
-                        {"Last Name", lname },
-                        {"Username", username },
-                        {"Email", email },
-                        {"Password", password}
-                    };
-                    docRef.SetAsync(data);
-                    MessageBox.Show("Successfully created your account!", "Success");
-                    this.Close();
-                }
-                catch(Exception ex){
-                    MessageBox.Show("Cannot process your account", ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }  
-            }
-            else{
-                MessageBox.Show("Invalid Email", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            otherFunc o = new otherFunc();
+            o.signingUp(username, fname, lname, email, password, this);
         }
+        public static void runErrorMsg(List<String> lst)
+        {
+            String Lval = string.Join(Environment.NewLine, lst);
+            MessageBox.Show("Invalid: \n"+Lval, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        }
+
     }
 }
