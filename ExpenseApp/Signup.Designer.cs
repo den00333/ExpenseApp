@@ -46,8 +46,10 @@
             this.termsConditions = new Guna.UI2.WinForms.Guna2CheckBox();
             this.signupPanel = new Guna.UI2.WinForms.Guna2Panel();
             this.guna2ContextMenuStrip1 = new Guna.UI2.WinForms.Guna2ContextMenuStrip();
+            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.closeBTN)).BeginInit();
             this.signupPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // guna2BorderlessForm1
@@ -118,7 +120,9 @@
             this.txtPassword.TabIndex = 1;
             this.txtPassword.UseSystemPasswordChar = true;
             this.txtPassword.TextChanged += new System.EventHandler(this.txtPassword_TextChanged);
+            this.txtPassword.Paint += new System.Windows.Forms.PaintEventHandler(this.txtPassword_Paint);
             this.txtPassword.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPassword_KeyPress);
+            this.txtPassword.Validating += new System.ComponentModel.CancelEventHandler(this.txtPassword_Validating);
             // 
             // txtrepeatpass
             // 
@@ -240,7 +244,7 @@
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Poppins", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(25, 225);
+            this.label4.Location = new System.Drawing.Point(12, 225);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(238, 39);
@@ -348,6 +352,10 @@
             this.guna2ContextMenuStrip1.RenderStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
             this.guna2ContextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
+            // errorProvider
+            // 
+            this.errorProvider.ContainerControl = this;
+            // 
             // Signup
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -365,6 +373,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.closeBTN)).EndInit();
             this.signupPanel.ResumeLayout(false);
             this.signupPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -388,5 +397,6 @@
         public Guna.UI2.WinForms.Guna2CheckBox termsConditions;
         public Guna.UI2.WinForms.Guna2TextBox txtFirstname;
         public Guna.UI2.WinForms.Guna2TextBox txtrepeatpass;
+        private System.Windows.Forms.ErrorProvider errorProvider;
     }
 }
