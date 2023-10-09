@@ -32,6 +32,7 @@ namespace ExpenseApp
             this.components = new System.ComponentModel.Container();
             this.guna2BorderlessForm1 = new Guna.UI2.WinForms.Guna2BorderlessForm(this.components);
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            this.minimizeBTN = new System.Windows.Forms.PictureBox();
             this.closeBTN = new System.Windows.Forms.PictureBox();
             this.signupBTN = new System.Windows.Forms.Label();
             this.passwordTB = new Guna.UI2.WinForms.Guna2TextBox();
@@ -42,6 +43,7 @@ namespace ExpenseApp
             this.guna2HtmlLabel3 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.btnLogin = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.minimizeBTN)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.closeBTN)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -57,6 +59,7 @@ namespace ExpenseApp
             // 
             this.guna2Panel1.AutoRoundedCorners = true;
             this.guna2Panel1.BorderRadius = 217;
+            this.guna2Panel1.Controls.Add(this.minimizeBTN);
             this.guna2Panel1.Controls.Add(this.closeBTN);
             this.guna2Panel1.Controls.Add(this.signupBTN);
             this.guna2Panel1.Controls.Add(this.passwordTB);
@@ -69,19 +72,32 @@ namespace ExpenseApp
             this.guna2Panel1.Dock = System.Windows.Forms.DockStyle.Right;
             this.guna2Panel1.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2Panel1.Location = new System.Drawing.Point(645, 0);
-            this.guna2Panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.guna2Panel1.Margin = new System.Windows.Forms.Padding(4);
             this.guna2Panel1.Name = "guna2Panel1";
             this.guna2Panel1.Size = new System.Drawing.Size(436, 615);
             this.guna2Panel1.TabIndex = 0;
+            // 
+            // minimizeBTN
+            // 
+            this.minimizeBTN.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.minimizeBTN.Image = global::ExpenseApp.Properties.Resources.minimize;
+            this.minimizeBTN.Location = new System.Drawing.Point(315, 7);
+            this.minimizeBTN.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.minimizeBTN.Name = "minimizeBTN";
+            this.minimizeBTN.Size = new System.Drawing.Size(57, 30);
+            this.minimizeBTN.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.minimizeBTN.TabIndex = 16;
+            this.minimizeBTN.TabStop = false;
+            this.minimizeBTN.Click += new System.EventHandler(this.minimizeBTN_Click);
             // 
             // closeBTN
             // 
             this.closeBTN.Cursor = System.Windows.Forms.Cursors.Hand;
             this.closeBTN.Image = global::ExpenseApp.Properties.Resources.delete;
-            this.closeBTN.Location = new System.Drawing.Point(372, 7);
+            this.closeBTN.Location = new System.Drawing.Point(372, 5);
             this.closeBTN.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.closeBTN.Name = "closeBTN";
-            this.closeBTN.Size = new System.Drawing.Size(57, 30);
+            this.closeBTN.Size = new System.Drawing.Size(60, 33);
             this.closeBTN.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.closeBTN.TabIndex = 15;
             this.closeBTN.TabStop = false;
@@ -92,7 +108,7 @@ namespace ExpenseApp
             this.signupBTN.AutoSize = true;
             this.signupBTN.Cursor = System.Windows.Forms.Cursors.Hand;
             this.signupBTN.Font = new System.Drawing.Font("Poppins", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.signupBTN.Location = new System.Drawing.Point(112, 549);
+            this.signupBTN.Location = new System.Drawing.Point(100, 549);
             this.signupBTN.Name = "signupBTN";
             this.signupBTN.Size = new System.Drawing.Size(231, 32);
             this.signupBTN.TabIndex = 14;
@@ -185,7 +201,7 @@ namespace ExpenseApp
             this.guna2HtmlLabel3.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel3.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2HtmlLabel3.Location = new System.Drawing.Point(71, 71);
-            this.guna2HtmlLabel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.guna2HtmlLabel3.Margin = new System.Windows.Forms.Padding(4);
             this.guna2HtmlLabel3.Name = "guna2HtmlLabel3";
             this.guna2HtmlLabel3.Size = new System.Drawing.Size(3, 2);
             this.guna2HtmlLabel3.TabIndex = 7;
@@ -204,7 +220,7 @@ namespace ExpenseApp
             this.btnLogin.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLogin.ForeColor = System.Drawing.Color.White;
             this.btnLogin.Location = new System.Drawing.Point(53, 474);
-            this.btnLogin.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnLogin.Margin = new System.Windows.Forms.Padding(4);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(328, 55);
             this.btnLogin.TabIndex = 2;
@@ -228,6 +244,7 @@ namespace ExpenseApp
             this.Load += new System.EventHandler(this.Login_Load);
             this.guna2Panel1.ResumeLayout(false);
             this.guna2Panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.minimizeBTN)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.closeBTN)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
@@ -247,6 +264,7 @@ namespace ExpenseApp
         private Guna.UI2.WinForms.Guna2TextBox passwordTB;
         private System.Windows.Forms.Label signupBTN;
         private System.Windows.Forms.PictureBox closeBTN;
+        private System.Windows.Forms.PictureBox minimizeBTN;
     }
 }
 
