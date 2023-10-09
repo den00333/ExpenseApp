@@ -86,12 +86,24 @@ namespace ExpenseApp
             return false;
         }
 
-        public async void signingUp(String username, String fname, String lname, String email, String password, Signup s)
+        bool AreTextboxesEmpty(params string[] textboxes)
+        {
+            foreach (string textbox in textboxes)
+            {
+                if (string.IsNullOrWhiteSpace(textbox))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+        public async void signingUp(String username, String fname, String lname, String email, String password, String repeatpass, CheckBox terms, Signup s)
         {
             var database = FirestoreConn();
 
             bool validEmail = otherFunc.isValidEmail(email);
             bool validUsername = await otherFunc.isUsernameExistingAsync(username);
+            bool areEmpty = AreTextboxesEmpty(fname,lname, email, username, password, repeatpass);
 
             Dictionary<String, bool> validatingData = new Dictionary<string, bool>()
             {
@@ -101,33 +113,46 @@ namespace ExpenseApp
 
             otherFunc o = new otherFunc();
             bool validData = o.isValidData(validatingData);
-            
-            if (validData)
+
+            if (terms.Checked)
             {
-                try
+                if (!areEmpty)
                 {
-                    DocumentReference docRef = database.Collection("Users").Document(username);
-                    Dictionary<string, object> data = new Dictionary<string, object>(){
+                    if (validData)
+                    {
+                        try
+                        {
+                            DocumentReference docRef = database.Collection("Users").Document(username);
+                            Dictionary<string, object> data = new Dictionary<string, object>(){
                         {"First Name", fname },
                         {"Last Name", lname },
                         {"Username", username },
                         {"Email", email },
                         {"Password", password}
                     };
-                    await docRef.SetAsync(data);
-                    DialogResult res = MessageBox.Show("Successfully created your account!", "Success", MessageBoxButtons.OK);
-                    if(res == DialogResult.OK)
-                    {
-                        
-                        s.Close();
+                            await docRef.SetAsync(data);
+                            DialogResult res = MessageBox.Show("Successfully created your account!", "Success", MessageBoxButtons.OK);
+                            if (res == DialogResult.OK)
+                            {
+
+                                s.Close();
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Cannot process your account", ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     }
                 }
-                catch (Exception ex)
+                else
                 {
-                    MessageBox.Show("Cannot process your account", ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Something is missing", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
-            
+            else
+            {
+                MessageBox.Show("Please agree to the Terms and Condition", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         } 
     }
 }

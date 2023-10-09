@@ -17,13 +17,11 @@ namespace ExpenseApp
 {
     public partial class Signup : Form
     {
-        String fname, lname, email, username, password;
+        String fname, lname, email, username, password, repeatpass;
         public Signup()
         {
             InitializeComponent();
         }
-
-        
         private void closeBTN_Click(object sender, EventArgs e)
         {
             /*bool notEmptyTextBox = false;
@@ -92,21 +90,7 @@ namespace ExpenseApp
 
         private void termsConditions_Click(object sender, EventArgs e)
         {
-            if (termsConditions.Checked)
-            {
-                Terms termsForm = new Terms();
-                termsForm.ShowDialog();
-
-                if (termsForm.Accepted)
-                {
-                    termsConditions.Checked = true;
-                }
-                else
-                {
-                   termsConditions.Checked = false; 
-                }
-
-            }
+            
         }
 
         private void UpdatePasswordMatchLabel()
@@ -119,6 +103,25 @@ namespace ExpenseApp
             }else{
                 checkPass.Text = "Password Doesn't Match";
                 checkPass.ForeColor = System.Drawing.Color.Red;
+            }
+        }
+
+        private void termsConditions_CheckedChanged(object sender, EventArgs e)
+        {
+            if (termsConditions.Checked)
+            {
+                Terms termsForm = new Terms();
+                termsForm.ShowDialog();
+
+                if (termsForm.Accepted)
+                {
+                    termsConditions.Checked = true;
+                }
+                else
+                {
+                    termsConditions.Checked = false;
+                }
+
             }
         }
 
@@ -139,9 +142,12 @@ namespace ExpenseApp
             lname = txtLastname.Text.ToString().Trim();
             email = txtEmail.Text.ToString().Trim();
             password = Security.Encrypt(txtPassword.Text.ToString());
+            repeatpass = txtrepeatpass.Text.ToString().Trim();
+            CheckBox terms = termsConditions;
+
 
             otherFunc o = new otherFunc();
-            o.signingUp(username, fname, lname, email, password, this);
+            o.signingUp(username, fname, lname, email, password, repeatpass, terms, this);
         }
         public static void runErrorMsg(List<String> lst)
         {
