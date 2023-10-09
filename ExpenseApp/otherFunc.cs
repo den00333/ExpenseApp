@@ -55,8 +55,7 @@ namespace ExpenseApp
 
         public static async Task<bool> isUsernameExistingAsync(String username)
         {
-            if (string.IsNullOrEmpty(username))
-            {
+            if (string.IsNullOrEmpty(username)){
                 return false;
             }
             var database = FirestoreConn();
@@ -79,6 +78,7 @@ namespace ExpenseApp
             if(L.Count == 0){
                 return true;
             }
+            Signup.runErrorMsg(L);
             return false;
         }
 
@@ -128,9 +128,6 @@ namespace ExpenseApp
                         catch (Exception ex){
                             MessageBox.Show("Cannot process your account", ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
-                    }
-                    else{
-                        MessageBox.Show("Invalid Email", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     }
                 }
                 else{
