@@ -110,53 +110,41 @@ namespace ExpenseApp
         private void txtPassword_Validating(object sender, CancelEventArgs e)
         {
             string pass = txtPassword.Text;
-            if (pass.Length < 8)
-            {
-                txtPassword.BorderColor = System.Drawing.Color.Red;
+
+            //check if the passwordTB is empty, do not show error message when empty
+            if (pass.Length > 0 && pass.Length < 8 ){
                 errorProvider.SetError(txtPassword, "Password must be at least 8 characters long");
             }
-            else if (!pass.Any(char.IsUpper) || !pass.Any(char.IsLower))
-            {
-                txtPassword.BorderColor = System.Drawing.Color.Red;
+            else if ((!pass.Any(char.IsUpper) || !pass.Any(char.IsLower)) && !string.IsNullOrEmpty(txtPassword.Text)){
                 errorProvider.SetError(txtPassword, "Password must contain both uppercase and lowercase letters");
             }
-            else if (!pass.Any(char.IsPunctuation))
+            else if (!pass.Any(char.IsPunctuation) && !string.IsNullOrEmpty(txtPassword.Text))
             {
-                txtPassword.BorderColor = System.Drawing.Color.Red;
                 errorProvider.SetError(txtPassword, "Password must contain at least one symbol");
             }
-            else
-            {
+            else{
                 errorProvider.Clear();
             }
-
-            txtPassword.Focus();
         }
 
         private void txtPassword_Paint(object sender, PaintEventArgs e)
         {
-            if (txtPassword.BorderColor == System.Drawing.Color.Red)
-            {
+            if (txtPassword.BorderColor == System.Drawing.Color.Red){
                 ControlPaint.DrawBorder(e.Graphics, txtPassword.ClientRectangle, Color.Red, ButtonBorderStyle.Solid);
             }
         }
 
         private void termsConditions_CheckedChanged(object sender, EventArgs e)
         {
-            if (termsConditions.Checked)
-            {
+            if (termsConditions.Checked){
                 Terms termsForm = new Terms();
                 termsForm.ShowDialog();
-
-                if (termsForm.Accepted)
-                {
+                if (termsForm.Accepted){
                     termsConditions.Checked = true;
                 }
-                else
-                {
+                else{
                     termsConditions.Checked = false;
                 }
-
             }
         }
 

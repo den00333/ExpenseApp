@@ -78,32 +78,31 @@ namespace ExpenseApp
         {
             String username = usernameTB.Text.ToString().Trim();
             String password = passwordTB.Text.ToString();
-
             otherFunc o = new otherFunc();
             DocumentSnapshot docSnap = await o.logInFunc(username);
 
-            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
-            {
+            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password)){
                 MessageBox.Show("Please fill in the required information. \n Your username & password", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            else if (docSnap.Exists)
-            {
+            else if (docSnap.Exists){
                 FirebaseData userData = docSnap.ConvertTo<FirebaseData>();
-                if (password == Security.Decrypt(userData.Password.ToString()))
-                {
+                if (password == Security.Decrypt(userData.Password.ToString())){
                     this.Hide();
                     Home home = new Home();
                     home.Show();
                 }
-                else
-                {
+                else{
                     MessageBox.Show("Invalid username or password", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            else
-            {
+            else{
                 MessageBox.Show("Invalid username or password!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void minimizeBTN_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
         }
     }
 }
