@@ -112,15 +112,19 @@ namespace ExpenseApp
             string pass = txtPassword.Text;
 
             //check if the passwordTB is empty, do not show error message when empty
-            if (pass.Length > 0 && pass.Length < 8 ){
-                errorProvider.SetError(txtPassword, "Password must be at least 8 characters long");
-            }
-            else if ((!pass.Any(char.IsUpper) || !pass.Any(char.IsLower)) && !string.IsNullOrEmpty(txtPassword.Text)){
-                errorProvider.SetError(txtPassword, "Password must contain both uppercase and lowercase letters");
-            }
-            else if (!pass.Any(char.IsPunctuation) && !string.IsNullOrEmpty(txtPassword.Text))
-            {
-                errorProvider.SetError(txtPassword, "Password must contain at least one symbol");
+            if (!string.IsNullOrEmpty(txtPassword.Text)){
+                if (pass.Length > 0 && pass.Length < 8)
+                {
+                    errorProvider.SetError(txtPassword, "Password must be at least 8 characters long");
+                }
+                else if ((!pass.Any(char.IsUpper) || !pass.Any(char.IsLower)))
+                {
+                    errorProvider.SetError(txtPassword, "Password must contain both uppercase and lowercase letters");
+                }
+                else if (!pass.Any(char.IsPunctuation))
+                {
+                    errorProvider.SetError(txtPassword, "Password must contain at least one symbol");
+                } 
             }
             else{
                 errorProvider.Clear();
