@@ -91,6 +91,7 @@ namespace ExpenseApp
             }
             return false;
         }
+           
         public async void signingUp(String username, String fname, String lname, String email, String password, String repeatpass, CheckBox terms, Signup s)
         {
             var database = FirestoreConn();

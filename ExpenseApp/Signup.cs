@@ -53,7 +53,8 @@ namespace ExpenseApp
 
         private void guna2TextBox2_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsLetter(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar) && !char.IsControl(e.KeyChar)){
+            if (!char.IsLetter(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
                 e.Handled = true;
                 MessageBox.Show("Cannot Enter Numerical Values and Special Characters", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -103,6 +104,40 @@ namespace ExpenseApp
             }else{
                 checkPass.Text = "Password Doesn't Match";
                 checkPass.ForeColor = System.Drawing.Color.Red;
+            }
+        }
+
+        private void txtPassword_Validating(object sender, CancelEventArgs e)
+        {
+            string pass = txtPassword.Text;
+            if (pass.Length < 8)
+            {
+                txtPassword.BorderColor = System.Drawing.Color.Red;
+                errorProvider.SetError(txtPassword, "Password must be at least 8 characters long");
+            }
+            else if (!pass.Any(char.IsUpper) || !pass.Any(char.IsLower))
+            {
+                txtPassword.BorderColor = System.Drawing.Color.Red;
+                errorProvider.SetError(txtPassword, "Password must contain both uppercase and lowercase letters");
+            }
+            else if (!pass.Any(char.IsPunctuation))
+            {
+                txtPassword.BorderColor = System.Drawing.Color.Red;
+                errorProvider.SetError(txtPassword, "Password must contain at least one symbol");
+            }
+            else
+            {
+                errorProvider.Clear();
+            }
+
+            txtPassword.Focus();
+        }
+
+        private void txtPassword_Paint(object sender, PaintEventArgs e)
+        {
+            if (txtPassword.BorderColor == System.Drawing.Color.Red)
+            {
+                ControlPaint.DrawBorder(e.Graphics, txtPassword.ClientRectangle, Color.Red, ButtonBorderStyle.Solid);
             }
         }
 
