@@ -15,11 +15,31 @@ using System.Web.Caching;
 using System.Windows.Forms;
 using System.Runtime.Remoting.Messaging;
 
+using System.Net.NetworkInformation;
+
 namespace ExpenseApp
 {
     internal class otherFunc
     {
-        
+        public static bool internetConn()
+        {
+            try
+            {
+                Ping ping = new Ping();
+                PingReply reply = ping.Send("www.google.com");
+
+                if (reply != null && reply.Status == IPStatus.Success)
+                {
+                    return true;
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+
+            return false;
+        }
         public static IFirebaseClient conn()
         {
             IFirebaseConfig config = new FirebaseConfig(){
