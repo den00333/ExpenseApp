@@ -13,6 +13,7 @@ using FireSharp.Interfaces;
 using FireSharp.Response;
 
 using Google.Cloud.Firestore;
+using static Google.Cloud.Firestore.V1.StructuredAggregationQuery.Types.Aggregation.Types;
 
 
 namespace ExpenseApp
@@ -33,14 +34,17 @@ namespace ExpenseApp
         private void Login_Load(object sender, EventArgs e)
         {
             cliente = otherFunc.conn();
-            /*checking connection*/
-            if(cliente != null){
-                /*it can be changed*/
-                /*IDEA 1: pedeng makita sa login form kung connected o hindi, gamit yung label*/
-                MessageBox.Show("Connection","Connected Successfully", MessageBoxButtons.OK);
+            bool connection = otherFunc.internetConn();
+            timer1.Start();
+            if (cliente != null && connection)
+            {
+                count = 5;
             }
-            else{
-                MessageBox.Show("Connection error","No connection", MessageBoxButtons.OK);
+            else
+            {
+                timer1.Stop();
+                lblConnection.Text = "No Connection...";
+                lblConnection.ForeColor = System.Drawing.Color.Red;
             }
         }
 
@@ -103,6 +107,23 @@ namespace ExpenseApp
         private void minimizeBTN_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
+        }
+
+        private int count = 0;
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            if (count > 0)
+            {
+                /*checking connection*/
+                lblConnection.Text = "Connected Succesfully!";
+                lblConnection.ForeColor = System.Drawing.Color.Green;
+                count--;
+            }
+            else
+            {
+                timer1.Stop();
+                lblConnection.Text = string.Empty;
+            }
         }
     }
 }
