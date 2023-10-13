@@ -10,22 +10,23 @@ using System.Windows.Forms;
 
 namespace ExpenseApp
 {
-    public partial class wallet : UserControl
+    public partial class AddExpensesForm : Form
     {
-        public wallet()
+        
+        public AddExpensesForm()
         {
             InitializeComponent();
         }
 
-        private void wallet_Load(object sender, EventArgs e)
+        private void btnLocation_Click(object sender, EventArgs e)
         {
-
+            LocationForm lf = new LocationForm(this);
+            lf.Show();
         }
 
-        private void btnAddXpns_Click(object sender, EventArgs e)
+        private void AddExpensesForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            AddExpensesForm AEF = new AddExpensesForm();
-            AEF.ShowDialog();
+            
         }
     }
 }
