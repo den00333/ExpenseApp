@@ -22,6 +22,6 @@ namespace ExpenseApp
     public class MunicipalData
     {
         [JsonProperty("barangay_list")]
-        public List<string> BarangayList { get; set; }
+        public List<String> BarangayList { get; set; }
     }
 }

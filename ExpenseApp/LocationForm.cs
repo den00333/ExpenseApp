@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Guna.UI2.WinForms;
 using Newtonsoft.Json;
 
 namespace ExpenseApp
@@ -37,10 +38,10 @@ namespace ExpenseApp
             data = JsonConvert.DeserializeObject<Dictionary<string, RegionData>>(jsonData);
 
         }
-
+        List<ComboBox> boxes;
         private void clearAll(List<ComboBox> cmbList)
         {
-            foreach(var box in cmbList)
+            foreach (var box in cmbList)
             {
                 box.Text = string.Empty;
             }
@@ -61,7 +62,7 @@ namespace ExpenseApp
             cmbProvince.Items.Clear();
             String selectedRegion = cmbRegion.SelectedItem.ToString();
             RD = data[selectedRegion];
-            foreach(var province in RD.provinceList.Keys)
+            foreach (var province in RD.provinceList.Keys)
             {
                 cmbProvince.Items.Add(province);
             }
@@ -73,7 +74,7 @@ namespace ExpenseApp
             cmbMunicipal.Items.Clear();
             String selectedProvince = cmbProvince.SelectedItem.ToString();
             PD = RD.provinceList[selectedProvince];
-            foreach(var municipal in PD.MunicipalList.Keys)
+            foreach (var municipal in PD.MunicipalList.Keys)
             {
                 cmbMunicipal.Items.Add(municipal);
             }
@@ -85,13 +86,13 @@ namespace ExpenseApp
             cmbBrgy.Items.Clear();
             String selectedMunicipal = cmbMunicipal.SelectedItem.ToString();
             MunicipalData MD = PD.MunicipalList[selectedMunicipal];
-            foreach(var brgy in MD.BarangayList)
+            foreach (var brgy in MD.BarangayList)
             {
                 cmbBrgy.Items.Add(brgy);
             }
         }
-
-        List<ComboBox> boxes;
+        
+        
         private void cmbRegion_SelectedIndexChanged(object sender, EventArgs e)
         {
             boxes = new List<ComboBox> { cmbProvince, cmbMunicipal, cmbBrgy };
@@ -112,13 +113,14 @@ namespace ExpenseApp
             clearAll(boxes);
             UpdateBrgyCMB();
         }
+
         private void checkingAllBoxes(List<ComboBox> boxes)
         {
             if (cmbRegion.SelectedItem != null && cmbProvince.SelectedItem != null && cmbMunicipal.SelectedItem != null && cmbBrgy.SelectedItem != null)
             {
                 foreach (var box in boxes)
                 {
-                    Address = Address + ", " + box.SelectedItem.ToString();
+                    Address = box.SelectedItem.ToString() + ", " + Address;
                 }
             }
             else
@@ -126,9 +128,10 @@ namespace ExpenseApp
                 Address = "Please select your address...";
             }
         }
+
         private void btnEnter_Click(object sender, EventArgs e)
         {
-            boxes = new List<ComboBox> {cmbProvince, cmbMunicipal, cmbBrgy};
+            boxes = new List<ComboBox> { cmbProvince, cmbMunicipal, cmbBrgy };
             checkingAllBoxes(boxes);
             AEF.txtLocation.Text = Address.Trim(',');
             this.Hide();
