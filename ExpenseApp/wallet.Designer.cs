@@ -51,7 +51,7 @@
             this.btnAddXpns.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnAddXpns.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnAddXpns.ForeColor = System.Drawing.Color.White;
-            this.btnAddXpns.Location = new System.Drawing.Point(590, 182);
+            this.btnAddXpns.Location = new System.Drawing.Point(507, 160);
             this.btnAddXpns.Name = "btnAddXpns";
             this.btnAddXpns.Size = new System.Drawing.Size(180, 45);
             this.btnAddXpns.TabIndex = 2;

@@ -28,5 +28,15 @@ namespace ExpenseApp
         {
             
         }
+
+        private void AddExpensesForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void usernameTB_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -117,9 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="guna2BorderlessForm1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
   <data name="richTextBox1.Text" xml:space="preserve">
     <value>Welcome to Smart Spend!
 
@@ -151,4 +148,7 @@ Parts of this desktop app offer an opportunity for users to post and exchange op
 
 (Note: Ensure that you have proper legal advice or consultation when creating or using terms and conditions for your app. The provided text is a basic template and should be adjusted to your specific business, jurisdiction, and services offered.)</value>
   </data>
+  <metadata name="guna2BorderlessForm1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
 </root>
