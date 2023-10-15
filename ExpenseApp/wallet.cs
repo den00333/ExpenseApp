@@ -16,5 +16,16 @@ namespace ExpenseApp
         {
             InitializeComponent();
         }
+
+        private void wallet_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnAddXpns_Click(object sender, EventArgs e)
+        {
+            AddExpensesForm AEF = new AddExpensesForm();
+            AEF.ShowDialog();
+        }
     }
 }

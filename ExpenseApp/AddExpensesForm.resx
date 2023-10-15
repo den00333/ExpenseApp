@@ -117,37 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="richTextBox1.Text" xml:space="preserve">
-    <value>Welcome to Smart Spend!
-
-These terms and conditions outline the rules and regulations for the use of Smart Spend's Desktop App and Services.
-
-By accessing this desktop app, we assume you accept these terms and conditions. Do not continue to use Smart Spend's desktop app if you do not agree to take all of the terms and conditions stated on this page.
-
-The following terminology applies to these Terms and Conditions, Privacy Statement, and Disclaimer Notice and all Agreements: "Client", "You" and "Your" refers to you, the person who logs into this desktop app and complies with the Company's terms and conditions. "The Company", "Ourselves", "We", "Our" and "Us", refers to our Company. "Party", "Parties", or "Us", refers to both the Client and ourselves. All terms refer to the offer, acceptance, and consideration of payment necessary to undertake the process of our assistance to the Client in the most appropriate manner for the express purpose of meeting the Client's needs in respect of the provision of the Company's stated services, in accordance with and subject to, prevailing law of Netherlands. Any use of the above terminology or other words in the singular, plural, capitalization, and/or he/she or they, are taken as interchangeable and therefore as referring to same.
-
-Cookies
-
-We employ the use of cookies. By accessing Smart Spend, you agree to use cookies in agreement with Smart Spend's Privacy Policy.
-
-Most interactive applications use cookies to let us retrieve the user's details for each session. Cookies are used by our desktop app to enable the functionality of certain areas to make it easier for people using our app. Some of our affiliate/advertising partners may also use cookies.
-
-License
-
-Unless otherwise stated, Smart Spend and/or its licensors own the intellectual property rights for all material on Smart Spend. All intellectual property rights are reserved. You may access this from Smart Spend for your own personal use subjected to restrictions set in these terms and conditions.
-
-You must not:
-
-Republish material from Smart Spend
-Sell, rent or sub-license material from Smart Spend
-Reproduce, duplicate or copy material from Smart Spend
-Redistribute content from Smart Spend
-This Agreement shall begin on the date hereof.
-
-Parts of this desktop app offer an opportunity for users to post and exchange opinions and information in certain areas of the app. Smart Spend does not filter, edit, publish or review Comments prior to their presence in the app.
-
-(Note: Ensure that you have proper legal advice or consultation when creating or using terms and conditions for your app. The provided text is a basic template and should be adjusted to your specific business, jurisdiction, and services offered.)</value>
-  </data>
   <metadata name="guna2BorderlessForm1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
