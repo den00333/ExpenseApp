@@ -17,8 +17,9 @@ namespace ExpenseApp
         {
             InitializeComponent();
 
-            btnDashboard.FillColor = Color.FromArgb(83, 123, 47);
-            btnDashboard.ForeColor = Color.White;
+            btnDashboard.FillColor = SystemColors.Control;
+            btnDashboard.ForeColor = Color.Black;
+            changeButtonColor(btnWallet, btnTips, btnGroup);
             dashboard dashboard= new dashboard();
             addUserControl(dashboard);
         }
@@ -35,8 +36,8 @@ namespace ExpenseApp
 
         private void btnDashboard_Click(object sender, EventArgs e)
         {
-            btnDashboard.FillColor = Color.FromArgb(83, 123, 47);
-            btnDashboard.ForeColor = Color.White;
+            btnDashboard.FillColor = SystemColors.Control;
+            btnDashboard.ForeColor = Color.Black;
             changeButtonColor(btnWallet,btnTips,btnGroup);
             changeFontColor(btnWallet,btnTips,btnGroup);
 
@@ -46,8 +47,8 @@ namespace ExpenseApp
 
         private void btnWallet_Click(object sender, EventArgs e)
         {
-            btnWallet.FillColor = Color.FromArgb(83, 123, 47);
-            btnWallet.ForeColor = Color.White;
+            btnWallet.FillColor = SystemColors.Control;
+            btnWallet.ForeColor = Color.Black;
             changeButtonColor(btnDashboard, btnTips, btnGroup);
             changeFontColor(btnDashboard, btnTips, btnGroup);
 
@@ -57,8 +58,8 @@ namespace ExpenseApp
 
         private void btnGroup_Click(object sender, EventArgs e)
         {
-            btnGroup.FillColor = Color.FromArgb(83, 123, 47);
-            btnGroup.ForeColor = Color.White;
+            btnGroup.FillColor = SystemColors.Control;
+            btnGroup.ForeColor = Color.Black;
             changeButtonColor(btnDashboard, btnTips, btnWallet);
             changeFontColor(btnDashboard, btnTips, btnWallet);
 
@@ -68,8 +69,8 @@ namespace ExpenseApp
 
         private void btnTips_Click(object sender, EventArgs e)
         {
-            btnTips.FillColor = Color.FromArgb(83, 123, 47);
-            btnTips.ForeColor = Color.White;
+            btnTips.FillColor = SystemColors.Control;
+            btnTips.ForeColor = Color.Black;
             changeButtonColor(btnDashboard, btnWallet, btnGroup);
             changeFontColor(btnDashboard, btnWallet, btnGroup);
             tips tips   = new tips();
@@ -99,15 +100,15 @@ namespace ExpenseApp
         }
         private void changeButtonColor(Guna2Button button1, Guna2Button button2, Guna2Button button3) 
         {
-            button1.FillColor = SystemColors.Control;
-            button2.FillColor = SystemColors.Control;
-            button3.FillColor = SystemColors.Control;
+            button1.FillColor = Color.FromArgb(83, 123, 47);
+            button2.FillColor = Color.FromArgb(83, 123, 47);
+            button3.FillColor = Color.FromArgb(83, 123, 47);
         }
         private void changeFontColor(Guna2Button button1, Guna2Button button2, Guna2Button button3)
         {
-            button1.ForeColor = Color.Black;
-            button2.ForeColor = Color.Black;
-            button3.ForeColor = Color.Black;
+            button1.ForeColor = Color.White;
+            button2.ForeColor = Color.White;
+            button3.ForeColor = Color.White;
         }
     }
 }
