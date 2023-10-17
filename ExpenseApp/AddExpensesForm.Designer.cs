@@ -46,9 +46,10 @@
             // richTxtDesc
             // 
             this.richTxtDesc.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.richTxtDesc.Location = new System.Drawing.Point(41, 431);
+            this.richTxtDesc.Location = new System.Drawing.Point(55, 530);
+            this.richTxtDesc.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.richTxtDesc.Name = "richTxtDesc";
-            this.richTxtDesc.Size = new System.Drawing.Size(251, 121);
+            this.richTxtDesc.Size = new System.Drawing.Size(333, 148);
             this.richTxtDesc.TabIndex = 0;
             this.richTxtDesc.Text = "Description or Name";
             // 
@@ -64,9 +65,10 @@
             this.btnLocation.FillColor = System.Drawing.Color.Empty;
             this.btnLocation.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLocation.ForeColor = System.Drawing.Color.Black;
-            this.btnLocation.Location = new System.Drawing.Point(43, 362);
+            this.btnLocation.Location = new System.Drawing.Point(57, 446);
+            this.btnLocation.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnLocation.Name = "btnLocation";
-            this.btnLocation.Size = new System.Drawing.Size(249, 49);
+            this.btnLocation.Size = new System.Drawing.Size(332, 60);
             this.btnLocation.TabIndex = 5;
             this.btnLocation.Text = "Location";
             this.btnLocation.Click += new System.EventHandler(this.btnLocation_Click);
@@ -85,14 +87,14 @@
             this.txtLocation.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtLocation.ForeColor = System.Drawing.Color.Black;
             this.txtLocation.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtLocation.Location = new System.Drawing.Point(41, 303);
-            this.txtLocation.Margin = new System.Windows.Forms.Padding(3, 7, 3, 7);
+            this.txtLocation.Location = new System.Drawing.Point(55, 373);
+            this.txtLocation.Margin = new System.Windows.Forms.Padding(4, 9, 4, 9);
             this.txtLocation.Name = "txtLocation";
             this.txtLocation.PasswordChar = '\0';
             this.txtLocation.PlaceholderText = "Location";
             this.txtLocation.ReadOnly = true;
             this.txtLocation.SelectedText = "";
-            this.txtLocation.Size = new System.Drawing.Size(251, 49);
+            this.txtLocation.Size = new System.Drawing.Size(335, 60);
             this.txtLocation.TabIndex = 13;
             this.txtLocation.TextChanged += new System.EventHandler(this.usernameTB_TextChanged);
             // 
@@ -108,9 +110,10 @@
             this.cmbPayment.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbPayment.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.cmbPayment.ItemHeight = 30;
-            this.cmbPayment.Location = new System.Drawing.Point(41, 197);
+            this.cmbPayment.Location = new System.Drawing.Point(55, 242);
+            this.cmbPayment.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cmbPayment.Name = "cmbPayment";
-            this.cmbPayment.Size = new System.Drawing.Size(251, 36);
+            this.cmbPayment.Size = new System.Drawing.Size(333, 36);
             this.cmbPayment.TabIndex = 14;
             // 
             // txtAmount
@@ -127,13 +130,13 @@
             this.txtAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAmount.ForeColor = System.Drawing.Color.Black;
             this.txtAmount.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtAmount.Location = new System.Drawing.Point(42, 31);
-            this.txtAmount.Margin = new System.Windows.Forms.Padding(2, 8, 2, 8);
+            this.txtAmount.Location = new System.Drawing.Point(56, 38);
+            this.txtAmount.Margin = new System.Windows.Forms.Padding(3, 10, 3, 10);
             this.txtAmount.Name = "txtAmount";
             this.txtAmount.PasswordChar = '\0';
             this.txtAmount.PlaceholderText = "Amount";
             this.txtAmount.SelectedText = "";
-            this.txtAmount.Size = new System.Drawing.Size(250, 49);
+            this.txtAmount.Size = new System.Drawing.Size(333, 60);
             this.txtAmount.TabIndex = 15;
             // 
             // cmbCategory
@@ -148,9 +151,10 @@
             this.cmbCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbCategory.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.cmbCategory.ItemHeight = 30;
-            this.cmbCategory.Location = new System.Drawing.Point(43, 119);
+            this.cmbCategory.Location = new System.Drawing.Point(57, 146);
+            this.cmbCategory.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cmbCategory.Name = "cmbCategory";
-            this.cmbCategory.Size = new System.Drawing.Size(249, 36);
+            this.cmbCategory.Size = new System.Drawing.Size(331, 36);
             this.cmbCategory.TabIndex = 16;
             // 
             // dtpDate
@@ -161,11 +165,12 @@
             this.dtpDate.FillColor = System.Drawing.Color.Transparent;
             this.dtpDate.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.dtpDate.Format = System.Windows.Forms.DateTimePickerFormat.Long;
-            this.dtpDate.Location = new System.Drawing.Point(41, 250);
+            this.dtpDate.Location = new System.Drawing.Point(55, 308);
+            this.dtpDate.Margin = new System.Windows.Forms.Padding(4);
             this.dtpDate.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.dtpDate.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.dtpDate.Name = "dtpDate";
-            this.dtpDate.Size = new System.Drawing.Size(251, 36);
+            this.dtpDate.Size = new System.Drawing.Size(335, 44);
             this.dtpDate.TabIndex = 17;
             this.dtpDate.Value = new System.DateTime(2023, 10, 13, 23, 3, 13, 224);
             // 
@@ -173,9 +178,10 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(38, 88);
+            this.label1.Location = new System.Drawing.Point(51, 108);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(73, 20);
+            this.label1.Size = new System.Drawing.Size(92, 25);
             this.label1.TabIndex = 18;
             this.label1.Text = "Category";
             // 
@@ -183,9 +189,10 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(38, 166);
+            this.label2.Location = new System.Drawing.Point(51, 204);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(71, 20);
+            this.label2.Size = new System.Drawing.Size(89, 25);
             this.label2.TabIndex = 19;
             this.label2.Text = "Payment";
             // 
@@ -200,7 +207,7 @@
             // 
             this.btnSave.AutoRoundedCorners = true;
             this.btnSave.BorderColor = System.Drawing.Color.Transparent;
-            this.btnSave.BorderRadius = 21;
+            this.btnSave.BorderRadius = 26;
             this.btnSave.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnSave.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnSave.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -208,9 +215,10 @@
             this.btnSave.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(123)))), ((int)(((byte)(47)))));
             this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Location = new System.Drawing.Point(175, 569);
+            this.btnSave.Location = new System.Drawing.Point(233, 700);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(117, 45);
+            this.btnSave.Size = new System.Drawing.Size(156, 55);
             this.btnSave.TabIndex = 20;
             this.btnSave.Text = "Save";
             // 
@@ -218,7 +226,7 @@
             // 
             this.btnBack.AutoRoundedCorners = true;
             this.btnBack.BorderColor = System.Drawing.Color.Transparent;
-            this.btnBack.BorderRadius = 21;
+            this.btnBack.BorderRadius = 26;
             this.btnBack.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnBack.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnBack.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -226,18 +234,19 @@
             this.btnBack.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(123)))), ((int)(((byte)(47)))));
             this.btnBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBack.ForeColor = System.Drawing.Color.White;
-            this.btnBack.Location = new System.Drawing.Point(41, 569);
+            this.btnBack.Location = new System.Drawing.Point(55, 700);
+            this.btnBack.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(117, 45);
+            this.btnBack.Size = new System.Drawing.Size(156, 55);
             this.btnBack.TabIndex = 21;
             this.btnBack.Text = "Back";
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
             // AddExpensesForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(336, 642);
+            this.ClientSize = new System.Drawing.Size(448, 790);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.label2);
@@ -250,6 +259,7 @@
             this.Controls.Add(this.btnLocation);
             this.Controls.Add(this.richTxtDesc);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "AddExpensesForm";
             this.Text = "AddExpensesForm";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AddExpensesForm_FormClosing);

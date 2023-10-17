@@ -36,7 +36,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.ForeColor = System.Drawing.Color.Black;
             this.label1.Location = new System.Drawing.Point(413, 98);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
@@ -53,7 +53,7 @@
             this.btnAddXpns.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnAddXpns.ForeColor = System.Drawing.Color.White;
             this.btnAddXpns.Location = new System.Drawing.Point(676, 197);
-            this.btnAddXpns.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAddXpns.Margin = new System.Windows.Forms.Padding(4);
             this.btnAddXpns.Name = "btnAddXpns";
             this.btnAddXpns.Size = new System.Drawing.Size(240, 55);
             this.btnAddXpns.TabIndex = 2;
@@ -64,10 +64,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.BackColor = System.Drawing.SystemColors.Control;
             this.Controls.Add(this.btnAddXpns);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "wallet";
             this.Size = new System.Drawing.Size(1239, 725);
             this.Load += new System.EventHandler(this.wallet_Load);

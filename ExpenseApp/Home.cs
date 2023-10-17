@@ -20,6 +20,8 @@ namespace ExpenseApp
             btnDashboard.FillColor = SystemColors.Control;
             btnDashboard.ForeColor = Color.Black;
             changeButtonColor(btnWallet, btnTips, btnGroup);
+            changeFontColor(btnWallet, btnTips, btnGroup);
+
             dashboard dashboard= new dashboard();
             addUserControl(dashboard);
         }

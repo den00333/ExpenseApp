@@ -31,6 +31,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            this.label2 = new System.Windows.Forms.Label();
             this.guna2Panel3 = new Guna.UI2.WinForms.Guna2Panel();
             this.btnLogut = new Guna.UI2.WinForms.Guna2Button();
             this.btnTips = new Guna.UI2.WinForms.Guna2Button();
@@ -38,7 +39,6 @@
             this.btnWallet = new Guna.UI2.WinForms.Guna2Button();
             this.btnDashboard = new Guna.UI2.WinForms.Guna2Button();
             this.homePanel = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
             this.dashboard1 = new ExpenseApp.dashboard();
             this.wallet1 = new ExpenseApp.wallet();
             this.group1 = new ExpenseApp.group();
@@ -83,10 +83,22 @@
             this.guna2Panel1.Size = new System.Drawing.Size(1371, 76);
             this.guna2Panel1.TabIndex = 2;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Poppins SemiBold", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(849, 13);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(284, 60);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "Welcome, User";
+            // 
             // guna2Panel3
             // 
             this.guna2Panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(123)))), ((int)(((byte)(47)))));
             this.guna2Panel3.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(123)))), ((int)(((byte)(47)))));
+            this.guna2Panel3.BorderRadius = 25;
+            this.guna2Panel3.BorderThickness = 2;
             this.guna2Panel3.Controls.Add(this.btnLogut);
             this.guna2Panel3.Controls.Add(this.btnTips);
             this.guna2Panel3.Controls.Add(this.btnGroup);
@@ -224,16 +236,6 @@
             this.homePanel.Size = new System.Drawing.Size(1127, 674);
             this.homePanel.TabIndex = 8;
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Poppins SemiBold", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(854, 9);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(335, 70);
-            this.label2.TabIndex = 7;
-            this.label2.Text = "Welcome, User";
-            // 
             // dashboard1
             // 
             this.dashboard1.BackColor = System.Drawing.Color.Green;
@@ -248,6 +250,7 @@
             // 
             this.wallet1.BackColor = System.Drawing.Color.Violet;
             this.wallet1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.wallet1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.wallet1.Location = new System.Drawing.Point(0, 0);
             this.wallet1.Margin = new System.Windows.Forms.Padding(5);
             this.wallet1.Name = "wallet1";

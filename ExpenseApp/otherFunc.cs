@@ -112,20 +112,19 @@ namespace ExpenseApp
         public async void signingUp(String username, String fname, String lname, String email, String password, String repeatpass, CheckBox terms, Signup s)
         {
             var database = FirestoreConn();
-
+            otherFunc function = new otherFunc();
             bool validEmail = otherFunc.isValidEmail(email);
             bool validUsername = await otherFunc.isUsernameExistingAsync(username);
             bool isEmpty = AreTextboxesEmpty(fname,lname, email, username, password, repeatpass);
 
-            Dictionary<String, bool> validatingData = new Dictionary<string, bool>(){
-                { "username", !validUsername},
-                { "email", validEmail}
-            };
-
-            otherFunc o = new otherFunc();
-            bool validData = o.isValidData(validatingData);
             if (!isEmpty){
                 if (terms.Checked){
+                    //Validate email and check if the username exists
+                    Dictionary<String, bool> validatingData = new Dictionary<string, bool>(){
+                        { "username", !validUsername},
+                        { "email", validEmail}
+                    };
+                    bool validData = function.isValidData(validatingData);
                     if (validData){
                         try{
                             DocumentReference docRef = database.Collection("Users").Document(username);
