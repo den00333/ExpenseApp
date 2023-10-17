@@ -40,9 +40,11 @@
             // richTextBox1
             // 
             this.richTextBox1.Font = new System.Drawing.Font("Poppins", 9.75F);
-            this.richTextBox1.Location = new System.Drawing.Point(22, 58);
+            this.richTextBox1.Location = new System.Drawing.Point(29, 71);
+            this.richTextBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(356, 372);
+            this.richTextBox1.ReadOnly = true;
+            this.richTextBox1.Size = new System.Drawing.Size(473, 457);
             this.richTextBox1.TabIndex = 0;
             this.richTextBox1.Text = resources.GetString("richTextBox1.Text");
             // 
@@ -50,7 +52,7 @@
             // 
             this.btnAccept.AutoRoundedCorners = true;
             this.btnAccept.BorderColor = System.Drawing.Color.Transparent;
-            this.btnAccept.BorderRadius = 21;
+            this.btnAccept.BorderRadius = 26;
             this.btnAccept.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnAccept.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnAccept.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -58,9 +60,10 @@
             this.btnAccept.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(123)))), ((int)(((byte)(47)))));
             this.btnAccept.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAccept.ForeColor = System.Drawing.Color.White;
-            this.btnAccept.Location = new System.Drawing.Point(22, 445);
+            this.btnAccept.Location = new System.Drawing.Point(29, 548);
+            this.btnAccept.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnAccept.Name = "btnAccept";
-            this.btnAccept.Size = new System.Drawing.Size(163, 45);
+            this.btnAccept.Size = new System.Drawing.Size(217, 55);
             this.btnAccept.TabIndex = 3;
             this.btnAccept.Text = "Accept";
             this.btnAccept.Click += new System.EventHandler(this.btnAccept_Click);
@@ -69,7 +72,7 @@
             // 
             this.btnDecline.AutoRoundedCorners = true;
             this.btnDecline.BorderColor = System.Drawing.Color.Transparent;
-            this.btnDecline.BorderRadius = 21;
+            this.btnDecline.BorderRadius = 26;
             this.btnDecline.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnDecline.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnDecline.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -77,9 +80,10 @@
             this.btnDecline.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(123)))), ((int)(((byte)(47)))));
             this.btnDecline.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDecline.ForeColor = System.Drawing.Color.White;
-            this.btnDecline.Location = new System.Drawing.Point(215, 445);
+            this.btnDecline.Location = new System.Drawing.Point(287, 548);
+            this.btnDecline.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnDecline.Name = "btnDecline";
-            this.btnDecline.Size = new System.Drawing.Size(163, 45);
+            this.btnDecline.Size = new System.Drawing.Size(217, 55);
             this.btnDecline.TabIndex = 4;
             this.btnDecline.Text = "Decline";
             this.btnDecline.Click += new System.EventHandler(this.btnDecline_Click);
@@ -88,9 +92,10 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Poppins SemiBold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(16, 22);
+            this.label1.Location = new System.Drawing.Point(21, 27);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(220, 33);
+            this.label1.Size = new System.Drawing.Size(274, 42);
             this.label1.TabIndex = 5;
             this.label1.Text = "Terms and Condition";
             // 
@@ -103,14 +108,15 @@
             // 
             // Terms
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(407, 509);
+            this.ClientSize = new System.Drawing.Size(543, 626);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnDecline);
             this.Controls.Add(this.btnAccept);
             this.Controls.Add(this.richTextBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Terms";
             this.Text = "Terms";
             this.ResumeLayout(false);

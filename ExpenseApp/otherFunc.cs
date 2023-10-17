@@ -30,9 +30,6 @@ namespace ExpenseApp
                 if (reply != null && reply.Status == IPStatus.Success){
                     return true;
                 }
-                else {
-                    return false;
-                }
             }
             catch (Exception){
 
