@@ -23,18 +23,18 @@ namespace ExpenseApp
     {
         public static bool internetConn()
         {
-            try
-            {
+            try{
                 Ping ping = new Ping();
                 PingReply reply = ping.Send("www.google.com");
 
-                if (reply != null && reply.Status == IPStatus.Success)
-                {
+                if (reply != null && reply.Status == IPStatus.Success){
                     return true;
                 }
+                else {
+                    return false;
+                }
             }
-            catch (Exception)
-            {
+            catch (Exception){
 
             }
 
