@@ -172,9 +172,14 @@ namespace ExpenseApp
             repeatpass = txtrepeatpass.Text.ToString().Trim();
             CheckBox terms = termsConditions;
 
-
-            otherFunc o = new otherFunc();
-            o.signingUp(username, fname, lname, email, password, repeatpass, terms, this);
+            bool hasInternet = otherFunc.internetConn();
+            if (hasInternet) {
+                otherFunc function = new otherFunc();
+                function.signingUp(username, fname, lname, email, password, repeatpass, terms, this);
+            }
+            else {
+                MessageBox.Show("No Internet Connection!","Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
         public static void runErrorMsg(List<String> lst)
         {
