@@ -34,7 +34,7 @@ namespace ExpenseApp
         private locationData LD = new locationData() ;
         private void initializeData()
         {
-            String path = "C:\\Users\\Personal Laptop\\source\\repos\\ExpenseApp\\ExpenseApp\\Resources\\philippine_provinces_cities_municipalities_and_barangays_2019v2.json";
+            String path = "Resources/philippine_provinces_cities_municipalities_and_barangays_2019v2.json";
             String jsonData = File.ReadAllText(path);
             data = JsonConvert.DeserializeObject<Dictionary<string, RegionData>>(jsonData);
 

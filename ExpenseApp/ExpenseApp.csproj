@@ -313,7 +313,9 @@
     <None Include="Resources\logo.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\philippine_provinces_cities_municipalities_and_barangays_2019v2.json" />
+    <Content Include="Resources\philippine_provinces_cities_municipalities_and_barangays_2019v2.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="Resources\Untitled-1.png" />
   </ItemGroup>
   <ItemGroup>
