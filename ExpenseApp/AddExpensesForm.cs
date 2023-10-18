@@ -20,8 +20,8 @@ namespace ExpenseApp
 
         private void btnLocation_Click(object sender, EventArgs e)
         {
-            LocationForm lf = new LocationForm(this);
-            lf.Show();
+            LocationForm location = new LocationForm(this);
+            location.Show();
         }
 
         private void AddExpensesForm_FormClosing(object sender, FormClosingEventArgs e)

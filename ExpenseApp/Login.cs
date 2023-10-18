@@ -80,7 +80,7 @@ namespace ExpenseApp
 
         async void logIn()
         {
-            String username = usernameTB.Text.ToString().Trim();
+            String username = usernameTB.Text.ToString().Trim().ToLower();
             String password = passwordTB.Text.ToString();
             otherFunc o = new otherFunc();
             DocumentSnapshot docSnap = await o.logInFunc(username);
