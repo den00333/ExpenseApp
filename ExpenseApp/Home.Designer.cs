@@ -31,6 +31,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            this.lblFirstname = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.guna2Panel3 = new Guna.UI2.WinForms.Guna2Panel();
             this.btnLogut = new Guna.UI2.WinForms.Guna2Button();
@@ -51,10 +52,9 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::ExpenseApp.Properties.Resources.logo;
-            this.pictureBox1.Location = new System.Drawing.Point(21, 14);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBox1.Location = new System.Drawing.Point(16, 11);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(57, 50);
+            this.pictureBox1.Size = new System.Drawing.Size(43, 41);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 6;
             this.pictureBox1.TabStop = false;
@@ -64,34 +64,44 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Poppins SemiBold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(123)))), ((int)(((byte)(47)))));
-            this.label1.Location = new System.Drawing.Point(83, 22);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(62, 18);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(143, 33);
+            this.label1.Size = new System.Drawing.Size(111, 26);
             this.label1.TabIndex = 5;
             this.label1.Text = "Smart Spend";
             // 
             // guna2Panel1
             // 
+            this.guna2Panel1.Controls.Add(this.lblFirstname);
             this.guna2Panel1.Controls.Add(this.label2);
             this.guna2Panel1.Controls.Add(this.label1);
             this.guna2Panel1.Controls.Add(this.pictureBox1);
             this.guna2Panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.guna2Panel1.Location = new System.Drawing.Point(0, 0);
-            this.guna2Panel1.Margin = new System.Windows.Forms.Padding(4);
             this.guna2Panel1.Name = "guna2Panel1";
-            this.guna2Panel1.Size = new System.Drawing.Size(1371, 76);
+            this.guna2Panel1.Size = new System.Drawing.Size(1028, 62);
             this.guna2Panel1.TabIndex = 2;
+            // 
+            // lblFirstname
+            // 
+            this.lblFirstname.AutoSize = true;
+            this.lblFirstname.Font = new System.Drawing.Font("Poppins SemiBold", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFirstname.Location = new System.Drawing.Point(778, 14);
+            this.lblFirstname.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblFirstname.Name = "lblFirstname";
+            this.lblFirstname.Size = new System.Drawing.Size(0, 48);
+            this.lblFirstname.TabIndex = 8;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Poppins SemiBold", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(849, 13);
+            this.label2.Location = new System.Drawing.Point(634, 14);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(284, 60);
+            this.label2.Size = new System.Drawing.Size(158, 48);
             this.label2.TabIndex = 7;
-            this.label2.Text = "Welcome, User";
+            this.label2.Text = "Welcome,";
             // 
             // guna2Panel3
             // 
@@ -106,10 +116,9 @@
             this.guna2Panel3.Controls.Add(this.btnDashboard);
             this.guna2Panel3.CustomBorderColor = System.Drawing.Color.White;
             this.guna2Panel3.Dock = System.Windows.Forms.DockStyle.Left;
-            this.guna2Panel3.Location = new System.Drawing.Point(0, 76);
-            this.guna2Panel3.Margin = new System.Windows.Forms.Padding(4);
+            this.guna2Panel3.Location = new System.Drawing.Point(0, 62);
             this.guna2Panel3.Name = "guna2Panel3";
-            this.guna2Panel3.Size = new System.Drawing.Size(244, 674);
+            this.guna2Panel3.Size = new System.Drawing.Size(183, 547);
             this.guna2Panel3.TabIndex = 7;
             this.guna2Panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.guna2Panel3_Paint_1);
             // 
@@ -126,11 +135,10 @@
             this.btnLogut.ForeColor = System.Drawing.Color.Black;
             this.btnLogut.Image = global::ExpenseApp.Properties.Resources.logout;
             this.btnLogut.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnLogut.Location = new System.Drawing.Point(9, 603);
-            this.btnLogut.Margin = new System.Windows.Forms.Padding(4);
+            this.btnLogut.Location = new System.Drawing.Point(7, 490);
             this.btnLogut.Name = "btnLogut";
-            this.btnLogut.Padding = new System.Windows.Forms.Padding(27, 0, 0, 0);
-            this.btnLogut.Size = new System.Drawing.Size(221, 55);
+            this.btnLogut.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+            this.btnLogut.Size = new System.Drawing.Size(166, 45);
             this.btnLogut.TabIndex = 10;
             this.btnLogut.Text = "Logout";
             this.btnLogut.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -149,11 +157,10 @@
             this.btnTips.ForeColor = System.Drawing.Color.Black;
             this.btnTips.Image = global::ExpenseApp.Properties.Resources.tips;
             this.btnTips.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnTips.Location = new System.Drawing.Point(9, 277);
-            this.btnTips.Margin = new System.Windows.Forms.Padding(4);
+            this.btnTips.Location = new System.Drawing.Point(7, 225);
             this.btnTips.Name = "btnTips";
-            this.btnTips.Padding = new System.Windows.Forms.Padding(27, 0, 0, 0);
-            this.btnTips.Size = new System.Drawing.Size(281, 55);
+            this.btnTips.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+            this.btnTips.Size = new System.Drawing.Size(211, 45);
             this.btnTips.TabIndex = 9;
             this.btnTips.Text = "Tips";
             this.btnTips.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -172,11 +179,10 @@
             this.btnGroup.ForeColor = System.Drawing.Color.Black;
             this.btnGroup.Image = global::ExpenseApp.Properties.Resources.group;
             this.btnGroup.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnGroup.Location = new System.Drawing.Point(13, 195);
-            this.btnGroup.Margin = new System.Windows.Forms.Padding(4);
+            this.btnGroup.Location = new System.Drawing.Point(10, 158);
             this.btnGroup.Name = "btnGroup";
-            this.btnGroup.Padding = new System.Windows.Forms.Padding(27, 0, 0, 0);
-            this.btnGroup.Size = new System.Drawing.Size(277, 55);
+            this.btnGroup.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+            this.btnGroup.Size = new System.Drawing.Size(208, 45);
             this.btnGroup.TabIndex = 8;
             this.btnGroup.Text = "Group";
             this.btnGroup.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -195,11 +201,10 @@
             this.btnWallet.ForeColor = System.Drawing.Color.Black;
             this.btnWallet.Image = global::ExpenseApp.Properties.Resources.wallet1;
             this.btnWallet.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnWallet.Location = new System.Drawing.Point(9, 113);
-            this.btnWallet.Margin = new System.Windows.Forms.Padding(4);
+            this.btnWallet.Location = new System.Drawing.Point(7, 92);
             this.btnWallet.Name = "btnWallet";
-            this.btnWallet.Padding = new System.Windows.Forms.Padding(27, 0, 0, 0);
-            this.btnWallet.Size = new System.Drawing.Size(281, 55);
+            this.btnWallet.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+            this.btnWallet.Size = new System.Drawing.Size(211, 45);
             this.btnWallet.TabIndex = 7;
             this.btnWallet.Text = "Wallet";
             this.btnWallet.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -218,11 +223,10 @@
             this.btnDashboard.ForeColor = System.Drawing.Color.Black;
             this.btnDashboard.Image = global::ExpenseApp.Properties.Resources.dashboard;
             this.btnDashboard.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnDashboard.Location = new System.Drawing.Point(9, 33);
-            this.btnDashboard.Margin = new System.Windows.Forms.Padding(4);
+            this.btnDashboard.Location = new System.Drawing.Point(7, 27);
             this.btnDashboard.Name = "btnDashboard";
-            this.btnDashboard.Padding = new System.Windows.Forms.Padding(27, 0, 0, 0);
-            this.btnDashboard.Size = new System.Drawing.Size(281, 55);
+            this.btnDashboard.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+            this.btnDashboard.Size = new System.Drawing.Size(211, 45);
             this.btnDashboard.TabIndex = 0;
             this.btnDashboard.Text = "Dashboard";
             this.btnDashboard.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -231,9 +235,10 @@
             // homePanel
             // 
             this.homePanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.homePanel.Location = new System.Drawing.Point(244, 76);
+            this.homePanel.Location = new System.Drawing.Point(183, 62);
+            this.homePanel.Margin = new System.Windows.Forms.Padding(2);
             this.homePanel.Name = "homePanel";
-            this.homePanel.Size = new System.Drawing.Size(1127, 674);
+            this.homePanel.Size = new System.Drawing.Size(845, 547);
             this.homePanel.TabIndex = 8;
             // 
             // dashboard1
@@ -241,9 +246,9 @@
             this.dashboard1.BackColor = System.Drawing.Color.Green;
             this.dashboard1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dashboard1.Location = new System.Drawing.Point(0, 0);
-            this.dashboard1.Margin = new System.Windows.Forms.Padding(5);
+            this.dashboard1.Margin = new System.Windows.Forms.Padding(4);
             this.dashboard1.Name = "dashboard1";
-            this.dashboard1.Size = new System.Drawing.Size(1371, 750);
+            this.dashboard1.Size = new System.Drawing.Size(1028, 609);
             this.dashboard1.TabIndex = 6;
             // 
             // wallet1
@@ -252,9 +257,9 @@
             this.wallet1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.wallet1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.wallet1.Location = new System.Drawing.Point(0, 0);
-            this.wallet1.Margin = new System.Windows.Forms.Padding(5);
+            this.wallet1.Margin = new System.Windows.Forms.Padding(4);
             this.wallet1.Name = "wallet1";
-            this.wallet1.Size = new System.Drawing.Size(1371, 750);
+            this.wallet1.Size = new System.Drawing.Size(1028, 609);
             this.wallet1.TabIndex = 5;
             // 
             // group1
@@ -262,9 +267,9 @@
             this.group1.BackColor = System.Drawing.Color.Red;
             this.group1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.group1.Location = new System.Drawing.Point(0, 0);
-            this.group1.Margin = new System.Windows.Forms.Padding(5);
+            this.group1.Margin = new System.Windows.Forms.Padding(4);
             this.group1.Name = "group1";
-            this.group1.Size = new System.Drawing.Size(1371, 750);
+            this.group1.Size = new System.Drawing.Size(1028, 609);
             this.group1.TabIndex = 4;
             // 
             // tips1
@@ -272,16 +277,16 @@
             this.tips1.BackColor = System.Drawing.Color.Blue;
             this.tips1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tips1.Location = new System.Drawing.Point(0, 0);
-            this.tips1.Margin = new System.Windows.Forms.Padding(5);
+            this.tips1.Margin = new System.Windows.Forms.Padding(4);
             this.tips1.Name = "tips1";
-            this.tips1.Size = new System.Drawing.Size(1371, 750);
+            this.tips1.Size = new System.Drawing.Size(1028, 609);
             this.tips1.TabIndex = 3;
             // 
             // Home
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1371, 750);
+            this.ClientSize = new System.Drawing.Size(1028, 609);
             this.Controls.Add(this.homePanel);
             this.Controls.Add(this.guna2Panel3);
             this.Controls.Add(this.guna2Panel1);
@@ -290,7 +295,6 @@
             this.Controls.Add(this.group1);
             this.Controls.Add(this.tips1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "Home";
             this.Text = "Smart Spend";
@@ -319,5 +323,6 @@
         private Guna.UI2.WinForms.Guna2Button btnDashboard;
         private System.Windows.Forms.Panel homePanel;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblFirstname;
     }
 }

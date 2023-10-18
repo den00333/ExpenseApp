@@ -1,4 +1,5 @@
-﻿using Guna.UI2.WinForms;
+﻿using Google.Cloud.Firestore;
+using Guna.UI2.WinForms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -7,13 +8,16 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 using System.Windows.Forms;
 
 namespace ExpenseApp
 {
     public partial class Home : Form
     {
-        public Home()
+        private FirebaseData getUsername;
+        string username;
+        public Home(FirebaseData fd)
         {
             InitializeComponent();
 
@@ -22,13 +26,16 @@ namespace ExpenseApp
             changeButtonColor(btnWallet, btnTips, btnGroup);
             changeFontColor(btnWallet, btnTips, btnGroup);
 
-            dashboard dashboard= new dashboard();
+            dashboard dashboard = new dashboard();
             addUserControl(dashboard);
+            this.getUsername = fd;
+            username = getUsername.Username;
+
         }
 
         private void Home_Load(object sender, EventArgs e)
         {
-
+            getFirstName(username);
         }
 
         private void guna2Panel3_Paint(object sender, PaintEventArgs e)
@@ -111,6 +118,16 @@ namespace ExpenseApp
             button1.ForeColor = Color.White;
             button2.ForeColor = Color.White;
             button3.ForeColor = Color.White;
+        }
+        async void getFirstName(string username)
+        {
+            otherFunc o = new otherFunc();
+            DocumentSnapshot snap = await o.logInFunc(username);
+            if (snap.Exists)
+            {
+                FirebaseData fd = snap.ConvertTo<FirebaseData>();
+                lblFirstname.Text = fd.FirstName;
+            }
         }
     }
 }
