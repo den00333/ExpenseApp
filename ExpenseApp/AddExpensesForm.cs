@@ -12,7 +12,10 @@ namespace ExpenseApp
 {
     public partial class AddExpensesForm : Form
     {
-        
+        public int R { get; set; }
+        public int M { get; set; }
+        public int P { get; set; }
+        public int B { get; set; }
         public AddExpensesForm()
         {
             InitializeComponent();
