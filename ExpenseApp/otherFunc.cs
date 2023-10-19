@@ -117,6 +117,7 @@ namespace ExpenseApp
             bool validEmail = otherFunc.isValidEmail(email);
             bool validUsername = await otherFunc.isUsernameExistingAsync(username);
             bool isEmpty = AreTextboxesEmpty(fname,lname, email, username, password, repeatpass);
+            bool passwordMatched = function.passwordMatched(password, repeatpass);
 
             if (!isEmpty){
                 if (terms.Checked){
@@ -127,23 +128,28 @@ namespace ExpenseApp
                     };
                     bool validData = function.isValidData(validatingData);
                     if (validData){
-                        try{
-                            DocumentReference docRef = database.Collection("Users").Document(username);
-                            Dictionary<string, object> data = new Dictionary<string, object>(){
-                                {"First Name", fname },
-                                {"Last Name", lname },
-                                {"Username", username },
-                                {"Email", email },
-                                {"Password", password}
-                                };
-                            await docRef.SetAsync(data);
-                            DialogResult res = MessageBox.Show("Successfully created your account!", "Success", MessageBoxButtons.OK);
-                            if (res == DialogResult.OK){
-                                s.Close();
+                        if (passwordMatched){
+                            try{
+                                DocumentReference docRef = database.Collection("Users").Document(username);
+                                Dictionary<string, object> data = new Dictionary<string, object>(){
+                                    {"First Name", fname },
+                                    {"Last Name", lname },
+                                    {"Username", username },
+                                    {"Email", email },
+                                    {"Password", password}
+                                    };
+                                await docRef.SetAsync(data);
+                                DialogResult res = MessageBox.Show("Successfully created your account!", "Success", MessageBoxButtons.OK);
+                                if (res == DialogResult.OK){
+                                    s.Close();
+                                }
+                            }
+                            catch (Exception ex){
+                                MessageBox.Show("Cannot process your account", ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
                         }
-                        catch (Exception ex){
-                            MessageBox.Show("Cannot process your account", ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        else{
+                            MessageBox.Show("Password do not matched", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
                     }
                 }
@@ -155,5 +161,9 @@ namespace ExpenseApp
             MessageBox.Show("Something is missing", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         } 
+        public bool passwordMatched(string password1, string password2)
+        {
+            return password1.Trim() == password2.Trim();
+        }
     }
 }
