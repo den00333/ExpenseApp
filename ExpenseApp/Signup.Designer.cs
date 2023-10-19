@@ -87,7 +87,7 @@
             this.txtUsername.ForeColor = System.Drawing.Color.Black;
             this.txtUsername.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtUsername.Location = new System.Drawing.Point(25, 330);
-            this.txtUsername.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.txtUsername.Margin = new System.Windows.Forms.Padding(5);
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.PasswordChar = '\0';
             this.txtUsername.PlaceholderText = "Username";
@@ -111,7 +111,7 @@
             this.txtPassword.ForeColor = System.Drawing.Color.Black;
             this.txtPassword.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtPassword.Location = new System.Drawing.Point(25, 401);
-            this.txtPassword.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.txtPassword.Margin = new System.Windows.Forms.Padding(5);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '●';
             this.txtPassword.PlaceholderText = "Password";
@@ -139,7 +139,7 @@
             this.txtrepeatpass.ForeColor = System.Drawing.Color.Black;
             this.txtrepeatpass.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtrepeatpass.Location = new System.Drawing.Point(259, 401);
-            this.txtrepeatpass.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.txtrepeatpass.Margin = new System.Windows.Forms.Padding(5);
             this.txtrepeatpass.Name = "txtrepeatpass";
             this.txtrepeatpass.PasswordChar = '●';
             this.txtrepeatpass.PlaceholderText = "Confirm Password";
@@ -161,7 +161,7 @@
             this.btnSignup.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSignup.ForeColor = System.Drawing.Color.White;
             this.btnSignup.Location = new System.Drawing.Point(25, 551);
-            this.btnSignup.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSignup.Margin = new System.Windows.Forms.Padding(4);
             this.btnSignup.Name = "btnSignup";
             this.btnSignup.Size = new System.Drawing.Size(456, 59);
             this.btnSignup.TabIndex = 3;
@@ -183,13 +183,14 @@
             this.txtFirstname.ForeColor = System.Drawing.Color.Black;
             this.txtFirstname.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtFirstname.Location = new System.Drawing.Point(25, 135);
-            this.txtFirstname.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.txtFirstname.Margin = new System.Windows.Forms.Padding(5);
             this.txtFirstname.Name = "txtFirstname";
             this.txtFirstname.PasswordChar = '\0';
             this.txtFirstname.PlaceholderText = "First name";
             this.txtFirstname.SelectedText = "";
             this.txtFirstname.Size = new System.Drawing.Size(243, 62);
             this.txtFirstname.TabIndex = 11;
+            this.txtFirstname.TextChanged += new System.EventHandler(this.txtFirstname_TextChanged);
             this.txtFirstname.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.guna2TextBox3_KeyPress);
             // 
             // txtLastname
@@ -207,13 +208,14 @@
             this.txtLastname.ForeColor = System.Drawing.Color.Black;
             this.txtLastname.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtLastname.Location = new System.Drawing.Point(277, 135);
-            this.txtLastname.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.txtLastname.Margin = new System.Windows.Forms.Padding(5);
             this.txtLastname.Name = "txtLastname";
             this.txtLastname.PasswordChar = '\0';
             this.txtLastname.PlaceholderText = "Last name";
             this.txtLastname.SelectedText = "";
             this.txtLastname.Size = new System.Drawing.Size(204, 62);
             this.txtLastname.TabIndex = 12;
+            this.txtLastname.TextChanged += new System.EventHandler(this.txtLastname_TextChanged);
             this.txtLastname.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.guna2TextBox2_KeyPress);
             // 
             // txtEmail
@@ -231,7 +233,7 @@
             this.txtEmail.ForeColor = System.Drawing.Color.Black;
             this.txtEmail.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtEmail.Location = new System.Drawing.Point(25, 206);
-            this.txtEmail.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.txtEmail.Margin = new System.Windows.Forms.Padding(5);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Padding = new System.Windows.Forms.Padding(7, 0, 0, 0);
             this.txtEmail.PasswordChar = '\0';
@@ -332,7 +334,7 @@
             this.signupPanel.Controls.Add(this.txtPassword);
             this.signupPanel.Controls.Add(this.txtUsername);
             this.signupPanel.Location = new System.Drawing.Point(709, 14);
-            this.signupPanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.signupPanel.Margin = new System.Windows.Forms.Padding(4);
             this.signupPanel.Name = "signupPanel";
             this.signupPanel.Size = new System.Drawing.Size(495, 644);
             this.signupPanel.TabIndex = 1;
@@ -365,7 +367,7 @@
             this.Controls.Add(this.signupPanel);
             this.Controls.Add(this.closeBTN);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximumSize = new System.Drawing.Size(1281, 670);
             this.MinimumSize = new System.Drawing.Size(1281, 670);
             this.Name = "Signup";

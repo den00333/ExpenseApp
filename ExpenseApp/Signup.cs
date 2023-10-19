@@ -1,4 +1,5 @@
 ﻿using Google.Cloud.Firestore;
+using Guna.UI2.WinForms;
 using Guna.UI2.WinForms.Internal;
 using System;
 using System.Collections.Generic;
@@ -135,6 +136,24 @@ namespace ExpenseApp
         {
             if (txtPassword.BorderColor == System.Drawing.Color.Red){
                 ControlPaint.DrawBorder(e.Graphics, txtPassword.ClientRectangle, Color.Red, ButtonBorderStyle.Solid);
+            }
+        }
+
+        private void txtFirstname_TextChanged(object sender, EventArgs e)
+        {
+            Guna2TextBox textBox = (Guna2TextBox)sender;
+            if (!string.IsNullOrEmpty(textBox.Text) && char.IsLower(textBox.Text[0])){
+                textBox.Text = char.ToUpper(textBox.Text[0]) + textBox.Text.Substring(1);
+                textBox.SelectionStart = textBox.Text.Length;
+            }
+        }
+
+        private void txtLastname_TextChanged(object sender, EventArgs e)
+        {
+            Guna2TextBox textBox = (Guna2TextBox)sender;
+            if (!string.IsNullOrEmpty(textBox.Text) && char.IsLower(textBox.Text[0])){
+                textBox.Text = char.ToUpper(textBox.Text[0]) + textBox.Text.Substring(1);
+                textBox.SelectionStart = textBox.Text.Length;
             }
         }
 
