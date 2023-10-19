@@ -28,16 +28,33 @@ namespace ExpenseApp
 
         private void LocationForm_Load(object sender, EventArgs e)
         {
-
+            EnterData();
         }
         private Dictionary<String, RegionData> data;
+        private locationData LD = new locationData() ;
         private void initializeData()
         {
-            String path = "C:\\Users\\Personal Laptop\\source\\repos\\ExpenseApp\\ExpenseApp\\Resources\\philippine_provinces_cities_municipalities_and_barangays_2019v2.json";
+            String path = "Resources/philippine_provinces_cities_municipalities_and_barangays_2019v2.json";
             String jsonData = File.ReadAllText(path);
             data = JsonConvert.DeserializeObject<Dictionary<string, RegionData>>(jsonData);
 
+            
+
         }
+
+        public void EnterData()
+        {
+            if (!string.IsNullOrEmpty(AEF.txtLocation.Text))
+            {
+                cmbRegion.SelectedIndex = AEF.R;
+                cmbProvince.SelectedIndex = AEF.P;
+                cmbMunicipal.SelectedIndex = AEF.M;
+                cmbBrgy.SelectedIndex = AEF.B;
+            }
+        }
+
+    
+
         List<ComboBox> boxes;
         private void clearAll(List<ComboBox> cmbList)
         {
@@ -53,51 +70,86 @@ namespace ExpenseApp
             {
                 cmbRegion.Items.Add(region);
             }
+            
         }
 
         RegionData RD;
         ProvinceData PD;
         private void UpdateProvinceCMB()
         {
-            cmbProvince.Items.Clear();
-            String selectedRegion = cmbRegion.SelectedItem.ToString();
-            RD = data[selectedRegion];
-            foreach (var province in RD.provinceList.Keys)
+            try
             {
-                cmbProvince.Items.Add(province);
+                cmbProvince.Items.Clear();
+                String selectedRegion = cmbRegion.SelectedItem.ToString();
+                RD = data[selectedRegion];
+                foreach (var province in RD.provinceList.Keys)
+                {
+                    cmbProvince.Items.Add(province);
+                }
+            }
+            catch (Exception)
+            {
+                DialogResult res = MessageBox.Show("There's something wrong... \n Closing the Form. Please try again.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if(res == DialogResult.OK)
+                {
+                    this.Hide();
+                }
             }
 
         }
 
         private void UpdateMunicipalCMB()
         {
-            cmbMunicipal.Items.Clear();
-            String selectedProvince = cmbProvince.SelectedItem.ToString();
-            PD = RD.provinceList[selectedProvince];
-            foreach (var municipal in PD.MunicipalList.Keys)
+            try
             {
-                cmbMunicipal.Items.Add(municipal);
+                cmbMunicipal.Items.Clear();
+                String selectedProvince = cmbProvince.SelectedItem.ToString();
+                PD = RD.provinceList[selectedProvince];
+                foreach (var municipal in PD.MunicipalList.Keys)
+                {
+                    cmbMunicipal.Items.Add(municipal);
+                }
             }
-
+            catch (Exception)
+            {
+                DialogResult res = MessageBox.Show("There's something wrong... \n Closing the Form. Please try again.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (res == DialogResult.OK)
+                {
+                    this.Hide();
+                }
+            }
         }
 
         private void UpdateBrgyCMB()
         {
-            cmbBrgy.Items.Clear();
-            String selectedMunicipal = cmbMunicipal.SelectedItem.ToString();
-            MunicipalData MD = PD.MunicipalList[selectedMunicipal];
-            foreach (var brgy in MD.BarangayList)
+            try
             {
-                cmbBrgy.Items.Add(brgy);
+                cmbBrgy.Items.Clear();
+                String selectedMunicipal = cmbMunicipal.SelectedItem.ToString();
+                MunicipalData MD = PD.MunicipalList[selectedMunicipal];
+                foreach (var brgy in MD.BarangayList)
+                {
+                    cmbBrgy.Items.Add(brgy);
+                }
+            }
+            catch (Exception)
+            {
+                DialogResult res = MessageBox.Show("There's something wrong... \n Closing the Form. Please try again.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (res == DialogResult.OK)
+                {
+                    this.Hide();
+                }
             }
         }
         
         
         private void cmbRegion_SelectedIndexChanged(object sender, EventArgs e)
         {
+
             boxes = new List<ComboBox> { cmbProvince, cmbMunicipal, cmbBrgy };
             clearAll(boxes);
             UpdateProvinceCMB();
+
         }
 
         private void cmbProvince_SelectedIndexChanged(object sender, EventArgs e)
@@ -105,6 +157,7 @@ namespace ExpenseApp
             boxes = new List<ComboBox> { cmbMunicipal, cmbBrgy };
             clearAll(boxes);
             UpdateMunicipalCMB();
+            
         }
 
         private void cmbMunicipal_SelectedIndexChanged(object sender, EventArgs e)
@@ -112,6 +165,7 @@ namespace ExpenseApp
             boxes = new List<ComboBox> { cmbBrgy };
             clearAll(boxes);
             UpdateBrgyCMB();
+            
         }
 
         private void checkingAllBoxes(List<ComboBox> boxes)
@@ -125,7 +179,7 @@ namespace ExpenseApp
             }
             else
             {
-                Address = "Please select your address...";
+                Address = null;
             }
         }
 
@@ -133,7 +187,21 @@ namespace ExpenseApp
         {
             boxes = new List<ComboBox> { cmbProvince, cmbMunicipal, cmbBrgy };
             checkingAllBoxes(boxes);
-            AEF.txtLocation.Text = Address.Trim(',');
+
+            if(Address != null)
+            {
+                AEF.txtLocation.Text = Address.Trim(',', ' ');
+            }
+            else
+            {
+                AEF.txtLocation.PlaceholderText = "Please select your address...";
+                AEF.txtLocation.Text = null;
+            }
+            AEF.R = cmbRegion.SelectedIndex;
+            AEF.P = cmbProvince.SelectedIndex;
+            AEF.M = cmbMunicipal.SelectedIndex;
+            AEF.B = cmbBrgy.SelectedIndex;
+
             this.Hide();
         }
     }

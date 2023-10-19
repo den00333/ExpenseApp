@@ -24,4 +24,14 @@ namespace ExpenseApp
         [JsonProperty("barangay_list")]
         public List<String> BarangayList { get; set; }
     }
+
+    
+    public class locationData
+    {
+        public int R { get; set; } = 2;
+        public int M { get; set; } = 2;
+        public int P { get; set; } = 2;
+        public int B {get; set; } = 2;
+    }
+
 }

@@ -154,6 +154,7 @@
             this.cmbMunicipal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.cmbMunicipal.ItemHeight = 30;
             this.cmbMunicipal.Location = new System.Drawing.Point(44, 192);
+            this.cmbMunicipal.MaxDropDownItems = 5;
             this.cmbMunicipal.Name = "cmbMunicipal";
             this.cmbMunicipal.Size = new System.Drawing.Size(243, 36);
             this.cmbMunicipal.TabIndex = 21;
