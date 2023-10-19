@@ -183,7 +183,7 @@ namespace ExpenseApp
 
         private void btnSignup_Click(object sender, EventArgs e)
         {
-            username = txtUsername.Text.ToString().Trim().ToLower(); ;
+            username = txtUsername.Text.ToString().Trim().ToLower();
             fname = txtFirstname.Text.ToString().Trim();
             lname = txtLastname.Text.ToString().Trim();
             email = txtEmail.Text.ToString().Trim();
