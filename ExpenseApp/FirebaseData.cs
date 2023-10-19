@@ -10,6 +10,19 @@ namespace ExpenseApp
     [FirestoreData]
     public class FirebaseData
     {
+        private static FirebaseData instance;
+
+        public static FirebaseData Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new FirebaseData();
+                }
+                return instance;
+            }
+        }
         [FirestoreProperty]
         public String Username { get; set; }
 

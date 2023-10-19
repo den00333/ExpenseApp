@@ -15,9 +15,9 @@ namespace ExpenseApp
 {
     public partial class Home : Form
     {
-        private FirebaseData getUsername;
+        
         string username;
-        public Home(FirebaseData fd)
+        public Home()
         {
             InitializeComponent();
 
@@ -28,9 +28,7 @@ namespace ExpenseApp
 
             dashboard dashboard = new dashboard();
             addUserControl(dashboard);
-            this.getUsername = fd;
-            username = getUsername.Username;
-
+            username = FirebaseData.Instance.Username;
         }
 
         private void Home_Load(object sender, EventArgs e)

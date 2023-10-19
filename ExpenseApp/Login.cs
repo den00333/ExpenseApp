@@ -92,9 +92,8 @@ namespace ExpenseApp
                 FirebaseData userData = docSnap.ConvertTo<FirebaseData>();
                 if (password == Security.Decrypt(userData.Password.ToString())){
                     this.Hide();
-                    FirebaseData fd = new FirebaseData();
-                    fd.Username = username;
-                    Home home = new Home(fd);
+                    FirebaseData.Instance.Username = username;
+                    Home home = new Home();
                     home.Show();
                 }
                 else{
