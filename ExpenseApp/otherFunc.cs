@@ -16,6 +16,7 @@ using System.Windows.Forms;
 using System.Runtime.Remoting.Messaging;
 
 using System.Net.NetworkInformation;
+using System.Drawing;
 
 namespace ExpenseApp
 {

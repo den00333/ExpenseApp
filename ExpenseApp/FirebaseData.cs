@@ -8,12 +8,28 @@ using System.Threading.Tasks;
 namespace ExpenseApp
 {
     [FirestoreData]
-    internal class FirebaseData
+    public class FirebaseData
     {
+        private static FirebaseData instance;
+
+        public static FirebaseData Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new FirebaseData();
+                }
+                return instance;
+            }
+        }
         [FirestoreProperty]
         public String Username { get; set; }
 
         [FirestoreProperty]
         public String Password { get; set; }
+
+        [FirestoreProperty("First Name")]
+        public String FirstName { get; set; }
     }
 }
