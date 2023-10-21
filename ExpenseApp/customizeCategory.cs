@@ -41,7 +41,7 @@ namespace ExpenseApp
 
         private void closeBTN_Click(object sender, EventArgs e)
         {
-            DialogResult res = MessageBox.Show("Are you sure that you are done?", "Exiting the Tab.", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            DialogResult res = MessageBox.Show("Are you sure you are done?", "Exiting the Tab.", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
             if(res == DialogResult.OK)
             {
                 FileFunc.updatingDataThroughList(ListOfNewCategories);
@@ -66,19 +66,14 @@ namespace ExpenseApp
         private void btnDelete_Click(object sender, EventArgs e)
         {
             DialogResult res = MessageBox.Show("Are you sure you want to delete this item/s?", "Deleting Items.", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-            if(res == DialogResult.OK)
-            {
-                for (int i = 0; i < chbCategories.Items.Count; i++)
-                {
-                    if (chbCategories.GetItemChecked(i))
-                    {
+            if(res == DialogResult.OK){
+                for (int i = chbCategories.Items.Count - 1; i >= 0; i--){
+                    if (chbCategories.GetItemChecked(i)){
                         ListOfUnwantedCategories.Add(chbCategories.Items[i].ToString());
-                        if (ListOfNewCategories.Count != 0)
-                        {
+                        if (ListOfNewCategories.Count != 0){
                             ListOfNewCategories.Remove(chbCategories.Items[i].ToString());
                         }
                         chbCategories.Items.RemoveAt(i);
-
                     }
                 }
             }
