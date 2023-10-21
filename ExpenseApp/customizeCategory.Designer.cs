@@ -32,9 +32,9 @@
             this.chbCategories = new System.Windows.Forms.CheckedListBox();
             this.guna2BorderlessForm1 = new Guna.UI2.WinForms.Guna2BorderlessForm(this.components);
             this.btnDelete = new Guna.UI2.WinForms.Guna2Button();
-            this.closeBTN = new System.Windows.Forms.PictureBox();
             this.btnAdd = new Guna.UI2.WinForms.Guna2Button();
             this.txtCategory = new Guna.UI2.WinForms.Guna2TextBox();
+            this.closeBTN = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.closeBTN)).BeginInit();
             this.SuspendLayout();
             // 
@@ -68,26 +68,13 @@
             this.btnDelete.FillColor = System.Drawing.Color.Red;
             this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDelete.ForeColor = System.Drawing.Color.White;
-            this.btnDelete.Location = new System.Drawing.Point(29, 447);
+            this.btnDelete.Location = new System.Drawing.Point(310, 443);
             this.btnDelete.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(116, 44);
             this.btnDelete.TabIndex = 24;
             this.btnDelete.Text = "Delete";
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
-            // 
-            // closeBTN
-            // 
-            this.closeBTN.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.closeBTN.Image = global::ExpenseApp.Properties.Resources.delete;
-            this.closeBTN.Location = new System.Drawing.Point(384, 14);
-            this.closeBTN.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.closeBTN.Name = "closeBTN";
-            this.closeBTN.Size = new System.Drawing.Size(60, 33);
-            this.closeBTN.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.closeBTN.TabIndex = 25;
-            this.closeBTN.TabStop = false;
-            this.closeBTN.Click += new System.EventHandler(this.closeBTN_Click);
             // 
             // btnAdd
             // 
@@ -131,6 +118,19 @@
             this.txtCategory.SelectedText = "";
             this.txtCategory.Size = new System.Drawing.Size(285, 53);
             this.txtCategory.TabIndex = 27;
+            // 
+            // closeBTN
+            // 
+            this.closeBTN.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.closeBTN.Image = global::ExpenseApp.Properties.Resources.delete;
+            this.closeBTN.Location = new System.Drawing.Point(384, 14);
+            this.closeBTN.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.closeBTN.Name = "closeBTN";
+            this.closeBTN.Size = new System.Drawing.Size(60, 33);
+            this.closeBTN.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.closeBTN.TabIndex = 25;
+            this.closeBTN.TabStop = false;
+            this.closeBTN.Click += new System.EventHandler(this.closeBTN_Click);
             // 
             // customizeCategory
             // 
