@@ -17,6 +17,8 @@ using System.Runtime.Remoting.Messaging;
 
 using System.Net.NetworkInformation;
 using System.Drawing;
+using System.IO;
+using Newtonsoft.Json;
 
 namespace ExpenseApp
 {
@@ -164,6 +166,15 @@ namespace ExpenseApp
         public bool passwordMatched(string password1, string password2)
         {
             return password1.Trim() == password2.Trim();
+        }
+
+        public static void populateCMBcategory(ctg category, AddExpensesForm f)
+        {
+            f.cmbCategory.Items.Clear();
+            foreach (var c in category.LCategory)
+            {
+                f.cmbCategory.Items.Add(c);
+            }
         }
     }
 }

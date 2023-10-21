@@ -1,8 +1,10 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,10 +18,20 @@ namespace ExpenseApp
         public int M { get; set; }
         public int P { get; set; }
         public int B { get; set; }
+        private ctg catG; /*category*/
         public AddExpensesForm()
         {
             InitializeComponent();
+            initializeCMB();
         }
+
+        private void initializeCMB()
+        {
+            catG = FileFunc.initializeData();
+            otherFunc.populateCMBcategory(catG, this);
+        }
+
+        
 
         private void btnLocation_Click(object sender, EventArgs e)
         {
@@ -45,6 +57,21 @@ namespace ExpenseApp
         private void btnBack_Click(object sender, EventArgs e)
         {
             this.Hide();
+        }
+
+        private void txtAmount_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            string pattern = @"[\d\b]";
+            if (!System.Text.RegularExpressions.Regex.IsMatch(e.KeyChar.ToString(), pattern))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void btnCustomize_Click(object sender, EventArgs e)
+        {
+            customizeCategory ccg = new customizeCategory(this);
+            ccg.Show();
         }
     }
 }

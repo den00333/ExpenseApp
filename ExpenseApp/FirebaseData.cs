@@ -1,4 +1,5 @@
 ﻿using Google.Cloud.Firestore;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,5 +32,11 @@ namespace ExpenseApp
 
         [FirestoreProperty("First Name")]
         public String FirstName { get; set; }
+    }
+
+    public class ctg 
+    {
+        [JsonProperty("listOfCategories")]
+        public List<String> LCategory { get; set; }
     }
 }

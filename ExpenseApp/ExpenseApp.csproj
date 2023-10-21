@@ -195,12 +195,19 @@
     <Compile Include="AddExpensesForm.Designer.cs">
       <DependentUpon>AddExpensesForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="customizeCategory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="customizeCategory.Designer.cs">
+      <DependentUpon>customizeCategory.cs</DependentUpon>
+    </Compile>
     <Compile Include="dashboard.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="dashboard.Designer.cs">
       <DependentUpon>dashboard.cs</DependentUpon>
     </Compile>
+    <Compile Include="FileFunc.cs" />
     <Compile Include="FirebaseData.cs" />
     <Compile Include="group.cs">
       <SubType>UserControl</SubType>
@@ -258,6 +265,9 @@
     <EmbeddedResource Include="AddExpensesForm.resx">
       <DependentUpon>AddExpensesForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="customizeCategory.resx">
+      <DependentUpon>customizeCategory.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="dashboard.resx">
       <DependentUpon>dashboard.cs</DependentUpon>
     </EmbeddedResource>
@@ -310,6 +320,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\category.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="Resources\logo.png" />
   </ItemGroup>
   <ItemGroup>
