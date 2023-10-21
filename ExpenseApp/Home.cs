@@ -124,7 +124,7 @@ namespace ExpenseApp
             if (snap.Exists)
             {
                 FirebaseData fd = snap.ConvertTo<FirebaseData>();
-                lblFirstname.Text = fd.FirstName;
+                lblFirstname.Text = "Hello, " + fd.FirstName + "!";
             }
         }
     }

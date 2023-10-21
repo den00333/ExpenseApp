@@ -32,7 +32,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.lblFirstname = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.guna2Panel3 = new Guna.UI2.WinForms.Guna2Panel();
             this.btnLogut = new Guna.UI2.WinForms.Guna2Button();
             this.btnTips = new Guna.UI2.WinForms.Guna2Button();
@@ -73,35 +72,23 @@
             // guna2Panel1
             // 
             this.guna2Panel1.Controls.Add(this.lblFirstname);
-            this.guna2Panel1.Controls.Add(this.label2);
             this.guna2Panel1.Controls.Add(this.label1);
             this.guna2Panel1.Controls.Add(this.pictureBox1);
             this.guna2Panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.guna2Panel1.Location = new System.Drawing.Point(0, 0);
             this.guna2Panel1.Name = "guna2Panel1";
-            this.guna2Panel1.Size = new System.Drawing.Size(1028, 62);
+            this.guna2Panel1.Size = new System.Drawing.Size(1292, 62);
             this.guna2Panel1.TabIndex = 2;
             // 
             // lblFirstname
             // 
             this.lblFirstname.AutoSize = true;
             this.lblFirstname.Font = new System.Drawing.Font("Poppins SemiBold", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFirstname.Location = new System.Drawing.Point(835, 9);
+            this.lblFirstname.Location = new System.Drawing.Point(962, 7);
             this.lblFirstname.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblFirstname.Name = "lblFirstname";
             this.lblFirstname.Size = new System.Drawing.Size(0, 48);
             this.lblFirstname.TabIndex = 8;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Poppins SemiBold", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(691, 9);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(158, 48);
-            this.label2.TabIndex = 7;
-            this.label2.Text = "Welcome,";
             // 
             // guna2Panel3
             // 
@@ -118,7 +105,7 @@
             this.guna2Panel3.Dock = System.Windows.Forms.DockStyle.Left;
             this.guna2Panel3.Location = new System.Drawing.Point(0, 62);
             this.guna2Panel3.Name = "guna2Panel3";
-            this.guna2Panel3.Size = new System.Drawing.Size(183, 547);
+            this.guna2Panel3.Size = new System.Drawing.Size(183, 620);
             this.guna2Panel3.TabIndex = 7;
             this.guna2Panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.guna2Panel3_Paint_1);
             // 
@@ -238,7 +225,7 @@
             this.homePanel.Location = new System.Drawing.Point(183, 62);
             this.homePanel.Margin = new System.Windows.Forms.Padding(2);
             this.homePanel.Name = "homePanel";
-            this.homePanel.Size = new System.Drawing.Size(845, 547);
+            this.homePanel.Size = new System.Drawing.Size(1109, 620);
             this.homePanel.TabIndex = 8;
             // 
             // dashboard1
@@ -248,7 +235,7 @@
             this.dashboard1.Location = new System.Drawing.Point(0, 0);
             this.dashboard1.Margin = new System.Windows.Forms.Padding(4);
             this.dashboard1.Name = "dashboard1";
-            this.dashboard1.Size = new System.Drawing.Size(1028, 609);
+            this.dashboard1.Size = new System.Drawing.Size(1292, 682);
             this.dashboard1.TabIndex = 6;
             // 
             // wallet1
@@ -259,7 +246,7 @@
             this.wallet1.Location = new System.Drawing.Point(0, 0);
             this.wallet1.Margin = new System.Windows.Forms.Padding(4);
             this.wallet1.Name = "wallet1";
-            this.wallet1.Size = new System.Drawing.Size(1028, 609);
+            this.wallet1.Size = new System.Drawing.Size(1292, 682);
             this.wallet1.TabIndex = 5;
             // 
             // group1
@@ -269,7 +256,7 @@
             this.group1.Location = new System.Drawing.Point(0, 0);
             this.group1.Margin = new System.Windows.Forms.Padding(4);
             this.group1.Name = "group1";
-            this.group1.Size = new System.Drawing.Size(1028, 609);
+            this.group1.Size = new System.Drawing.Size(1292, 682);
             this.group1.TabIndex = 4;
             // 
             // tips1
@@ -279,14 +266,14 @@
             this.tips1.Location = new System.Drawing.Point(0, 0);
             this.tips1.Margin = new System.Windows.Forms.Padding(4);
             this.tips1.Name = "tips1";
-            this.tips1.Size = new System.Drawing.Size(1028, 609);
+            this.tips1.Size = new System.Drawing.Size(1292, 682);
             this.tips1.TabIndex = 3;
             // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1028, 609);
+            this.ClientSize = new System.Drawing.Size(1292, 682);
             this.Controls.Add(this.homePanel);
             this.Controls.Add(this.guna2Panel3);
             this.Controls.Add(this.guna2Panel1);
@@ -297,6 +284,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.Name = "Home";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Smart Spend";
             this.Load += new System.EventHandler(this.Home_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -322,7 +310,6 @@
         private Guna.UI2.WinForms.Guna2Button btnWallet;
         private Guna.UI2.WinForms.Guna2Button btnDashboard;
         private System.Windows.Forms.Panel homePanel;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lblFirstname;
     }
 }
