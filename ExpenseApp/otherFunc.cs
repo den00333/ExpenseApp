@@ -73,6 +73,44 @@ namespace ExpenseApp
 
         }
 
+        public async Task<String> DocNameForExpenses(String username)
+        {
+            String Ename = null;
+            FirestoreDb database = FirestoreConn();
+            CollectionReference cRef = database.Collection("Users").Document(username).Collection("Expenses");
+            Query q = cRef.OrderByDescending("timestamp").Limit(1);
+            QuerySnapshot qSnap = await q.GetSnapshotAsync();
+            if(qSnap.Count > 0)
+            {
+                DocumentSnapshot docSnap = qSnap.Documents[0];
+                String docName = docSnap.Id;
+                int num = int.Parse(docName.Trim('E'))+1;
+                Ename = string.Concat("E", num.ToString());
+                return Ename;
+
+            }
+            else
+            {
+                Ename = "E1";
+                return Ename;
+            }
+            
+        }
+
+        public async Task<DocumentReference> SavingNewExpenses(String username)
+        {
+            String docName = await DocNameForExpenses(username);
+            FirestoreDb database = FirestoreConn();
+            DocumentReference docRef = database.Collection("Users").Document(username).Collection("Expenses").Document(docName);
+            
+            return docRef;
+
+            /*document name should be "E1" then iterate*/
+            /*Process: 
+             * check if the "Expenses" collection has existing document("E1"*) 
+             else create new which starts from "E1"*/
+        }
+
         public static async Task<bool> isUsernameExistingAsync(String username)
         {
             if (string.IsNullOrEmpty(username)){
