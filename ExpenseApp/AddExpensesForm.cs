@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Google.Cloud.Firestore;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -73,6 +74,40 @@ namespace ExpenseApp
         {
             customizeCategory ccg = new customizeCategory(this);
             ccg.Show();
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            Save();
+        }
+
+        private async void Save()
+        {
+            String userN = FirebaseData.Instance.Username;
+            otherFunc o = new otherFunc();
+            DocumentReference docRef = await o.SavingNewExpenses(userN);
+            Dictionary<String, object> data = new Dictionary<string, object>()
+            {
+                {"Amount", int.Parse(txtAmount.Text)},
+                {"Category", cmbCategory.Text.ToString()},
+                {"Date", dtpDate.Value.ToString("yyyy-MM-dd")},
+                {"Location", txtLocation.Text.ToString()},
+                {"Name", richTxtDesc.Text.ToString()},
+                {"timestamp", FieldValue.ServerTimestamp}
+            };
+            await docRef.SetAsync(data);
+            DialogResult res = MessageBox.Show("Succesfully added to your expenses!", "Saved Expenses!", MessageBoxButtons.OK);
+            if(res == DialogResult.OK)
+            {
+                txtAmount.Clear();
+                cmbCategory.Text = null;
+                dtpDate.Value = DateTime.Now;
+                txtLocation.Clear();
+                richTxtDesc.Clear();
+            }
+
+
+
         }
     }
 }

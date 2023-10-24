@@ -81,20 +81,9 @@ namespace ExpenseApp
         {
             if (char.IsWhiteSpace(e.KeyChar)){
                 e.Handled = true;
-                MessageBox.Show("Password cannot contain whitespaces and special characters", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Password cannot contain whitespaces", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-        private void Signup_Load(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void termsConditions_Click(object sender, EventArgs e)
-        {
-            
-        }
-
         private void UpdatePasswordMatchLabel()
         {
             if (string.IsNullOrWhiteSpace(txtPassword.Text) && string.IsNullOrWhiteSpace(txtrepeatpass.Text) || string.IsNullOrEmpty(txtrepeatpass.Text)) {
@@ -120,7 +109,7 @@ namespace ExpenseApp
                 }
                 else if ((!pass.Any(char.IsUpper) || !pass.Any(char.IsLower)))
                 {
-                    errorProvider.SetError(txtPassword, "Password must contain both uppercase and lowercase letters");
+                    errorProvider.SetError(txtPassword, "Password must contain uppercase");
                 }
                 else if (!pass.Any(char.IsPunctuation))
                 {

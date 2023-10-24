@@ -73,6 +73,44 @@ namespace ExpenseApp
 
         }
 
+        public async Task<String> DocNameForExpenses(String username)
+        {
+            String Ename = null;
+            FirestoreDb database = FirestoreConn();
+            CollectionReference cRef = database.Collection("Users").Document(username).Collection("Expenses");
+            Query q = cRef.OrderByDescending("timestamp").Limit(1);
+            QuerySnapshot qSnap = await q.GetSnapshotAsync();
+            if(qSnap.Count > 0)
+            {
+                DocumentSnapshot docSnap = qSnap.Documents[0];
+                String docName = docSnap.Id;
+                int num = int.Parse(docName.Trim('E'))+1;
+                Ename = string.Concat("E", num.ToString());
+                return Ename;
+
+            }
+            else
+            {
+                Ename = "E1";
+                return Ename;
+            }
+            
+        }
+
+        public async Task<DocumentReference> SavingNewExpenses(String username)
+        {
+            String docName = await DocNameForExpenses(username);
+            FirestoreDb database = FirestoreConn();
+            DocumentReference docRef = database.Collection("Users").Document(username).Collection("Expenses").Document(docName);
+            
+            return docRef;
+
+            /*document name should be "E1" then iterate*/
+            /*Process: 
+             * check if the "Expenses" collection has existing document("E1"*) 
+             else create new which starts from "E1"*/
+        }
+
         public static async Task<bool> isUsernameExistingAsync(String username)
         {
             if (string.IsNullOrEmpty(username)){
@@ -119,7 +157,7 @@ namespace ExpenseApp
             bool validEmail = otherFunc.isValidEmail(email);
             bool validUsername = await otherFunc.isUsernameExistingAsync(username);
             bool isEmpty = AreTextboxesEmpty(fname,lname, email, username, password, repeatpass);
-            bool passwordMatched = function.passwordMatched(password, repeatpass);
+            bool passwordMatched = function.passwordMatched(Security.Decrypt(password), repeatpass);
 
             if (!isEmpty){
                 if (terms.Checked){
@@ -131,27 +169,33 @@ namespace ExpenseApp
                     bool validData = function.isValidData(validatingData);
                     if (validData){
                         if (passwordMatched){
-                            try{
-                                DocumentReference docRef = database.Collection("Users").Document(username);
-                                Dictionary<string, object> data = new Dictionary<string, object>(){
-                                    {"First Name", fname },
-                                    {"Last Name", lname },
-                                    {"Username", username },
-                                    {"Email", email },
-                                    {"Password", password}
-                                    };
-                                await docRef.SetAsync(data);
-                                DialogResult res = MessageBox.Show("Successfully created your account!", "Success", MessageBoxButtons.OK);
-                                if (res == DialogResult.OK){
-                                    s.Close();
+                            if (function.isValidPassword(password)){
+                                try{
+                                    DocumentReference docRef = database.Collection("Users").Document(username);
+                                    Dictionary<string, object> data = new Dictionary<string, object>(){
+                                        {"First Name", fname },
+                                        {"Last Name", lname },
+                                        {"Username", username },
+                                        {"Email", email },
+                                        {"Password", password}
+                                        };
+                                    await docRef.SetAsync(data);
+                                    DialogResult res = MessageBox.Show("Successfully created your account!", "Success", MessageBoxButtons.OK);
+                                    if (res == DialogResult.OK){
+                                        s.Close();
+                                    }
                                 }
+                                catch (Exception ex)
+                                {
+                                    MessageBox.Show("Cannot process your account", ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                } 
                             }
-                            catch (Exception ex){
-                                MessageBox.Show("Cannot process your account", ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            else {
+                                MessageBox.Show("Password do not meet the standards!", "Invalid Password", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                             }
                         }
                         else{
-                            MessageBox.Show("Password do not matched", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            MessageBox.Show("Password does not match", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
                     }
                 }
@@ -165,7 +209,7 @@ namespace ExpenseApp
         } 
         public bool passwordMatched(string password1, string password2)
         {
-            return password1.Trim() == password2.Trim();
+            return password1 == password2;
         }
 
         public static void populateCMBcategory(ctg category, AddExpensesForm f)
@@ -175,6 +219,11 @@ namespace ExpenseApp
             {
                 f.cmbCategory.Items.Add(c);
             }
+        }
+        public bool isValidPassword(string password)
+        {
+            string pattern = @"^(?=.*[A-Z])(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$";
+            return Regex.IsMatch(password, pattern);
         }
     }
 }
