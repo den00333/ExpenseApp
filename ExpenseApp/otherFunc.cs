@@ -195,7 +195,7 @@ namespace ExpenseApp
                             }
                         }
                         else{
-                            MessageBox.Show("Password do not matched", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            MessageBox.Show("Password does not match", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
                     }
                 }
