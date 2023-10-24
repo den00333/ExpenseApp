@@ -41,7 +41,7 @@
             // 
             this.richTextBox1.Font = new System.Drawing.Font("Poppins", 9.75F);
             this.richTextBox1.Location = new System.Drawing.Point(29, 71);
-            this.richTextBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.richTextBox1.Margin = new System.Windows.Forms.Padding(4);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.ReadOnly = true;
             this.richTextBox1.Size = new System.Drawing.Size(473, 457);
@@ -61,7 +61,7 @@
             this.btnAccept.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAccept.ForeColor = System.Drawing.Color.White;
             this.btnAccept.Location = new System.Drawing.Point(29, 548);
-            this.btnAccept.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAccept.Margin = new System.Windows.Forms.Padding(4);
             this.btnAccept.Name = "btnAccept";
             this.btnAccept.Size = new System.Drawing.Size(217, 55);
             this.btnAccept.TabIndex = 3;
@@ -81,7 +81,7 @@
             this.btnDecline.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDecline.ForeColor = System.Drawing.Color.White;
             this.btnDecline.Location = new System.Drawing.Point(287, 548);
-            this.btnDecline.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnDecline.Margin = new System.Windows.Forms.Padding(4);
             this.btnDecline.Name = "btnDecline";
             this.btnDecline.Size = new System.Drawing.Size(217, 55);
             this.btnDecline.TabIndex = 4;
@@ -116,7 +116,7 @@
             this.Controls.Add(this.btnAccept);
             this.Controls.Add(this.richTextBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Terms";
             this.Text = "Terms";
             this.ResumeLayout(false);

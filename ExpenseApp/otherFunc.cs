@@ -157,7 +157,7 @@ namespace ExpenseApp
             bool validEmail = otherFunc.isValidEmail(email);
             bool validUsername = await otherFunc.isUsernameExistingAsync(username);
             bool isEmpty = AreTextboxesEmpty(fname,lname, email, username, password, repeatpass);
-            bool passwordMatched = function.passwordMatched(password, repeatpass);
+            bool passwordMatched = function.passwordMatched(Security.Decrypt(password), repeatpass);
 
             if (!isEmpty){
                 if (terms.Checked){
@@ -169,23 +169,29 @@ namespace ExpenseApp
                     bool validData = function.isValidData(validatingData);
                     if (validData){
                         if (passwordMatched){
-                            try{
-                                DocumentReference docRef = database.Collection("Users").Document(username);
-                                Dictionary<string, object> data = new Dictionary<string, object>(){
-                                    {"First Name", fname },
-                                    {"Last Name", lname },
-                                    {"Username", username },
-                                    {"Email", email },
-                                    {"Password", password}
-                                    };
-                                await docRef.SetAsync(data);
-                                DialogResult res = MessageBox.Show("Successfully created your account!", "Success", MessageBoxButtons.OK);
-                                if (res == DialogResult.OK){
-                                    s.Close();
+                            if (function.isValidPassword(password)){
+                                try{
+                                    DocumentReference docRef = database.Collection("Users").Document(username);
+                                    Dictionary<string, object> data = new Dictionary<string, object>(){
+                                        {"First Name", fname },
+                                        {"Last Name", lname },
+                                        {"Username", username },
+                                        {"Email", email },
+                                        {"Password", password}
+                                        };
+                                    await docRef.SetAsync(data);
+                                    DialogResult res = MessageBox.Show("Successfully created your account!", "Success", MessageBoxButtons.OK);
+                                    if (res == DialogResult.OK){
+                                        s.Close();
+                                    }
                                 }
+                                catch (Exception ex)
+                                {
+                                    MessageBox.Show("Cannot process your account", ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                } 
                             }
-                            catch (Exception ex){
-                                MessageBox.Show("Cannot process your account", ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            else {
+                                MessageBox.Show("Password do not meet the standards!", "Invalid Password", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                             }
                         }
                         else{
@@ -203,7 +209,7 @@ namespace ExpenseApp
         } 
         public bool passwordMatched(string password1, string password2)
         {
-            return password1.Trim() == password2.Trim();
+            return password1 == password2;
         }
 
         public static void populateCMBcategory(ctg category, AddExpensesForm f)
@@ -213,6 +219,11 @@ namespace ExpenseApp
             {
                 f.cmbCategory.Items.Add(c);
             }
+        }
+        public bool isValidPassword(string password)
+        {
+            string pattern = @"^(?=.*[A-Z])(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$";
+            return Regex.IsMatch(password, pattern);
         }
     }
 }

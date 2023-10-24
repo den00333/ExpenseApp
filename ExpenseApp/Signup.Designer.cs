@@ -316,7 +316,6 @@
             this.termsConditions.UncheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
             this.termsConditions.UseVisualStyleBackColor = false;
             this.termsConditions.CheckedChanged += new System.EventHandler(this.termsConditions_CheckedChanged);
-            this.termsConditions.Click += new System.EventHandler(this.termsConditions_Click);
             // 
             // signupPanel
             // 
@@ -373,7 +372,6 @@
             this.Name = "Signup";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Signup";
-            this.Load += new System.EventHandler(this.Signup_Load);
             ((System.ComponentModel.ISupportInitialize)(this.closeBTN)).EndInit();
             this.signupPanel.ResumeLayout(false);
             this.signupPanel.PerformLayout();
