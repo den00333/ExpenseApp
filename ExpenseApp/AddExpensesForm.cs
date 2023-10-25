@@ -1,4 +1,5 @@
 ﻿using Google.Cloud.Firestore;
+using Guna.UI2.WinForms;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -78,36 +79,64 @@ namespace ExpenseApp
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            Save();
+            bool hasInternet = otherFunc.internetConn();
+            if (hasInternet) {
+                try{
+                    Save();
+                }
+                catch {
+                    MessageBox.Show("Error occured during saving!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else {
+                MessageBox.Show("No Internet Connection!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private async void Save()
         {
             String userN = FirebaseData.Instance.Username;
-            otherFunc o = new otherFunc();
-            DocumentReference docRef = await o.SavingNewExpenses(userN);
-            Dictionary<String, object> data = new Dictionary<string, object>()
-            {
-                {"Amount", int.Parse(txtAmount.Text)},
-                {"Category", cmbCategory.Text.ToString()},
-                {"Date", dtpDate.Value.ToString("yyyy-MM-dd")},
-                {"Location", txtLocation.Text.ToString()},
-                {"Name", richTxtDesc.Text.ToString()},
-                {"timestamp", FieldValue.ServerTimestamp}
-            };
-            await docRef.SetAsync(data);
-            DialogResult res = MessageBox.Show("Succesfully added to your expenses!", "Saved Expenses!", MessageBoxButtons.OK);
-            if(res == DialogResult.OK)
-            {
-                txtAmount.Clear();
-                cmbCategory.Text = null;
-                dtpDate.Value = DateTime.Now;
-                txtLocation.Clear();
-                richTxtDesc.Clear();
+            otherFunc function = new otherFunc();
+            string date = dtpDate.Value.ToString("yyyy-MM-dd");
+            bool isEmpty = function.checkExpenseFormControl(txtAmount, cmbCategory,txtLocation);
+            if (!isEmpty){
+                if (function.validDate(date)){
+                    double amount = double.Parse(txtAmount.Text);
+                    string category = cmbCategory.Text.ToString();
+                    string location = txtLocation.Text.ToString();
+                    string name = richTxtDesc.Text.ToString();
+                    try{
+                        DocumentReference docRef = await function.SavingNewExpenses(userN);
+                        Dictionary<String, object> data = new Dictionary<string, object>(){
+                            {"Amount", amount},
+                            {"Category", category},
+                            {"Date", date},
+                            {"Location", location},
+                            {"Name", name},
+                            {"timestamp", FieldValue.ServerTimestamp}
+                        };
+                        await docRef.SetAsync(data);
+                        DialogResult res = MessageBox.Show("Succesfully added to your expenses!", "Saved Expenses!", MessageBoxButtons.OK);
+                        if (res == DialogResult.OK)
+                        {
+                            txtAmount.Clear();
+                            cmbCategory.Text = null;
+                            dtpDate.Value = DateTime.Now;
+                            txtLocation.Clear();
+                            richTxtDesc.Clear();
+                        }
+                    }
+                    catch{
+                        MessageBox.Show("We cannot process your transaction right now", "Transaction Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else{
+                    MessageBox.Show("Invalid date selected!", "Invalid Date", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
-
-
-
+            else{
+                MessageBox.Show("Something is missing", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
     }
 }

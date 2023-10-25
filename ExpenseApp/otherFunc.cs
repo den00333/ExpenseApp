@@ -19,6 +19,8 @@ using System.Net.NetworkInformation;
 using System.Drawing;
 using System.IO;
 using Newtonsoft.Json;
+using System.Globalization;
+using Guna.UI2.WinForms;
 
 namespace ExpenseApp
 {
@@ -140,7 +142,7 @@ namespace ExpenseApp
             return false;
         }
 
-        bool AreTextboxesEmpty(params string[] textboxes)
+        bool areControlEmpty(params string[] textboxes)
         {
             foreach (string textbox in textboxes){
                 if (string.IsNullOrWhiteSpace(textbox)){
@@ -156,7 +158,7 @@ namespace ExpenseApp
             otherFunc function = new otherFunc();
             bool validEmail = otherFunc.isValidEmail(email);
             bool validUsername = await otherFunc.isUsernameExistingAsync(username);
-            bool isEmpty = AreTextboxesEmpty(fname,lname, email, username, password, repeatpass);
+            bool isEmpty = areControlEmpty(fname,lname, email, username, password, repeatpass);
             bool passwordMatched = function.passwordMatched(Security.Decrypt(password), repeatpass);
 
             if (!isEmpty){
@@ -224,6 +226,32 @@ namespace ExpenseApp
         {
             string pattern = @"^(?=.*[A-Z])(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$";
             return Regex.IsMatch(password, pattern);
+        }
+        public bool validDate(String date)
+        {
+            DateTime parsedDate; 
+            if(DateTime.TryParseExact(date,"yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.None, out parsedDate)){
+                if(parsedDate <= DateTime.Now) {
+                    return true;
+                }
+            }
+            return false;
+        }
+        public bool checkExpenseFormControl(params Control[] controls)
+        {
+            foreach (Control control in controls){
+                if(control is Guna2TextBox){
+                    if(string.IsNullOrEmpty((control as Guna2TextBox).Text)){
+                        return true;
+                    }
+                }
+                else if(control is Guna2ComboBox) { 
+                    if(string.IsNullOrEmpty((control as Guna2ComboBox).Text)){
+                        return true;
+                    }
+                }
+            }
+            return false;
         }
     }
 }

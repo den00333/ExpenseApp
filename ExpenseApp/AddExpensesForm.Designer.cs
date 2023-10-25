@@ -47,8 +47,10 @@
             this.guna2ShadowPanel4 = new Guna.UI2.WinForms.Guna2ShadowPanel();
             this.guna2ShadowPanel1 = new Guna.UI2.WinForms.Guna2ShadowPanel();
             this.richTxtDesc = new System.Windows.Forms.RichTextBox();
+            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.guna2ShadowPanel4.SuspendLayout();
             this.guna2ShadowPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // txtLocation
@@ -113,7 +115,7 @@
             this.cmbCategory.ForeColor = System.Drawing.Color.Black;
             this.cmbCategory.ItemHeight = 30;
             this.cmbCategory.Location = new System.Drawing.Point(55, 191);
-            this.cmbCategory.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbCategory.Margin = new System.Windows.Forms.Padding(4);
             this.cmbCategory.Name = "cmbCategory";
             this.cmbCategory.Size = new System.Drawing.Size(260, 36);
             this.cmbCategory.TabIndex = 16;
@@ -150,7 +152,7 @@
             this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.ForeColor = System.Drawing.Color.White;
             this.btnSave.Location = new System.Drawing.Point(759, 449);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(4);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(156, 55);
             this.btnSave.TabIndex = 20;
@@ -171,7 +173,7 @@
             this.btnBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBack.ForeColor = System.Drawing.Color.White;
             this.btnBack.Location = new System.Drawing.Point(595, 449);
-            this.btnBack.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnBack.Margin = new System.Windows.Forms.Padding(4);
             this.btnBack.Name = "btnBack";
             this.btnBack.ShadowDecoration.Depth = 100;
             this.btnBack.Size = new System.Drawing.Size(156, 55);
@@ -187,7 +189,7 @@
             this.dtpDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpDate.Format = System.Windows.Forms.DateTimePickerFormat.Long;
             this.dtpDate.Location = new System.Drawing.Point(55, 287);
-            this.dtpDate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dtpDate.Margin = new System.Windows.Forms.Padding(4);
             this.dtpDate.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.dtpDate.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.dtpDate.Name = "dtpDate";
@@ -209,7 +211,7 @@
             this.btnCustomize.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCustomize.ForeColor = System.Drawing.Color.White;
             this.btnCustomize.Location = new System.Drawing.Point(317, 188);
-            this.btnCustomize.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCustomize.Margin = new System.Windows.Forms.Padding(4);
             this.btnCustomize.Name = "btnCustomize";
             this.btnCustomize.Size = new System.Drawing.Size(69, 49);
             this.btnCustomize.TabIndex = 23;
@@ -243,7 +245,7 @@
             this.btnLocation.Image = global::ExpenseApp.Properties.Resources.location;
             this.btnLocation.ImageSize = new System.Drawing.Size(30, 30);
             this.btnLocation.Location = new System.Drawing.Point(327, 367);
-            this.btnLocation.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnLocation.Margin = new System.Windows.Forms.Padding(4);
             this.btnLocation.Name = "btnLocation";
             this.btnLocation.Size = new System.Drawing.Size(60, 60);
             this.btnLocation.TabIndex = 5;
@@ -265,7 +267,7 @@
             this.richTextNote.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.richTextNote.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.richTextNote.Location = new System.Drawing.Point(13, 15);
-            this.richTextNote.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.richTextNote.Margin = new System.Windows.Forms.Padding(4);
             this.richTextNote.Name = "richTextNote";
             this.richTextNote.Size = new System.Drawing.Size(449, 115);
             this.richTextNote.TabIndex = 26;
@@ -332,6 +334,10 @@
             this.richTxtDesc.TabIndex = 0;
             this.richTxtDesc.Text = "Name";
             // 
+            // errorProvider
+            // 
+            this.errorProvider.ContainerControl = this.txtLocation;
+            // 
             // AddExpensesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -355,13 +361,14 @@
             this.Controls.Add(this.guna2ShadowPanel4);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MinimumSize = new System.Drawing.Size(973, 528);
             this.Name = "AddExpensesForm";
             this.Text = "AddExpensesForm";
             this.Load += new System.EventHandler(this.AddExpensesForm_Load);
             this.guna2ShadowPanel4.ResumeLayout(false);
             this.guna2ShadowPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -386,5 +393,6 @@
         private Guna.UI2.WinForms.Guna2ShadowPanel guna2ShadowPanel4;
         private Guna.UI2.WinForms.Guna2ShadowPanel guna2ShadowPanel1;
         private System.Windows.Forms.RichTextBox richTxtDesc;
+        private System.Windows.Forms.ErrorProvider errorProvider;
     }
 }
