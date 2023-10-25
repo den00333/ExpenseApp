@@ -195,6 +195,12 @@
     <Compile Include="AddExpensesForm.Designer.cs">
       <DependentUpon>AddExpensesForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="AddingBalanceForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddingBalanceForm.Designer.cs">
+      <DependentUpon>AddingBalanceForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="customizeCategory.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -264,6 +270,9 @@
     </Compile>
     <EmbeddedResource Include="AddExpensesForm.resx">
       <DependentUpon>AddExpensesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddingBalanceForm.resx">
+      <DependentUpon>AddingBalanceForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="customizeCategory.resx">
       <DependentUpon>customizeCategory.cs</DependentUpon>

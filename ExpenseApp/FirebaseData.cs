@@ -32,6 +32,9 @@ namespace ExpenseApp
 
         [FirestoreProperty("First Name")]
         public String FirstName { get; set; }
+
+        [FirestoreProperty]
+        public int Amount { get; set; }
     }
 
     public class ctg 
