@@ -111,6 +111,62 @@ namespace ExpenseApp
              else create new which starts from "E1"*/
         }
 
+        public async Task<DocumentReference> SavingWalletAmount(String username, String walletName)
+        {
+            FirestoreDb database = FirestoreConn();
+            //CollectionReference colRef = database.Collection("Users").Document(username).Collection("Wallets");
+            //QuerySnapshot qSnap = await colRef.GetSnapshotAsync();
+            DocumentReference docRef = database.Collection("Users").Document(username).Collection("Wallets").Document(walletName);
+            DocumentSnapshot docSnap = await docRef.GetSnapshotAsync();
+            if(!docSnap.Exists)
+            {
+                Dictionary<String, object> data = new Dictionary<String, object>()
+                {
+                    {"Amount", 0}
+                };
+                await docRef.SetAsync(data);
+            }
+            return docRef;
+        }
+
+        public static String amountBeautify(int total)
+        {
+
+            char[] ordered = total.ToString().ToCharArray();
+            String output = "₱";
+            if (ordered.Length <= 3)
+            {
+                return output + total.ToString();
+            }
+
+            Array.Reverse(ordered);
+            Stack<char> cstack = new Stack<char>();
+            
+            for (int i = 0; i < ordered.Length; i++)
+            {
+                cstack.Push(ordered[i]);
+                if ((i + 1) % 3 == 0)
+                {
+                    cstack.Push(',');
+                }
+
+            }
+            while(cstack.Count > 0)
+            {
+                output += cstack.Pop().ToString();
+            }
+            return output;
+            
+        }
+
+        public async Task<int> getWalletAmount(DocumentReference docRef)
+        {
+            DocumentSnapshot docSnap = await docRef.GetSnapshotAsync();
+            FirebaseData am = docSnap.ConvertTo<FirebaseData>();
+            int amount = am.Amount;
+            return amount;
+        }
+
         public static async Task<bool> isUsernameExistingAsync(String username)
         {
             if (string.IsNullOrEmpty(username)){
