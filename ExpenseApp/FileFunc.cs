@@ -12,17 +12,26 @@ namespace ExpenseApp
         
         public static ctg initializeData()
         {
-            String path = "Resources/category.json";
+            
+            String path = getPath();
             String jsonData = File.ReadAllText(path);
             ctg catGs = JsonConvert.DeserializeObject<ctg>(jsonData);
 
             return catGs;
         }
 
+        public static String getPath() 
+        {
+            String filename = "category.json";
+            String curDir = Directory.GetCurrentDirectory();
+            String fpath = Path.Combine(curDir, filename);
+            return fpath;
+        }
+
         public static void updatingDataThroughList(List<String> newItems) {
             if (newItems.Count != 0)
             {
-                String path = "Resources/category.json";
+                String path = getPath();
                 ctg category = initializeData();
                 foreach (var item in newItems)
                 {
@@ -38,7 +47,7 @@ namespace ExpenseApp
         {
             if (unwatedItems.Count != 0)
             {
-                String path = "Resources/category.json";
+                String path = getPath();
                 ctg category = initializeData();
                 foreach (var item in unwatedItems)
                 {
