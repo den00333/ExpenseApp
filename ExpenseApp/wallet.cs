@@ -20,9 +20,9 @@ namespace ExpenseApp
 
         private void wallet_Load(object sender, EventArgs e)
         {
-            //loadWallet();
+            loadWallet();
         }
-        /*
+
         private async void loadWallet()
         {
             String username = FirebaseData.Instance.Username;
@@ -35,7 +35,7 @@ namespace ExpenseApp
             int ExpenseAmount = await o.getWalletAmount(docRef2);
             lblExpenses.Text = otherFunc.amountBeautify(ExpenseAmount);
 
-        }*/
+        }
 
         private void btnAddXpns_Click(object sender, EventArgs e)
         {

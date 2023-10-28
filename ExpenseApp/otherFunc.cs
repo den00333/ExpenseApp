@@ -280,8 +280,9 @@ namespace ExpenseApp
         }
         public bool isValidPassword(string password)
         {
-            string pattern = @"^(?=.*[A-Z])(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$";
+            String pattern = @"^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@#$%^&+=!])[A-Za-z\d@#$%^&+=!]{8,}$";
             return Regex.IsMatch(password, pattern);
+            
         }
         public bool validDate(String date)
         {
