@@ -99,6 +99,17 @@ namespace ExpenseApp
             
         }
 
+        public async Task<QuerySnapshot> displayData(string username)
+        {
+            if (string.IsNullOrEmpty(username))
+            {
+                return null;
+            }
+            FirestoreDb database = FirestoreConn();
+            CollectionReference collRef = database.Collection("Users").Document(username).Collection("Expenses");
+            QuerySnapshot queSnap = await collRef.GetSnapshotAsync();
+            return queSnap;
+        }
         public async Task<DocumentReference> SavingNewExpenses(String username)
         {
             String docName = await DocNameForExpenses(username);
@@ -280,8 +291,9 @@ namespace ExpenseApp
         }
         public bool isValidPassword(string password)
         {
-            string pattern = @"^(?=.*[A-Z])(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$";
+            String pattern = @"^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@#$%^&+=!])[A-Za-z\d@#$%^&+=!]{8,}$";
             return Regex.IsMatch(password, pattern);
+            
         }
         public bool validDate(String date)
         {

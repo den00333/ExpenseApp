@@ -21,8 +21,12 @@ namespace ExpenseApp
         private void wallet_Load(object sender, EventArgs e)
         {
             //loadWallet();
+            //displayExpenses();
+            //dgvExpenses.ColumnHeadersDefaultCellStyle.Font = new Font("Poppins", 14, FontStyle.Regular);
+            //dgvExpenses.DefaultCellStyle.Font = new Font("Poppins", 14, FontStyle.Regular);
+            //loadWallet();
         }
-        /*
+
         private async void loadWallet()
         {
             String username = FirebaseData.Instance.Username;
@@ -35,7 +39,7 @@ namespace ExpenseApp
             int ExpenseAmount = await o.getWalletAmount(docRef2);
             lblExpenses.Text = otherFunc.amountBeautify(ExpenseAmount);
 
-        }*/
+        }
 
         private void btnAddXpns_Click(object sender, EventArgs e)
         {
@@ -48,5 +52,20 @@ namespace ExpenseApp
             AddingBalanceForm ABF = new AddingBalanceForm(this);
             ABF.ShowDialog();
         }
+        //public async void displayExpenses()
+        //{
+        //    string username = FirebaseData.Instance.Username;
+        //    otherFunc o = new otherFunc();
+        //    QuerySnapshot snap = await o.displayData(username);
+
+        //    foreach (DocumentSnapshot docsnap in snap.Documents)
+        //    {
+        //        FirebaseData fd = docsnap.ConvertTo<FirebaseData>();
+        //        if (docsnap.Exists)
+        //        {
+        //            dgvExpenses.Rows.Add(fd.Category, fd.Amount.ToString());
+        //        }
+        //    }
+        //}
     }
 }

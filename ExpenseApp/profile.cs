@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace ExpenseApp
 {
-    public partial class tips : UserControl
+    public partial class profile : UserControl
     {
-        public tips()
+        public profile()
         {
             InitializeComponent();
         }
