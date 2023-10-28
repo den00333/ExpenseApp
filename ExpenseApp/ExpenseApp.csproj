@@ -256,11 +256,11 @@
     <Compile Include="Terms.Designer.cs">
       <DependentUpon>Terms.cs</DependentUpon>
     </Compile>
-    <Compile Include="tips.cs">
+    <Compile Include="profile.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="tips.Designer.cs">
-      <DependentUpon>tips.cs</DependentUpon>
+    <Compile Include="profile.Designer.cs">
+      <DependentUpon>profile.cs</DependentUpon>
     </Compile>
     <Compile Include="wallet.cs">
       <SubType>UserControl</SubType>
@@ -308,8 +308,8 @@
     <EmbeddedResource Include="Terms.resx">
       <DependentUpon>Terms.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="tips.resx">
-      <DependentUpon>tips.cs</DependentUpon>
+    <EmbeddedResource Include="profile.resx">
+      <DependentUpon>profile.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="wallet.resx">
       <DependentUpon>wallet.cs</DependentUpon>
@@ -329,6 +329,8 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\profile.png" />
+    <None Include="Resources\account.png" />
     <Content Include="Resources\category.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

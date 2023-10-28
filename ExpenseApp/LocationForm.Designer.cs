@@ -39,6 +39,7 @@
             this.cmbProvince = new Guna.UI2.WinForms.Guna2ComboBox();
             this.cmbMunicipal = new Guna.UI2.WinForms.Guna2ComboBox();
             this.cmbBrgy = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
             this.SuspendLayout();
             // 
             // label1
@@ -93,7 +94,7 @@
             this.btnEnter.ForeColor = System.Drawing.Color.White;
             this.btnEnter.Location = new System.Drawing.Point(44, 323);
             this.btnEnter.Name = "btnEnter";
-            this.btnEnter.Size = new System.Drawing.Size(243, 45);
+            this.btnEnter.Size = new System.Drawing.Size(107, 45);
             this.btnEnter.TabIndex = 8;
             this.btnEnter.Text = "Save";
             this.btnEnter.Click += new System.EventHandler(this.btnEnter_Click);
@@ -177,11 +178,29 @@
             this.cmbBrgy.Size = new System.Drawing.Size(243, 36);
             this.cmbBrgy.TabIndex = 22;
             // 
+            // guna2Button1
+            // 
+            this.guna2Button1.BorderRadius = 20;
+            this.guna2Button1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.guna2Button1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.guna2Button1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(123)))), ((int)(((byte)(47)))));
+            this.guna2Button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2Button1.ForeColor = System.Drawing.Color.White;
+            this.guna2Button1.Location = new System.Drawing.Point(180, 323);
+            this.guna2Button1.Name = "guna2Button1";
+            this.guna2Button1.Size = new System.Drawing.Size(107, 45);
+            this.guna2Button1.TabIndex = 23;
+            this.guna2Button1.Text = "Back";
+            this.guna2Button1.Click += new System.EventHandler(this.guna2Button1_Click);
+            // 
             // LocationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(334, 401);
+            this.Controls.Add(this.guna2Button1);
             this.Controls.Add(this.cmbBrgy);
             this.Controls.Add(this.cmbMunicipal);
             this.Controls.Add(this.cmbProvince);
@@ -193,6 +212,7 @@
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "LocationForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "LocationForm";
             this.Load += new System.EventHandler(this.LocationForm_Load);
             this.ResumeLayout(false);
@@ -211,5 +231,6 @@
         private Guna.UI2.WinForms.Guna2ComboBox cmbRegion;
         private Guna.UI2.WinForms.Guna2ComboBox cmbBrgy;
         private Guna.UI2.WinForms.Guna2ComboBox cmbMunicipal;
+        private Guna.UI2.WinForms.Guna2Button guna2Button1;
     }
 }

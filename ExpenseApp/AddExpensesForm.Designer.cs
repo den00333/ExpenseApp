@@ -67,14 +67,14 @@
             this.txtLocation.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtLocation.ForeColor = System.Drawing.Color.Black;
             this.txtLocation.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtLocation.Location = new System.Drawing.Point(55, 367);
-            this.txtLocation.Margin = new System.Windows.Forms.Padding(4, 9, 4, 9);
+            this.txtLocation.Location = new System.Drawing.Point(41, 298);
+            this.txtLocation.Margin = new System.Windows.Forms.Padding(3, 7, 3, 7);
             this.txtLocation.Name = "txtLocation";
             this.txtLocation.PasswordChar = '\0';
             this.txtLocation.PlaceholderText = "Location";
             this.txtLocation.ReadOnly = true;
             this.txtLocation.SelectedText = "";
-            this.txtLocation.Size = new System.Drawing.Size(260, 60);
+            this.txtLocation.Size = new System.Drawing.Size(195, 49);
             this.txtLocation.TabIndex = 13;
             this.txtLocation.TextChanged += new System.EventHandler(this.usernameTB_TextChanged);
             // 
@@ -92,13 +92,13 @@
             this.txtAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAmount.ForeColor = System.Drawing.Color.Black;
             this.txtAmount.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtAmount.Location = new System.Drawing.Point(51, 70);
-            this.txtAmount.Margin = new System.Windows.Forms.Padding(3, 10, 3, 10);
+            this.txtAmount.Location = new System.Drawing.Point(38, 57);
+            this.txtAmount.Margin = new System.Windows.Forms.Padding(2, 8, 2, 8);
             this.txtAmount.Name = "txtAmount";
             this.txtAmount.PasswordChar = '\0';
             this.txtAmount.PlaceholderText = "Amount";
             this.txtAmount.SelectedText = "";
-            this.txtAmount.Size = new System.Drawing.Size(333, 60);
+            this.txtAmount.Size = new System.Drawing.Size(250, 49);
             this.txtAmount.TabIndex = 15;
             this.txtAmount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAmount_KeyPress);
             // 
@@ -114,20 +114,18 @@
             this.cmbCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbCategory.ForeColor = System.Drawing.Color.Black;
             this.cmbCategory.ItemHeight = 30;
-            this.cmbCategory.Location = new System.Drawing.Point(55, 191);
-            this.cmbCategory.Margin = new System.Windows.Forms.Padding(4);
+            this.cmbCategory.Location = new System.Drawing.Point(41, 155);
             this.cmbCategory.Name = "cmbCategory";
-            this.cmbCategory.Size = new System.Drawing.Size(260, 36);
+            this.cmbCategory.Size = new System.Drawing.Size(196, 36);
             this.cmbCategory.TabIndex = 16;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(51, 144);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(38, 117);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(116, 29);
+            this.label1.Size = new System.Drawing.Size(90, 24);
             this.label1.TabIndex = 18;
             this.label1.Text = "Category:";
             // 
@@ -142,7 +140,7 @@
             // 
             this.btnSave.AutoRoundedCorners = true;
             this.btnSave.BorderColor = System.Drawing.Color.Transparent;
-            this.btnSave.BorderRadius = 26;
+            this.btnSave.BorderRadius = 21;
             this.btnSave.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSave.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnSave.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
@@ -151,10 +149,9 @@
             this.btnSave.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(123)))), ((int)(((byte)(47)))));
             this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Location = new System.Drawing.Point(759, 449);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(4);
+            this.btnSave.Location = new System.Drawing.Point(569, 365);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(156, 55);
+            this.btnSave.Size = new System.Drawing.Size(117, 45);
             this.btnSave.TabIndex = 20;
             this.btnSave.Text = "Save";
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -163,7 +160,7 @@
             // 
             this.btnBack.AutoRoundedCorners = true;
             this.btnBack.BorderColor = System.Drawing.Color.Transparent;
-            this.btnBack.BorderRadius = 26;
+            this.btnBack.BorderRadius = 21;
             this.btnBack.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnBack.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnBack.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
@@ -172,11 +169,10 @@
             this.btnBack.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(4)))), ((int)(((byte)(45)))));
             this.btnBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBack.ForeColor = System.Drawing.Color.White;
-            this.btnBack.Location = new System.Drawing.Point(595, 449);
-            this.btnBack.Margin = new System.Windows.Forms.Padding(4);
+            this.btnBack.Location = new System.Drawing.Point(446, 365);
             this.btnBack.Name = "btnBack";
             this.btnBack.ShadowDecoration.Depth = 100;
-            this.btnBack.Size = new System.Drawing.Size(156, 55);
+            this.btnBack.Size = new System.Drawing.Size(117, 45);
             this.btnBack.TabIndex = 21;
             this.btnBack.Text = "Back";
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
@@ -188,12 +184,11 @@
             this.dtpDate.FillColor = System.Drawing.SystemColors.Control;
             this.dtpDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpDate.Format = System.Windows.Forms.DateTimePickerFormat.Long;
-            this.dtpDate.Location = new System.Drawing.Point(55, 287);
-            this.dtpDate.Margin = new System.Windows.Forms.Padding(4);
+            this.dtpDate.Location = new System.Drawing.Point(41, 233);
             this.dtpDate.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.dtpDate.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.dtpDate.Name = "dtpDate";
-            this.dtpDate.Size = new System.Drawing.Size(328, 55);
+            this.dtpDate.Size = new System.Drawing.Size(246, 45);
             this.dtpDate.TabIndex = 22;
             this.dtpDate.TextOffset = new System.Drawing.Point(5, 0);
             this.dtpDate.Value = new System.DateTime(2023, 10, 20, 22, 19, 37, 953);
@@ -202,7 +197,7 @@
             // 
             this.btnCustomize.AutoRoundedCorners = true;
             this.btnCustomize.BorderColor = System.Drawing.Color.Transparent;
-            this.btnCustomize.BorderRadius = 23;
+            this.btnCustomize.BorderRadius = 19;
             this.btnCustomize.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnCustomize.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnCustomize.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -210,10 +205,9 @@
             this.btnCustomize.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(123)))), ((int)(((byte)(47)))));
             this.btnCustomize.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCustomize.ForeColor = System.Drawing.Color.White;
-            this.btnCustomize.Location = new System.Drawing.Point(317, 188);
-            this.btnCustomize.Margin = new System.Windows.Forms.Padding(4);
+            this.btnCustomize.Location = new System.Drawing.Point(238, 153);
             this.btnCustomize.Name = "btnCustomize";
-            this.btnCustomize.Size = new System.Drawing.Size(69, 49);
+            this.btnCustomize.Size = new System.Drawing.Size(52, 40);
             this.btnCustomize.TabIndex = 23;
             this.btnCustomize.Text = "...";
             this.btnCustomize.Click += new System.EventHandler(this.btnCustomize_Click);
@@ -222,10 +216,9 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(48, 238);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(36, 193);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(69, 29);
+            this.label2.Size = new System.Drawing.Size(53, 24);
             this.label2.TabIndex = 24;
             this.label2.Text = "Date:";
             // 
@@ -244,10 +237,9 @@
             this.btnLocation.ForeColor = System.Drawing.Color.Black;
             this.btnLocation.Image = global::ExpenseApp.Properties.Resources.location;
             this.btnLocation.ImageSize = new System.Drawing.Size(30, 30);
-            this.btnLocation.Location = new System.Drawing.Point(327, 367);
-            this.btnLocation.Margin = new System.Windows.Forms.Padding(4);
+            this.btnLocation.Location = new System.Drawing.Point(245, 298);
             this.btnLocation.Name = "btnLocation";
-            this.btnLocation.Size = new System.Drawing.Size(60, 60);
+            this.btnLocation.Size = new System.Drawing.Size(45, 49);
             this.btnLocation.TabIndex = 5;
             this.btnLocation.Click += new System.EventHandler(this.btnLocation_Click);
             // 
@@ -255,10 +247,9 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(467, 58);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(350, 47);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(213, 29);
+            this.label3.Size = new System.Drawing.Size(165, 24);
             this.label3.TabIndex = 25;
             this.label3.Text = "Name/Description:";
             // 
@@ -266,10 +257,9 @@
             // 
             this.richTextNote.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.richTextNote.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.richTextNote.Location = new System.Drawing.Point(13, 15);
-            this.richTextNote.Margin = new System.Windows.Forms.Padding(4);
+            this.richTextNote.Location = new System.Drawing.Point(10, 12);
             this.richTextNote.Name = "richTextNote";
-            this.richTextNote.Size = new System.Drawing.Size(449, 115);
+            this.richTextNote.Size = new System.Drawing.Size(337, 93);
             this.richTextNote.TabIndex = 26;
             this.richTextNote.Text = "Note";
             // 
@@ -277,10 +267,9 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(467, 249);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Location = new System.Drawing.Point(350, 202);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(71, 29);
+            this.label4.Size = new System.Drawing.Size(55, 24);
             this.label4.TabIndex = 27;
             this.label4.Text = "Note:";
             // 
@@ -288,10 +277,9 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(13, 15);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Location = new System.Drawing.Point(10, 12);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(230, 39);
+            this.label5.Size = new System.Drawing.Size(188, 32);
             this.label5.TabIndex = 28;
             this.label5.Text = "New Expense";
             // 
@@ -300,13 +288,14 @@
             this.guna2ShadowPanel4.BackColor = System.Drawing.Color.Transparent;
             this.guna2ShadowPanel4.Controls.Add(this.richTextNote);
             this.guna2ShadowPanel4.FillColor = System.Drawing.Color.White;
-            this.guna2ShadowPanel4.Location = new System.Drawing.Point(472, 283);
+            this.guna2ShadowPanel4.Location = new System.Drawing.Point(354, 230);
+            this.guna2ShadowPanel4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.guna2ShadowPanel4.Name = "guna2ShadowPanel4";
             this.guna2ShadowPanel4.ShadowColor = System.Drawing.Color.Black;
             this.guna2ShadowPanel4.ShadowDepth = 130;
             this.guna2ShadowPanel4.ShadowShift = 10;
             this.guna2ShadowPanel4.ShadowStyle = Guna.UI2.WinForms.Guna2ShadowPanel.ShadowMode.ForwardDiagonal;
-            this.guna2ShadowPanel4.Size = new System.Drawing.Size(475, 148);
+            this.guna2ShadowPanel4.Size = new System.Drawing.Size(356, 120);
             this.guna2ShadowPanel4.TabIndex = 30;
             // 
             // guna2ShadowPanel1
@@ -314,23 +303,23 @@
             this.guna2ShadowPanel1.BackColor = System.Drawing.Color.Transparent;
             this.guna2ShadowPanel1.Controls.Add(this.richTxtDesc);
             this.guna2ShadowPanel1.FillColor = System.Drawing.Color.White;
-            this.guna2ShadowPanel1.Location = new System.Drawing.Point(472, 93);
+            this.guna2ShadowPanel1.Location = new System.Drawing.Point(354, 76);
+            this.guna2ShadowPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.guna2ShadowPanel1.Name = "guna2ShadowPanel1";
             this.guna2ShadowPanel1.ShadowColor = System.Drawing.Color.Black;
             this.guna2ShadowPanel1.ShadowDepth = 130;
             this.guna2ShadowPanel1.ShadowShift = 10;
             this.guna2ShadowPanel1.ShadowStyle = Guna.UI2.WinForms.Guna2ShadowPanel.ShadowMode.ForwardDiagonal;
-            this.guna2ShadowPanel1.Size = new System.Drawing.Size(475, 148);
+            this.guna2ShadowPanel1.Size = new System.Drawing.Size(356, 120);
             this.guna2ShadowPanel1.TabIndex = 29;
             // 
             // richTxtDesc
             // 
             this.richTxtDesc.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.richTxtDesc.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.richTxtDesc.Location = new System.Drawing.Point(13, 17);
-            this.richTxtDesc.Margin = new System.Windows.Forms.Padding(4);
+            this.richTxtDesc.Location = new System.Drawing.Point(10, 14);
             this.richTxtDesc.Name = "richTxtDesc";
-            this.richTxtDesc.Size = new System.Drawing.Size(444, 119);
+            this.richTxtDesc.Size = new System.Drawing.Size(333, 97);
             this.richTxtDesc.TabIndex = 0;
             this.richTxtDesc.Text = "Name";
             // 
@@ -340,10 +329,10 @@
             // 
             // AddExpensesForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(973, 528);
+            this.ClientSize = new System.Drawing.Size(730, 429);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -361,9 +350,9 @@
             this.Controls.Add(this.guna2ShadowPanel4);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4);
-            this.MinimumSize = new System.Drawing.Size(973, 528);
+            this.MinimumSize = new System.Drawing.Size(730, 429);
             this.Name = "AddExpensesForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AddExpensesForm";
             this.Load += new System.EventHandler(this.AddExpensesForm_Load);
             this.guna2ShadowPanel4.ResumeLayout(false);

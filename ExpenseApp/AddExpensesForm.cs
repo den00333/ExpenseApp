@@ -16,6 +16,7 @@ namespace ExpenseApp
 {
     public partial class AddExpensesForm : Form
     {
+        
         public int R { get; set; }
         public int M { get; set; }
         public int P { get; set; }
@@ -124,6 +125,7 @@ namespace ExpenseApp
                             dtpDate.Value = DateTime.Now;
                             txtLocation.Clear();
                             richTxtDesc.Clear();
+                            this.Hide();
                         }
                     }
                     catch{
