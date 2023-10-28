@@ -31,21 +31,21 @@
             this.label1 = new System.Windows.Forms.Label();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.lblFirstname = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.guna2Panel3 = new Guna.UI2.WinForms.Guna2Panel();
-            this.homePanel = new System.Windows.Forms.Panel();
             this.btnLogut = new Guna.UI2.WinForms.Guna2Button();
             this.btnAccount = new Guna.UI2.WinForms.Guna2Button();
             this.btnGroup = new Guna.UI2.WinForms.Guna2Button();
             this.btnWallet = new Guna.UI2.WinForms.Guna2Button();
             this.btnDashboard = new Guna.UI2.WinForms.Guna2Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.homePanel = new System.Windows.Forms.Panel();
             this.dashboard1 = new ExpenseApp.dashboard();
             this.wallet1 = new ExpenseApp.wallet();
             this.group1 = new ExpenseApp.group();
             this.tips1 = new ExpenseApp.profile();
             this.guna2Panel1.SuspendLayout();
-            this.guna2Panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.guna2Panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -81,6 +81,16 @@
             this.lblFirstname.TabIndex = 8;
             this.lblFirstname.Text = "Hello, User!";
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::ExpenseApp.Properties.Resources.logo;
+            this.pictureBox1.Location = new System.Drawing.Point(16, 11);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(43, 41);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 6;
+            this.pictureBox1.TabStop = false;
+            // 
             // guna2Panel3
             // 
             this.guna2Panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(123)))), ((int)(((byte)(47)))));
@@ -100,15 +110,6 @@
             this.guna2Panel3.TabIndex = 7;
             this.guna2Panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.guna2Panel3_Paint_1);
             // 
-            // homePanel
-            // 
-            this.homePanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.homePanel.Location = new System.Drawing.Point(183, 62);
-            this.homePanel.Margin = new System.Windows.Forms.Padding(2);
-            this.homePanel.Name = "homePanel";
-            this.homePanel.Size = new System.Drawing.Size(1109, 620);
-            this.homePanel.TabIndex = 8;
-            // 
             // btnLogut
             // 
             this.btnLogut.BorderColor = System.Drawing.Color.Empty;
@@ -122,7 +123,7 @@
             this.btnLogut.ForeColor = System.Drawing.Color.Black;
             this.btnLogut.Image = global::ExpenseApp.Properties.Resources.logout;
             this.btnLogut.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnLogut.ImageOffset = new System.Drawing.Point(50, 0);
+            this.btnLogut.ImageOffset = new System.Drawing.Point(75, -2);
             this.btnLogut.Location = new System.Drawing.Point(-36, 563);
             this.btnLogut.Name = "btnLogut";
             this.btnLogut.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
@@ -144,7 +145,9 @@
             this.btnAccount.ForeColor = System.Drawing.Color.Black;
             this.btnAccount.Image = global::ExpenseApp.Properties.Resources.account;
             this.btnAccount.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnAccount.Location = new System.Drawing.Point(7, 225);
+            this.btnAccount.ImageOffset = new System.Drawing.Point(10, -2);
+            this.btnAccount.ImageSize = new System.Drawing.Size(25, 25);
+            this.btnAccount.Location = new System.Drawing.Point(14, 225);
             this.btnAccount.Name = "btnAccount";
             this.btnAccount.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
             this.btnAccount.Size = new System.Drawing.Size(211, 45);
@@ -166,7 +169,9 @@
             this.btnGroup.ForeColor = System.Drawing.Color.Black;
             this.btnGroup.Image = global::ExpenseApp.Properties.Resources.group;
             this.btnGroup.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnGroup.Location = new System.Drawing.Point(10, 158);
+            this.btnGroup.ImageOffset = new System.Drawing.Point(10, -2);
+            this.btnGroup.ImageSize = new System.Drawing.Size(25, 25);
+            this.btnGroup.Location = new System.Drawing.Point(14, 158);
             this.btnGroup.Name = "btnGroup";
             this.btnGroup.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
             this.btnGroup.Size = new System.Drawing.Size(208, 45);
@@ -188,7 +193,9 @@
             this.btnWallet.ForeColor = System.Drawing.Color.Black;
             this.btnWallet.Image = global::ExpenseApp.Properties.Resources.wallet1;
             this.btnWallet.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnWallet.Location = new System.Drawing.Point(7, 92);
+            this.btnWallet.ImageOffset = new System.Drawing.Point(10, -2);
+            this.btnWallet.ImageSize = new System.Drawing.Size(25, 25);
+            this.btnWallet.Location = new System.Drawing.Point(14, 92);
             this.btnWallet.Name = "btnWallet";
             this.btnWallet.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
             this.btnWallet.Size = new System.Drawing.Size(211, 45);
@@ -210,7 +217,9 @@
             this.btnDashboard.ForeColor = System.Drawing.Color.Black;
             this.btnDashboard.Image = global::ExpenseApp.Properties.Resources.dashboard;
             this.btnDashboard.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnDashboard.Location = new System.Drawing.Point(7, 27);
+            this.btnDashboard.ImageOffset = new System.Drawing.Point(10, -2);
+            this.btnDashboard.ImageSize = new System.Drawing.Size(25, 25);
+            this.btnDashboard.Location = new System.Drawing.Point(14, 27);
             this.btnDashboard.Name = "btnDashboard";
             this.btnDashboard.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
             this.btnDashboard.Size = new System.Drawing.Size(211, 45);
@@ -219,15 +228,14 @@
             this.btnDashboard.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnDashboard.Click += new System.EventHandler(this.btnDashboard_Click);
             // 
-            // pictureBox1
+            // homePanel
             // 
-            this.pictureBox1.Image = global::ExpenseApp.Properties.Resources.logo;
-            this.pictureBox1.Location = new System.Drawing.Point(16, 11);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(43, 41);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 6;
-            this.pictureBox1.TabStop = false;
+            this.homePanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.homePanel.Location = new System.Drawing.Point(183, 62);
+            this.homePanel.Margin = new System.Windows.Forms.Padding(2);
+            this.homePanel.Name = "homePanel";
+            this.homePanel.Size = new System.Drawing.Size(1109, 620);
+            this.homePanel.TabIndex = 8;
             // 
             // dashboard1
             // 
@@ -290,8 +298,8 @@
             this.Load += new System.EventHandler(this.Home_Load);
             this.guna2Panel1.ResumeLayout(false);
             this.guna2Panel1.PerformLayout();
-            this.guna2Panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.guna2Panel3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
