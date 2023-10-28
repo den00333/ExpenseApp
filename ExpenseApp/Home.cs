@@ -23,8 +23,8 @@ namespace ExpenseApp
 
             btnDashboard.FillColor = SystemColors.Control;
             btnDashboard.ForeColor = Color.Black;
-            changeButtonColor(btnWallet, btnTips, btnGroup);
-            changeFontColor(btnWallet, btnTips, btnGroup);
+            changeButtonColor(btnWallet, btnAccount, btnGroup);
+            changeFontColor(btnWallet, btnAccount, btnGroup);
 
             dashboard dashboard = new dashboard();
             addUserControl(dashboard);
@@ -45,8 +45,8 @@ namespace ExpenseApp
         {
             btnDashboard.FillColor = SystemColors.Control;
             btnDashboard.ForeColor = Color.Black;
-            changeButtonColor(btnWallet, btnTips, btnGroup);
-            changeFontColor(btnWallet, btnTips, btnGroup);
+            changeButtonColor(btnWallet, btnAccount, btnGroup);
+            changeFontColor(btnWallet, btnAccount, btnGroup);
 
             dashboard dashboard = new dashboard();
             addUserControl(dashboard);
@@ -56,8 +56,8 @@ namespace ExpenseApp
         {
             btnWallet.FillColor = SystemColors.Control;
             btnWallet.ForeColor = Color.Black;
-            changeButtonColor(btnDashboard, btnTips, btnGroup);
-            changeFontColor(btnDashboard, btnTips, btnGroup);
+            changeButtonColor(btnDashboard, btnAccount, btnGroup);
+            changeFontColor(btnDashboard, btnAccount, btnGroup);
 
             wallet wallet = new wallet();
             addUserControl(wallet);
@@ -67,8 +67,8 @@ namespace ExpenseApp
         {
             btnGroup.FillColor = SystemColors.Control;
             btnGroup.ForeColor = Color.Black;
-            changeButtonColor(btnDashboard, btnTips, btnWallet);
-            changeFontColor(btnDashboard, btnTips, btnWallet);
+            changeButtonColor(btnDashboard, btnAccount, btnWallet);
+            changeFontColor(btnDashboard, btnAccount, btnWallet);
 
             group group = new group();
             addUserControl(group);
@@ -76,11 +76,11 @@ namespace ExpenseApp
 
         private void btnTips_Click(object sender, EventArgs e)
         {
-            btnTips.FillColor = SystemColors.Control;
-            btnTips.ForeColor = Color.Black;
+            btnAccount.FillColor = SystemColors.Control;
+            btnAccount.ForeColor = Color.Black;
             changeButtonColor(btnDashboard, btnWallet, btnGroup);
             changeFontColor(btnDashboard, btnWallet, btnGroup);
-            tips tips = new tips();
+            profile tips = new profile();
             addUserControl(tips);
         }
 
