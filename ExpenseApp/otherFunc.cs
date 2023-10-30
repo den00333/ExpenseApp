@@ -21,6 +21,7 @@ using System.IO;
 using Newtonsoft.Json;
 using System.Globalization;
 using Guna.UI2.WinForms;
+using System.Runtime.CompilerServices;
 
 namespace ExpenseApp
 {
@@ -42,6 +43,31 @@ namespace ExpenseApp
 
             return false;
         }
+
+        public async static void checkInternet(connectionForm c, Home h) 
+        {
+            if (!internetConn())
+            {
+                
+                c.lblConnection.Text = "No Connection!";
+                c.lblConnection.ForeColor = Color.Red;
+                c.StartPosition = FormStartPosition.Manual;
+                c.Location = new Point(h.Location.X + h.Width - (c.Width + 10), h.Location.Y + (c.Height * 15));
+
+                await Task.Delay(2000);
+                c.TopMost = true;
+                c.Show();
+                c.BringToFront();
+            }
+            else
+            {
+                c.Hide();
+            }
+            
+            
+            
+        }
+
         public static IFirebaseClient conn()
         {
             IFirebaseConfig config = new FirebaseConfig(){

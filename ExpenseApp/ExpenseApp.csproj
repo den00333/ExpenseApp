@@ -201,6 +201,12 @@
     <Compile Include="AddingBalanceForm.Designer.cs">
       <DependentUpon>AddingBalanceForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="connectionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="connectionForm.Designer.cs">
+      <DependentUpon>connectionForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="customizeCategory.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -239,6 +245,12 @@
     <Compile Include="Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
+    <Compile Include="NoConnectionUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="NoConnectionUC.Designer.cs">
+      <DependentUpon>NoConnectionUC.cs</DependentUpon>
+    </Compile>
     <Compile Include="otherFunc.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -274,6 +286,9 @@
     <EmbeddedResource Include="AddingBalanceForm.resx">
       <DependentUpon>AddingBalanceForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="connectionForm.resx">
+      <DependentUpon>connectionForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="customizeCategory.resx">
       <DependentUpon>customizeCategory.cs</DependentUpon>
     </EmbeddedResource>
@@ -291,6 +306,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NoConnectionUC.resx">
+      <DependentUpon>NoConnectionUC.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
