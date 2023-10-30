@@ -262,6 +262,12 @@
     <Compile Include="profile.Designer.cs">
       <DependentUpon>profile.cs</DependentUpon>
     </Compile>
+    <Compile Include="updateAcc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="updateAcc.Designer.cs">
+      <DependentUpon>updateAcc.cs</DependentUpon>
+    </Compile>
     <Compile Include="wallet.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -311,6 +317,9 @@
     <EmbeddedResource Include="profile.resx">
       <DependentUpon>profile.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="updateAcc.resx">
+      <DependentUpon>updateAcc.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="wallet.resx">
       <DependentUpon>wallet.cs</DependentUpon>
     </EmbeddedResource>
@@ -331,6 +340,7 @@
   <ItemGroup>
     <None Include="Resources\profile.png" />
     <None Include="Resources\account.png" />
+    <None Include="Resources\accountBlack.png" />
     <Content Include="Resources\category.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

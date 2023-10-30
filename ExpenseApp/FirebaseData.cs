@@ -32,6 +32,15 @@ namespace ExpenseApp
 
         [FirestoreProperty("First Name")]
         public String FirstName { get; set; }
+
+        [FirestoreProperty("Last Name")]
+        public String LastName { get; set; }
+        [FirestoreProperty]
+        public string Email { get; set; }
+
+        [FirestoreProperty]
+        public string Bio { get; set; }
+
         [FirestoreProperty]
         public string Category { get; set; }
 

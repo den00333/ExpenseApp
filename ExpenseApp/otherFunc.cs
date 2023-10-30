@@ -21,6 +21,7 @@ using System.IO;
 using Newtonsoft.Json;
 using System.Globalization;
 using Guna.UI2.WinForms;
+using System.Web.UI.WebControls;
 
 namespace ExpenseApp
 {
@@ -108,6 +109,7 @@ namespace ExpenseApp
             FirestoreDb database = FirestoreConn();
             CollectionReference collRef = database.Collection("Users").Document(username).Collection("Expenses");
             QuerySnapshot queSnap = await collRef.GetSnapshotAsync();
+
             return queSnap;
         }
         public async Task<DocumentReference> SavingNewExpenses(String username)
@@ -219,7 +221,7 @@ namespace ExpenseApp
             return false;
         }
            
-        public async void signingUp(String username, String fname, String lname, String email, String password, String repeatpass, CheckBox terms, Signup s)
+        public async void signingUp(String username, String fname, String lname, String email, String password, String repeatpass, System.Windows.Forms.CheckBox terms, Signup s)
         {
             var database = FirestoreConn();
             otherFunc function = new otherFunc();
@@ -320,6 +322,32 @@ namespace ExpenseApp
                 }
             }
             return false;
+        }
+        public async void updateData(string username, string firstname, string lastname, string email, string bio, updateAcc update)
+        {
+            var database = FirestoreConn();
+            try
+            {
+                DocumentReference docref = database.Collection("Users").Document(username);
+                Dictionary<string, object> data = new Dictionary<string, object>()
+                {
+                    {"First Name", firstname},
+                    {"Last Name", lastname},
+                    {"Email", email},
+                    {"Username",  username},
+                    {"Bio", bio}
+                };
+                await docref.SetAsync(data);
+                DialogResult respond = MessageBox.Show("Successfully update your account!", "Success", MessageBoxButtons.OK);
+                if (respond == DialogResult.OK)
+                {
+                    update.Hide();
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }
