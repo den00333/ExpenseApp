@@ -59,7 +59,6 @@ namespace ExpenseApp
             DocumentReference docRef = await o.SavingWalletAmount(username, wallet);
             int amount = await o.getWalletAmount(docRef);
             int total = int.Parse(txtAmount.Text.ToString()) + amount;
-            Console.WriteLine("amount:" + amount + " Total: " + total);
             Dictionary<String, object> data = new Dictionary<String, object>()
             {
                 {"Amount", total}

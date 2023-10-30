@@ -75,9 +75,9 @@ namespace ExpenseApp
 
         }
 
-        public async Task<String> DocNameForExpenses(String username)
+        public async Task<int> DocNameForExpenses(String username)
         {
-            String Ename = null;
+            int Ename = 0;
             FirestoreDb database = FirestoreConn();
             CollectionReference cRef = database.Collection("Users").Document(username).Collection("Expenses");
             Query q = cRef.OrderByDescending("timestamp").Limit(1);
@@ -86,14 +86,13 @@ namespace ExpenseApp
             {
                 DocumentSnapshot docSnap = qSnap.Documents[0];
                 String docName = docSnap.Id;
-                int num = int.Parse(docName.Trim('E'))+1;
-                Ename = string.Concat("E", num.ToString());
+                Ename = int.Parse(docName.Trim('E'));
                 return Ename;
 
             }
             else
             {
-                Ename = "E1";
+                Ename = 1;
                 return Ename;
             }
             
@@ -112,7 +111,10 @@ namespace ExpenseApp
         }
         public async Task<DocumentReference> SavingNewExpenses(String username)
         {
-            String docName = await DocNameForExpenses(username);
+            int docNum = await DocNameForExpenses(username);
+            Console.WriteLine("docNum: " + docNum);
+            String docName = string.Concat("E", (docNum + 1).ToString());
+            Console.WriteLine("docName: " + docName);
             FirestoreDb database = FirestoreConn();
             DocumentReference docRef = database.Collection("Users").Document(username).Collection("Expenses").Document(docName);
             
@@ -144,9 +146,14 @@ namespace ExpenseApp
 
         public static String amountBeautify(int total)
         {
+            String output = "₱";
+            if (total < 0)
+            {
+                total = total * -1;
+                output = "-₱";
+            }
 
             char[] ordered = total.ToString().ToCharArray();
-            String output = "₱";
             if (ordered.Length <= 3)
             {
                 return output + total.ToString();
@@ -172,12 +179,55 @@ namespace ExpenseApp
             
         }
 
+        public async Task<int> SubtractExpensesFromWalletExpenses(String username) 
+        {
+            //get the latest added expense
+            //get the latest docname
+            //get the amount of that docname
+            //get the current amount availabe in expenses then subtract then update
+            
+            DocumentReference docRefExpenses = await getDocRefExpenses(username);
+            Console.WriteLine("START OF 1ST GETWALLET");
+            int expense = await getWalletAmount(docRefExpenses);
+            Console.WriteLine("EXPENSE:" + expense);
+            DocumentReference docRefWallet = await SavingWalletAmount(username, "Expense");
+            int currentAmountInExpenses = await getWalletAmount(docRefWallet);
+            Console.WriteLine("Sencond: " + currentAmountInExpenses);
+            int total = currentAmountInExpenses - expense;
+            Dictionary<String, object> data = new Dictionary<String, object>()
+            {
+                {"Amount", total}
+            };
+            await docRefWallet.UpdateAsync(data);
+            return total;
+
+        }
+
+        public async Task<DocumentReference> getDocRefExpenses(String username)
+        {
+            int docNum = await DocNameForExpenses(username);
+            
+            String docName = string.Concat("E", (docNum + 1).ToString());
+            FirestoreDb database = FirestoreConn();
+            DocumentReference docRef = database.Collection("Users").Document(username).Collection("Expenses").Document(docName);
+            DocumentSnapshot ds = await docRef.GetSnapshotAsync();
+            Console.WriteLine("is the " + docName + "from getdocrefexpenses exists?: " + ds.Exists);
+            return docRef;
+        }
+
         public async Task<int> getWalletAmount(DocumentReference docRef)
         {
             DocumentSnapshot docSnap = await docRef.GetSnapshotAsync();
-            FirebaseData am = docSnap.ConvertTo<FirebaseData>();
-            int amount = am.Amount;
-            return amount;
+            if (docSnap.Exists)
+            {
+                FirebaseData am = docSnap.ConvertTo<FirebaseData>();
+                int amount = am.Amount;
+                return amount;
+            }else
+            {
+                Console.WriteLine("ERROR IN GET WALLET");
+                return 0;
+            }
         }
 
         public static async Task<bool> isUsernameExistingAsync(String username)
