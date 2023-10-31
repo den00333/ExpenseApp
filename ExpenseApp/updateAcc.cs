@@ -14,9 +14,11 @@ namespace ExpenseApp
 {
     public partial class updateAcc : Form
     {
-        public updateAcc()
+        private profile profile;
+        public updateAcc(profile p)
         {
             InitializeComponent();
+            this.profile = p;
         }
 
         private void guna2Button2_Click(object sender, EventArgs e)
@@ -50,6 +52,7 @@ namespace ExpenseApp
         }
         async void updateAccount()
         {
+            Security s = new Security();
             string username = FirebaseData.Instance.Username;
             otherFunc o = new otherFunc();
             DocumentSnapshot snap = await o.logInFunc(username);
@@ -61,6 +64,7 @@ namespace ExpenseApp
                 txtLastname.Text = fd.LastName;
                 txtEmail.Text = fd.Email;
                 rtbBio.Text = fd.Bio;
+                txtPassword.Text = Security.Decrypt(fd.Password.ToString());
             }
         }
 
@@ -68,12 +72,40 @@ namespace ExpenseApp
         {
             otherFunc o = new otherFunc();
             string firstname = txtFirstname.Text;
-            string lastname = txtFirstname.Text;
+            string lastname = txtLastname.Text;
             string email = txtEmail.Text;
             string username = txtUsername.Text;
             string bio = rtbBio.Text;
-            
-            o.updateData(username, firstname, lastname, email, bio, this);
+            string password = txtPassword.Text;
+            profile p = profile;
+            PictureBox pic = pbPic;
+
+
+            o.updateData(username, firstname, lastname, email, bio, password, this, p, pic);
+          
+        }
+
+        private void txtFirstname_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetter(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+                MessageBox.Show("Cannot Enter Numerical Values and Special Characters", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void txtLastname_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetter(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+                MessageBox.Show("Cannot Enter Numerical Values and Special Characters", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void guna2ShadowPanel3_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

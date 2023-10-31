@@ -22,6 +22,7 @@ using Newtonsoft.Json;
 using System.Globalization;
 using Guna.UI2.WinForms;
 using System.Web.UI.WebControls;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace ExpenseApp
 {
@@ -323,30 +324,53 @@ namespace ExpenseApp
             }
             return false;
         }
-        public async void updateData(string username, string firstname, string lastname, string email, string bio, updateAcc update)
+        public async void updateData(string username, string fname, string lname, string email, string bio, string password, updateAcc update, profile p, PictureBox img)
         {
             var database = FirestoreConn();
-            try
+            otherFunc function = new otherFunc();
+            bool validEmail = otherFunc.isValidEmail(email);
+            bool isEmpty = areControlEmpty(fname, lname, email, username, password);
+            bool validUsername = await otherFunc.isUsernameExistingAsync(username);
+
+            Dictionary<String, bool> validatingData = new Dictionary<string, bool>()
             {
-                DocumentReference docref = database.Collection("Users").Document(username);
-                Dictionary<string, object> data = new Dictionary<string, object>()
+                 { "username", !validUsername},
+                 { "email", validEmail}
+            };
+            bool validData = function.isValidData(validatingData);
+            if (!isEmpty)
+            {
+                if (validData)
                 {
-                    {"First Name", firstname},
-                    {"Last Name", lastname},
-                    {"Email", email},
-                    {"Username",  username},
-                    {"Bio", bio}
-                };
-                await docref.SetAsync(data);
-                DialogResult respond = MessageBox.Show("Successfully update your account!", "Success", MessageBoxButtons.OK);
-                if (respond == DialogResult.OK)
-                {
-                    update.Hide();
+                    try
+                    {
+                        DocumentReference docref = database.Collection("Users").Document(username);
+                        Dictionary<string, object> data = new Dictionary<string, object>()
+                        {
+                            {"First Name", fname},
+                            {"Last Name", lname},
+                            {"Email", email},
+                            {"Username",  username},
+                            {"Bio", bio},
+                            {"Password", Security.Encrypt(password)}
+                        };
+                        await docref.SetAsync(data);
+                        DialogResult respond = MessageBox.Show("Successfully update your account!", "Success", MessageBoxButtons.OK);
+                        if (respond == DialogResult.OK)
+                        {
+                            p.displayProfile();
+                            update.Hide();
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
                 }
             }
-            catch(Exception ex)
+            else
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Something is missing", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
     }

@@ -20,7 +20,7 @@ namespace ExpenseApp
 
         private void guna2Button2_Click(object sender, EventArgs e)
         {
-            updateAcc ua = new updateAcc();
+            updateAcc ua = new updateAcc(this);
             ua.ShowDialog();
         }
         async void diplayProfile()
@@ -32,7 +32,7 @@ namespace ExpenseApp
         {
             displayProfile();
         }
-        async void displayProfile()
+        public async void displayProfile()
         {
             string username = FirebaseData.Instance.Username;
             otherFunc o = new otherFunc();
