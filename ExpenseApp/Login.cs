@@ -20,7 +20,7 @@ namespace ExpenseApp
 {
     public partial class Login : Form
     {
-        IFirebaseClient cliente;
+        //IFirebaseClient cliente;
         public Login()
         {
             InitializeComponent();
@@ -33,19 +33,10 @@ namespace ExpenseApp
 
         private void Login_Load(object sender, EventArgs e)
         {
-            cliente = otherFunc.conn();
-            bool connection = otherFunc.internetConn();
+            //cliente = otherFunc.conn();
+            timer1.Tick += new EventHandler(timer1_Tick);
             timer1.Start();
-            if (cliente != null && connection)
-            {
-                count = 5;
-            }
-            else
-            {
-                timer1.Stop();
-                lblConnection.Text = "No Connection...";
-                lblConnection.ForeColor = System.Drawing.Color.Red;
-            }
+            
         }
 
         private void closeBTN_Click(object sender, EventArgs e)
@@ -75,7 +66,18 @@ namespace ExpenseApp
         }
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            logIn();
+            if (otherFunc.internetConn())
+            {
+                logIn();
+            }
+            else
+            {
+                DialogResult res = MessageBox.Show("No internet connection!\nDo you want to use our offline version?", "Connection", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if(res == DialogResult.Yes)
+                {
+                    MessageBox.Show("Gagawin pa lang, antay ka lang");
+                }
+            }
         }
 
         async void logIn()
@@ -110,21 +112,35 @@ namespace ExpenseApp
             this.WindowState = FormWindowState.Minimized;
         }
 
-        private int count = 0;
+        int count = 4;
         private void timer1_Tick(object sender, EventArgs e)
         {
-            if (count > 0)
+            
+            bool connection = otherFunc.internetConn();
+            if (connection)
             {
-                /*checking connection*/
-                lblConnection.Text = "Connected Succesfully!";
-                lblConnection.ForeColor = System.Drawing.Color.Green;
-                count--;
+                
+                if (count > 0)
+                {
+                    /*checking connection*/
+                    lblConnection.Text = "Connected Succesfully!";
+                    lblConnection.ForeColor = System.Drawing.Color.Green;
+                    count--;
+                }
+                else
+                {
+                    lblConnection.Text = string.Empty;
+                }
+                
+                
             }
             else
             {
-                timer1.Stop();
-                lblConnection.Text = string.Empty;
+                count = 4;
+                lblConnection.Text = "No Connection...";
+                lblConnection.ForeColor = System.Drawing.Color.Red;
             }
+            
         }
     }
 }
