@@ -24,12 +24,12 @@ namespace ExpenseApp
         public int B { get; set; }
         private ctg catG; /*category*/
         
-        public AddExpensesForm(wallet w)
+        
         private wallet w;
         public AddExpensesForm(wallet wal)
         {
             this.w = wal;
-            InitializeCompone nt();
+            InitializeComponent();
             initializeCMB();
             this.walletInstance = w;
         }
