@@ -321,6 +321,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="password.resx">
       <DependentUpon>password.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="NoConnectionUC.resx">
       <DependentUpon>NoConnectionUC.cs</DependentUpon>
     </EmbeddedResource>
