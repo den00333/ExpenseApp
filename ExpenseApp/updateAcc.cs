@@ -102,10 +102,5 @@ namespace ExpenseApp
                 MessageBox.Show("Cannot Enter Numerical Values and Special Characters", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-        private void guna2ShadowPanel3_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
     }
 }
