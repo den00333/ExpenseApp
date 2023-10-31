@@ -23,9 +23,13 @@ namespace ExpenseApp
         public int P { get; set; }
         public int B { get; set; }
         private ctg catG; /*category*/
+        
         public AddExpensesForm(wallet w)
+        private wallet w;
+        public AddExpensesForm(wallet wal)
         {
-            InitializeComponent();
+            this.w = wal;
+            InitializeCompone nt();
             initializeCMB();
             this.walletInstance = w;
         }
@@ -80,12 +84,16 @@ namespace ExpenseApp
             ccg.Show();
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
+        private async void btnSave_Click(object sender, EventArgs e)
         {
+            otherFunc o = new otherFunc();
+            String user = FirebaseData.Instance.Username;
             bool hasInternet = otherFunc.internetConn();
             if (hasInternet) {
                 try{
                     Save();
+                    w.lblExpenses.Text = otherFunc.amountBeautify( await o.SubtractExpensesFromWalletExpenses(user));
+                    
                 }
                 catch {
                     MessageBox.Show("Error occured during saving!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);

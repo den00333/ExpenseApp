@@ -44,7 +44,7 @@ namespace ExpenseApp
         [FirestoreProperty]
         public string Category { get; set; }
 
-        [FirestoreProperty]
+        [FirestoreProperty("Amount")]
         public int Amount { get; set; }
     }
 

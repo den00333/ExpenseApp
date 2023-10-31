@@ -17,6 +17,8 @@ namespace ExpenseApp
     {
 
         string username;
+        connectionForm cf;
+        Timer timer1;
         public Home()
         {
             InitializeComponent();
@@ -29,6 +31,31 @@ namespace ExpenseApp
             dashboard dashboard = new dashboard();
             addUserControl(dashboard);
             username = FirebaseData.Instance.Username;
+
+            cf = new connectionForm();
+            otherFunc.checkInternet(cf, this);
+            timer1 = new Timer();
+            timer1.Interval = 5000;
+            timer1.Tick += new EventHandler(timer1_Tick);
+            timer1.Start();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            Console.WriteLine("Timer tick event occurred.");
+            if (!otherFunc.internetConn())
+            {
+                otherFunc.checkInternet(cf, this);
+            }else
+            {
+                otherFunc.checkInternet(cf, this);
+            }
+        }
+
+        private void Home_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            timer1.Stop();
+            Application.Exit();
         }
 
         private void Home_Load(object sender, EventArgs e)
@@ -47,9 +74,16 @@ namespace ExpenseApp
             btnDashboard.ForeColor = Color.Black;
             changeButtonColor(btnWallet, btnAccount, btnGroup);
             changeFontColor(btnWallet, btnAccount, btnGroup);
-
-            dashboard dashboard = new dashboard();
-            addUserControl(dashboard);
+            if (otherFunc.internetConn())
+            {
+                dashboard dashboard = new dashboard();
+                addUserControl(dashboard);
+            }
+            else
+            {
+                NoConnectionUC nc = new NoConnectionUC();
+                addUserControl(nc);
+            }
         }
 
         private void btnWallet_Click(object sender, EventArgs e)
@@ -69,9 +103,16 @@ namespace ExpenseApp
             btnGroup.ForeColor = Color.Black;
             changeButtonColor(btnDashboard, btnAccount, btnWallet);
             changeFontColor(btnDashboard, btnAccount, btnWallet);
-
-            group group = new group();
-            addUserControl(group);
+            if (otherFunc.internetConn())
+            {
+                group group = new group();
+                addUserControl(group);
+            }
+            else
+            {
+                NoConnectionUC nc = new NoConnectionUC();
+                addUserControl(nc);
+            }
         }
 
         private void btnTips_Click(object sender, EventArgs e)
@@ -80,8 +121,16 @@ namespace ExpenseApp
             btnAccount.ForeColor = Color.Black;
             changeButtonColor(btnDashboard, btnWallet, btnGroup);
             changeFontColor(btnDashboard, btnWallet, btnGroup);
-            profile tips = new profile();
-            addUserControl(tips);
+            if (otherFunc.internetConn())
+            {
+                profile tips = new profile();
+                addUserControl(tips);
+            }
+            else
+            {
+                NoConnectionUC nc = new NoConnectionUC();
+                addUserControl(nc);
+            }
         }
 
         private void btnLogut_Click(object sender, EventArgs e)
@@ -89,6 +138,7 @@ namespace ExpenseApp
             DialogResult result = MessageBox.Show("Do you really want to logout?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
+                timer1.Stop();
                 this.Hide();
                 Login login = new Login();
                 login.Show();
@@ -128,5 +178,7 @@ namespace ExpenseApp
                 lblFirstname.Text = "Hello, " + fd.FirstName + "!";
             }
         }
+
+
     }
 }

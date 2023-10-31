@@ -52,7 +52,7 @@ namespace ExpenseApp
             AddingBalanceForm ABF = new AddingBalanceForm(this);
             ABF.ShowDialog();
         }
-        public async void displayExpenses()
+        /*public async void displayExpenses()
         {
             string username = FirebaseData.Instance.Username;
             otherFunc o = new otherFunc();
@@ -69,5 +69,15 @@ namespace ExpenseApp
                 }
             }
         }
+            foreach (DocumentSnapshot docsnap in snap.Documents)
+            {
+                FirebaseData fd = docsnap.ConvertTo<FirebaseData>();
+                if (docsnap.Exists)
+                {
+                    dgvExpenses.Rows.Add(fd.Category, fd.Amount.ToString());
+                }
+            }
+        }
+*/
     }
 }
