@@ -14,13 +14,14 @@ using Google.Cloud.Firestore;
 using System.Web.Caching;
 using System.Windows.Forms;
 using System.Runtime.Remoting.Messaging;
-
 using System.Net.NetworkInformation;
 using System.Drawing;
 using System.IO;
 using Newtonsoft.Json;
 using System.Globalization;
 using Guna.UI2.WinForms;
+using System.Web.UI.WebControls;
+using static System.Net.Mime.MediaTypeNames;
 using System.Runtime.CompilerServices;
 
 namespace ExpenseApp
@@ -133,6 +134,7 @@ namespace ExpenseApp
             FirestoreDb database = FirestoreConn();
             CollectionReference collRef = database.Collection("Users").Document(username).Collection("Expenses");
             QuerySnapshot queSnap = await collRef.GetSnapshotAsync();
+
             return queSnap;
         }
         public async Task<DocumentReference> SavingNewExpenses(String username)
@@ -295,7 +297,7 @@ namespace ExpenseApp
             return false;
         }
            
-        public async void signingUp(String username, String fname, String lname, String email, String password, String repeatpass, CheckBox terms, Signup s)
+        public async void signingUp(String username, String fname, String lname, String email, String password, String repeatpass, System.Windows.Forms.CheckBox terms, Signup s)
         {
             var database = FirestoreConn();
             otherFunc function = new otherFunc();
@@ -396,6 +398,55 @@ namespace ExpenseApp
                 }
             }
             return false;
+        }
+        public async void updateData(string username, string fname, string lname, string email, string bio, string password, updateAcc update, profile p, PictureBox img)
+        {
+            var database = FirestoreConn();
+            otherFunc function = new otherFunc();
+            bool validEmail = otherFunc.isValidEmail(email);
+            bool isEmpty = areControlEmpty(fname, lname, email, username, password);
+            bool validUsername = await otherFunc.isUsernameExistingAsync(username);
+
+            Dictionary<String, bool> validatingData = new Dictionary<string, bool>()
+            {
+                 { "username", !validUsername},
+                 { "email", validEmail}
+            };
+            bool validData = function.isValidData(validatingData);
+            if (!isEmpty)
+            {
+                if (validData)
+                {
+                    try
+                    {
+                        DocumentReference docref = database.Collection("Users").Document(username);
+                        Dictionary<string, object> data = new Dictionary<string, object>()
+                        {
+                            {"First Name", fname},
+                            {"Last Name", lname},
+                            {"Email", email},
+                            {"Username",  username},
+                            {"Bio", bio},
+                            {"Password", Security.Encrypt(password)}
+                        };
+                        await docref.SetAsync(data);
+                        DialogResult respond = MessageBox.Show("Successfully update your account!", "Success", MessageBoxButtons.OK);
+                        if (respond == DialogResult.OK)
+                        {
+                            p.displayProfile();
+                            update.Hide();
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Something is missing", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
     }
 }

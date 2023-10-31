@@ -16,19 +16,22 @@ namespace ExpenseApp
 {
     public partial class AddExpensesForm : Form
     {
-        
+
+        private wallet walletInstance;
         public int R { get; set; }
         public int M { get; set; }
         public int P { get; set; }
         public int B { get; set; }
         private ctg catG; /*category*/
+        
+        public AddExpensesForm(wallet w)
         private wallet w;
         public AddExpensesForm(wallet wal)
         {
             this.w = wal;
-            InitializeComponent();
+            InitializeCompone nt();
             initializeCMB();
-
+            this.walletInstance = w;
         }
 
         private void initializeCMB()
@@ -132,6 +135,7 @@ namespace ExpenseApp
                             dtpDate.Value = DateTime.Now;
                             txtLocation.Clear();
                             richTxtDesc.Clear();
+                            walletInstance.displayExpenses();
                             this.Hide();
                         }
                     }

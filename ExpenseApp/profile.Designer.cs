@@ -28,41 +28,27 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.pbProfilepic = new Guna.UI2.WinForms.Guna2PictureBox();
             this.guna2ShadowPanel1 = new Guna.UI2.WinForms.Guna2ShadowPanel();
             this.guna2GradientPanel1 = new Guna.UI2.WinForms.Guna2GradientPanel();
             this.guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
             this.lblUsername = new System.Windows.Forms.Label();
             this.lblFirstname = new System.Windows.Forms.Label();
+            this.pbProfilepic = new Guna.UI2.WinForms.Guna2PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.guna2ShadowPanel2 = new Guna.UI2.WinForms.Guna2ShadowPanel();
-            this.label4 = new System.Windows.Forms.Label();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
+            this.lblEmail = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.pbProfilepic)).BeginInit();
+            this.lblLastname = new System.Windows.Forms.Label();
+            this.lblFirstname1 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.rtbBio = new System.Windows.Forms.RichTextBox();
             this.guna2ShadowPanel1.SuspendLayout();
             this.guna2GradientPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbProfilepic)).BeginInit();
             this.guna2ShadowPanel2.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // pbProfilepic
-            // 
-            this.pbProfilepic.BackColor = System.Drawing.Color.Transparent;
-            this.pbProfilepic.BorderRadius = 62;
-            this.pbProfilepic.Image = global::ExpenseApp.Properties.Resources.profile;
-            this.pbProfilepic.ImageRotate = 0F;
-            this.pbProfilepic.Location = new System.Drawing.Point(47, 13);
-            this.pbProfilepic.Name = "pbProfilepic";
-            this.pbProfilepic.Size = new System.Drawing.Size(128, 127);
-            this.pbProfilepic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbProfilepic.TabIndex = 0;
-            this.pbProfilepic.TabStop = false;
-            this.pbProfilepic.UseTransparentBackground = true;
             // 
             // guna2ShadowPanel1
             // 
@@ -108,6 +94,7 @@
             this.guna2Button2.Size = new System.Drawing.Size(157, 45);
             this.guna2Button2.TabIndex = 11;
             this.guna2Button2.Text = "Update Account";
+            this.guna2Button2.Click += new System.EventHandler(this.guna2Button2_Click);
             // 
             // lblUsername
             // 
@@ -131,6 +118,20 @@
             this.lblFirstname.TabIndex = 7;
             this.lblFirstname.Text = "Firstname";
             // 
+            // pbProfilepic
+            // 
+            this.pbProfilepic.BackColor = System.Drawing.Color.Transparent;
+            this.pbProfilepic.BorderRadius = 62;
+            this.pbProfilepic.Image = global::ExpenseApp.Properties.Resources.profile;
+            this.pbProfilepic.ImageRotate = 0F;
+            this.pbProfilepic.Location = new System.Drawing.Point(47, 13);
+            this.pbProfilepic.Name = "pbProfilepic";
+            this.pbProfilepic.Size = new System.Drawing.Size(128, 127);
+            this.pbProfilepic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbProfilepic.TabIndex = 0;
+            this.pbProfilepic.TabStop = false;
+            this.pbProfilepic.UseTransparentBackground = true;
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -145,14 +146,14 @@
             // guna2ShadowPanel2
             // 
             this.guna2ShadowPanel2.BackColor = System.Drawing.Color.Transparent;
-            this.guna2ShadowPanel2.Controls.Add(this.label7);
+            this.guna2ShadowPanel2.Controls.Add(this.lblEmail);
             this.guna2ShadowPanel2.Controls.Add(this.label8);
-            this.guna2ShadowPanel2.Controls.Add(this.label6);
-            this.guna2ShadowPanel2.Controls.Add(this.label5);
+            this.guna2ShadowPanel2.Controls.Add(this.lblLastname);
+            this.guna2ShadowPanel2.Controls.Add(this.lblFirstname1);
             this.guna2ShadowPanel2.Controls.Add(this.label3);
             this.guna2ShadowPanel2.Controls.Add(this.label2);
             this.guna2ShadowPanel2.Controls.Add(this.label4);
-            this.guna2ShadowPanel2.Controls.Add(this.richTextBox1);
+            this.guna2ShadowPanel2.Controls.Add(this.rtbBio);
             this.guna2ShadowPanel2.FillColor = System.Drawing.Color.White;
             this.guna2ShadowPanel2.Location = new System.Drawing.Point(64, 237);
             this.guna2ShadowPanel2.Name = "guna2ShadowPanel2";
@@ -164,80 +165,16 @@
             this.guna2ShadowPanel2.Size = new System.Drawing.Size(971, 342);
             this.guna2ShadowPanel2.TabIndex = 6;
             // 
-            // label4
+            // lblEmail
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Poppins", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(47, 162);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(48, 37);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "Bio";
-            // 
-            // richTextBox1
-            // 
-            this.richTextBox1.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richTextBox1.Location = new System.Drawing.Point(54, 202);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(859, 96);
-            this.richTextBox1.TabIndex = 0;
-            this.richTextBox1.Text = "";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Poppins SemiBold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(47, 18);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(118, 33);
-            this.label2.TabIndex = 12;
-            this.label2.Text = "Firstname:";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Poppins SemiBold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(47, 66);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(117, 33);
-            this.label3.TabIndex = 13;
-            this.label3.Text = "Lastname:";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.Location = new System.Drawing.Point(497, 18);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(62, 33);
-            this.label5.TabIndex = 14;
-            this.label5.Text = "Juan";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.Black;
-            this.label6.Location = new System.Drawing.Point(497, 66);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(106, 33);
-            this.label6.TabIndex = 15;
-            this.label6.Text = "Dela Cruz";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.Black;
-            this.label7.Location = new System.Drawing.Point(497, 112);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(179, 33);
-            this.label7.TabIndex = 17;
-            this.label7.Text = "user@gmail.com";
+            this.lblEmail.AutoSize = true;
+            this.lblEmail.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEmail.ForeColor = System.Drawing.Color.Black;
+            this.lblEmail.Location = new System.Drawing.Point(497, 112);
+            this.lblEmail.Name = "lblEmail";
+            this.lblEmail.Size = new System.Drawing.Size(179, 33);
+            this.lblEmail.TabIndex = 17;
+            this.lblEmail.Text = "user@gmail.com";
             // 
             // label8
             // 
@@ -250,6 +187,71 @@
             this.label8.TabIndex = 16;
             this.label8.Text = "Email:";
             // 
+            // lblLastname
+            // 
+            this.lblLastname.AutoSize = true;
+            this.lblLastname.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLastname.ForeColor = System.Drawing.Color.Black;
+            this.lblLastname.Location = new System.Drawing.Point(497, 66);
+            this.lblLastname.Name = "lblLastname";
+            this.lblLastname.Size = new System.Drawing.Size(106, 33);
+            this.lblLastname.TabIndex = 15;
+            this.lblLastname.Text = "Dela Cruz";
+            // 
+            // lblFirstname1
+            // 
+            this.lblFirstname1.AutoSize = true;
+            this.lblFirstname1.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFirstname1.ForeColor = System.Drawing.Color.Black;
+            this.lblFirstname1.Location = new System.Drawing.Point(497, 18);
+            this.lblFirstname1.Name = "lblFirstname1";
+            this.lblFirstname1.Size = new System.Drawing.Size(62, 33);
+            this.lblFirstname1.TabIndex = 14;
+            this.lblFirstname1.Text = "Juan";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Poppins SemiBold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.Black;
+            this.label3.Location = new System.Drawing.Point(47, 66);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(117, 33);
+            this.label3.TabIndex = 13;
+            this.label3.Text = "Lastname:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Poppins SemiBold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.Black;
+            this.label2.Location = new System.Drawing.Point(47, 18);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(118, 33);
+            this.label2.TabIndex = 12;
+            this.label2.Text = "Firstname:";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Poppins", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.Black;
+            this.label4.Location = new System.Drawing.Point(47, 162);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(48, 37);
+            this.label4.TabIndex = 7;
+            this.label4.Text = "Bio";
+            // 
+            // rtbBio
+            // 
+            this.rtbBio.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rtbBio.Location = new System.Drawing.Point(54, 202);
+            this.rtbBio.Name = "rtbBio";
+            this.rtbBio.ReadOnly = true;
+            this.rtbBio.Size = new System.Drawing.Size(859, 96);
+            this.rtbBio.TabIndex = 0;
+            this.rtbBio.Text = "";
+            // 
             // profile
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -260,10 +262,11 @@
             this.Controls.Add(this.guna2ShadowPanel1);
             this.Name = "profile";
             this.Size = new System.Drawing.Size(1109, 620);
-            ((System.ComponentModel.ISupportInitialize)(this.pbProfilepic)).EndInit();
+            this.Load += new System.EventHandler(this.profile_Load);
             this.guna2ShadowPanel1.ResumeLayout(false);
             this.guna2GradientPanel1.ResumeLayout(false);
             this.guna2GradientPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbProfilepic)).EndInit();
             this.guna2ShadowPanel2.ResumeLayout(false);
             this.guna2ShadowPanel2.PerformLayout();
             this.ResumeLayout(false);
@@ -282,11 +285,11 @@
         private Guna.UI2.WinForms.Guna2Button guna2Button2;
         private Guna.UI2.WinForms.Guna2ShadowPanel guna2ShadowPanel2;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.RichTextBox richTextBox1;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.RichTextBox rtbBio;
+        private System.Windows.Forms.Label lblEmail;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lblLastname;
+        private System.Windows.Forms.Label lblFirstname1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
     }
