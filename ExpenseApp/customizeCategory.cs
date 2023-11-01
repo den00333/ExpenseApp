@@ -21,7 +21,7 @@ namespace ExpenseApp
             this.AEF = A;
         }
         private ctg catGs;
-        private ctg newCategory;
+        
         private List<String> ListOfNewCategories;
         private List<String> ListOfUnwantedCategories;
         private void initializeCHB()

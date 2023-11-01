@@ -68,7 +68,7 @@ namespace ExpenseApp
             }
         }
 
-        private async void guna2Button1_Click(object sender, EventArgs e)
+        private void guna2Button1_Click(object sender, EventArgs e)
         {
             otherFunc o = new otherFunc();
             string firstname = txtFirstname.Text;
