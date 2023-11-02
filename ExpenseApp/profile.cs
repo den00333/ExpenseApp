@@ -25,7 +25,11 @@ namespace ExpenseApp
             updateAcc ua = new updateAcc(this);
             ua.ShowDialog();
         }
+        /*async void diplayProfile()
+        {
 
+        }*/
+        
         private void profile_Load(object sender, EventArgs e)
         {
             try

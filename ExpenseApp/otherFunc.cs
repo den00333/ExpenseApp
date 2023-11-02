@@ -24,6 +24,7 @@ using System.Web.UI.WebControls;
 using static System.Net.Mime.MediaTypeNames;
 using System.Runtime.CompilerServices;
 using System.Drawing.Imaging;
+using Grpc.Core;
 
 namespace ExpenseApp
 {
@@ -100,6 +101,13 @@ namespace ExpenseApp
             DocumentReference docRef = database.Collection("Users").Document(username);
             DocumentSnapshot docSnap = await docRef.GetSnapshotAsync();
             return docSnap;
+
+        }
+
+        public static void recordCurrentLogs(String username)
+        {
+            FirestoreDb db = FirestoreConn();
+            CollectionReference colRef = db.Collection("Users").Document(username).Collection("Logs");
 
         }
 
@@ -297,6 +305,73 @@ namespace ExpenseApp
             }
             return false;
         }
+
+        public async static Task<int> generateUserID()
+        {
+            var database = FirestoreConn();
+            int id = 1;
+            DocumentReference docRef = database.Collection("CreatedAccount").Document("TotalAccount");
+            DocumentSnapshot docSnap = await docRef.GetSnapshotAsync();
+            Dictionary<String, object> data = new Dictionary<string, object>
+            {
+                { "Total",id}
+            };
+            if (docSnap.Exists)
+            {
+                int value = docSnap.GetValue<int>("Total");
+                id = value + 1;
+                data["Total"] = id;
+
+                await docRef.UpdateAsync(data);
+            }
+            else
+            {
+
+                await docRef.SetAsync(data);
+            }
+
+            return id;
+
+
+        }
+
+        public async static Task<bool> CheckAccountStatus(String username)
+        {
+            var db = FirestoreConn();
+            DocumentReference docRef = db.Collection("Users").Document(username);
+            DocumentSnapshot docSnap = await docRef.GetSnapshotAsync();
+
+            String status = docSnap.GetValue<String>("status");
+
+            if (status.Equals("offline"))
+            {
+                Dictionary<String, object> data = new Dictionary<string, object>
+                {
+                    {"status", "online"}
+                };
+                await docRef.UpdateAsync(data);
+
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+        }
+
+        public async static void UpdateAccStatusToOffline(String username)
+        {
+            var db = FirestoreConn();
+            DocumentReference docRef = db.Collection("Users").Document(username);
+            Dictionary<String, object> data = new Dictionary<string, object>
+            {
+                {"status", "offline"}
+            };
+            await docRef.UpdateAsync(data);
+        }
+
+        
            
         public async void signingUp(String username, String fname, String lname, String email, String password, String repeatpass, System.Windows.Forms.CheckBox terms, Signup s)
         {
@@ -306,7 +381,7 @@ namespace ExpenseApp
             bool validUsername = await otherFunc.isUsernameExistingAsync(username);
             bool isEmpty = areControlEmpty(fname,lname, email, username, password, repeatpass);
             bool passwordMatched = function.passwordMatched(Security.Decrypt(password), repeatpass);
-
+            int generatedID = await generateUserID();
             if (!isEmpty){
                 if (terms.Checked){
                     //Validate email and check if the username exists
@@ -320,13 +395,16 @@ namespace ExpenseApp
                             if (function.isValidPassword(password)){
                                 try{
                                     DocumentReference docRef = database.Collection("Users").Document(username);
-                                    Dictionary<string, object> data = new Dictionary<string, object>(){
+                                    Dictionary<string, object> data = new Dictionary<string, object>()
+                                    {
                                         {"First Name", fname },
                                         {"Last Name", lname },
                                         {"Username", username },
                                         {"Email", email },
-                                        {"Password", password}
-                                        };
+                                        {"Password", password},
+                                        {"ID", generatedID},
+                                        {"DateCreated", FieldValue.ServerTimestamp}
+                                    };
                                     await docRef.SetAsync(data);
                                     DialogResult res = MessageBox.Show("Successfully created your account!", "Success", MessageBoxButtons.OK);
                                     if (res == DialogResult.OK){

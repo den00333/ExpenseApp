@@ -92,14 +92,33 @@ namespace ExpenseApp
             }
             else if (docSnap.Exists){
                 FirebaseData userData = docSnap.ConvertTo<FirebaseData>();
-                if (password == Security.Decrypt(userData.Password.ToString())){
-                    this.Hide();
-                    FirebaseData.Instance.Username = username;
-                    Home home = new Home();
-                    home.Show();
+
+                //ENTER LOGS ATTEMPTS
+                // - number of attempts
+
+                //CHECK THE ACCOUT STATUS IF IT IS ONLINE THEN YOU CANNOT PROCEED LOGGING IN
+                // - submit ticket to the admin
+
+                if (await otherFunc.CheckAccountStatus(username))
+                {
+                    if (password == Security.Decrypt(userData.Password.ToString()))
+                    {
+
+                        //ENTER LOGS ACTIVITY
+
+                        this.Hide();
+                        FirebaseData.Instance.Username = username;
+                        Home home = new Home();
+                        home.Show();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Invalid username or password", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
-                else{
-                    MessageBox.Show("Invalid username or password", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                else
+                {
+                    MessageBox.Show("This account is currently online.\nReport this event. Click OK\nto proceed. ", "Warning", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
                 }
             }
             else{
@@ -142,5 +161,7 @@ namespace ExpenseApp
             }
             
         }
+
+        
     }
 }
