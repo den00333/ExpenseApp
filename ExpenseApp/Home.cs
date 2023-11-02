@@ -55,6 +55,8 @@ namespace ExpenseApp
         private void Home_FormClosing(object sender, FormClosingEventArgs e)
         {
             timer1.Stop();
+            String username = FirebaseData.Instance.Username;
+            otherFunc.UpdateAccStatusToOffline(username);
             Application.Exit();
         }
 
@@ -139,6 +141,8 @@ namespace ExpenseApp
             if (result == DialogResult.Yes)
             {
                 timer1.Stop();
+                String username = FirebaseData.Instance.Username;
+                otherFunc.UpdateAccStatusToOffline(username);
                 this.Hide();
                 Login login = new Login();
                 login.Show();
