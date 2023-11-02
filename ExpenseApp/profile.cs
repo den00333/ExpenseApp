@@ -1,4 +1,5 @@
-﻿using Google.Cloud.Firestore;
+﻿using FireSharp.Interfaces;
+using Google.Cloud.Firestore;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,6 +14,7 @@ namespace ExpenseApp
 {
     public partial class profile : UserControl
     {
+        string username = FirebaseData.Instance.Username;
         public profile()
         {
             InitializeComponent();
@@ -23,18 +25,22 @@ namespace ExpenseApp
             updateAcc ua = new updateAcc(this);
             ua.ShowDialog();
         }
-        async void diplayProfile()
-        {
-
-        }
 
         private void profile_Load(object sender, EventArgs e)
         {
+            try
+            {
+                IFirebaseClient client = otherFunc.conn();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
             displayProfile();
         }
         public async void displayProfile()
         {
-            string username = FirebaseData.Instance.Username;
+            otherFunc.retrieveImage(username, pbProfilepic);
             otherFunc o = new otherFunc();
             DocumentSnapshot snap = await o.logInFunc(username);
             if (snap.Exists)
@@ -48,5 +54,6 @@ namespace ExpenseApp
                 rtbBio.Text = fd.Bio;
             }
         }
+        
     }
 }
