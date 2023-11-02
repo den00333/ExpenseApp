@@ -22,8 +22,7 @@ namespace ExpenseApp
         {
             loadWallet();
             displayExpenses();
-            dgvExpenses.ColumnHeadersDefaultCellStyle.Font = new Font("Poppins", 14, FontStyle.Regular);
-            dgvExpenses.DefaultCellStyle.Font = new Font("Poppins", 14, FontStyle.Regular);
+            ExpenseGridDesign();
             //loadWallet();
         }
 
@@ -60,24 +59,24 @@ namespace ExpenseApp
 
             dgvExpenses.Rows.Clear();
 
-            foreach (DocumentSnapshot docsnap in snap.Documents)
-            {
+            List<DocumentSnapshot> sortedByDateDocSnap = snap.Documents
+                        .OrderByDescending(docsnap => docsnap.ConvertTo<FirebaseData>().Date)
+                        .ToList();
+            foreach (DocumentSnapshot docsnap in sortedByDateDocSnap){
                 FirebaseData fd = docsnap.ConvertTo<FirebaseData>();
-                if (docsnap.Exists)
-                {
-                    dgvExpenses.Rows.Add(fd.Category, fd.Amount.ToString());
-                }
-            }
-        
-            foreach (DocumentSnapshot docsnap in snap.Documents)
-            {
-                FirebaseData fd = docsnap.ConvertTo<FirebaseData>();
-                if (docsnap.Exists)
-                {
-                    dgvExpenses.Rows.Add(fd.Category, fd.Amount.ToString());
+                if (docsnap.Exists){
+                    dgvExpenses.Rows.Add(fd.Category, fd.Amount.ToString(), fd.Date.ToString());
                 }
             }
         }
-
+        private void ExpenseGridDesign()
+        {
+            dgvExpenses.ColumnHeadersDefaultCellStyle.Font = new Font("Poppins", 16, FontStyle.Regular);
+            dgvExpenses.DefaultCellStyle.Font = new Font("Poppins", 14, FontStyle.Regular);
+            dgvExpenses.ColumnHeadersDefaultCellStyle.Padding = new Padding(10, dgvExpenses.ColumnHeadersDefaultCellStyle.Padding.Top, dgvExpenses.ColumnHeadersDefaultCellStyle.Padding.Right, dgvExpenses.ColumnHeadersDefaultCellStyle.Padding.Bottom);
+            dgvExpenses.DefaultCellStyle.Padding = new Padding(15, dgvExpenses.DefaultCellStyle.Padding.Top, dgvExpenses.DefaultCellStyle.Padding.Right, dgvExpenses.DefaultCellStyle.Padding.Bottom);
+            dgvExpenses.ColumnHeadersHeight = 35;
+            dgvExpenses.RowTemplate.Height = 30;
+        }
     }
 }
