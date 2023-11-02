@@ -1,4 +1,5 @@
-﻿using Google.Cloud.Firestore;
+﻿using FireSharp.Interfaces;
+using Google.Cloud.Firestore;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -48,7 +49,17 @@ namespace ExpenseApp
 
         private void updateAcc_Load(object sender, EventArgs e)
         {
+            string username = FirebaseData.Instance.Username;
+            try
+            {
+                IFirebaseClient client = otherFunc.conn();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
             updateAccount();
+            otherFunc.retrieveImage(username, pbPic);
         }
         async void updateAccount()
         {
@@ -60,7 +71,6 @@ namespace ExpenseApp
             {
                 FirebaseData fd = snap.ConvertTo<FirebaseData>();
                 txtFirstname.Text = fd.FirstName;
-                txtUsername.Text = fd.Username;
                 txtLastname.Text = fd.LastName;
                 txtEmail.Text = fd.Email;
                 rtbBio.Text = fd.Bio;
@@ -74,15 +84,14 @@ namespace ExpenseApp
             string firstname = txtFirstname.Text;
             string lastname = txtLastname.Text;
             string email = txtEmail.Text;
-            string username = txtUsername.Text;
             string bio = rtbBio.Text;
             string password = txtPassword.Text;
             profile p = profile;
-            PictureBox pic = pbPic;
 
+            string username = FirebaseData.Instance.Username;
 
-            o.updateData(username, firstname, lastname, email, bio, password, this, p, pic);
-          
+            o.updateData(username, firstname, lastname, email, bio, password, this, p);
+            storeImage();
         }
 
         private void txtFirstname_KeyPress(object sender, KeyPressEventArgs e)
@@ -102,5 +111,16 @@ namespace ExpenseApp
                 MessageBox.Show("Cannot Enter Numerical Values and Special Characters", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        public void storeImage()
+        {
+            Image img = pbPic.Image;
+            string username = FirebaseData.Instance.Username;
+            FirebaseData fd = new FirebaseData()
+            {
+                imgString = otherFunc.ImageIntoBase64String(img)
+            };
+            var set = otherFunc.conn().Set("images" + username, fd);
+        }
+        
     }
 }

@@ -122,12 +122,12 @@
             // 
             this.pbProfilepic.BackColor = System.Drawing.Color.Transparent;
             this.pbProfilepic.BorderRadius = 62;
-            this.pbProfilepic.Image = global::ExpenseApp.Properties.Resources.profile;
+            this.pbProfilepic.Image = global::ExpenseApp.Properties.Resources.accountBlack;
             this.pbProfilepic.ImageRotate = 0F;
             this.pbProfilepic.Location = new System.Drawing.Point(47, 13);
             this.pbProfilepic.Name = "pbProfilepic";
             this.pbProfilepic.Size = new System.Drawing.Size(128, 127);
-            this.pbProfilepic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbProfilepic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbProfilepic.TabIndex = 0;
             this.pbProfilepic.TabStop = false;
             this.pbProfilepic.UseTransparentBackground = true;

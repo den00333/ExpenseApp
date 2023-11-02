@@ -44,8 +44,9 @@ namespace ExpenseApp
         [FirestoreProperty]
         public string Category { get; set; }
 
-        [FirestoreProperty("Amount")]
+        [FirestoreProperty]
         public int Amount { get; set; }
+        public string imgString {get; set;}
     }
 
     public class ctg 

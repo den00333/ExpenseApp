@@ -23,6 +23,7 @@ using Guna.UI2.WinForms;
 using System.Web.UI.WebControls;
 using static System.Net.Mime.MediaTypeNames;
 using System.Runtime.CompilerServices;
+using System.Drawing.Imaging;
 using Grpc.Core;
 
 namespace ExpenseApp
@@ -477,37 +478,31 @@ namespace ExpenseApp
             }
             return false;
         }
-        public async void updateData(string username, string fname, string lname, string email, string bio, string password, updateAcc update, profile p, PictureBox img)
+        public async void updateData(string username, string fname, string lname, string email, string bio, string password, updateAcc update, profile p)
         {
             var database = FirestoreConn();
             otherFunc function = new otherFunc();
             bool validEmail = otherFunc.isValidEmail(email);
-            bool isEmpty = areControlEmpty(fname, lname, email, username, password);
+            bool isEmpty = areControlEmpty(fname, lname, email, password);
             bool validUsername = await otherFunc.isUsernameExistingAsync(username);
 
-            Dictionary<String, bool> validatingData = new Dictionary<string, bool>()
-            {
-                 { "username", !validUsername},
-                 { "email", validEmail}
-            };
-            bool validData = function.isValidData(validatingData);
             if (!isEmpty)
             {
-                if (validData)
+                try
                 {
-                    try
-                    {
-                        DocumentReference docref = database.Collection("Users").Document(username);
-                        Dictionary<string, object> data = new Dictionary<string, object>()
+                    DocumentReference docref = database.Collection("Users").Document(username);
+                    Dictionary<string, object> data = new Dictionary<string, object>()
                         {
                             {"First Name", fname},
                             {"Last Name", lname},
                             {"Email", email},
-                            {"Username",  username},
                             {"Bio", bio},
-                            {"Password", Security.Encrypt(password)}
+                            {"Password", Security.Encrypt(password)},
                         };
-                        await docref.SetAsync(data);
+                    DocumentSnapshot snap = await docref.GetSnapshotAsync();
+                    if (snap.Exists)
+                    {
+                        await docref.UpdateAsync(data);
                         DialogResult respond = MessageBox.Show("Successfully update your account!", "Success", MessageBoxButtons.OK);
                         if (respond == DialogResult.OK)
                         {
@@ -515,10 +510,10 @@ namespace ExpenseApp
                             update.Hide();
                         }
                     }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message);
-                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: " + ex.Message);
                 }
             }
             else
@@ -526,5 +521,38 @@ namespace ExpenseApp
                 MessageBox.Show("Something is missing", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+        
+        public static string ImageIntoBase64String(System.Drawing.Image img)
+        {
+            using (MemoryStream ms = new MemoryStream())
+            {
+                img.Save(ms, img.RawFormat);
+                return Convert.ToBase64String(ms.ToArray());
+            }
+        }
+        public static System.Drawing.Image Base64StringIntoImage(string str64)
+        {
+            byte[] img = Convert.FromBase64String(str64);
+            MemoryStream ms = new MemoryStream(img);
+            return System.Drawing.Image.FromStream(ms);
+        }
+        public static void retrieveImage(string username, PictureBox img)
+        {
+            string defaultImg = "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";
+            if (img != null)
+            {
+                var res = otherFunc.conn().Get("images" + username);
+                FirebaseData fd = res.ResultAs<FirebaseData>();
+                if (fd != null && !string.IsNullOrEmpty(fd.imgString))
+                {
+                    img.Image = otherFunc.Base64StringIntoImage(fd.imgString);
+                }
+                else
+                {
+                    img.Image = otherFunc.Base64StringIntoImage(defaultImg);
+                }
+            }
+        }
     }
 }
+
