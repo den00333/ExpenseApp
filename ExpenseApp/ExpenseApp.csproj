@@ -378,6 +378,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\GeoLite2-City.mmdb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="Resources\profile.png" />
     <None Include="Resources\account.png" />
     <None Include="Resources\accountBlack.png" />

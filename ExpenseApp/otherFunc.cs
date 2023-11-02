@@ -595,7 +595,7 @@ namespace ExpenseApp
         public static async void RecordLogs(String username, bool HasAccount, bool LoggingIn)
         {
             String IP = await getIP();
-            using (var reader = new DatabaseReader("GeoLite2-City.mmdb"))
+            using (var reader = new DatabaseReader("Resources//GeoLite2-City.mmdb"))
             {
                 var response = reader.City(IP);
 
