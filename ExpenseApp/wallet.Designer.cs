@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -50,9 +51,11 @@
             this.label7 = new System.Windows.Forms.Label();
             this.guna2ShadowPanel4 = new Guna.UI2.WinForms.Guna2ShadowPanel();
             this.dgvExpenses = new Guna.UI2.WinForms.Guna2DataGridView();
+            this.docName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Category = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.guna2ShadowPanel1.SuspendLayout();
             this.guna2GradientPanel1.SuspendLayout();
             this.guna2ShadowPanel2.SuspendLayout();
@@ -87,7 +90,7 @@
             this.btnAddXpns.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddXpns.ForeColor = System.Drawing.Color.White;
             this.btnAddXpns.Location = new System.Drawing.Point(107, 150);
-            this.btnAddXpns.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAddXpns.Margin = new System.Windows.Forms.Padding(4);
             this.btnAddXpns.Name = "btnAddXpns";
             this.btnAddXpns.Size = new System.Drawing.Size(209, 55);
             this.btnAddXpns.TabIndex = 2;
@@ -100,7 +103,7 @@
             this.guna2ShadowPanel1.Controls.Add(this.guna2GradientPanel1);
             this.guna2ShadowPanel1.FillColor = System.Drawing.Color.White;
             this.guna2ShadowPanel1.Location = new System.Drawing.Point(44, 78);
-            this.guna2ShadowPanel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.guna2ShadowPanel1.Margin = new System.Windows.Forms.Padding(4);
             this.guna2ShadowPanel1.Name = "guna2ShadowPanel1";
             this.guna2ShadowPanel1.Radius = 10;
             this.guna2ShadowPanel1.ShadowColor = System.Drawing.Color.Black;
@@ -119,7 +122,7 @@
             this.guna2GradientPanel1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(180)))), ((int)(((byte)(72)))));
             this.guna2GradientPanel1.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(123)))), ((int)(((byte)(47)))));
             this.guna2GradientPanel1.Location = new System.Drawing.Point(0, 0);
-            this.guna2GradientPanel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.guna2GradientPanel1.Margin = new System.Windows.Forms.Padding(4);
             this.guna2GradientPanel1.Name = "guna2GradientPanel1";
             this.guna2GradientPanel1.Size = new System.Drawing.Size(441, 193);
             this.guna2GradientPanel1.TabIndex = 0;
@@ -135,7 +138,7 @@
             this.btnAddMoney.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddMoney.ForeColor = System.Drawing.Color.White;
             this.btnAddMoney.Location = new System.Drawing.Point(105, 150);
-            this.btnAddMoney.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAddMoney.Margin = new System.Windows.Forms.Padding(4);
             this.btnAddMoney.Name = "btnAddMoney";
             this.btnAddMoney.Size = new System.Drawing.Size(209, 55);
             this.btnAddMoney.TabIndex = 9;
@@ -172,7 +175,7 @@
             this.guna2ShadowPanel2.Controls.Add(this.guna2GradientPanel2);
             this.guna2ShadowPanel2.FillColor = System.Drawing.Color.White;
             this.guna2ShadowPanel2.Location = new System.Drawing.Point(515, 78);
-            this.guna2ShadowPanel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.guna2ShadowPanel2.Margin = new System.Windows.Forms.Padding(4);
             this.guna2ShadowPanel2.Name = "guna2ShadowPanel2";
             this.guna2ShadowPanel2.Radius = 10;
             this.guna2ShadowPanel2.ShadowColor = System.Drawing.Color.Black;
@@ -191,7 +194,7 @@
             this.guna2GradientPanel2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(183)))), ((int)(((byte)(142)))), ((int)(((byte)(81)))));
             this.guna2GradientPanel2.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(66)))), ((int)(((byte)(86)))));
             this.guna2GradientPanel2.Location = new System.Drawing.Point(0, 0);
-            this.guna2GradientPanel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.guna2GradientPanel2.Margin = new System.Windows.Forms.Padding(4);
             this.guna2GradientPanel2.Name = "guna2GradientPanel2";
             this.guna2GradientPanel2.Size = new System.Drawing.Size(441, 193);
             this.guna2GradientPanel2.TabIndex = 0;
@@ -226,7 +229,7 @@
             this.guna2ShadowPanel3.Controls.Add(this.guna2GradientPanel3);
             this.guna2ShadowPanel3.FillColor = System.Drawing.Color.White;
             this.guna2ShadowPanel3.Location = new System.Drawing.Point(985, 78);
-            this.guna2ShadowPanel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.guna2ShadowPanel3.Margin = new System.Windows.Forms.Padding(4);
             this.guna2ShadowPanel3.Name = "guna2ShadowPanel3";
             this.guna2ShadowPanel3.Radius = 10;
             this.guna2ShadowPanel3.ShadowColor = System.Drawing.Color.Black;
@@ -244,7 +247,7 @@
             this.guna2GradientPanel3.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(187)))), ((int)(((byte)(141)))), ((int)(((byte)(228)))));
             this.guna2GradientPanel3.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(148)))), ((int)(((byte)(98)))));
             this.guna2GradientPanel3.Location = new System.Drawing.Point(0, 0);
-            this.guna2GradientPanel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.guna2GradientPanel3.Margin = new System.Windows.Forms.Padding(4);
             this.guna2GradientPanel3.Name = "guna2GradientPanel3";
             this.guna2GradientPanel3.Size = new System.Drawing.Size(439, 193);
             this.guna2GradientPanel3.TabIndex = 0;
@@ -272,7 +275,7 @@
             this.guna2Button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2Button1.ForeColor = System.Drawing.Color.White;
             this.guna2Button1.Location = new System.Drawing.Point(115, 150);
-            this.guna2Button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.guna2Button1.Margin = new System.Windows.Forms.Padding(4);
             this.guna2Button1.Name = "guna2Button1";
             this.guna2Button1.Size = new System.Drawing.Size(209, 55);
             this.guna2Button1.TabIndex = 3;
@@ -284,7 +287,7 @@
             this.guna2Panel1.Controls.Add(this.label7);
             this.guna2Panel1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(123)))), ((int)(((byte)(47)))));
             this.guna2Panel1.Location = new System.Drawing.Point(44, 304);
-            this.guna2Panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.guna2Panel1.Margin = new System.Windows.Forms.Padding(4);
             this.guna2Panel1.Name = "guna2Panel1";
             this.guna2Panel1.Size = new System.Drawing.Size(267, 150);
             this.guna2Panel1.TabIndex = 6;
@@ -308,7 +311,7 @@
             this.guna2ShadowPanel4.Controls.Add(this.dgvExpenses);
             this.guna2ShadowPanel4.FillColor = System.Drawing.Color.White;
             this.guna2ShadowPanel4.Location = new System.Drawing.Point(44, 351);
-            this.guna2ShadowPanel4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.guna2ShadowPanel4.Margin = new System.Windows.Forms.Padding(4);
             this.guna2ShadowPanel4.Name = "guna2ShadowPanel4";
             this.guna2ShadowPanel4.ShadowColor = System.Drawing.Color.Black;
             this.guna2ShadowPanel4.ShadowDepth = 230;
@@ -335,6 +338,7 @@
             this.dgvExpenses.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvExpenses.ColumnHeadersHeight = 30;
             this.dgvExpenses.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.docName,
             this.Category,
             this.Amount,
             this.Date});
@@ -348,11 +352,12 @@
             this.dgvExpenses.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvExpenses.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(235)))), ((int)(((byte)(199)))));
             this.dgvExpenses.Location = new System.Drawing.Point(0, 0);
-            this.dgvExpenses.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvExpenses.Margin = new System.Windows.Forms.Padding(4);
             this.dgvExpenses.Name = "dgvExpenses";
             this.dgvExpenses.RowHeadersVisible = false;
             this.dgvExpenses.RowHeadersWidth = 51;
             this.dgvExpenses.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.dgvExpenses.ShowCellToolTips = false;
             this.dgvExpenses.Size = new System.Drawing.Size(1380, 350);
             this.dgvExpenses.TabIndex = 0;
             this.dgvExpenses.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.LightGreen;
@@ -377,6 +382,14 @@
             this.dgvExpenses.ThemeStyle.RowsStyle.Height = 22;
             this.dgvExpenses.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(177)))), ((int)(((byte)(214)))), ((int)(((byte)(134)))));
             this.dgvExpenses.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgvExpenses.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvExpenses_CellMouseDoubleClick);
+            this.dgvExpenses.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvExpenses_CellMouseEnter);
+            // 
+            // docName
+            // 
+            this.docName.HeaderText = "Expense ID";
+            this.docName.MinimumWidth = 6;
+            this.docName.Name = "docName";
             // 
             // Category
             // 
@@ -408,7 +421,7 @@
             this.Controls.Add(this.guna2ShadowPanel1);
             this.Controls.Add(this.label1);
             this.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "wallet";
             this.Size = new System.Drawing.Size(1479, 763);
             this.Load += new System.EventHandler(this.wallet_Load);
@@ -451,8 +464,10 @@
         private Guna.UI2.WinForms.Guna2Button btnAddMoney;
         public System.Windows.Forms.Label lblBalance;
         public System.Windows.Forms.Label lblExpenses;
+        private System.Windows.Forms.DataGridViewTextBoxColumn docName;
         private System.Windows.Forms.DataGridViewTextBoxColumn Category;
         private System.Windows.Forms.DataGridViewTextBoxColumn Amount;
         private System.Windows.Forms.DataGridViewTextBoxColumn Date;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

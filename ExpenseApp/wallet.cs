@@ -13,6 +13,7 @@ namespace ExpenseApp
 {
     public partial class wallet : UserControl
     {
+        string username = FirebaseData.Instance.Username;
         public wallet()
         {
             InitializeComponent();
@@ -55,17 +56,14 @@ namespace ExpenseApp
         {
             string username = FirebaseData.Instance.Username;
             otherFunc o = new otherFunc();
-            QuerySnapshot snap = await o.displayData(username);
+            List<(string DocName, DocumentSnapshot DocSnapshot)> documentData = await o.displayDataWithDocNames(username);
 
             dgvExpenses.Rows.Clear();
 
-            List<DocumentSnapshot> sortedByDateDocSnap = snap.Documents
-                        .OrderByDescending(docsnap => docsnap.ConvertTo<FirebaseData>().Date)
-                        .ToList();
-            foreach (DocumentSnapshot docsnap in sortedByDateDocSnap){
+            foreach ((string docName, DocumentSnapshot docsnap) in documentData) {
                 FirebaseData fd = docsnap.ConvertTo<FirebaseData>();
                 if (docsnap.Exists){
-                    dgvExpenses.Rows.Add(fd.Category, fd.Amount.ToString(), fd.Date.ToString());
+                    dgvExpenses.Rows.Add(docName, fd.Category, fd.Amount.ToString(), fd.Date.ToString());
                 }
             }
         }
@@ -77,6 +75,32 @@ namespace ExpenseApp
             dgvExpenses.DefaultCellStyle.Padding = new Padding(15, dgvExpenses.DefaultCellStyle.Padding.Top, dgvExpenses.DefaultCellStyle.Padding.Right, dgvExpenses.DefaultCellStyle.Padding.Bottom);
             dgvExpenses.ColumnHeadersHeight = 35;
             dgvExpenses.RowTemplate.Height = 30;
+            dgvExpenses.ReadOnly = true;
+            dgvExpenses.Columns[0].Width = 150;
+        }
+        private async void dgvExpenses_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            otherFunc function = new otherFunc();
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0){
+                string expenseId = dgvExpenses.Rows[e.RowIndex].Cells[0].Value.ToString();
+                Dictionary<string, object> data = await function.getItemsInsideExpenseId(username, expenseId);
+
+                ExpenseDetailForm edf = new ExpenseDetailForm();
+                edf.displayExpenseDetails(data);
+                edf.StartPosition = FormStartPosition.Manual;
+                int x = Screen.PrimaryScreen.WorkingArea.Right - edf.Width;
+                int y = Screen.PrimaryScreen.WorkingArea.Top + (Screen.PrimaryScreen.WorkingArea.Height - edf.Height) / 2;
+                edf.Location = new Point(x, y);
+                edf.ShowDialog();
+            }
+        }
+
+        private void dgvExpenses_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0){
+                DataGridViewCell cell = dgvExpenses.Rows[e.RowIndex].Cells[e.ColumnIndex];
+                toolTip1.SetToolTip(dgvExpenses,"View Full Details");
+            }
         }
     }
 }

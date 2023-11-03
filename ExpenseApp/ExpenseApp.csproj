@@ -191,6 +191,7 @@
       <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
     </Reference>
     <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -231,6 +232,12 @@
     </Compile>
     <Compile Include="dashboard.Designer.cs">
       <DependentUpon>dashboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExpenseDetailForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExpenseDetailForm.Designer.cs">
+      <DependentUpon>ExpenseDetailForm.cs</DependentUpon>
     </Compile>
     <Compile Include="FileFunc.cs" />
     <Compile Include="FirebaseData.cs" />
@@ -273,6 +280,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="RegionData.cs" />
     <Compile Include="Security.cs" />
     <Compile Include="Signup.cs">
@@ -320,6 +332,9 @@
     <EmbeddedResource Include="dashboard.resx">
       <DependentUpon>dashboard.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ExpenseDetailForm.resx">
+      <DependentUpon>ExpenseDetailForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="group.resx">
       <DependentUpon>group.cs</DependentUpon>
     </EmbeddedResource>
@@ -340,14 +355,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <EmbeddedResource Include="Signup.resx">
       <DependentUpon>Signup.cs</DependentUpon>
     </EmbeddedResource>
@@ -378,6 +388,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\transportation.png" />
     <Content Include="Resources\GeoLite2-City.mmdb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -447,6 +458,13 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\location.png" />
+    <None Include="Resources\close.png" />
+    <None Include="Resources\defaul.png" />
+    <None Include="Resources\food.png" />
+    <None Include="Resources\entertainment.png" />
+    <None Include="Resources\medical.png" />
+    <None Include="Resources\housing.png" />
+    <None Include="Resources\noimage.png" />
     <Content Include="Resources\philippine_provinces_cities_municipalities_and_barangays_2019v2.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
