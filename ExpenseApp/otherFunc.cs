@@ -522,13 +522,28 @@ namespace ExpenseApp
                 MessageBox.Show("Something is missing", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
-        
-        public static string ImageIntoBase64String(System.Drawing.Image img)
+        public static string ImageIntoBase64String(PictureBox img)
         {
-            using (MemoryStream ms = new MemoryStream())
+            if (img != null && img.Image != null)
             {
-                img.Save(ms, img.RawFormat);
-                return Convert.ToBase64String(ms.ToArray());
+                try
+                {
+                    MemoryStream ms = new MemoryStream();
+                    using (Bitmap bmp = new Bitmap(img.Image))
+                    {
+                        bmp.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+                    }
+                    return Convert.ToBase64String(ms.ToArray());
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Empty PictureBox");
+                return null;
             }
         }
         public static System.Drawing.Image Base64StringIntoImage(string str64)
