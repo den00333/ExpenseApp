@@ -553,6 +553,34 @@ namespace ExpenseApp
                 }
             }
         }
+        public async Task<List<(string DocName, DocumentSnapshot DocSnapshot)>> displayDataWithDocNames(string username)
+        {
+            FirestoreDb db = FirestoreConn();
+            CollectionReference colRef = db.Collection("Users").Document(username).Collection("Expenses");
+            QuerySnapshot snap = await colRef.GetSnapshotAsync();
+
+            List<(string DocName, DocumentSnapshot DocSnapshot)> documentData = new List<(string, DocumentSnapshot)>();
+
+            foreach (DocumentSnapshot docSnap in snap.Documents){
+                if (docSnap.Exists){
+                    string docName = docSnap.Id;
+                    documentData.Add((docName, docSnap));
+                }
+            }
+            return documentData;
+        }
+        public async Task<Dictionary<string, object>> getItemsInsideExpenseId(string username, string expenseId)
+        {
+            FirestoreDb db = otherFunc.FirestoreConn();
+            DocumentReference docRef = db.Collection("Users").Document(username).Collection("Expenses").Document(expenseId);
+            DocumentSnapshot snap = await docRef.GetSnapshotAsync();
+            if (snap.Exists){
+                Dictionary<string, object> data = snap.ToDictionary();
+                return data;
+            }
+            return null;
+
+        }
     }
 }
 
