@@ -25,6 +25,10 @@ using static System.Net.Mime.MediaTypeNames;
 using System.Runtime.CompilerServices;
 using System.Drawing.Imaging;
 using Grpc.Core;
+using System.Net.Http;
+using Newtonsoft.Json.Linq;
+using MaxMind.GeoIP2;
+using System.Collections;
 
 namespace ExpenseApp
 {
@@ -104,12 +108,7 @@ namespace ExpenseApp
 
         }
 
-        public static void recordCurrentLogs(String username)
-        {
-            FirestoreDb db = FirestoreConn();
-            CollectionReference colRef = db.Collection("Users").Document(username).Collection("Logs");
-
-        }
+        
 
         public async Task<int> DocNameForExpenses(String username)
         {
@@ -403,9 +402,11 @@ namespace ExpenseApp
                                         {"Email", email },
                                         {"Password", password},
                                         {"ID", generatedID},
-                                        {"DateCreated", FieldValue.ServerTimestamp}
+                                        {"DateCreated", FieldValue.ServerTimestamp},
+                                        {"status", "offline"}
                                     };
                                     await docRef.SetAsync(data);
+
                                     DialogResult res = MessageBox.Show("Successfully created your account!", "Success", MessageBoxButtons.OK);
                                     if (res == DialogResult.OK){
                                         s.Close();
@@ -521,13 +522,28 @@ namespace ExpenseApp
                 MessageBox.Show("Something is missing", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
-        
-        public static string ImageIntoBase64String(System.Drawing.Image img)
+        public static string ImageIntoBase64String(PictureBox img)
         {
-            using (MemoryStream ms = new MemoryStream())
+            if (img != null && img.Image != null)
             {
-                img.Save(ms, img.RawFormat);
-                return Convert.ToBase64String(ms.ToArray());
+                try
+                {
+                    MemoryStream ms = new MemoryStream();
+                    using (Bitmap bmp = new Bitmap(img.Image))
+                    {
+                        bmp.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+                    }
+                    return Convert.ToBase64String(ms.ToArray());
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Empty PictureBox");
+                return null;
             }
         }
         public static System.Drawing.Image Base64StringIntoImage(string str64)
@@ -553,6 +569,7 @@ namespace ExpenseApp
                 }
             }
         }
+
         public async Task<List<(string DocName, DocumentSnapshot DocSnapshot)>> displayDataWithDocNames(string username)
         {
             FirestoreDb db = FirestoreConn();
@@ -580,6 +597,108 @@ namespace ExpenseApp
             }
             return null;
 
+        }
+
+        public static void EnterLogIn(String username)
+        {
+            var db = FirestoreConn();
+            DocumentReference docref = db.Collection("Users").Document(username).Collection("Logs").Document();
+        }
+
+        public static async Task<String> getIP()
+        {
+            using (HttpClient hc = new HttpClient())
+            {
+                String ipifyUrl = "https://api.ipify.org?format=json";
+                HttpResponseMessage response = await hc.GetAsync(ipifyUrl);
+                if (response.IsSuccessStatusCode)
+                {
+                    String jsonResponse = await response.Content.ReadAsStringAsync();
+                    JObject json = JObject.Parse(jsonResponse);
+                    String publicAddress = (String)json["ip"];
+                    
+                    //Console.WriteLine("Public IP Address: " + publicAddress);
+                    return publicAddress;
+                }
+                else
+                {
+                    Console.WriteLine("Failed to retrieve the public IP address.");
+                    return null;
+                }
+            }
+        }
+
+        public static async Task<bool> checkLog(String username)
+        {
+            var db = FirestoreConn();
+            var query = db.Collection("Users").Document(username).Collection("Logs").Limit(1);
+            var snapshot = await query.GetSnapshotAsync();
+            return snapshot.Count > 0;
+        }
+
+        public static async void RecordLogs(String username, bool HasAccount, bool LoggingIn)
+        {
+            String IP = await getIP();
+            using (var reader = new DatabaseReader("Resources//GeoLite2-City.mmdb"))
+            {
+                var response = reader.City(IP);
+
+                double? latitude = response.Location.Latitude;
+                double? longitude = response.Location.Longitude;
+
+                String country = response.Country.Name;
+                String city = response.City.Name;
+                String region = response.MostSpecificSubdivision.Name;
+
+                String address = $"{city}, {region}, {country}";
+                
+                DateTime currentUtcDateTime = DateTime.UtcNow;
+                String timeApiUrl = $"https://maps.googleapis.com/maps/api/timezone/json?location={latitude},{longitude}&timestamp={(long)currentUtcDateTime.Subtract(new DateTime(1970, 1, 1)).TotalSeconds}&key=YOUR_GOOGLE_TIMEZONE_API_KEY";
+
+                using (HttpClient hc = new HttpClient())
+                {
+                    HttpResponseMessage timeResponse = await hc.GetAsync(timeApiUrl);
+                    if (timeResponse.IsSuccessStatusCode)
+                    {
+                        DateTime localTime = currentUtcDateTime.ToLocalTime();
+                        String Date = localTime.Date.ToString("yyyy-MM-dd");
+                        String Time = localTime.TimeOfDay.ToString(@"hh\:mm\:ss");
+
+                        var db = FirestoreConn();
+                        DocumentReference docRef = db.Collection("Users").Document(username).Collection("Logs").Document(Date);
+                        Dictionary<String, object> data = new Dictionary<String, object>();
+
+                        if (HasAccount)
+                        {
+                            if (LoggingIn)
+                            {
+                                await docRef.UpdateAsync("Login", FieldValue.ArrayUnion(Time));
+                                await docRef.UpdateAsync("Location", FieldValue.ArrayUnion(address));
+                            }
+                            else
+                            {
+                                await docRef.UpdateAsync("Logout", FieldValue.ArrayUnion(Time));
+                            }
+                        }
+                        else
+                        {
+                            ArrayList LogTimeL = new ArrayList();
+                            LogTimeL.Add(Time);
+
+                            ArrayList Loc = new ArrayList();
+                            Loc.Add(address);
+
+                            data.Add("Login", LogTimeL);
+                            data.Add("Location", Loc);
+
+                            await docRef.SetAsync(data);
+                        }
+
+
+                    }
+                }
+
+            }
         }
     }
 }

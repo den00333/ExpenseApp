@@ -1,5 +1,6 @@
 ﻿using FireSharp.Interfaces;
 using Google.Cloud.Firestore;
+using Google.Protobuf;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -113,11 +114,12 @@ namespace ExpenseApp
         }
         public void storeImage()
         {
-            Image img = pbPic.Image;
             string username = FirebaseData.Instance.Username;
+            
+
             FirebaseData fd = new FirebaseData()
             {
-                imgString = otherFunc.ImageIntoBase64String(img)
+                imgString = otherFunc.ImageIntoBase64String(pbPic)
             };
             var set = otherFunc.conn().Set("images" + username, fd);
         }

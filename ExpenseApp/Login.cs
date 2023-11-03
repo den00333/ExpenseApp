@@ -99,26 +99,23 @@ namespace ExpenseApp
                 //CHECK THE ACCOUT STATUS IF IT IS ONLINE THEN YOU CANNOT PROCEED LOGGING IN
                 // - submit ticket to the admin
 
-                if (await otherFunc.CheckAccountStatus(username))
+                if (password == Security.Decrypt(userData.Password.ToString()))
                 {
-                    if (password == Security.Decrypt(userData.Password.ToString()))
-                    {
 
-                        //ENTER LOGS ACTIVITY
+                    //ENTER LOGS ACTIVITY
 
-                        this.Hide();
-                        FirebaseData.Instance.Username = username;
-                        Home home = new Home();
-                        home.Show();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Invalid username or password", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
+                    this.Hide();
+                    FirebaseData.Instance.Username = username;
+                    Home home = new Home();
+                    String userN = FirebaseData.Instance.Username;
+                    bool hasExistingAcc = await otherFunc.checkLog(userN);
+                    otherFunc.RecordLogs(userN, hasExistingAcc, true);
+                    home.Show();
                 }
                 else
                 {
-                    MessageBox.Show("This account is currently online.\nReport this event. Click OK\nto proceed. ", "Warning", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+
+                    MessageBox.Show("Invalid username or password", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else{
