@@ -658,8 +658,7 @@ namespace ExpenseApp
                 using (HttpClient hc = new HttpClient())
                 {
                     HttpResponseMessage timeResponse = await hc.GetAsync(timeApiUrl);
-                    if (timeResponse.IsSuccessStatusCode)
-                    {
+                    if (timeResponse.IsSuccessStatusCode){
                         DateTime localTime = currentUtcDateTime.ToLocalTime();
                         String Date = localTime.Date.ToString("yyyy-MM-dd");
                         String Time = localTime.TimeOfDay.ToString(@"hh\:mm\:ss");
@@ -667,21 +666,20 @@ namespace ExpenseApp
                         var db = FirestoreConn();
                         DocumentReference docRef = db.Collection("Users").Document(username).Collection("Logs").Document(Date);
                         Dictionary<String, object> data = new Dictionary<String, object>();
-
-                        if (HasAccount)
-                        {
-                            if (LoggingIn)
-                            {
+                        DocumentSnapshot docsnap = await docRef.GetSnapshotAsync();
+                        if (HasAccount){
+                            if (!docsnap.Exists){
+                                await docRef.SetAsync(new Dictionary<String, object>()); //Create current date document if does not exists
+                            }
+                            if (LoggingIn){
                                 await docRef.UpdateAsync("Login", FieldValue.ArrayUnion(Time));
                                 await docRef.UpdateAsync("Location", FieldValue.ArrayUnion(address));
                             }
-                            else
-                            {
+                            else{
                                 await docRef.UpdateAsync("Logout", FieldValue.ArrayUnion(Time));
                             }
                         }
-                        else
-                        {
+                        else{
                             ArrayList LogTimeL = new ArrayList();
                             LogTimeL.Add(Time);
 
@@ -693,11 +691,8 @@ namespace ExpenseApp
 
                             await docRef.SetAsync(data);
                         }
-
-
                     }
                 }
-
             }
         }
     }
