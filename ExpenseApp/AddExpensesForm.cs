@@ -92,8 +92,34 @@ namespace ExpenseApp
             if (hasInternet) {
                 try{
                     Save();
-                    w.lblExpenses.Text = otherFunc.amountBeautify( await o.SubtractExpensesFromWalletExpenses(user));
-                    
+                    //arr[0] is the total and arr[1] is the negativetotal
+                    float[] arrNum = await o.SubtractExpensesFromWalletExpenses(user);
+                    if (arrNum[1] != 0)
+                    {
+                        otherFunc.setShort(arrNum[1], user);
+                        w.lblExpenses.Text = otherFunc.amountBeautify(arrNum[0]);
+                        float newNegativeVal = arrNum[1] + await otherFunc.getShort(user);
+                        otherFunc.setShort(newNegativeVal, user);
+                        DocumentReference dRef = await o.SavingWalletAmount(user, "Balance");
+                        float currentWalletAmount = await o.getWalletAmount(dRef);
+                        float newBalance = currentWalletAmount + arrNum[1];
+                        Dictionary<String, object> data = new Dictionary<String, object>
+                        {
+                            {"Amount", newBalance}
+                        };
+
+                        await dRef.UpdateAsync(data);
+                        otherFunc.setNewWalletAmount(user, "Balance", newBalance);
+                        w.lblBalance.Text = otherFunc.amountBeautify(newBalance);
+                        w.lblShort.Text = otherFunc.amountBeautify(newNegativeVal);
+                        w.lblShort.ForeColor = Color.Red;
+                    }
+                    else
+                    {
+                        w.lblExpenses.Text = otherFunc.amountBeautify(arrNum[0]);
+                    }
+
+
                 }
                 catch {
                     MessageBox.Show("Error occured during saving!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);

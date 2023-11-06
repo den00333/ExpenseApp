@@ -32,12 +32,24 @@ namespace ExpenseApp
             String username = FirebaseData.Instance.Username;
             otherFunc o = new otherFunc();
             DocumentReference docRef = await o.SavingWalletAmount(username, "Balance");
-            int BalanceAmount = await o.getWalletAmount(docRef);
+            float BalanceAmount = await o.getWalletAmount(docRef);
             lblBalance.Text = otherFunc.amountBeautify(BalanceAmount);
 
             DocumentReference docRef2 = await o.SavingWalletAmount(username, "Expense");
-            int ExpenseAmount = await o.getWalletAmount(docRef2);
+            float ExpenseAmount = await o.getWalletAmount(docRef2);
             lblExpenses.Text = otherFunc.amountBeautify(ExpenseAmount);
+
+            float negVal = await otherFunc.getShort(username);
+            if(negVal != 0)
+            {
+                lblShort.Text = otherFunc.amountBeautify(negVal);
+                lblShort.ForeColor = Color.Red;
+            }
+            else
+            {
+                lblShort.Text = "";
+            }
+            
 
         }
 

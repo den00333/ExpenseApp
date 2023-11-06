@@ -127,7 +127,7 @@ namespace ExpenseApp
             }
             else
             {
-                Ename = 1;
+                Ename = 0;
                 return Ename;
             }
             
@@ -164,10 +164,9 @@ namespace ExpenseApp
 
         public async Task<DocumentReference> SavingWalletAmount(String username, String walletName)
         {
-            FirestoreDb database = FirestoreConn();
             //CollectionReference colRef = database.Collection("Users").Document(username).Collection("Wallets");
             //QuerySnapshot qSnap = await colRef.GetSnapshotAsync();
-            DocumentReference docRef = database.Collection("Users").Document(username).Collection("Wallets").Document(walletName);
+            DocumentReference docRef = editInsideUser(username).Collection("Wallets").Document(walletName);
             DocumentSnapshot docSnap = await docRef.GetSnapshotAsync();
             if(!docSnap.Exists)
             {
@@ -180,13 +179,14 @@ namespace ExpenseApp
             return docRef;
         }
 
-        public static String amountBeautify(int total)
+        public static String amountBeautify(float total)
         {
             String output = "₱";
             if (total < 0)
             {
                 total = total * -1;
                 output = "-₱";
+
             }
 
             char[] ordered = total.ToString().ToCharArray();
@@ -215,28 +215,78 @@ namespace ExpenseApp
             
         }
 
-        public async Task<int> SubtractExpensesFromWalletExpenses(String username) 
+        public async Task<float[]> SubtractExpensesFromWalletExpenses(String username) 
         {
             //get the latest added expense
             //get the latest docname
             //get the amount of that docname
             //get the current amount availabe in expenses then subtract then update
-            
+            float[] twoReturnVal = new float[2];
+            float negativeVal = 0;
             DocumentReference docRefExpenses = await getDocRefExpenses(username);
             Console.WriteLine("START OF 1ST GETWALLET");
-            int expense = await getWalletAmount(docRefExpenses);
+            float expense = await getWalletAmount(docRefExpenses);
             Console.WriteLine("EXPENSE:" + expense);
             DocumentReference docRefWallet = await SavingWalletAmount(username, "Expense");
-            int currentAmountInExpenses = await getWalletAmount(docRefWallet);
+            float currentAmountInExpenses = await getWalletAmount(docRefWallet);
             Console.WriteLine("Sencond: " + currentAmountInExpenses);
-            int total = currentAmountInExpenses - expense;
+            float total = currentAmountInExpenses - expense;
+            Console.WriteLine("Total Value: " + total);
+            //check if it is negative total then return 0
+            if (total < 0)
+            {
+                negativeVal = total;
+                total = 0;
+            }
             Dictionary<String, object> data = new Dictionary<String, object>()
             {
                 {"Amount", total}
             };
             await docRefWallet.UpdateAsync(data);
-            return total;
+            Console.WriteLine("negative Value: " + negativeVal);
+            twoReturnVal[0] = total;
+            twoReturnVal[1] = negativeVal;
+            return twoReturnVal;
 
+        }
+
+        public static DocumentReference editInsideUser(String username)
+        {
+            var db = FirestoreConn();
+            DocumentReference docRef = db.Collection("Users").Document(username);
+            return docRef;
+        }
+
+        public static void setShort(float negativeVal, String username)
+        {
+            DocumentReference docRef = editInsideUser(username).Collection("Wallets").Document("Expense");
+            Dictionary<String, object> data = new Dictionary<String, object>
+            {
+                {"short", negativeVal}
+            };
+
+            docRef.UpdateAsync(data);
+        }
+
+        public async static Task<float> getShort(String username)
+        {
+            float shrt = 0;
+            DocumentReference docRef = editInsideUser(username).Collection("Wallets").Document("Expense");
+            DocumentSnapshot docSnap = await docRef.GetSnapshotAsync();
+            if (docSnap.ContainsField("short"))
+            {
+                shrt = docSnap.GetValue<float>("short");
+                return shrt;
+            }
+            else
+            {
+                Dictionary<String, object> data = new Dictionary<String, object>
+                {
+                    {"short", 0}
+                };
+                await docRef.SetAsync(data);
+                return shrt;
+            }
         }
 
         public async Task<DocumentReference> getDocRefExpenses(String username)
@@ -251,13 +301,15 @@ namespace ExpenseApp
             return docRef;
         }
 
-        public async Task<int> getWalletAmount(DocumentReference docRef)
+       
+
+        public async Task<float> getWalletAmount(DocumentReference docRef)
         {
             DocumentSnapshot docSnap = await docRef.GetSnapshotAsync();
             if (docSnap.Exists)
             {
                 FirebaseData am = docSnap.ConvertTo<FirebaseData>();
-                int amount = am.Amount;
+                float amount = am.Amount;
                 return amount;
             }else
             {
@@ -265,6 +317,21 @@ namespace ExpenseApp
                 return 0;
             }
         }
+
+        public async static void setNewWalletAmount(String username, String walletName, float newAmount)
+        {
+            DocumentReference docref = editInsideUser(username).Collection("Wallets").Document(walletName);
+            Dictionary<String, object> data = new Dictionary<String, object>
+            {
+                {"Amount", newAmount}
+            };
+            await docref.UpdateAsync(data);
+
+        }
+
+        
+
+        
 
         public static async Task<bool> isUsernameExistingAsync(String username)
         {
@@ -535,7 +602,7 @@ namespace ExpenseApp
                     }
                     return Convert.ToBase64String(ms.ToArray());
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     return null;
                 }
@@ -597,12 +664,6 @@ namespace ExpenseApp
             }
             return null;
 
-        }
-
-        public static void EnterLogIn(String username)
-        {
-            var db = FirestoreConn();
-            DocumentReference docref = db.Collection("Users").Document(username).Collection("Logs").Document();
         }
 
         public static async Task<String> getIP()

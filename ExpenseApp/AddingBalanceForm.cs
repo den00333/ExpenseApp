@@ -41,32 +41,86 @@ namespace ExpenseApp
             {
                 if (inWallet)
                 {
-                    int b_total = await AddMoney("Balance");
+                    String username = FirebaseData.Instance.Username;
+                    float b_total = await AddMoney("Balance");
+
                     w.lblBalance.Text = otherFunc.amountBeautify(b_total);
                 }
                 else
                 {
-                    int e_total = await AddMoney("Expense");
+                    float e_total = await AddMoney("Expense");
                     w.lblExpenses.Text = otherFunc.amountBeautify(e_total);
+                    
                 }
             }
         }
         
-        private async Task<int> AddMoney(String wallet)
+        private async Task<float> AddMoney(String wallet)
         {
             otherFunc o = new otherFunc();
             String username = FirebaseData.Instance.Username;
-            DocumentReference docRef = await o.SavingWalletAmount(username, wallet);
-            int amount = await o.getWalletAmount(docRef);
-            int total = int.Parse(txtAmount.Text.ToString()) + amount;
-            Dictionary<String, object> data = new Dictionary<String, object>()
+            if (wallet.Equals("Balance"))
             {
-                {"Amount", total}
-            };
-            await docRef.UpdateAsync(data);
+                DocumentReference docRef = await o.SavingWalletAmount(username, wallet);
+                float amount = await o.getWalletAmount(docRef);
+                float addedAmount = float.Parse(txtAmount.Text.ToString());
+                float balanceAmount = await otherFunc.getShort(username);
+                if (balanceAmount < 0)
+                {
+                    //total += balanceAmount;
+                    float excess = addedAmount + balanceAmount;
+                    
+                    if(excess > 0)
+                    {
+                        w.lblShort.Text = "";
+                        otherFunc.setShort(0, username);
+                        amount += excess;
+                    }
+                    else
+                    {
+                        w.lblShort.Text = otherFunc.amountBeautify(excess);
+                        otherFunc.setShort(excess, username);
+                    }
 
-            txtAmount.Clear();
-            return total;
+                    Dictionary<String, object> data = new Dictionary<String, object>()
+                    {
+                        {"Amount", amount}
+                    };
+                    await docRef.UpdateAsync(data);
+
+                    txtAmount.Clear();
+                    return amount;
+
+                }
+                else
+                {
+                    float total = amount + addedAmount;
+                    Dictionary<String, object> data = new Dictionary<String, object>()
+                    {
+                        {"Amount", total}
+                    };
+                    await docRef.UpdateAsync(data);
+
+                    txtAmount.Clear();
+                    return total;
+                }
+                
+            }
+            else
+            {
+                DocumentReference docRef = await o.SavingWalletAmount(username, wallet);
+                float amount = await o.getWalletAmount(docRef);
+                float total = float.Parse(txtAmount.Text.ToString()) + amount;
+
+                Dictionary<String, object> data = new Dictionary<String, object>()
+                {
+                    {"Amount", total}
+                };
+                await docRef.UpdateAsync(data);
+
+                txtAmount.Clear();
+                return total;
+            }
         }
 
         private void btnChangeWallet_Click(object sender, EventArgs e)
