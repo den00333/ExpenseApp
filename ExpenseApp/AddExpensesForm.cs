@@ -49,19 +49,9 @@ namespace ExpenseApp
             location.Show();
         }
 
-        private void AddExpensesForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            
-        }
-
         private void AddExpensesForm_Load(object sender, EventArgs e)
         {
-
-        }
-
-        private void usernameTB_TextChanged(object sender, EventArgs e)
-        {
-
+            dtpDate.Value = DateTime.Now;
         }
 
         private void btnBack_Click(object sender, EventArgs e)
