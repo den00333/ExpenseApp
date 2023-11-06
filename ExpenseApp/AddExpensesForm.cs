@@ -167,5 +167,39 @@ namespace ExpenseApp
                 MessageBox.Show("Something is missing", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+
+        private void richTxtDesc_TextChanged(object sender, EventArgs e)
+        {
+            RichTextBox textBox = (RichTextBox)sender;
+            if (!string.IsNullOrEmpty(textBox.Text) && char.IsLower(textBox.Text[0]))
+            {
+                textBox.Text = char.ToUpper(textBox.Text[0]) + textBox.Text.Substring(1);
+                textBox.SelectionStart = textBox.Text.Length;
+            }
+        }
+
+        private void richTxtDesc_Enter(object sender, EventArgs e)
+        {
+            RichTextBox rtb = (RichTextBox)sender;
+            rtb.Text = "";
+        }
+
+        private void richTxtDesc_Leave(object sender, EventArgs e)
+        {
+            RichTextBox rtb = (RichTextBox)sender;
+            rtb.Text = "Name";
+        }
+
+        private void richTextNote_Leave(object sender, EventArgs e)
+        {
+            RichTextBox rtb = (RichTextBox)sender;
+            rtb.Text = "Note";
+        }
+
+        private void richTextNote_Enter(object sender, EventArgs e)
+        {
+            RichTextBox rtb = (RichTextBox)sender;
+            rtb.Text = "";
+        }
     }
 }

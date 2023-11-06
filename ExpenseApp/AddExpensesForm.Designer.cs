@@ -271,6 +271,8 @@
             this.richTextNote.Size = new System.Drawing.Size(449, 114);
             this.richTextNote.TabIndex = 26;
             this.richTextNote.Text = "Note";
+            this.richTextNote.Enter += new System.EventHandler(this.richTextNote_Enter);
+            this.richTextNote.Leave += new System.EventHandler(this.richTextNote_Leave);
             // 
             // label4
             // 
@@ -334,6 +336,9 @@
             this.richTxtDesc.Size = new System.Drawing.Size(444, 119);
             this.richTxtDesc.TabIndex = 0;
             this.richTxtDesc.Text = "Name";
+            this.richTxtDesc.TextChanged += new System.EventHandler(this.richTxtDesc_TextChanged);
+            this.richTxtDesc.Enter += new System.EventHandler(this.richTxtDesc_Enter);
+            this.richTxtDesc.Leave += new System.EventHandler(this.richTxtDesc_Leave);
             // 
             // errorProvider
             // 
