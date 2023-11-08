@@ -29,9 +29,11 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            Guna.UI2.AnimatorNS.Animation animation1 = new Guna.UI2.AnimatorNS.Animation();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(wallet));
             this.label1 = new System.Windows.Forms.Label();
             this.btnAddXpns = new Guna.UI2.WinForms.Guna2Button();
             this.guna2ShadowPanel1 = new Guna.UI2.WinForms.Guna2ShadowPanel();
@@ -57,6 +59,7 @@
             this.Amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.guna2Transition1 = new Guna.UI2.WinForms.Guna2Transition();
             this.guna2ShadowPanel1.SuspendLayout();
             this.guna2GradientPanel1.SuspendLayout();
             this.guna2ShadowPanel2.SuspendLayout();
@@ -71,6 +74,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
+            this.guna2Transition1.SetDecoration(this.label1, Guna.UI2.AnimatorNS.DecorationType.None);
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Black;
             this.label1.Location = new System.Drawing.Point(33, 15);
@@ -83,15 +87,16 @@
             // btnAddXpns
             // 
             this.btnAddXpns.BorderRadius = 15;
+            this.guna2Transition1.SetDecoration(this.btnAddXpns, Guna.UI2.AnimatorNS.DecorationType.None);
             this.btnAddXpns.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnAddXpns.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnAddXpns.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnAddXpns.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnAddXpns.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(66)))), ((int)(((byte)(86)))));
+            this.btnAddXpns.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(182)))), ((int)(((byte)(66)))), ((int)(((byte)(86)))));
             this.btnAddXpns.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddXpns.ForeColor = System.Drawing.Color.White;
             this.btnAddXpns.Location = new System.Drawing.Point(107, 150);
-            this.btnAddXpns.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAddXpns.Margin = new System.Windows.Forms.Padding(4);
             this.btnAddXpns.Name = "btnAddXpns";
             this.btnAddXpns.Size = new System.Drawing.Size(209, 55);
             this.btnAddXpns.TabIndex = 2;
@@ -102,9 +107,10 @@
             // 
             this.guna2ShadowPanel1.BackColor = System.Drawing.Color.Transparent;
             this.guna2ShadowPanel1.Controls.Add(this.guna2GradientPanel1);
+            this.guna2Transition1.SetDecoration(this.guna2ShadowPanel1, Guna.UI2.AnimatorNS.DecorationType.None);
             this.guna2ShadowPanel1.FillColor = System.Drawing.Color.White;
             this.guna2ShadowPanel1.Location = new System.Drawing.Point(44, 78);
-            this.guna2ShadowPanel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.guna2ShadowPanel1.Margin = new System.Windows.Forms.Padding(4);
             this.guna2ShadowPanel1.Name = "guna2ShadowPanel1";
             this.guna2ShadowPanel1.Radius = 10;
             this.guna2ShadowPanel1.ShadowColor = System.Drawing.Color.Black;
@@ -121,10 +127,11 @@
             this.guna2GradientPanel1.Controls.Add(this.btnAddMoney);
             this.guna2GradientPanel1.Controls.Add(this.lblBalance);
             this.guna2GradientPanel1.Controls.Add(this.label2);
+            this.guna2Transition1.SetDecoration(this.guna2GradientPanel1, Guna.UI2.AnimatorNS.DecorationType.None);
             this.guna2GradientPanel1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(180)))), ((int)(((byte)(72)))));
             this.guna2GradientPanel1.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(123)))), ((int)(((byte)(47)))));
             this.guna2GradientPanel1.Location = new System.Drawing.Point(0, 0);
-            this.guna2GradientPanel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.guna2GradientPanel1.Margin = new System.Windows.Forms.Padding(4);
             this.guna2GradientPanel1.Name = "guna2GradientPanel1";
             this.guna2GradientPanel1.Size = new System.Drawing.Size(441, 193);
             this.guna2GradientPanel1.TabIndex = 0;
@@ -132,6 +139,7 @@
             // lblShort
             // 
             this.lblShort.AutoSize = true;
+            this.guna2Transition1.SetDecoration(this.lblShort, Guna.UI2.AnimatorNS.DecorationType.None);
             this.lblShort.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblShort.ForeColor = System.Drawing.Color.White;
             this.lblShort.Location = new System.Drawing.Point(289, 14);
@@ -144,6 +152,7 @@
             // btnAddMoney
             // 
             this.btnAddMoney.BorderRadius = 15;
+            this.guna2Transition1.SetDecoration(this.btnAddMoney, Guna.UI2.AnimatorNS.DecorationType.None);
             this.btnAddMoney.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnAddMoney.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnAddMoney.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -152,7 +161,7 @@
             this.btnAddMoney.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddMoney.ForeColor = System.Drawing.Color.White;
             this.btnAddMoney.Location = new System.Drawing.Point(105, 150);
-            this.btnAddMoney.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAddMoney.Margin = new System.Windows.Forms.Padding(4);
             this.btnAddMoney.Name = "btnAddMoney";
             this.btnAddMoney.Size = new System.Drawing.Size(209, 55);
             this.btnAddMoney.TabIndex = 9;
@@ -162,6 +171,7 @@
             // lblBalance
             // 
             this.lblBalance.AutoSize = true;
+            this.guna2Transition1.SetDecoration(this.lblBalance, Guna.UI2.AnimatorNS.DecorationType.None);
             this.lblBalance.Font = new System.Drawing.Font("Poppins SemiBold", 25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblBalance.ForeColor = System.Drawing.Color.White;
             this.lblBalance.Location = new System.Drawing.Point(61, 61);
@@ -174,6 +184,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
+            this.guna2Transition1.SetDecoration(this.label2, Guna.UI2.AnimatorNS.DecorationType.None);
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(11, 9);
@@ -187,9 +198,10 @@
             // 
             this.guna2ShadowPanel2.BackColor = System.Drawing.Color.Transparent;
             this.guna2ShadowPanel2.Controls.Add(this.guna2GradientPanel2);
+            this.guna2Transition1.SetDecoration(this.guna2ShadowPanel2, Guna.UI2.AnimatorNS.DecorationType.None);
             this.guna2ShadowPanel2.FillColor = System.Drawing.Color.White;
             this.guna2ShadowPanel2.Location = new System.Drawing.Point(515, 78);
-            this.guna2ShadowPanel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.guna2ShadowPanel2.Margin = new System.Windows.Forms.Padding(4);
             this.guna2ShadowPanel2.Name = "guna2ShadowPanel2";
             this.guna2ShadowPanel2.Radius = 10;
             this.guna2ShadowPanel2.ShadowColor = System.Drawing.Color.Black;
@@ -205,10 +217,11 @@
             this.guna2GradientPanel2.Controls.Add(this.lblExpenses);
             this.guna2GradientPanel2.Controls.Add(this.label3);
             this.guna2GradientPanel2.Controls.Add(this.btnAddXpns);
+            this.guna2Transition1.SetDecoration(this.guna2GradientPanel2, Guna.UI2.AnimatorNS.DecorationType.None);
             this.guna2GradientPanel2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(183)))), ((int)(((byte)(142)))), ((int)(((byte)(81)))));
             this.guna2GradientPanel2.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(66)))), ((int)(((byte)(86)))));
             this.guna2GradientPanel2.Location = new System.Drawing.Point(0, 0);
-            this.guna2GradientPanel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.guna2GradientPanel2.Margin = new System.Windows.Forms.Padding(4);
             this.guna2GradientPanel2.Name = "guna2GradientPanel2";
             this.guna2GradientPanel2.Size = new System.Drawing.Size(441, 193);
             this.guna2GradientPanel2.TabIndex = 0;
@@ -216,18 +229,20 @@
             // lblExpenses
             // 
             this.lblExpenses.AutoSize = true;
+            this.guna2Transition1.SetDecoration(this.lblExpenses, Guna.UI2.AnimatorNS.DecorationType.None);
             this.lblExpenses.Font = new System.Drawing.Font("Poppins SemiBold", 25.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblExpenses.ForeColor = System.Drawing.Color.White;
             this.lblExpenses.Location = new System.Drawing.Point(49, 61);
             this.lblExpenses.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblExpenses.Name = "lblExpenses";
-            this.lblExpenses.Size = new System.Drawing.Size(189, 78);
+            this.lblExpenses.Size = new System.Drawing.Size(188, 76);
             this.lblExpenses.TabIndex = 8;
             this.lblExpenses.Text = "₱2,500";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
+            this.guna2Transition1.SetDecoration(this.label3, Guna.UI2.AnimatorNS.DecorationType.None);
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.White;
             this.label3.Location = new System.Drawing.Point(12, 9);
@@ -241,9 +256,10 @@
             // 
             this.guna2ShadowPanel3.BackColor = System.Drawing.Color.Transparent;
             this.guna2ShadowPanel3.Controls.Add(this.guna2GradientPanel3);
+            this.guna2Transition1.SetDecoration(this.guna2ShadowPanel3, Guna.UI2.AnimatorNS.DecorationType.None);
             this.guna2ShadowPanel3.FillColor = System.Drawing.Color.White;
             this.guna2ShadowPanel3.Location = new System.Drawing.Point(985, 78);
-            this.guna2ShadowPanel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.guna2ShadowPanel3.Margin = new System.Windows.Forms.Padding(4);
             this.guna2ShadowPanel3.Name = "guna2ShadowPanel3";
             this.guna2ShadowPanel3.Radius = 10;
             this.guna2ShadowPanel3.ShadowColor = System.Drawing.Color.Black;
@@ -258,10 +274,11 @@
             this.guna2GradientPanel3.BorderRadius = 20;
             this.guna2GradientPanel3.Controls.Add(this.label4);
             this.guna2GradientPanel3.Controls.Add(this.guna2Button1);
+            this.guna2Transition1.SetDecoration(this.guna2GradientPanel3, Guna.UI2.AnimatorNS.DecorationType.None);
             this.guna2GradientPanel3.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(187)))), ((int)(((byte)(141)))), ((int)(((byte)(228)))));
             this.guna2GradientPanel3.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(148)))), ((int)(((byte)(98)))));
             this.guna2GradientPanel3.Location = new System.Drawing.Point(0, 0);
-            this.guna2GradientPanel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.guna2GradientPanel3.Margin = new System.Windows.Forms.Padding(4);
             this.guna2GradientPanel3.Name = "guna2GradientPanel3";
             this.guna2GradientPanel3.Size = new System.Drawing.Size(439, 193);
             this.guna2GradientPanel3.TabIndex = 0;
@@ -269,6 +286,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
+            this.guna2Transition1.SetDecoration(this.label4, Guna.UI2.AnimatorNS.DecorationType.None);
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.White;
             this.label4.Location = new System.Drawing.Point(9, 9);
@@ -281,6 +299,7 @@
             // guna2Button1
             // 
             this.guna2Button1.BorderRadius = 15;
+            this.guna2Transition1.SetDecoration(this.guna2Button1, Guna.UI2.AnimatorNS.DecorationType.None);
             this.guna2Button1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.guna2Button1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.guna2Button1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -289,7 +308,7 @@
             this.guna2Button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2Button1.ForeColor = System.Drawing.Color.White;
             this.guna2Button1.Location = new System.Drawing.Point(115, 150);
-            this.guna2Button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.guna2Button1.Margin = new System.Windows.Forms.Padding(4);
             this.guna2Button1.Name = "guna2Button1";
             this.guna2Button1.Size = new System.Drawing.Size(209, 55);
             this.guna2Button1.TabIndex = 3;
@@ -299,9 +318,10 @@
             // 
             this.guna2Panel1.BorderRadius = 15;
             this.guna2Panel1.Controls.Add(this.label7);
+            this.guna2Transition1.SetDecoration(this.guna2Panel1, Guna.UI2.AnimatorNS.DecorationType.None);
             this.guna2Panel1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(123)))), ((int)(((byte)(47)))));
             this.guna2Panel1.Location = new System.Drawing.Point(44, 304);
-            this.guna2Panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.guna2Panel1.Margin = new System.Windows.Forms.Padding(4);
             this.guna2Panel1.Name = "guna2Panel1";
             this.guna2Panel1.Size = new System.Drawing.Size(267, 150);
             this.guna2Panel1.TabIndex = 6;
@@ -310,6 +330,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.BackColor = System.Drawing.Color.Transparent;
+            this.guna2Transition1.SetDecoration(this.label7, Guna.UI2.AnimatorNS.DecorationType.None);
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.White;
             this.label7.Location = new System.Drawing.Point(40, 9);
@@ -323,9 +344,10 @@
             // 
             this.guna2ShadowPanel4.BackColor = System.Drawing.Color.Transparent;
             this.guna2ShadowPanel4.Controls.Add(this.dgvExpenses);
+            this.guna2Transition1.SetDecoration(this.guna2ShadowPanel4, Guna.UI2.AnimatorNS.DecorationType.None);
             this.guna2ShadowPanel4.FillColor = System.Drawing.Color.White;
             this.guna2ShadowPanel4.Location = new System.Drawing.Point(44, 351);
-            this.guna2ShadowPanel4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.guna2ShadowPanel4.Margin = new System.Windows.Forms.Padding(4);
             this.guna2ShadowPanel4.Name = "guna2ShadowPanel4";
             this.guna2ShadowPanel4.ShadowColor = System.Drawing.Color.Black;
             this.guna2ShadowPanel4.ShadowDepth = 230;
@@ -340,33 +362,34 @@
             this.dgvExpenses.AllowUserToDeleteRows = false;
             this.dgvExpenses.AllowUserToResizeColumns = false;
             this.dgvExpenses.AllowUserToResizeRows = false;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(236)))), ((int)(((byte)(201)))));
-            this.dgvExpenses.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(139)))), ((int)(((byte)(194)))), ((int)(((byte)(74)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(139)))), ((int)(((byte)(194)))), ((int)(((byte)(74)))));
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvExpenses.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(236)))), ((int)(((byte)(201)))));
+            this.dgvExpenses.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(139)))), ((int)(((byte)(194)))), ((int)(((byte)(74)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(139)))), ((int)(((byte)(194)))), ((int)(((byte)(74)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvExpenses.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvExpenses.ColumnHeadersHeight = 30;
             this.dgvExpenses.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.docName,
             this.Category,
             this.Amount,
             this.Date});
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(242)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(177)))), ((int)(((byte)(214)))), ((int)(((byte)(134)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvExpenses.DefaultCellStyle = dataGridViewCellStyle6;
+            this.guna2Transition1.SetDecoration(this.dgvExpenses, Guna.UI2.AnimatorNS.DecorationType.None);
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(242)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(177)))), ((int)(((byte)(214)))), ((int)(((byte)(134)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvExpenses.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvExpenses.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(235)))), ((int)(((byte)(199)))));
             this.dgvExpenses.Location = new System.Drawing.Point(0, 0);
-            this.dgvExpenses.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvExpenses.Margin = new System.Windows.Forms.Padding(4);
             this.dgvExpenses.Name = "dgvExpenses";
             this.dgvExpenses.RowHeadersVisible = false;
             this.dgvExpenses.RowHeadersWidth = 51;
@@ -423,6 +446,26 @@
             this.Date.MinimumWidth = 6;
             this.Date.Name = "Date";
             // 
+            // guna2Transition1
+            // 
+            this.guna2Transition1.Cursor = null;
+            animation1.AnimateOnlyDifferences = true;
+            animation1.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.BlindCoeff")));
+            animation1.LeafCoeff = 0F;
+            animation1.MaxTime = 1F;
+            animation1.MinTime = 0F;
+            animation1.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.MosaicCoeff")));
+            animation1.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation1.MosaicShift")));
+            animation1.MosaicSize = 0;
+            animation1.Padding = new System.Windows.Forms.Padding(0);
+            animation1.RotateCoeff = 0F;
+            animation1.RotateLimit = 0F;
+            animation1.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.ScaleCoeff")));
+            animation1.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.SlideCoeff")));
+            animation1.TimeCoeff = 0F;
+            animation1.TransparencyCoeff = 0F;
+            this.guna2Transition1.DefaultAnimation = animation1;
+            // 
             // wallet
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -434,8 +477,9 @@
             this.Controls.Add(this.guna2ShadowPanel2);
             this.Controls.Add(this.guna2ShadowPanel1);
             this.Controls.Add(this.label1);
+            this.guna2Transition1.SetDecoration(this, Guna.UI2.AnimatorNS.DecorationType.None);
             this.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "wallet";
             this.Size = new System.Drawing.Size(1479, 763);
             this.Load += new System.EventHandler(this.wallet_Load);
@@ -484,5 +528,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Date;
         private System.Windows.Forms.ToolTip toolTip1;
         public System.Windows.Forms.Label lblShort;
+        private Guna.UI2.WinForms.Guna2Transition guna2Transition1;
     }
 }
