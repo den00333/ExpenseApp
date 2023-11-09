@@ -191,6 +191,7 @@ namespace ExpenseApp
             this.forgotPassBTN.Size = new System.Drawing.Size(131, 18);
             this.forgotPassBTN.TabIndex = 10;
             this.forgotPassBTN.Text = "Forgot Password?";
+            this.forgotPassBTN.Click += new System.EventHandler(this.forgotPassBTN_Click);
             // 
             // pictureBox1
             // 
