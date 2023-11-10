@@ -13,6 +13,7 @@ namespace ExpenseApp
 {
     public partial class changePassword : Form
     {
+        private Guna.UI2.WinForms.Guna2TextBox gunaTextBox;
         public changePassword()
         {
             InitializeComponent();
@@ -62,19 +63,24 @@ namespace ExpenseApp
 
         private void txtEmail_TextChanged(object sender, EventArgs e)
         {
-            Guna.UI2.WinForms.Guna2TextBox gunaTextBox = (Guna.UI2.WinForms.Guna2TextBox)sender;
+           //gunaTextBox = (Guna.UI2.WinForms.Guna2TextBox)sender;
 
         
-            string input = txtEmail.Text;
+           // string input = txtEmail.Text;
 
-            int atIndex = input.IndexOf('@');
+           // int atIndex = input.IndexOf('@');
 
-            if (atIndex > 1)
-            {
-                string extracted = input.Substring(0, atIndex);
-                string maskedText = extracted[0] + new string('*', extracted.Length - 2) + extracted[extracted.Length - 1] + input.Substring(atIndex);
-                gunaTextBox.Text = maskedText;
-            }
+           // if (atIndex > 1)
+           // {
+           //     string extracted = input.Substring(0, atIndex);
+           //     string maskedText = extracted[0] + new string('*', extracted.Length - 2) + extracted[extracted.Length - 1] + input.Substring(atIndex);
+           //     gunaTextBox.Text = maskedText;
+           // }
+        }
+        
+        private void btnSendCode_Click(object sender, EventArgs e)
+        {
+            otherFunc.sendOTP(txtEmail.Text);
         }
     }
 }

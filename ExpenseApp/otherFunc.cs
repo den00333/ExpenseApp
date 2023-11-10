@@ -29,6 +29,8 @@ using System.Net.Http;
 using Newtonsoft.Json.Linq;
 using MaxMind.GeoIP2;
 using System.Collections;
+using System.Net.Mail;
+using System.Net;
 
 namespace ExpenseApp
 {
@@ -693,6 +695,38 @@ namespace ExpenseApp
                         }
                     }
                 }
+            }
+        }
+        public static string generateOTP()
+        {
+            Random ran = new Random();
+            int otp = ran.Next(100000, 999999);
+            return otp.ToString();
+        }
+        public static void sendOTP(string email)
+        {
+            string otp = generateOTP();
+
+            MailMessage message = new MailMessage();
+            message.From = new MailAddress("expensetracker273@gmail.com");
+            message.To.Add(email);
+            message.Subject = "One-Time Password (OTP)";
+            message.Body = "Your OTP is: " + otp;
+
+            SmtpClient smtpClient = new SmtpClient("smtp.gmail.com");
+            smtpClient.Port = 587;
+            smtpClient.DeliveryMethod = SmtpDeliveryMethod.Network;
+            smtpClient.Credentials = new NetworkCredential("expensetracker273@gmail.com", "kfei gmyb dukz sgli");
+            smtpClient.EnableSsl = true;
+
+            try
+            {
+                smtpClient.Send(message);
+                MessageBox.Show("Email sent successfully!");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
             }
         }
     }
