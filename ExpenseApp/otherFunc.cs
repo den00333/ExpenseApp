@@ -29,6 +29,7 @@ using System.Net.Http;
 using Newtonsoft.Json.Linq;
 using MaxMind.GeoIP2;
 using System.Collections;
+using System.Diagnostics;
 
 namespace ExpenseApp
 {
@@ -162,6 +163,31 @@ namespace ExpenseApp
              else create new which starts from "E1"*/
         }
 
+        public static async void addWalletLogs(String username, String walletName, float amount)
+        {
+            DocumentReference docRef = editInsideUser(username).Collection("Wallets").Document("LogWallet");
+            DocumentSnapshot docSnap = await docRef.GetSnapshotAsync();
+            String dateInputted = DateTime.Now.ToString("yyyy-MM-dd");
+            String timeInputted = DateTime.Now.ToString("HH:mm:ss");
+            String item = $"{amount}|{walletName}|{dateInputted}|{timeInputted}";
+            ArrayList logWallet = new ArrayList();
+            logWallet.Add(item);
+
+            Dictionary<String, object> data = new Dictionary<String, object>
+            {
+                {"LogWallet", logWallet}
+            };
+
+            if (!docSnap.Exists)
+            {
+                await docRef.SetAsync(data);
+            }
+            else
+            {
+                await docRef.UpdateAsync("LogWallet", FieldValue.ArrayUnion(item));
+            }
+        }
+
         public async Task<DocumentReference> SavingWalletAmount(String username, String walletName)
         {
             //CollectionReference colRef = database.Collection("Users").Document(username).Collection("Wallets");
@@ -257,6 +283,28 @@ namespace ExpenseApp
             return docRef;
         }
 
+        public async static Task<String> addNewGoal(String username, String goalDate, float amount, String title, String desc)
+        {
+            
+            DocumentReference docRef = editInsideUser(username).Collection("Goals").Document(title);
+            DocumentSnapshot docSnap = await docRef.GetSnapshotAsync();
+            if (!docSnap.Exists)
+            {
+                Dictionary<String, object> data = new Dictionary<String, object>
+                {
+                    {"Amount", amount},
+                    {"GoalDate", goalDate},
+                    {"Description", desc},
+                    {"timestamp", FieldValue.ServerTimestamp}
+                };
+                await docRef.SetAsync(data);
+                return "Successfully Added!";
+            }
+            else
+            {
+                return "Title already existing!";
+            }
+        }
         public static void setShort(float negativeVal, String username)
         {
             DocumentReference docRef = editInsideUser(username).Collection("Wallets").Document("Expense");
@@ -637,11 +685,28 @@ namespace ExpenseApp
             }
         }
 
+        public async Task<List<(string DocName, DocumentSnapshot DocSnapshot)>> getGoalsWithDocNames(String username)
+        {
+            CollectionReference colRef = editInsideUser(username).Collection("Goals");
+            QuerySnapshot snap = await colRef.OrderByDescending("timestamp").GetSnapshotAsync();
+
+            List<(string DocName, DocumentSnapshot DocSnapshot)> documentData = new List<(string, DocumentSnapshot)>();
+            foreach (DocumentSnapshot docSnap in snap.Documents)
+            {
+                if (docSnap.Exists)
+                {
+                    string docName = docSnap.Id;
+                    documentData.Add((docName, docSnap));
+                }
+            }
+            return documentData;
+        }
+
         public async Task<List<(string DocName, DocumentSnapshot DocSnapshot)>> displayDataWithDocNames(string username)
         {
             FirestoreDb db = FirestoreConn();
             CollectionReference colRef = db.Collection("Users").Document(username).Collection("Expenses");
-            QuerySnapshot snap = await colRef.GetSnapshotAsync();
+            QuerySnapshot snap = await colRef.OrderByDescending("timestamp").GetSnapshotAsync();
 
             List<(string DocName, DocumentSnapshot DocSnapshot)> documentData = new List<(string, DocumentSnapshot)>();
 
@@ -663,6 +728,25 @@ namespace ExpenseApp
                 return data;
             }
             return null;
+
+        }
+
+        public async Task<Dictionary<string, object>> getItemsInsideGoalsID(string username, string goalsId)
+        {
+            DocumentReference docRef = editInsideUser(username).Collection("Goals").Document(goalsId);
+            DocumentSnapshot snap = await docRef.GetSnapshotAsync();
+            if (snap.Exists)
+            {
+                Dictionary<string, object> data = snap.ToDictionary();
+                return data;
+            }
+            return null;
+        }
+
+        public static async void deleteInsideUser(String username, String collectionName, String docName)
+        {
+            DocumentReference docRef = editInsideUser(username).Collection(collectionName).Document(docName);
+            await docRef.DeleteAsync();
 
         }
 
@@ -728,27 +812,25 @@ namespace ExpenseApp
                         DocumentReference docRef = db.Collection("Users").Document(username).Collection("Logs").Document(Date);
                         Dictionary<String, object> data = new Dictionary<String, object>();
                         DocumentSnapshot docsnap = await docRef.GetSnapshotAsync();
+                        String item = Time + "|" + address;
                         if (HasAccount){
                             if (!docsnap.Exists){
                                 await docRef.SetAsync(new Dictionary<String, object>()); //Create current date document if does not exists
                             }
                             if (LoggingIn){
-                                await docRef.UpdateAsync("Login", FieldValue.ArrayUnion(Time));
-                                await docRef.UpdateAsync("Location", FieldValue.ArrayUnion(address));
+                                await docRef.UpdateAsync("Login", FieldValue.ArrayUnion(item));
                             }
                             else{
                                 await docRef.UpdateAsync("Logout", FieldValue.ArrayUnion(Time));
                             }
                         }
                         else{
-                            ArrayList LogTimeL = new ArrayList();
-                            LogTimeL.Add(Time);
+                            
+                            ArrayList Log = new ArrayList();
+                            Log.Add(item);
 
-                            ArrayList Loc = new ArrayList();
-                            Loc.Add(address);
 
-                            data.Add("Login", LogTimeL);
-                            data.Add("Location", Loc);
+                            data.Add("Login", Log);
 
                             await docRef.SetAsync(data);
                         }

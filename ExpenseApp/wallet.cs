@@ -79,6 +79,24 @@ namespace ExpenseApp
                 }
             }
         }
+
+        public async void displayGoals()
+        {
+            string username = FirebaseData.Instance.Username;
+            otherFunc o = new otherFunc();
+            List<(string DocName, DocumentSnapshot DocSnapshot)> documentData = await o.getGoalsWithDocNames(username);
+            dgvExpenses.Rows.Clear();
+            foreach ((string docName, DocumentSnapshot docsnap) in documentData)
+            {
+                float am = docsnap.GetValue<float>("Amount");
+                String d = docsnap.GetValue<String>("GoalDate");
+                if (docsnap.Exists)
+                {
+                    dgvExpenses.Rows.Add(docName, am.ToString(), d);
+                }
+            }
+
+        }
         private void ExpenseGridDesign()
         {
             dgvExpenses.ColumnHeadersDefaultCellStyle.Font = new Font("Poppins", 16, FontStyle.Regular);
@@ -93,17 +111,31 @@ namespace ExpenseApp
         private async void dgvExpenses_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             otherFunc function = new otherFunc();
-            if (e.RowIndex >= 0 && e.ColumnIndex >= 0){
-                string expenseId = dgvExpenses.Rows[e.RowIndex].Cells[0].Value.ToString();
-                Dictionary<string, object> data = await function.getItemsInsideExpenseId(username, expenseId);
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
+            {
+                if (flagGoal)
+                {
+                    string expenseId = dgvExpenses.Rows[e.RowIndex].Cells[0].Value.ToString();
+                    Dictionary<string, object> data = await function.getItemsInsideExpenseId(username, expenseId);
 
-                ExpenseDetailForm edf = new ExpenseDetailForm();
-                edf.displayExpenseDetails(data);
-                edf.StartPosition = FormStartPosition.Manual;
-                int x = Screen.PrimaryScreen.WorkingArea.Right - edf.Width;
-                int y = Screen.PrimaryScreen.WorkingArea.Top + (Screen.PrimaryScreen.WorkingArea.Height - edf.Height) / 2;
-                edf.Location = new Point(x, y);
-                edf.ShowDialog();
+                    ExpenseDetailForm edf = new ExpenseDetailForm();
+                    edf.displayExpenseDetails(data);
+                    edf.StartPosition = FormStartPosition.Manual;
+                    int x = Screen.PrimaryScreen.WorkingArea.Right - edf.Width;
+                    int y = Screen.PrimaryScreen.WorkingArea.Top + (Screen.PrimaryScreen.WorkingArea.Height - edf.Height) / 2;
+                    edf.Location = new Point(x, y);
+                    edf.ShowDialog();
+                }
+                else
+                {
+                    string goalId = dgvExpenses.Rows[e.RowIndex].Cells[0].Value.ToString();
+                    Dictionary<string, object> data = await function.getItemsInsideGoalsID(username, goalId);
+                    GoalDetails gd = new GoalDetails(this);
+                    gd.displayGoalDetails(data, goalId);
+                    gd.StartPosition = FormStartPosition.CenterScreen;
+                    gd.ShowDialog();
+
+                }
             }
         }
 
@@ -114,5 +146,78 @@ namespace ExpenseApp
                 toolTip1.SetToolTip(dgvExpenses,"View Full Details");
             }
         }
+
+        private void btnAddGoal_Click(object sender, EventArgs e)
+        {
+            AddGoals ag = new AddGoals(this);
+            ag.StartPosition = FormStartPosition.CenterScreen;
+            ag.ShowDialog();
+        }
+
+        public bool flagGoal = true;
+        private void btnGoals_Click(object sender, EventArgs e)
+        {
+            if (flagGoal)
+            {
+                //button
+                panelSwitch.FillColor = Color.FromArgb(227, 180, 72);
+                panelSwitch.FillColor2 = Color.FromArgb(83, 123, 47);
+                btnGoals.ForeColor = Color.DarkGreen;
+                //
+                //DATA GRID
+                panelTitle.FillColor = Color.FromArgb(187, 141, 228);
+                label7.Text = "Goals";
+                label7.Anchor = AnchorStyles.Right;
+                dgvExpenses.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.Amethyst;
+                dgvExpenses.Rows.Clear();
+                dgvExpenses.Columns.Clear();
+                setDGVHeaders(flagGoal);
+                displayGoals();
+                flagGoal = false;
+            }
+            else
+            {
+                //button
+                panelSwitch.FillColor = Color.FromArgb(187, 141, 228);
+                panelSwitch.FillColor2 = Color.FromArgb(229, 148, 98);
+                btnGoals.ForeColor = Color.DarkOrchid;
+                //
+                //DATA GRID
+                panelTitle.FillColor = Color.FromArgb(83, 123, 47);
+                label7.Text = "Transactions";
+                dgvExpenses.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.LightGreen;
+                dgvExpenses.Rows.Clear();
+                dgvExpenses.Columns.Clear();
+                setDGVHeaders(flagGoal);
+                displayExpenses();
+                flagGoal = true;
+            }
+        }
+
+        private void setDGVHeaders(bool flag)
+        {
+            if (flag)
+            {
+                String[] transactionHeaders = { "Title","Amount", "Date" };
+                foreach (String header in transactionHeaders)
+                {
+                    DataGridViewTextBoxColumn d = new DataGridViewTextBoxColumn();
+                    d.HeaderText = header;
+                    dgvExpenses.Columns.Add(d);
+                }
+            }
+            else
+            {
+                String[] transactionHeaders = { "Expense ID", "Category", "Amount", "Date" };
+                foreach(String header in transactionHeaders)
+                {
+                    DataGridViewTextBoxColumn d = new DataGridViewTextBoxColumn();
+                    d.HeaderText = header;
+                    dgvExpenses.Columns.Add(d);
+                }
+            }
+        }
+
+        
     }
 }

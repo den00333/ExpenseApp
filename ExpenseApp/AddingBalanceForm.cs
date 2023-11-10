@@ -39,22 +39,23 @@ namespace ExpenseApp
         {
             if (!string.IsNullOrWhiteSpace(txtAmount.Text))
             {
+                String username = FirebaseData.Instance.Username;
                 if (inWallet)
                 {
-                    String username = FirebaseData.Instance.Username;
                     float b_total = await AddMoney("Balance");
-
+                    otherFunc.addWalletLogs(username, "Balance", addedAmount);
                     w.lblBalance.Text = otherFunc.amountBeautify(b_total);
                 }
                 else
                 {
                     float e_total = await AddMoney("Expense");
+                    otherFunc.addWalletLogs(username, "Expense", addedAmount);
                     w.lblExpenses.Text = otherFunc.amountBeautify(e_total);
                     
                 }
             }
         }
-        
+        float addedAmount = 0;
         private async Task<float> AddMoney(String wallet)
         {
             otherFunc o = new otherFunc();
@@ -63,7 +64,7 @@ namespace ExpenseApp
             {
                 DocumentReference docRef = await o.SavingWalletAmount(username, wallet);
                 float amount = await o.getWalletAmount(docRef);
-                float addedAmount = float.Parse(txtAmount.Text.ToString());
+                addedAmount = float.Parse(txtAmount.Text.ToString());
                 float balanceAmount = await otherFunc.getShort(username);
                 if (balanceAmount < 0)
                 {
@@ -84,7 +85,8 @@ namespace ExpenseApp
 
                     Dictionary<String, object> data = new Dictionary<String, object>()
                     {
-                        {"Amount", amount}
+                        {"Amount", amount},
+                        /*{"Date", DateTime.Now.ToString("yyyy-MM-dd")}*/
                     };
                     await docRef.UpdateAsync(data);
 
@@ -110,8 +112,8 @@ namespace ExpenseApp
             {
                 DocumentReference docRef = await o.SavingWalletAmount(username, wallet);
                 float amount = await o.getWalletAmount(docRef);
-                float total = float.Parse(txtAmount.Text.ToString()) + amount;
-
+                addedAmount = float.Parse(txtAmount.Text.ToString());
+                float total = addedAmount + amount;
                 Dictionary<String, object> data = new Dictionary<String, object>()
                 {
                     {"Amount", total}

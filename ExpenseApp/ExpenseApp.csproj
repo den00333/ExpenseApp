@@ -206,6 +206,12 @@
     <Compile Include="AddExpensesForm.Designer.cs">
       <DependentUpon>AddExpensesForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="AddGoals.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddGoals.Designer.cs">
+      <DependentUpon>AddGoals.cs</DependentUpon>
+    </Compile>
     <Compile Include="AddingBalanceForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -238,6 +244,12 @@
     </Compile>
     <Compile Include="FileFunc.cs" />
     <Compile Include="FirebaseData.cs" />
+    <Compile Include="GoalDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GoalDetails.Designer.cs">
+      <DependentUpon>GoalDetails.cs</DependentUpon>
+    </Compile>
     <Compile Include="group.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -317,6 +329,9 @@
     <EmbeddedResource Include="AddExpensesForm.resx">
       <DependentUpon>AddExpensesForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AddGoals.resx">
+      <DependentUpon>AddGoals.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AddingBalanceForm.resx">
       <DependentUpon>AddingBalanceForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -331,6 +346,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ExpenseDetailForm.resx">
       <DependentUpon>ExpenseDetailForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GoalDetails.resx">
+      <DependentUpon>GoalDetails.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="group.resx">
       <DependentUpon>group.cs</DependentUpon>
