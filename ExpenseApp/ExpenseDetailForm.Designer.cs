@@ -43,6 +43,7 @@
             this.lblName = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.guna2AnimateWindow1 = new Guna.UI2.WinForms.Guna2AnimateWindow(this.components);
             this.guna2GradientPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.closeBTN)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -192,6 +193,12 @@
             this.pictureBox1.TabIndex = 14;
             this.pictureBox1.TabStop = false;
             // 
+            // guna2AnimateWindow1
+            // 
+            this.guna2AnimateWindow1.AnimationType = Guna.UI2.WinForms.Guna2AnimateWindow.AnimateWindowType.AW_BLEND;
+            this.guna2AnimateWindow1.Interval = 50;
+            this.guna2AnimateWindow1.TargetForm = this;
+            // 
             // ExpenseDetailForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -236,5 +243,6 @@
         private System.Windows.Forms.Label lblCategory;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private Guna.UI2.WinForms.Guna2AnimateWindow guna2AnimateWindow1;
     }
 }
