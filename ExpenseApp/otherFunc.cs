@@ -525,6 +525,23 @@ namespace ExpenseApp
                 MessageBox.Show("Something is missing", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+        public async void updatePassword(string username, string password)
+        {
+            var db = FirestoreConn();
+            try {
+                DocumentReference docref = db.Collection("Users").Document(username);
+                Dictionary<string, object> data = new Dictionary<string, object>() {
+                    {"Password", password }
+                };
+                DocumentSnapshot snap = await docref.GetSnapshotAsync();
+                if (snap.Exists) {
+                    await docref.UpdateAsync(data);
+                }
+            }
+            catch (Exception ex){
+                MessageBox.Show("Error: " + ex.Message);
+            }
+        }
         public static string ImageIntoBase64String(PictureBox img)
         {
             if (img != null && img.Image != null)
@@ -701,16 +718,14 @@ namespace ExpenseApp
         public static void sendOTP(string email, changePassword cp)
         {
             Tuple<string, DateTime> savedOTP = OTPManager.LoadOTP();
-
-            if (savedOTP != null && DateTime.Now < savedOTP.Item2)
-            {
+            if (savedOTP != null && DateTime.Now < savedOTP.Item2){
                 MessageBox.Show("You still have a valid OTP. Please use the existing one.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-
             // Generate new OTP
             Tuple<string, DateTime> otpTuple = generateOTPWithExpiration();
             string otp = otpTuple.Item1;
+            cp.myOTP = otp;
             DateTime expirationTime = otpTuple.Item2;
 
             // Save the new OTP

@@ -16,6 +16,7 @@ namespace ExpenseApp
         private Guna.UI2.WinForms.Guna2TextBox gunaTextBox;
         public string myOTP;
         public DateTime otpExpirationTime;
+        public string username = FirebaseData.Instance.Username;
         public changePassword()
         {
             InitializeComponent();
@@ -23,14 +24,17 @@ namespace ExpenseApp
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtNewPass.Text)) {
-                MessageBox.Show("Enter OTP","Warning",MessageBoxButtons.OK,MessageBoxIcon.Warning);
-            }
             string inputOTP = txtNewPass.Text;
             string generatedOTP = myOTP;
             bool isEqualOTP = otherFunc.compareOTP(inputOTP, generatedOTP);
-            if (isEqualOTP){
 
+            if (string.IsNullOrEmpty(txtNewPass.Text)) {
+                MessageBox.Show("Enter OTP","Warning",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+            }
+
+            else if (isEqualOTP){
+                panelPassword.Visible = true;
+                panelPassword.BringToFront();
             }
             else{
                 MessageBox.Show("OTP does not match", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -51,7 +55,6 @@ namespace ExpenseApp
         {
             try
             {
-                string username = FirebaseData.Instance.Username;
                 otherFunc o = new otherFunc();
                 DocumentSnapshot snap = await o.logInFunc(username);
                 if (snap.Exists)
@@ -72,6 +75,8 @@ namespace ExpenseApp
         private void changePassword_Load(object sender, EventArgs e)
         {
             retrieveInfo();
+            panelPassword.Visible= false;
+
         }
 
         private void txtEmail_TextChanged(object sender, EventArgs e)
@@ -94,6 +99,69 @@ namespace ExpenseApp
         private void btnSendCode_Click(object sender, EventArgs e)
         {
             otherFunc.sendOTP(txtEmail.Text, this);
+        }
+
+        private void btnSavepass_Click(object sender, EventArgs e)
+        {
+            string password = txtPassword.Text;
+            string confirmPass = txtConfirmPass.Text;
+            if(string.IsNullOrEmpty(txtPassword.Text) || string.IsNullOrEmpty(txtConfirmPass.Text)) {
+                MessageBox.Show("Please input your password", "Input credentials", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            otherFunc function = new otherFunc();
+            bool equalPassword = function.passwordMatched(password, confirmPass);
+            bool isValidPassword = function.isValidPassword(password);
+
+            if(isValidPassword) {
+                if (equalPassword){
+                    function.updatePassword(username,Security.Encrypt(password));
+                    MessageBox.Show("Successfully update your password!", "Success", MessageBoxButtons.OK);
+                    this.Hide();
+                }
+                else{
+                    MessageBox.Show("Password does not match", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            else{
+                MessageBox.Show("Password must contain uppercase and special character", "Invalid Password", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+        }
+
+        private void txtPassword_Validating(object sender, CancelEventArgs e)
+        {
+            string pass = txtPassword.Text;
+
+            if (!string.IsNullOrEmpty(txtPassword.Text)){
+                if (pass.Length > 0 && pass.Length < 8){
+                    errorProvider.SetError(txtPassword, "Password must be at least 8 characters long");
+                }
+                else if ((!pass.Any(char.IsUpper) || !pass.Any(char.IsLower))){
+                    errorProvider.SetError(txtPassword, "Password must contain uppercase");
+                }
+                else if (!pass.Any(char.IsPunctuation)){
+                    errorProvider.SetError(txtPassword, "Password must contain at least one symbol");
+                }
+            }
+            else{
+                errorProvider.Clear();
+            }
+        }
+
+        private void showPassword_CheckedChanged(object sender, EventArgs e)
+        {
+            if(showPassword.Checked){
+                txtPassword.PasswordChar = '\0';
+                txtConfirmPass.PasswordChar = '\0';
+            }
+            else{
+                txtPassword.PasswordChar = '●';
+                txtConfirmPass.PasswordChar = '●';
+            }
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
         }
     }
 }
