@@ -218,6 +218,12 @@
     <Compile Include="AddingBalanceForm.Designer.cs">
       <DependentUpon>AddingBalanceForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="changePassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="changePassword.Designer.cs">
+      <DependentUpon>changePassword.cs</DependentUpon>
+    </Compile>
     <Compile Include="connectionForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -281,6 +287,7 @@
       <DependentUpon>NoConnectionUC.cs</DependentUpon>
     </Compile>
     <Compile Include="otherFunc.cs" />
+    <Compile Include="OTPManager.cs" />
     <Compile Include="password.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -296,6 +303,12 @@
     </Compile>
     <Compile Include="RegionData.cs" />
     <Compile Include="Security.cs" />
+    <Compile Include="findYourAccount.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="findYourAccount.Designer.cs">
+      <DependentUpon>findYourAccount.cs</DependentUpon>
+    </Compile>
     <Compile Include="Signup.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -335,6 +348,9 @@
     <EmbeddedResource Include="AddingBalanceForm.resx">
       <DependentUpon>AddingBalanceForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="changePassword.resx">
+      <DependentUpon>changePassword.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="connectionForm.resx">
       <DependentUpon>connectionForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -372,6 +388,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="findYourAccount.resx">
+      <DependentUpon>findYourAccount.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Signup.resx">
       <DependentUpon>Signup.cs</DependentUpon>

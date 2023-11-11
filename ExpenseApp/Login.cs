@@ -159,6 +159,10 @@ namespace ExpenseApp
             
         }
 
-        
+        private void forgotPassBTN_Click(object sender, EventArgs e)
+        {
+            findYourAccount fya = new findYourAccount();
+            fya.ShowDialog();
+        }
     }
 }
