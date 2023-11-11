@@ -49,19 +49,9 @@ namespace ExpenseApp
             location.Show();
         }
 
-        private void AddExpensesForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            
-        }
-
         private void AddExpensesForm_Load(object sender, EventArgs e)
         {
-
-        }
-
-        private void usernameTB_TextChanged(object sender, EventArgs e)
-        {
-
+            dtpDate.Value = DateTime.Now;
         }
 
         private void btnBack_Click(object sender, EventArgs e)
@@ -92,8 +82,34 @@ namespace ExpenseApp
             if (hasInternet) {
                 try{
                     Save();
-                    w.lblExpenses.Text = otherFunc.amountBeautify( await o.SubtractExpensesFromWalletExpenses(user));
-                    
+                    //arr[0] is the total and arr[1] is the negativetotal
+                    float[] arrNum = await o.SubtractExpensesFromWalletExpenses(user);
+                    if (arrNum[1] != 0)
+                    {
+                        otherFunc.setShort(arrNum[1], user);
+                        w.lblExpenses.Text = otherFunc.amountBeautify(arrNum[0]);
+                        float newNegativeVal = arrNum[1] + await otherFunc.getShort(user);
+                        otherFunc.setShort(newNegativeVal, user);
+                        DocumentReference dRef = await o.SavingWalletAmount(user, "Balance");
+                        float currentWalletAmount = await o.getWalletAmount(dRef);
+                        float newBalance = currentWalletAmount + arrNum[1];
+                        Dictionary<String, object> data = new Dictionary<String, object>
+                        {
+                            {"Amount", newBalance}
+                        };
+
+                        await dRef.UpdateAsync(data);
+                        otherFunc.setNewWalletAmount(user, "Balance", newBalance);
+                        w.lblBalance.Text = otherFunc.amountBeautify(newBalance);
+                        w.lblShort.Text = otherFunc.amountBeautify(newNegativeVal);
+                        w.lblShort.ForeColor = Color.Red;
+                    }
+                    else
+                    {
+                        w.lblExpenses.Text = otherFunc.amountBeautify(arrNum[0]);
+                    }
+
+
                 }
                 catch {
                     MessageBox.Show("Error occured during saving!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -150,6 +166,40 @@ namespace ExpenseApp
             else{
                 MessageBox.Show("Something is missing", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+
+        private void richTxtDesc_TextChanged(object sender, EventArgs e)
+        {
+            RichTextBox textBox = (RichTextBox)sender;
+            if (!string.IsNullOrEmpty(textBox.Text) && char.IsLower(textBox.Text[0]))
+            {
+                textBox.Text = char.ToUpper(textBox.Text[0]) + textBox.Text.Substring(1);
+                textBox.SelectionStart = textBox.Text.Length;
+            }
+        }
+
+        private void richTxtDesc_Enter(object sender, EventArgs e)
+        {
+            RichTextBox rtb = (RichTextBox)sender;
+            rtb.Text = "";
+        }
+
+        private void richTxtDesc_Leave(object sender, EventArgs e)
+        {
+            RichTextBox rtb = (RichTextBox)sender;
+            rtb.Text = "Name";
+        }
+
+        private void richTextNote_Leave(object sender, EventArgs e)
+        {
+            RichTextBox rtb = (RichTextBox)sender;
+            rtb.Text = "Note";
+        }
+
+        private void richTextNote_Enter(object sender, EventArgs e)
+        {
+            RichTextBox rtb = (RichTextBox)sender;
+            rtb.Text = "";
         }
     }
 }
