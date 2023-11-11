@@ -47,7 +47,7 @@
             this.guna2ShadowPanel1.BackColor = System.Drawing.Color.Transparent;
             this.guna2ShadowPanel1.Controls.Add(this.panel);
             this.guna2ShadowPanel1.FillColor = System.Drawing.Color.White;
-            this.guna2ShadowPanel1.Location = new System.Drawing.Point(12, 12);
+            this.guna2ShadowPanel1.Location = new System.Drawing.Point(16, 12);
             this.guna2ShadowPanel1.Name = "guna2ShadowPanel1";
             this.guna2ShadowPanel1.Radius = 10;
             this.guna2ShadowPanel1.ShadowColor = System.Drawing.Color.Black;
@@ -77,12 +77,12 @@
             this.btnChangeWallet.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnChangeWallet.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnChangeWallet.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(180)))), ((int)(((byte)(72)))));
-            this.btnChangeWallet.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnChangeWallet.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnChangeWallet.ForeColor = System.Drawing.Color.White;
-            this.btnChangeWallet.Location = new System.Drawing.Point(266, 18);
+            this.btnChangeWallet.Location = new System.Drawing.Point(256, 13);
             this.btnChangeWallet.Name = "btnChangeWallet";
             this.btnChangeWallet.PressedDepth = 34;
-            this.btnChangeWallet.Size = new System.Drawing.Size(93, 30);
+            this.btnChangeWallet.Size = new System.Drawing.Size(103, 33);
             this.btnChangeWallet.TabIndex = 18;
             this.btnChangeWallet.Text = "Expenses";
             this.btnChangeWallet.Click += new System.EventHandler(this.btnChangeWallet_Click);
@@ -91,16 +91,17 @@
             // 
             this.lblAdd.AutoSize = true;
             this.lblAdd.BackColor = System.Drawing.Color.Transparent;
-            this.lblAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAdd.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAdd.ForeColor = System.Drawing.Color.White;
-            this.lblAdd.Location = new System.Drawing.Point(21, 18);
+            this.lblAdd.Location = new System.Drawing.Point(15, 13);
             this.lblAdd.Name = "lblAdd";
-            this.lblAdd.Size = new System.Drawing.Size(203, 25);
+            this.lblAdd.Size = new System.Drawing.Size(223, 33);
             this.lblAdd.TabIndex = 0;
             this.lblAdd.Text = "Add Balance Amount:";
             // 
             // guna2BorderlessForm1
             // 
+            this.guna2BorderlessForm1.BorderRadius = 30;
             this.guna2BorderlessForm1.ContainerControl = this;
             this.guna2BorderlessForm1.DockIndicatorTransparencyValue = 0.6D;
             this.guna2BorderlessForm1.TransparentWhileDrag = true;
@@ -109,7 +110,7 @@
             // 
             this.closeBTN.Cursor = System.Windows.Forms.Cursors.Hand;
             this.closeBTN.Image = global::ExpenseApp.Properties.Resources.delete;
-            this.closeBTN.Location = new System.Drawing.Point(430, 2);
+            this.closeBTN.Location = new System.Drawing.Point(429, 7);
             this.closeBTN.Margin = new System.Windows.Forms.Padding(2);
             this.closeBTN.Name = "closeBTN";
             this.closeBTN.Size = new System.Drawing.Size(45, 27);
@@ -129,10 +130,10 @@
             this.txtAmount.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtAmount.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtAmount.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAmount.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAmount.ForeColor = System.Drawing.Color.Black;
             this.txtAmount.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtAmount.Location = new System.Drawing.Point(15, 83);
+            this.txtAmount.Location = new System.Drawing.Point(16, 88);
             this.txtAmount.Margin = new System.Windows.Forms.Padding(2, 8, 2, 8);
             this.txtAmount.Name = "txtAmount";
             this.txtAmount.PasswordChar = '\0';
@@ -152,7 +153,7 @@
             this.btnAddAmount.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(123)))), ((int)(((byte)(47)))));
             this.btnAddAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddAmount.ForeColor = System.Drawing.Color.White;
-            this.btnAddAmount.Location = new System.Drawing.Point(313, 83);
+            this.btnAddAmount.Location = new System.Drawing.Point(337, 88);
             this.btnAddAmount.Name = "btnAddAmount";
             this.btnAddAmount.PressedDepth = 34;
             this.btnAddAmount.Size = new System.Drawing.Size(58, 54);

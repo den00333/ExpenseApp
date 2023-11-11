@@ -84,12 +84,12 @@ namespace ExpenseApp
             // 
             this.lblConnection.AutoSize = true;
             this.lblConnection.BackColor = System.Drawing.Color.Transparent;
-            this.lblConnection.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblConnection.Font = new System.Drawing.Font("Poppins SemiBold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblConnection.ForeColor = System.Drawing.SystemColors.ButtonShadow;
-            this.lblConnection.Location = new System.Drawing.Point(37, 212);
+            this.lblConnection.Location = new System.Drawing.Point(36, 205);
             this.lblConnection.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblConnection.Name = "lblConnection";
-            this.lblConnection.Size = new System.Drawing.Size(96, 16);
+            this.lblConnection.Size = new System.Drawing.Size(98, 23);
             this.lblConnection.TabIndex = 17;
             this.lblConnection.Text = "Connecting...";
             // 
@@ -123,11 +123,11 @@ namespace ExpenseApp
             // 
             this.signupBTN.AutoSize = true;
             this.signupBTN.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.signupBTN.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.signupBTN.Location = new System.Drawing.Point(75, 446);
+            this.signupBTN.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.signupBTN.Location = new System.Drawing.Point(67, 437);
             this.signupBTN.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.signupBTN.Name = "signupBTN";
-            this.signupBTN.Size = new System.Drawing.Size(163, 18);
+            this.signupBTN.Size = new System.Drawing.Size(190, 26);
             this.signupBTN.TabIndex = 14;
             this.signupBTN.Text = "Don\'t have an account?";
             this.signupBTN.Click += new System.EventHandler(this.signupBTN_Click);
@@ -145,7 +145,7 @@ namespace ExpenseApp
             this.passwordTB.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.passwordTB.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.passwordTB.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.passwordTB.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.passwordTB.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.passwordTB.ForeColor = System.Drawing.Color.Black;
             this.passwordTB.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.passwordTB.Location = new System.Drawing.Point(40, 292);
@@ -168,7 +168,7 @@ namespace ExpenseApp
             this.usernameTB.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.usernameTB.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.usernameTB.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.usernameTB.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.usernameTB.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.usernameTB.ForeColor = System.Drawing.Color.Black;
             this.usernameTB.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.usernameTB.Location = new System.Drawing.Point(40, 233);
@@ -184,11 +184,11 @@ namespace ExpenseApp
             // 
             this.forgotPassBTN.AutoSize = true;
             this.forgotPassBTN.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.forgotPassBTN.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.forgotPassBTN.Location = new System.Drawing.Point(144, 349);
+            this.forgotPassBTN.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.forgotPassBTN.Location = new System.Drawing.Point(140, 346);
             this.forgotPassBTN.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.forgotPassBTN.Name = "forgotPassBTN";
-            this.forgotPassBTN.Size = new System.Drawing.Size(131, 18);
+            this.forgotPassBTN.Size = new System.Drawing.Size(146, 26);
             this.forgotPassBTN.TabIndex = 10;
             this.forgotPassBTN.Text = "Forgot Password?";
             this.forgotPassBTN.Click += new System.EventHandler(this.forgotPassBTN_Click);
@@ -196,7 +196,7 @@ namespace ExpenseApp
             // pictureBox1
             // 
             this.pictureBox1.Image = global::ExpenseApp.Properties.Resources.logo;
-            this.pictureBox1.Location = new System.Drawing.Point(96, 45);
+            this.pictureBox1.Location = new System.Drawing.Point(97, 36);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(132, 128);
@@ -208,11 +208,11 @@ namespace ExpenseApp
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(32, 184);
+            this.label1.Font = new System.Drawing.Font("Poppins SemiBold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(17, 173);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(247, 24);
+            this.label1.Size = new System.Drawing.Size(288, 37);
             this.label1.TabIndex = 8;
             this.label1.Text = "Welcome to Smart Spend";
             // 
@@ -236,9 +236,9 @@ namespace ExpenseApp
             this.btnLogin.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnLogin.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnLogin.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(123)))), ((int)(((byte)(47)))));
-            this.btnLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogin.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLogin.ForeColor = System.Drawing.Color.White;
-            this.btnLogin.Location = new System.Drawing.Point(40, 385);
+            this.btnLogin.Location = new System.Drawing.Point(40, 389);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(246, 45);
             this.btnLogin.TabIndex = 2;
