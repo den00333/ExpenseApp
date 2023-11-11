@@ -115,7 +115,7 @@ namespace ExpenseApp
             if(isValidPassword) {
                 if (equalPassword){
                     function.updatePassword(username,Security.Encrypt(password));
-                    MessageBox.Show("Successfully update your password!", "Success", MessageBoxButtons.OK);
+                    MessageBox.Show("Successfully updated your password!", "Success", MessageBoxButtons.OK);
                     this.Hide();
                 }
                 else{
