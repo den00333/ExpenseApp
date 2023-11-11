@@ -278,6 +278,7 @@
       <DependentUpon>NoConnectionUC.cs</DependentUpon>
     </Compile>
     <Compile Include="otherFunc.cs" />
+    <Compile Include="OTPManager.cs" />
     <Compile Include="password.cs">
       <SubType>Form</SubType>
     </Compile>

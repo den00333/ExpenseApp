@@ -36,6 +36,7 @@ namespace ExpenseApp
 {
     internal class otherFunc
     {
+
         public static bool internetConn()
         {
             try{
@@ -697,15 +698,23 @@ namespace ExpenseApp
                 }
             }
         }
-        public static string generateOTP()
+        public static void sendOTP(string email, changePassword cp)
         {
-            Random ran = new Random();
-            int otp = ran.Next(100000, 999999);
-            return otp.ToString();
-        }
-        public static void sendOTP(string email)
-        {
-            string otp = generateOTP();
+            Tuple<string, DateTime> savedOTP = OTPManager.LoadOTP();
+
+            if (savedOTP != null && DateTime.Now < savedOTP.Item2)
+            {
+                MessageBox.Show("You still have a valid OTP. Please use the existing one.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            // Generate new OTP
+            Tuple<string, DateTime> otpTuple = generateOTPWithExpiration();
+            string otp = otpTuple.Item1;
+            DateTime expirationTime = otpTuple.Item2;
+
+            // Save the new OTP
+            OTPManager.SaveOTP(otp, expirationTime);
 
             MailMessage message = new MailMessage();
             message.From = new MailAddress("expensetracker273@gmail.com");
@@ -718,9 +727,9 @@ namespace ExpenseApp
             smtpClient.DeliveryMethod = SmtpDeliveryMethod.Network;
             smtpClient.Credentials = new NetworkCredential("expensetracker273@gmail.com", "kfei gmyb dukz sgli");
             smtpClient.EnableSsl = true;
+            DateTime currentTime = DateTime.Now;
 
-            try
-            {
+            try{
                 smtpClient.Send(message);
                 MessageBox.Show("Email sent successfully!");
             }
@@ -728,6 +737,23 @@ namespace ExpenseApp
             {
                 MessageBox.Show("Error: " + ex.Message);
             }
+        }
+        private static Tuple<string, DateTime> generateOTPWithExpiration()
+        {
+            Random ran = new Random();
+            int otp = ran.Next(100000, 999999);
+
+            // Set expiration time to 3 minutes from the current time
+            DateTime expirationTime = DateTime.Now.AddMinutes(5);
+
+            return new Tuple<string, DateTime>(otp.ToString(), expirationTime);
+        }
+        public static bool compareOTP(string otp, string inputOTP)
+        {
+            if(string.IsNullOrEmpty(inputOTP)) {
+                return false;
+            }
+            return otp.Equals(inputOTP);
         }
     }
 }

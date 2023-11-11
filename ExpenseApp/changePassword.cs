@@ -14,6 +14,8 @@ namespace ExpenseApp
     public partial class changePassword : Form
     {
         private Guna.UI2.WinForms.Guna2TextBox gunaTextBox;
+        public string myOTP;
+        public DateTime otpExpirationTime;
         public changePassword()
         {
             InitializeComponent();
@@ -21,7 +23,18 @@ namespace ExpenseApp
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(txtNewPass.Text)) {
+                MessageBox.Show("Enter OTP","Warning",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+            }
+            string inputOTP = txtNewPass.Text;
+            string generatedOTP = myOTP;
+            bool isEqualOTP = otherFunc.compareOTP(inputOTP, generatedOTP);
+            if (isEqualOTP){
 
+            }
+            else{
+                MessageBox.Show("OTP does not match", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
         private void guna2Button2_Click(object sender, EventArgs e)
@@ -80,7 +93,7 @@ namespace ExpenseApp
         
         private void btnSendCode_Click(object sender, EventArgs e)
         {
-            otherFunc.sendOTP(txtEmail.Text);
+            otherFunc.sendOTP(txtEmail.Text, this);
         }
     }
 }

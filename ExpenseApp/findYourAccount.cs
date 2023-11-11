@@ -29,19 +29,22 @@ namespace ExpenseApp
         }
         async void findAccount()
         {
-            string username = txtUsername.Text;
-            otherFunc o = new otherFunc();
-            DocumentSnapshot snap = await o.logInFunc(username);
-            if (snap.Exists)
-            {
-                this.Hide();
-                FirebaseData.Instance.Username = username;
-                changePassword cp = new changePassword();
-                cp.ShowDialog();
+            if(string.IsNullOrEmpty(txtUsername.Text)) { 
+                MessageBox.Show("Please enter your username","Input credential",MessageBoxButtons.OK,MessageBoxIcon.Warning);
             }
-            else
-            {
-                MessageBox.Show("Account Doesn't Exist", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            else{
+                string username = txtUsername.Text;
+                otherFunc o = new otherFunc();
+                DocumentSnapshot snap = await o.logInFunc(username);
+                if (snap.Exists){
+                    this.Hide();
+                    FirebaseData.Instance.Username = username;
+                    changePassword cp = new changePassword();
+                    cp.ShowDialog();
+                }
+                else{
+                    MessageBox.Show("Account Doesn't Exist", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
     }
