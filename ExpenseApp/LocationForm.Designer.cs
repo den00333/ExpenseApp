@@ -96,8 +96,8 @@
             this.btnEnter.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(123)))), ((int)(((byte)(47)))));
             this.btnEnter.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEnter.ForeColor = System.Drawing.Color.White;
-            this.btnEnter.Location = new System.Drawing.Point(239, 384);
-            this.btnEnter.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnEnter.Location = new System.Drawing.Point(56, 384);
+            this.btnEnter.Margin = new System.Windows.Forms.Padding(4);
             this.btnEnter.Name = "btnEnter";
             this.btnEnter.Size = new System.Drawing.Size(143, 55);
             this.btnEnter.TabIndex = 8;
@@ -124,7 +124,7 @@
             this.cmbRegion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.cmbRegion.ItemHeight = 30;
             this.cmbRegion.Location = new System.Drawing.Point(59, 76);
-            this.cmbRegion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbRegion.Margin = new System.Windows.Forms.Padding(4);
             this.cmbRegion.Name = "cmbRegion";
             this.cmbRegion.Size = new System.Drawing.Size(323, 36);
             this.cmbRegion.TabIndex = 17;
@@ -143,7 +143,7 @@
             this.cmbProvince.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.cmbProvince.ItemHeight = 30;
             this.cmbProvince.Location = new System.Drawing.Point(59, 156);
-            this.cmbProvince.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbProvince.Margin = new System.Windows.Forms.Padding(4);
             this.cmbProvince.Name = "cmbProvince";
             this.cmbProvince.Size = new System.Drawing.Size(323, 36);
             this.cmbProvince.TabIndex = 20;
@@ -162,7 +162,7 @@
             this.cmbMunicipal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.cmbMunicipal.ItemHeight = 30;
             this.cmbMunicipal.Location = new System.Drawing.Point(59, 236);
-            this.cmbMunicipal.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbMunicipal.Margin = new System.Windows.Forms.Padding(4);
             this.cmbMunicipal.MaxDropDownItems = 5;
             this.cmbMunicipal.Name = "cmbMunicipal";
             this.cmbMunicipal.Size = new System.Drawing.Size(323, 36);
@@ -182,7 +182,7 @@
             this.cmbBrgy.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.cmbBrgy.ItemHeight = 30;
             this.cmbBrgy.Location = new System.Drawing.Point(59, 320);
-            this.cmbBrgy.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbBrgy.Margin = new System.Windows.Forms.Padding(4);
             this.cmbBrgy.Name = "cmbBrgy";
             this.cmbBrgy.Size = new System.Drawing.Size(323, 36);
             this.cmbBrgy.TabIndex = 22;
@@ -197,8 +197,8 @@
             this.guna2Button1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(4)))), ((int)(((byte)(45)))));
             this.guna2Button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2Button1.ForeColor = System.Drawing.Color.White;
-            this.guna2Button1.Location = new System.Drawing.Point(56, 384);
-            this.guna2Button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.guna2Button1.Location = new System.Drawing.Point(239, 384);
+            this.guna2Button1.Margin = new System.Windows.Forms.Padding(4);
             this.guna2Button1.Name = "guna2Button1";
             this.guna2Button1.Size = new System.Drawing.Size(143, 55);
             this.guna2Button1.TabIndex = 23;
@@ -221,7 +221,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "LocationForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "LocationForm";
