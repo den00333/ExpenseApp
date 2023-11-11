@@ -24,21 +24,7 @@ namespace ExpenseApp
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            string inputOTP = txtNewPass.Text;
-            string generatedOTP = myOTP;
-            bool isEqualOTP = otherFunc.compareOTP(inputOTP, generatedOTP);
-
-            if (string.IsNullOrEmpty(txtNewPass.Text)) {
-                MessageBox.Show("Enter OTP","Warning",MessageBoxButtons.OK,MessageBoxIcon.Warning);
-            }
-
-            else if (isEqualOTP){
-                panelPassword.Visible = true;
-                panelPassword.BringToFront();
-            }
-            else{
-                MessageBox.Show("OTP does not match", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
+            compareOTP();
         }
 
         private void guna2Button2_Click(object sender, EventArgs e)
@@ -116,6 +102,7 @@ namespace ExpenseApp
                 if (equalPassword){
                     function.updatePassword(username,Security.Encrypt(password));
                     MessageBox.Show("Successfully updated your password!", "Success", MessageBoxButtons.OK);
+                    OTPManager.ClearOTP();
                     this.Hide();
                 }
                 else{
@@ -162,6 +149,41 @@ namespace ExpenseApp
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             this.Hide();
+        }
+        private void compareOTP()
+        {
+            string inputOTP = txtNewPass.Text;
+
+            if (string.IsNullOrEmpty(inputOTP)){
+                MessageBox.Show("Please enter OTP", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else{
+                string generatedOTP = myOTP;
+                bool isEqualOTP = otherFunc.compareOTP(inputOTP, generatedOTP);
+
+                if (isEqualOTP){
+                    panelPassword.Visible = true;
+                    panelPassword.BringToFront();
+                }
+                else{
+                    Tuple<string, DateTime> otpData = OTPManager.LoadOTP();
+                    DateTime expirationTime = otpData.Item2;
+                    string storedOTP = otpData.Item1;
+                    bool isEqualStoredOTP = otherFunc.compareOTP(inputOTP, storedOTP);
+                    if (isEqualStoredOTP){
+                        if (DateTime.Now < expirationTime){
+                            panelPassword.Visible = true;
+                            panelPassword.BringToFront();
+                        }
+                        else{
+                            MessageBox.Show("OTP has expired. Click the button to send a new one.", "OTP Expired", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                    }
+                    else{
+                        MessageBox.Show("OTP does not match", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
+            }
         }
     }
 }

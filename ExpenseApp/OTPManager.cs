@@ -8,17 +8,15 @@ namespace ExpenseApp
         private const string FilePath = "otp.txt";
         public static Tuple<string, DateTime> LoadOTP()
         {
-            try
-            {
-                string[] lines = File.ReadAllLines(FilePath);
-                if (lines.Length == 2 && DateTime.TryParse(lines[1], out DateTime expirationTime))
-                {
-                    return new Tuple<string, DateTime>(lines[0], expirationTime);
+            try{
+                if(File.Exists(FilePath)){
+                    string[] lines = File.ReadAllLines(FilePath);
+                    if (lines.Length == 2 && DateTime.TryParse(lines[1], out DateTime expirationTime)){
+                        return new Tuple<string, DateTime>(lines[0], expirationTime);
+                    }
                 }
             }
-            catch (Exception)
-            {
-                // Handle file reading errors
+            catch (Exception){
             }
 
             return null;
@@ -32,7 +30,14 @@ namespace ExpenseApp
             }
             catch (Exception)
             {
-                // Handle file writing errors
+            }
+        }
+        public static void ClearOTP()
+        {
+            try{
+                File.WriteAllText(FilePath, string.Empty);
+            }
+            catch (Exception){
             }
         }
     }
