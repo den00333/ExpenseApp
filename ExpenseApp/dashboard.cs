@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -28,9 +29,11 @@ namespace ExpenseApp
             expensesChart.Series.Clear();
             Dictionary<DateTime, decimal> expensesByDate = await otherFunc.GetExpensesGroupedByDate(username);
             var sortedExpenses = expensesByDate.OrderBy(x => x.Key);
-            Series splineSeries = new Series("Total Expenses"){
+            Series splineSeries = new Series("Total Expenses") {
                 ChartType = SeriesChartType.Spline,
-                BorderWidth = 3
+                BorderWidth = 3,
+                //Color = System.Drawing.ColorTranslator.FromHtml("#FF1616")
+                Color = System.Drawing.ColorTranslator.FromHtml("#2348FF")
             };
             Series areaSeries = new Series("Gradient Area"){
                 ChartType = SeriesChartType.SplineArea,
@@ -44,6 +47,7 @@ namespace ExpenseApp
                 splineSeries.Points.AddXY(date.ToString("MM/dd"), totalAmount);
                 areaSeries.Points.AddXY(date.ToString("MM/dd"), totalAmount);
             }
+            //areaSeries.Color = System.Drawing.Color.FromArgb(128, 255, 0, 0);
             areaSeries.Color = System.Drawing.Color.FromArgb(128, 135, 206, 250);
             expensesChart.Series.Add(splineSeries);
             expensesChart.Series.Add(areaSeries);
