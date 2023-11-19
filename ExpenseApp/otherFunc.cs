@@ -901,6 +901,29 @@ namespace ExpenseApp
             }
             return otp.Equals(inputOTP);
         }
+        public static async Task<Dictionary<DateTime, decimal>> GetExpensesGroupedByDate(string username)
+        {
+            var db = otherFunc.FirestoreConn();
+            CollectionReference expensesCollection = db.Collection("Users").Document(username).Collection("Expenses");
+            QuerySnapshot expensesSnapshot = await expensesCollection.GetSnapshotAsync();
+            var expensesByDate = new Dictionary<DateTime, decimal>();
+
+            foreach (DocumentSnapshot expenseDoc in expensesSnapshot.Documents){
+                Dictionary<string, object> expenseData = expenseDoc.ToDictionary();
+
+                if (expenseData.TryGetValue("Date", out var dateObj) && DateTime.TryParseExact(dateObj.ToString(), "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime date) &&
+                    expenseData.TryGetValue("Amount", out var amountObj) && decimal.TryParse(amountObj.ToString(), out decimal amount))
+                {
+                    if (expensesByDate.ContainsKey(date)){
+                        expensesByDate[date] += amount;
+                    }
+                    else{
+                        expensesByDate[date] = amount;
+                    }
+                }
+            }
+            return expensesByDate;
+        }
     }
 }
 
