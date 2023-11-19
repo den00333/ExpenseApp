@@ -32,8 +32,7 @@ namespace ExpenseApp
             Series splineSeries = new Series("Total Expenses") {
                 ChartType = SeriesChartType.Spline,
                 BorderWidth = 3,
-                //Color = System.Drawing.ColorTranslator.FromHtml("#FF1616")
-                Color = System.Drawing.ColorTranslator.FromHtml("#2348FF")
+                Color = System.Drawing.ColorTranslator.FromHtml("#FF1616")
             };
             Series areaSeries = new Series("Gradient Area"){
                 ChartType = SeriesChartType.SplineArea,
@@ -47,8 +46,7 @@ namespace ExpenseApp
                 splineSeries.Points.AddXY(date.ToString("MM/dd"), totalAmount);
                 areaSeries.Points.AddXY(date.ToString("MM/dd"), totalAmount);
             }
-            //areaSeries.Color = System.Drawing.Color.FromArgb(128, 255, 0, 0);
-            areaSeries.Color = System.Drawing.Color.FromArgb(128, 135, 206, 250);
+            areaSeries.Color = System.Drawing.Color.FromArgb(128, 255, 0, 0);
             expensesChart.Series.Add(splineSeries);
             expensesChart.Series.Add(areaSeries);
         }
