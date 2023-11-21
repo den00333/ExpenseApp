@@ -32,13 +32,11 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.btnEnter = new Guna.UI2.WinForms.Guna2Button();
             this.guna2BorderlessForm1 = new Guna.UI2.WinForms.Guna2BorderlessForm(this.components);
             this.cmbRegion = new Guna.UI2.WinForms.Guna2ComboBox();
             this.cmbProvince = new Guna.UI2.WinForms.Guna2ComboBox();
             this.cmbMunicipal = new Guna.UI2.WinForms.Guna2ComboBox();
-            this.cmbBrgy = new Guna.UI2.WinForms.Guna2ComboBox();
             this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
             this.SuspendLayout();
             // 
@@ -92,7 +90,8 @@
             this.btnEnter.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(123)))), ((int)(((byte)(47)))));
             this.btnEnter.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEnter.ForeColor = System.Drawing.Color.White;
-            this.btnEnter.Location = new System.Drawing.Point(42, 312);
+            this.btnEnter.Location = new System.Drawing.Point(56, 304);
+            this.btnEnter.Margin = new System.Windows.Forms.Padding(4);
             this.btnEnter.Name = "btnEnter";
             this.btnEnter.Size = new System.Drawing.Size(107, 45);
             this.btnEnter.TabIndex = 8;
@@ -161,23 +160,6 @@
             this.cmbMunicipal.TabIndex = 21;
             this.cmbMunicipal.SelectedIndexChanged += new System.EventHandler(this.cmbMunicipal_SelectedIndexChanged);
             // 
-            // cmbBrgy
-            // 
-            this.cmbBrgy.BackColor = System.Drawing.Color.Transparent;
-            this.cmbBrgy.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(123)))), ((int)(((byte)(47)))));
-            this.cmbBrgy.BorderRadius = 10;
-            this.cmbBrgy.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cmbBrgy.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbBrgy.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.cmbBrgy.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.cmbBrgy.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbBrgy.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cmbBrgy.ItemHeight = 30;
-            this.cmbBrgy.Location = new System.Drawing.Point(44, 257);
-            this.cmbBrgy.Name = "cmbBrgy";
-            this.cmbBrgy.Size = new System.Drawing.Size(243, 36);
-            this.cmbBrgy.TabIndex = 22;
-            // 
             // guna2Button1
             // 
             this.guna2Button1.BorderRadius = 20;
@@ -188,6 +170,7 @@
             this.guna2Button1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(4)))), ((int)(((byte)(45)))));
             this.guna2Button1.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2Button1.ForeColor = System.Drawing.Color.White;
+            this.guna2Button1.Margin = new System.Windows.Forms.Padding(4);
             this.guna2Button1.Location = new System.Drawing.Point(178, 312);
             this.guna2Button1.Name = "guna2Button1";
             this.guna2Button1.Size = new System.Drawing.Size(107, 45);
@@ -201,12 +184,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(334, 384);
             this.Controls.Add(this.guna2Button1);
-            this.Controls.Add(this.cmbBrgy);
             this.Controls.Add(this.cmbMunicipal);
             this.Controls.Add(this.cmbProvince);
             this.Controls.Add(this.cmbRegion);
             this.Controls.Add(this.btnEnter);
-            this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -224,12 +205,10 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
         private Guna.UI2.WinForms.Guna2Button btnEnter;
         private Guna.UI2.WinForms.Guna2BorderlessForm guna2BorderlessForm1;
         private Guna.UI2.WinForms.Guna2ComboBox cmbProvince;
         private Guna.UI2.WinForms.Guna2ComboBox cmbRegion;
-        private Guna.UI2.WinForms.Guna2ComboBox cmbBrgy;
         private Guna.UI2.WinForms.Guna2ComboBox cmbMunicipal;
         private Guna.UI2.WinForms.Guna2Button guna2Button1;
     }

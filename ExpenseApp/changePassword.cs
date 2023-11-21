@@ -65,19 +65,19 @@ namespace ExpenseApp
 
         private void txtEmail_TextChanged(object sender, EventArgs e)
         {
-           //gunaTextBox = (Guna.UI2.WinForms.Guna2TextBox)sender;
+            //gunaTextBox = (Guna.UI2.WinForms.Guna2TextBox)sender;
 
-        
-           // string input = txtEmail.Text;
 
-           // int atIndex = input.IndexOf('@');
+            //string input = txtEmail.Text;
 
-           // if (atIndex > 1)
-           // {
-           //     string extracted = input.Substring(0, atIndex);
-           //     string maskedText = extracted[0] + new string('*', extracted.Length - 2) + extracted[extracted.Length - 1] + input.Substring(atIndex);
-           //     gunaTextBox.Text = maskedText;
-           // }
+            //int atIndex = input.IndexOf('@');
+
+            //if (atIndex > 1)
+            //{
+            //    string extracted = input.Substring(0, atIndex);
+            //    string maskedText = extracted[0] + new string('*', extracted.Length - 2) + extracted[extracted.Length - 1] + input.Substring(atIndex);
+            //    gunaTextBox.Text = maskedText;
+            //}
         }
         
         private void btnSendCode_Click(object sender, EventArgs e)

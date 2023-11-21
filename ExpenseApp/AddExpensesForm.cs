@@ -125,7 +125,7 @@ namespace ExpenseApp
             String userN = FirebaseData.Instance.Username;
             otherFunc function = new otherFunc();
             string date = dtpDate.Value.ToString("yyyy-MM-dd");
-            bool isEmpty = function.checkExpenseFormControl(txtAmount, cmbCategory,txtLocation);
+            bool isEmpty = function.checkFormControlEmpty(txtAmount, cmbCategory,txtLocation);
             if (!isEmpty){
                 if (function.validDate(date)){
                     double amount = double.Parse(txtAmount.Text);

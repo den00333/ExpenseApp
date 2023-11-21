@@ -401,7 +401,7 @@ namespace ExpenseApp
             return false;
         }
 
-        bool areControlEmpty(params string[] textboxes)
+        public bool areControlEmpty(params string[] textboxes)
         {
             foreach (string textbox in textboxes){
                 if (string.IsNullOrWhiteSpace(textbox)){
@@ -440,7 +440,7 @@ namespace ExpenseApp
 
         }
 
-        public async static Task<bool> CheckAccountStatus(String username)
+        /*public async static Task<bool> CheckAccountStatus(String username)
         {
             var db = FirestoreConn();
             DocumentReference docRef = db.Collection("Users").Document(username);
@@ -463,6 +463,17 @@ namespace ExpenseApp
                 return false;
             }
 
+        }*/
+
+        public async static void CheckAccountStatus(String username)
+        {
+            DocumentReference docRef = editInsideUser(username);
+            DocumentSnapshot docSnap = await docRef.GetSnapshotAsync();
+            Dictionary<String, object> data = new Dictionary<string, object>
+                {
+                    {"status", "online"}
+                };
+            await docRef.UpdateAsync(data);
         }
 
         public async static void UpdateAccStatusToOffline(String username)
@@ -569,7 +580,7 @@ namespace ExpenseApp
             }
             return false;
         }
-        public bool checkExpenseFormControl(params Control[] controls)
+        public bool checkFormControlEmpty(params Control[] controls)
         {
             foreach (Control control in controls){
                 if(control is Guna2TextBox){
@@ -712,8 +723,7 @@ namespace ExpenseApp
 
         public async Task<List<(string DocName, DocumentSnapshot DocSnapshot)>> displayDataWithDocNames(string username)
         {
-            FirestoreDb db = FirestoreConn();
-            CollectionReference colRef = db.Collection("Users").Document(username).Collection("Expenses");
+            CollectionReference colRef = editInsideUser(username).Collection("Expenses");
             QuerySnapshot snap = await colRef.OrderByDescending("timestamp").GetSnapshotAsync();
 
             List<(string DocName, DocumentSnapshot DocSnapshot)> documentData = new List<(string, DocumentSnapshot)>();
@@ -901,6 +911,28 @@ namespace ExpenseApp
             }
             return otp.Equals(inputOTP);
         }
+        public static async Task<Dictionary<DateTime, double>> GetExpensesGroupedByDate(string username)
+        {
+            var db = otherFunc.FirestoreConn();
+            CollectionReference expensesCollection = db.Collection("Users").Document(username).Collection("Expenses");
+            QuerySnapshot expensesSnapshot = await expensesCollection.GetSnapshotAsync();
+            var expensesByDate = new Dictionary<DateTime, double>();
+
+            foreach (DocumentSnapshot expenseDoc in expensesSnapshot.Documents){
+                Dictionary<string, object> expenseData = expenseDoc.ToDictionary();
+
+                if (expenseData.TryGetValue("Date", out var dateObj) && DateTime.TryParseExact(dateObj.ToString(), "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime date) &&
+                    expenseData.TryGetValue("Amount", out var amountObj) && double.TryParse(amountObj.ToString(), out double amount)){
+                    if (expensesByDate.ContainsKey(date)){
+                        expensesByDate[date] += amount;
+                    }
+                    else{
+                        expensesByDate[date] = amount;
+                    }
+                }
+            }
+            return expensesByDate;
+        }   
     }
 }
 
