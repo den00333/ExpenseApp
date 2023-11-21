@@ -43,11 +43,11 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Poppins SemiBold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(24, 16);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(167, 37);
+            this.label1.Size = new System.Drawing.Size(161, 25);
             this.label1.TabIndex = 0;
             this.label1.Text = "Group Wallets";
             // 
@@ -87,7 +87,7 @@
             this.btnAddMoney.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnAddMoney.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnAddMoney.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(180)))), ((int)(((byte)(72)))));
-            this.btnAddMoney.Font = new System.Drawing.Font("Poppins SemiBold", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddMoney.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddMoney.ForeColor = System.Drawing.Color.White;
             this.btnAddMoney.Location = new System.Drawing.Point(1012, 16);
             this.btnAddMoney.Name = "btnAddMoney";
@@ -123,7 +123,7 @@
             this.tlp.RowCount = 2;
             this.tlp.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tlp.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tlp.Size = new System.Drawing.Size(430, 520);
+            this.tlp.Size = new System.Drawing.Size(1106, 520);
             this.tlp.TabIndex = 7;
             // 
             // group
