@@ -71,7 +71,7 @@ namespace ExpenseApp
                     //total += balanceAmount;
                     float excess = addedAmount + balanceAmount;
                     
-                    if(excess > 0)
+                    if(excess >= 0)
                     {
                         w.lblShort.Text = "";
                         otherFunc.setShort(0, username);

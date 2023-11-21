@@ -163,6 +163,7 @@ namespace ExpenseApp
                 panelSwitch.FillColor = Color.FromArgb(227, 180, 72);
                 panelSwitch.FillColor2 = Color.FromArgb(83, 123, 47);
                 btnGoals.ForeColor = Color.DarkGreen;
+                btnGoals.Text = "Transactions";
                 //
                 //DATA GRID
                 panelTitle.FillColor = Color.FromArgb(187, 141, 228);
@@ -181,6 +182,7 @@ namespace ExpenseApp
                 panelSwitch.FillColor = Color.FromArgb(187, 141, 228);
                 panelSwitch.FillColor2 = Color.FromArgb(229, 148, 98);
                 btnGoals.ForeColor = Color.DarkOrchid;
+                btnGoals.Text = "Goals";
                 //
                 //DATA GRID
                 panelTitle.FillColor = Color.FromArgb(83, 123, 47);
