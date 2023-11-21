@@ -96,8 +96,16 @@ namespace ExpenseApp
             changeButtonColor(btnDashboard, btnAccount, btnGroup);
             changeFontColor(btnDashboard, btnAccount, btnGroup);
 
-            wallet wallet = new wallet();
-            addUserControl(wallet);
+            if (otherFunc.internetConn())
+            {
+                wallet wallet = new wallet();
+                addUserControl(wallet);
+            }
+            else
+            {
+                NoConnectionUC nc = new NoConnectionUC();
+                addUserControl(nc);
+            }
         }
 
         private void btnGroup_Click(object sender, EventArgs e)

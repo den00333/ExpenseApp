@@ -440,7 +440,7 @@ namespace ExpenseApp
 
         }
 
-        public async static Task<bool> CheckAccountStatus(String username)
+        /*public async static Task<bool> CheckAccountStatus(String username)
         {
             var db = FirestoreConn();
             DocumentReference docRef = db.Collection("Users").Document(username);
@@ -463,6 +463,17 @@ namespace ExpenseApp
                 return false;
             }
 
+        }*/
+
+        public async static void CheckAccountStatus(String username)
+        {
+            DocumentReference docRef = editInsideUser(username);
+            DocumentSnapshot docSnap = await docRef.GetSnapshotAsync();
+            Dictionary<String, object> data = new Dictionary<string, object>
+                {
+                    {"status", "online"}
+                };
+            await docRef.UpdateAsync(data);
         }
 
         public async static void UpdateAccStatusToOffline(String username)
@@ -712,8 +723,7 @@ namespace ExpenseApp
 
         public async Task<List<(string DocName, DocumentSnapshot DocSnapshot)>> displayDataWithDocNames(string username)
         {
-            FirestoreDb db = FirestoreConn();
-            CollectionReference colRef = db.Collection("Users").Document(username).Collection("Expenses");
+            CollectionReference colRef = editInsideUser(username).Collection("Expenses");
             QuerySnapshot snap = await colRef.OrderByDescending("timestamp").GetSnapshotAsync();
 
             List<(string DocName, DocumentSnapshot DocSnapshot)> documentData = new List<(string, DocumentSnapshot)>();
@@ -922,7 +932,7 @@ namespace ExpenseApp
                 }
             }
             return expensesByDate;
-        }
+        }   
     }
 }
 

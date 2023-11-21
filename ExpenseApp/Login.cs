@@ -110,6 +110,7 @@ namespace ExpenseApp
                     String userN = FirebaseData.Instance.Username;
                     bool hasExistingAcc = await otherFunc.checkLog(userN);
                     otherFunc.RecordLogs(userN, hasExistingAcc, true);
+                    otherFunc.CheckAccountStatus(username);
                     home.Show();
                 }
                 else

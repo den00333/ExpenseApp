@@ -49,7 +49,7 @@ namespace ExpenseApp
                 cmbRegion.SelectedIndex = AEF.R;
                 cmbProvince.SelectedIndex = AEF.P;
                 cmbMunicipal.SelectedIndex = AEF.M;
-                cmbBrgy.SelectedIndex = AEF.B;
+                //cmbBrgy.SelectedIndex = AEF.B;
             }
         }
 
@@ -120,7 +120,7 @@ namespace ExpenseApp
             }
         }
 
-        private void UpdateBrgyCMB()
+        /*private void UpdateBrgyCMB()
         {
             try
             {
@@ -140,13 +140,13 @@ namespace ExpenseApp
                     this.Hide();
                 }
             }
-        }
+        }*/
         
         
         private void cmbRegion_SelectedIndexChanged(object sender, EventArgs e)
         {
 
-            boxes = new List<ComboBox> { cmbProvince, cmbMunicipal, cmbBrgy };
+            boxes = new List<ComboBox> { cmbProvince, cmbMunicipal };
             clearAll(boxes);
             UpdateProvinceCMB();
 
@@ -154,7 +154,7 @@ namespace ExpenseApp
 
         private void cmbProvince_SelectedIndexChanged(object sender, EventArgs e)
         {
-            boxes = new List<ComboBox> { cmbMunicipal, cmbBrgy };
+            boxes = new List<ComboBox> { cmbMunicipal};
             clearAll(boxes);
             UpdateMunicipalCMB();
             
@@ -162,15 +162,15 @@ namespace ExpenseApp
 
         private void cmbMunicipal_SelectedIndexChanged(object sender, EventArgs e)
         {
-            boxes = new List<ComboBox> { cmbBrgy };
+            //boxes = new List<ComboBox> { cmbBrgy };
             clearAll(boxes);
-            UpdateBrgyCMB();
+            //UpdateBrgyCMB();
             
         }
 
         private void checkingAllBoxes(List<ComboBox> boxes)
         {
-            if (cmbRegion.SelectedItem != null && cmbProvince.SelectedItem != null && cmbMunicipal.SelectedItem != null && cmbBrgy.SelectedItem != null)
+            if (cmbRegion.SelectedItem != null && cmbProvince.SelectedItem != null && cmbMunicipal.SelectedItem != null)
             {
                 foreach (var box in boxes)
                 {
@@ -185,7 +185,7 @@ namespace ExpenseApp
 
         private void btnEnter_Click(object sender, EventArgs e)
         {
-            boxes = new List<ComboBox> { cmbProvince, cmbMunicipal, cmbBrgy };
+            boxes = new List<ComboBox> { cmbProvince, cmbMunicipal };
             checkingAllBoxes(boxes);
 
             if(Address != null)
@@ -200,7 +200,7 @@ namespace ExpenseApp
             AEF.R = cmbRegion.SelectedIndex;
             AEF.P = cmbProvince.SelectedIndex;
             AEF.M = cmbMunicipal.SelectedIndex;
-            AEF.B = cmbBrgy.SelectedIndex;
+            //AEF.B = cmbBrgy.SelectedIndex;
 
             this.Hide();
         }
