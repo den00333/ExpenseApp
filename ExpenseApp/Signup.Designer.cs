@@ -187,7 +187,7 @@
             this.txtFirstname.PasswordChar = '\0';
             this.txtFirstname.PlaceholderText = "First name";
             this.txtFirstname.SelectedText = "";
-            this.txtFirstname.Size = new System.Drawing.Size(182, 50);
+            this.txtFirstname.Size = new System.Drawing.Size(168, 50);
             this.txtFirstname.TabIndex = 11;
             this.txtFirstname.TextChanged += new System.EventHandler(this.txtFirstname_TextChanged);
             this.txtFirstname.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.guna2TextBox3_KeyPress);
@@ -206,13 +206,13 @@
             this.txtLastname.Font = new System.Drawing.Font("Poppins", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtLastname.ForeColor = System.Drawing.Color.Black;
             this.txtLastname.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtLastname.Location = new System.Drawing.Point(208, 110);
+            this.txtLastname.Location = new System.Drawing.Point(195, 110);
             this.txtLastname.Margin = new System.Windows.Forms.Padding(4);
             this.txtLastname.Name = "txtLastname";
             this.txtLastname.PasswordChar = '\0';
             this.txtLastname.PlaceholderText = "Last name";
             this.txtLastname.SelectedText = "";
-            this.txtLastname.Size = new System.Drawing.Size(153, 50);
+            this.txtLastname.Size = new System.Drawing.Size(166, 50);
             this.txtLastname.TabIndex = 12;
             this.txtLastname.TextChanged += new System.EventHandler(this.txtLastname_TextChanged);
             this.txtLastname.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.guna2TextBox2_KeyPress);
@@ -266,11 +266,11 @@
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(10, 20);
+            this.label1.Font = new System.Drawing.Font("Poppins SemiBold", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(21, 9);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(138, 37);
+            this.label1.Size = new System.Drawing.Size(147, 56);
             this.label1.TabIndex = 19;
             this.label1.Text = "Sign Up";
             // 
@@ -279,7 +279,7 @@
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(19, 67);
+            this.label2.Location = new System.Drawing.Point(26, 65);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(161, 28);
@@ -305,7 +305,7 @@
             this.termsConditions.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.termsConditions.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.termsConditions.ForeColor = System.Drawing.SystemColors.AppWorkspace;
-            this.termsConditions.Location = new System.Drawing.Point(25, 410);
+            this.termsConditions.Location = new System.Drawing.Point(28, 409);
             this.termsConditions.Margin = new System.Windows.Forms.Padding(2);
             this.termsConditions.Name = "termsConditions";
             this.termsConditions.Size = new System.Drawing.Size(333, 25);
