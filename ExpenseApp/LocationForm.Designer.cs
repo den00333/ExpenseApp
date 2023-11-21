@@ -44,9 +44,10 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Poppins SemiBold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(23, 16);
+            this.label1.Location = new System.Drawing.Point(31, 20);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(72, 28);
+            this.label1.Size = new System.Drawing.Size(91, 35);
             this.label1.TabIndex = 4;
             this.label1.Text = "Region:";
             // 
@@ -54,9 +55,10 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Poppins SemiBold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(23, 86);
+            this.label2.Location = new System.Drawing.Point(31, 106);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(87, 28);
+            this.label2.Size = new System.Drawing.Size(108, 35);
             this.label2.TabIndex = 5;
             this.label2.Text = "Province:";
             // 
@@ -64,21 +66,12 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Poppins SemiBold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(23, 156);
+            this.label3.Location = new System.Drawing.Point(31, 192);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(96, 28);
+            this.label3.Size = new System.Drawing.Size(122, 35);
             this.label3.TabIndex = 6;
             this.label3.Text = "Municipal:";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Poppins SemiBold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(23, 226);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(97, 28);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "Barangay:";
             // 
             // btnEnter
             // 
@@ -90,10 +83,10 @@
             this.btnEnter.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(123)))), ((int)(((byte)(47)))));
             this.btnEnter.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEnter.ForeColor = System.Drawing.Color.White;
-            this.btnEnter.Location = new System.Drawing.Point(56, 304);
-            this.btnEnter.Margin = new System.Windows.Forms.Padding(4);
+            this.btnEnter.Location = new System.Drawing.Point(37, 290);
+            this.btnEnter.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.btnEnter.Name = "btnEnter";
-            this.btnEnter.Size = new System.Drawing.Size(107, 45);
+            this.btnEnter.Size = new System.Drawing.Size(143, 55);
             this.btnEnter.TabIndex = 8;
             this.btnEnter.Text = "Save";
             this.btnEnter.Click += new System.EventHandler(this.btnEnter_Click);
@@ -117,9 +110,10 @@
             this.cmbRegion.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbRegion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.cmbRegion.ItemHeight = 30;
-            this.cmbRegion.Location = new System.Drawing.Point(42, 47);
+            this.cmbRegion.Location = new System.Drawing.Point(56, 58);
+            this.cmbRegion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cmbRegion.Name = "cmbRegion";
-            this.cmbRegion.Size = new System.Drawing.Size(243, 36);
+            this.cmbRegion.Size = new System.Drawing.Size(323, 36);
             this.cmbRegion.TabIndex = 17;
             this.cmbRegion.SelectedIndexChanged += new System.EventHandler(this.cmbRegion_SelectedIndexChanged);
             // 
@@ -135,9 +129,10 @@
             this.cmbProvince.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbProvince.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.cmbProvince.ItemHeight = 30;
-            this.cmbProvince.Location = new System.Drawing.Point(42, 117);
+            this.cmbProvince.Location = new System.Drawing.Point(56, 144);
+            this.cmbProvince.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cmbProvince.Name = "cmbProvince";
-            this.cmbProvince.Size = new System.Drawing.Size(243, 36);
+            this.cmbProvince.Size = new System.Drawing.Size(323, 36);
             this.cmbProvince.TabIndex = 20;
             this.cmbProvince.SelectedIndexChanged += new System.EventHandler(this.cmbProvince_SelectedIndexChanged);
             // 
@@ -153,10 +148,11 @@
             this.cmbMunicipal.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbMunicipal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.cmbMunicipal.ItemHeight = 30;
-            this.cmbMunicipal.Location = new System.Drawing.Point(42, 187);
+            this.cmbMunicipal.Location = new System.Drawing.Point(56, 230);
+            this.cmbMunicipal.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cmbMunicipal.MaxDropDownItems = 5;
             this.cmbMunicipal.Name = "cmbMunicipal";
-            this.cmbMunicipal.Size = new System.Drawing.Size(243, 36);
+            this.cmbMunicipal.Size = new System.Drawing.Size(323, 36);
             this.cmbMunicipal.TabIndex = 21;
             this.cmbMunicipal.SelectedIndexChanged += new System.EventHandler(this.cmbMunicipal_SelectedIndexChanged);
             // 
@@ -170,19 +166,19 @@
             this.guna2Button1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(4)))), ((int)(((byte)(45)))));
             this.guna2Button1.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2Button1.ForeColor = System.Drawing.Color.White;
-            this.guna2Button1.Margin = new System.Windows.Forms.Padding(4);
-            this.guna2Button1.Location = new System.Drawing.Point(178, 312);
+            this.guna2Button1.Location = new System.Drawing.Point(236, 290);
+            this.guna2Button1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.guna2Button1.Name = "guna2Button1";
-            this.guna2Button1.Size = new System.Drawing.Size(107, 45);
+            this.guna2Button1.Size = new System.Drawing.Size(143, 55);
             this.guna2Button1.TabIndex = 23;
             this.guna2Button1.Text = "Back";
             this.guna2Button1.Click += new System.EventHandler(this.guna2Button1_Click);
             // 
             // LocationForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(334, 384);
+            this.ClientSize = new System.Drawing.Size(432, 396);
             this.Controls.Add(this.guna2Button1);
             this.Controls.Add(this.cmbMunicipal);
             this.Controls.Add(this.cmbProvince);
@@ -192,6 +188,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "LocationForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "LocationForm";
