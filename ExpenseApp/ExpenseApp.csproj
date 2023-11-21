@@ -422,6 +422,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\show.png" />
     <None Include="Resources\transportation.png" />
     <Content Include="Resources\GeoLite2-City.mmdb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -499,6 +500,7 @@
     <None Include="Resources\medical.png" />
     <None Include="Resources\housing.png" />
     <None Include="Resources\noimage.png" />
+    <None Include="Resources\hide.png" />
     <Content Include="Resources\philippine_provinces_cities_municipalities_and_barangays_2019v2.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

@@ -55,7 +55,7 @@ namespace ExpenseApp
         }
 
         private void btnAddXpns_Click(object sender, EventArgs e)
-        {
+        {   
             AddExpensesForm AEF = new AddExpensesForm(this);
             AEF.ShowDialog();
         }

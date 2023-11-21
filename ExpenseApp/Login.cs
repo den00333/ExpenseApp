@@ -164,5 +164,20 @@ namespace ExpenseApp
             findYourAccount fya = new findYourAccount();
             fya.ShowDialog();
         }
+
+        bool flag = true;
+        private void passwordTB_IconRightClick(object sender, EventArgs e)
+        {
+            if (flag){
+                passwordTB.PasswordChar= '\0';
+                flag = false;
+                passwordTB.IconRight = Properties.Resources.hide;
+            }
+            else {
+                passwordTB.PasswordChar = '●';
+                flag = true;
+                passwordTB.IconRight = Properties.Resources.show;
+            }
+        }
     }
 }

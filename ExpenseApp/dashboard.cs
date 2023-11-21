@@ -27,7 +27,7 @@ namespace ExpenseApp
         private async void displayExpensesChart()
         {
             expensesChart.Series.Clear();
-            Dictionary<DateTime, decimal> expensesByDate = await otherFunc.GetExpensesGroupedByDate(username);
+            Dictionary<DateTime, double> expensesByDate = await otherFunc.GetExpensesGroupedByDate(username);
             var sortedExpenses = expensesByDate.OrderBy(x => x.Key);
             Series splineSeries = new Series("Total Expenses") {
                 ChartType = SeriesChartType.Spline,
@@ -42,7 +42,7 @@ namespace ExpenseApp
             areaSeries.BackGradientStyle = GradientStyle.TopBottom;
             foreach (var entry in sortedExpenses){
                 DateTime date = entry.Key;
-                decimal totalAmount = entry.Value;
+                double totalAmount = entry.Value;
                 splineSeries.Points.AddXY(date.ToString("MM/dd"), totalAmount);
                 areaSeries.Points.AddXY(date.ToString("MM/dd"), totalAmount);
             }
