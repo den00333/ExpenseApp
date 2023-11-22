@@ -17,6 +17,7 @@ namespace ExpenseApp
         public string myOTP;
         public DateTime otpExpirationTime;
         public string username = FirebaseData.Instance.Username;
+        private string email = string.Empty;
         public changePassword()
         {
             InitializeComponent();
@@ -62,27 +63,27 @@ namespace ExpenseApp
             panelPassword.Visible= false;
 
         }
-
         private void txtEmail_TextChanged(object sender, EventArgs e)
         {
-            //gunaTextBox = (Guna.UI2.WinForms.Guna2TextBox)sender;
+            gunaTextBox = (Guna.UI2.WinForms.Guna2TextBox)sender;
 
 
-            //string input = txtEmail.Text;
+            string input = txtEmail.Text;
 
-            //int atIndex = input.IndexOf('@');
+            int atIndex = input.IndexOf('@');
 
-            //if (atIndex > 1)
-            //{
-            //    string extracted = input.Substring(0, atIndex);
-            //    string maskedText = extracted[0] + new string('*', extracted.Length - 2) + extracted[extracted.Length - 1] + input.Substring(atIndex);
-            //    gunaTextBox.Text = maskedText;
-            //}
+            if (atIndex > 1)
+            {
+                string extracted = input.Substring(0, atIndex);
+                string maskedText = extracted[0] + new string('*', extracted.Length - 2) + extracted[extracted.Length - 1] + input.Substring(atIndex);
+                gunaTextBox.Text = maskedText;
+                email = input;
+            }
         }
         
         private void btnSendCode_Click(object sender, EventArgs e)
         {
-            otherFunc.sendOTP(txtEmail.Text, this);
+            otherFunc.sendOTP(email, this);
         }
 
         private void btnSavepass_Click(object sender, EventArgs e)

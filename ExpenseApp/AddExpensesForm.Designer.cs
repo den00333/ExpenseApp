@@ -341,7 +341,6 @@
             this.richTxtDesc.Text = "Name";
             this.richTxtDesc.TextChanged += new System.EventHandler(this.richTxtDesc_TextChanged);
             this.richTxtDesc.Enter += new System.EventHandler(this.richTxtDesc_Enter);
-            this.richTxtDesc.Leave += new System.EventHandler(this.richTxtDesc_Leave);
             // 
             // errorProvider
             // 

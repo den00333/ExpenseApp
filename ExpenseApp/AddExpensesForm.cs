@@ -183,13 +183,6 @@ namespace ExpenseApp
             RichTextBox rtb = (RichTextBox)sender;
             rtb.Text = "";
         }
-
-        private void richTxtDesc_Leave(object sender, EventArgs e)
-        {
-            RichTextBox rtb = (RichTextBox)sender;
-            rtb.Text = "Name";
-        }
-
         private void richTextNote_Leave(object sender, EventArgs e)
         {
             RichTextBox rtb = (RichTextBox)sender;

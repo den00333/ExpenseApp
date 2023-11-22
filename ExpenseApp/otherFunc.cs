@@ -914,7 +914,7 @@ namespace ExpenseApp
         public static async Task<Dictionary<DateTime, double>> GetExpensesGroupedByDate(string username)
         {
             var db = otherFunc.FirestoreConn();
-            CollectionReference expensesCollection = db.Collection("Users").Document(username).Collection("Expenses");
+            CollectionReference expensesCollection = editInsideUser(username).Collection("Expenses");
             QuerySnapshot expensesSnapshot = await expensesCollection.GetSnapshotAsync();
             var expensesByDate = new Dictionary<DateTime, double>();
 
@@ -932,7 +932,55 @@ namespace ExpenseApp
                 }
             }
             return expensesByDate;
-        }   
+        }
+        public static async Task<Dictionary<string, double>> getExpensesGroupedByCategories(string username)
+        {
+            CollectionReference colRef = editInsideUser(username).Collection("Expenses");
+            QuerySnapshot expensesSnapshot = await colRef.GetSnapshotAsync();
+            var expensebyCategories = new Dictionary<string, double>();
+            foreach(DocumentSnapshot docSnap in expensesSnapshot.Documents)
+            {
+                Dictionary<string, object> expenseData = docSnap.ToDictionary();
+                if(expenseData.TryGetValue("Category", out var categoryObj) &&
+                    expenseData.TryGetValue("Amount", out var amountObj) && 
+                    double.TryParse(amountObj.ToString(), out double amount)){
+                    string category = categoryObj.ToString();
+                    if (expensebyCategories.ContainsKey(category)){
+                        expensebyCategories[category] += amount;
+                    }
+                    else{
+                        expensebyCategories[category] = amount; 
+                    }
+                }
+            }
+            return expensebyCategories;
+        }
+        public static async Task<int> getTotalExpensesTransaction(string username)
+        {
+            int totalTransaction = 0;
+            CollectionReference colRef = editInsideUser(username).Collection("Expenses");
+            QuerySnapshot transactionSnap = await colRef.GetSnapshotAsync();
+            foreach(DocumentSnapshot docSnap in transactionSnap.Documents)
+            {
+                totalTransaction++;
+            }
+            return totalTransaction;
+        }
+        public static async Task<float> getTotalExpenses(string username)
+        {
+            float totalAmount = 0;
+            CollectionReference colRef = editInsideUser(username).Collection("Expenses");
+            QuerySnapshot documentSnapshots= await colRef.GetSnapshotAsync();
+            foreach(DocumentSnapshot docSnap in documentSnapshots.Documents)
+            {
+                Dictionary<string, object> expenses = docSnap.ToDictionary();
+                if (expenses.TryGetValue("Amount", out var amountObj) && float.TryParse(amountObj.ToString(), out float amount))
+                {
+                    totalAmount += amount;
+                }
+            }
+            return totalAmount;
+        }
     }
 }
 

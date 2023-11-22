@@ -34,7 +34,7 @@ namespace ExpenseApp
                 MessageBox.Show("Please enter your username","Input credential",MessageBoxButtons.OK,MessageBoxIcon.Warning);
             }
             else{
-                string username = txtUsername.Text;
+                string username = txtUsername.Text.ToString().Trim().ToLower();
                 otherFunc o = new otherFunc();
                 DocumentSnapshot snap = await o.logInFunc(username);
                 if (snap.Exists){
