@@ -1,4 +1,5 @@
 ﻿using Google.Cloud.Firestore;
+using Guna.UI2.WinForms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,7 +9,9 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.UI.WebControls;
 using System.Windows.Forms;
+using static Google.Api.ResourceDescriptor.Types;
 
 namespace ExpenseApp
 {
@@ -23,9 +26,10 @@ namespace ExpenseApp
         private void wallet_Load(object sender, EventArgs e)
         {
             loadWallet();
-            displayExpenses();
+            //displayExpenses();
             ExpenseGridDesign();
             //loadWallet();
+            displayExpenses1();
         }
 
         private async void loadWallet()
@@ -73,9 +77,11 @@ namespace ExpenseApp
 
             dgvExpenses.Rows.Clear();
 
-            foreach ((string docName, DocumentSnapshot docsnap) in documentData) {
+            foreach ((string docName, DocumentSnapshot docsnap) in documentData)
+            {
                 FirebaseData fd = docsnap.ConvertTo<FirebaseData>();
-                if (docsnap.Exists){
+                if (docsnap.Exists)
+                {
                     dgvExpenses.Rows.Add(docName, fd.Category, fd.Amount.ToString(), fd.Date.ToString());
                 }
             }
@@ -192,7 +198,6 @@ namespace ExpenseApp
                 dgvExpenses.Rows.Clear();
                 dgvExpenses.Columns.Clear();
                 setDGVHeaders(flagGoal);
-                displayExpenses();
                 flagGoal = true;
             }
         }
@@ -219,6 +224,75 @@ namespace ExpenseApp
                     dgvExpenses.Columns.Add(d);
                 }
             }
+        }
+        public async void displayExpenses1()
+        {
+            string username = FirebaseData.Instance.Username;
+            otherFunc o = new otherFunc();
+            List<(string DocName, DocumentSnapshot DocSnapshot)> documentData = await o.displayDataWithDocNames(username);
+
+            dgvExpenses.Rows.Clear();
+
+            foreach ((string docName, DocumentSnapshot docsnap) in documentData)
+            {
+                FirebaseData fd = docsnap.ConvertTo<FirebaseData>();
+                if (docsnap.Exists)
+                {
+                    string dn = docName;
+                    string category = fd.Category;
+                    string amount = fd.Amount.ToString();
+                    string date = fd.Date.ToString();
+
+                    Guna2GradientPanel pnl = new Guna2GradientPanel();
+                    pnl.Size = new Size(657, 106);
+                    pnl.FillColor = Color.FromArgb(227, 180, 72);
+                    pnl.FillColor2 = Color.FromArgb(83, 123, 47);
+                    pnl.BorderRadius = 20;
+
+                    System.Windows.Forms.Label lblCat = new System.Windows.Forms.Label();
+                    lblCat.Font = new Font("Poppins", 15.75f, FontStyle.Bold | FontStyle.Regular);
+                    lblCat.BackColor = Color.Transparent;
+                    lblCat.Size = new Size(220, 37);
+                    lblCat.Location = new Point(27, 23);
+                    lblCat.ForeColor = Color.White;
+                    lblCat.Text = category;
+
+                    System.Windows.Forms.Label lblAmount = new System.Windows.Forms.Label();
+                    lblAmount.Font = new Font("Poppins", 15.75f, FontStyle.Bold | FontStyle.Regular);
+                    lblAmount.BackColor = Color.Transparent;
+                    lblAmount.Size = new Size(220, 37);
+                    lblAmount.Location = new Point(500, 23);
+                    lblAmount.ForeColor = Color.White;
+                    lblAmount.Text = "₱" + amount;
+
+                    System.Windows.Forms.Label lbldocname = new System.Windows.Forms.Label();
+                    lbldocname.Font = new Font("Poppins", 14.25f, FontStyle.Regular);
+                    lbldocname.BackColor = Color.Transparent;
+                    lbldocname.Size = new Size(276, 37);
+                    lbldocname.Location = new Point(28, 56);
+                    lbldocname.ForeColor = Color.White;
+                    lbldocname.Text = docName;
+
+                    System.Windows.Forms.Label lblDate = new System.Windows.Forms.Label();
+                    lblDate.Font = new Font("Poppins", 14.25f, FontStyle.Regular);
+                    lblDate.BackColor = Color.Transparent;
+                    lblDate.Size = new Size(220, 37);
+                    lblDate.Location = new Point(500, 56);
+                    lblDate.ForeColor = Color.White;
+                    lblDate.Text = date;
+
+                    pnl.Controls.Add(lblCat);
+                    pnl.Controls.Add(lblAmount);
+                    pnl.Controls.Add(lbldocname);
+                    pnl.Controls.Add(lblDate);
+                    flpExpenses.Controls.Add(pnl);
+                }
+            }
+        }
+
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
