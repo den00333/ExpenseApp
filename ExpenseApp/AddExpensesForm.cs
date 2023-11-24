@@ -188,7 +188,6 @@ namespace ExpenseApp
             RichTextBox rtb = (RichTextBox)sender;
             rtb.Text = "Note";
         }
-
         private void richTextNote_Enter(object sender, EventArgs e)
         {
             RichTextBox rtb = (RichTextBox)sender;
