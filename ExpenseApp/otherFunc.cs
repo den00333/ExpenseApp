@@ -838,6 +838,9 @@ namespace ExpenseApp
                             if (LoggingIn){
                                 await docRef.UpdateAsync("Login", FieldValue.ArrayUnion(item));
                             }
+                            else{
+                                await docRef.UpdateAsync("Logout", FieldValue.ArrayUnion(Time));
+                            }
                         }
                         else{
                             
