@@ -13,9 +13,13 @@ namespace ExpenseApp
 {
     public partial class ExpenseDetailForm : Form
     {
-        public ExpenseDetailForm()
+        wallet w;
+
+        public int ID { get; set; }
+        public ExpenseDetailForm(wallet wal)
         {
             InitializeComponent();
+            this.w = wal;
         }
         public void displayExpenseDetails(Dictionary<string, object> data)
         {
@@ -60,6 +64,19 @@ namespace ExpenseApp
         private void closeBTN_Click(object sender, EventArgs e)
         {
             this.Hide();    
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            String username = FirebaseData.Instance.Username;
+            String sID = w.dgvExpenses.Rows[ID].Cells[0].Value.ToString();
+            DialogResult res = MessageBox.Show("Are you sure you want to delete this?", "Deleting Expense", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            if (res == DialogResult.OK)
+            {
+                otherFunc.deleteInsideUser(username, "Expenses", sID);
+                this.Hide();
+                w.displayExpenses();
+            }
         }
     }
 }

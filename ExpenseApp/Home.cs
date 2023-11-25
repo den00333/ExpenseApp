@@ -57,7 +57,7 @@ namespace ExpenseApp
             timer1.Stop();
             String username = FirebaseData.Instance.Username;
             otherFunc.UpdateAccStatusToOffline(username);
-            otherFunc.RecordLogs(username, true, false);
+            //otherFunc.RecordLogs(username, true, false);
             Application.Exit();
         }
 
@@ -150,9 +150,12 @@ namespace ExpenseApp
             if (result == DialogResult.Yes)
             {
                 timer1.Stop();
-                String username = FirebaseData.Instance.Username;
-                otherFunc.UpdateAccStatusToOffline(username);
-                otherFunc.RecordLogs(username, true, false);
+                if (otherFunc.internetConn())
+                {
+                    String username = FirebaseData.Instance.Username;
+                    otherFunc.UpdateAccStatusToOffline(username);
+                    //otherFunc.RecordLogs(username, true, false);
+                }
                 this.Hide();
                 Login login = new Login();
                 login.Show();

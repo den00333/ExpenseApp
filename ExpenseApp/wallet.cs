@@ -109,7 +109,7 @@ namespace ExpenseApp
             dgvExpenses.ReadOnly = true;
             dgvExpenses.Columns[0].Width = 150;
         }
-        private async void dgvExpenses_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        public async void dgvExpenses_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             otherFunc function = new otherFunc();
             if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
@@ -119,7 +119,8 @@ namespace ExpenseApp
                     string expenseId = dgvExpenses.Rows[e.RowIndex].Cells[0].Value.ToString();
                     Dictionary<string, object> data = await function.getItemsInsideExpenseId(username, expenseId);
 
-                    ExpenseDetailForm edf = new ExpenseDetailForm();
+                    ExpenseDetailForm edf = new ExpenseDetailForm(this);
+                    edf.ID = e.RowIndex;
                     edf.displayExpenseDetails(data);
                     edf.StartPosition = FormStartPosition.Manual;
                     int x = Screen.PrimaryScreen.WorkingArea.Right - edf.Width;
