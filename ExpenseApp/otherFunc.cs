@@ -899,7 +899,7 @@ namespace ExpenseApp
             Random ran = new Random();
             int otp = ran.Next(100000, 999999);
 
-            // Set expiration time to 3 minutes from the current time
+            // Set expiration time to 5 minutes from the current time
             DateTime expirationTime = DateTime.Now.AddMinutes(5);
 
             return new Tuple<string, DateTime>(otp.ToString(), expirationTime);
@@ -914,15 +914,16 @@ namespace ExpenseApp
         public static async Task<Dictionary<DateTime, double>> GetExpensesGroupedByDate(string username)
         {
             var db = otherFunc.FirestoreConn();
-            CollectionReference expensesCollection = db.Collection("Users").Document(username).Collection("Expenses");
+            CollectionReference expensesCollection = editInsideUser(username).Collection("Expenses");
             QuerySnapshot expensesSnapshot = await expensesCollection.GetSnapshotAsync();
             var expensesByDate = new Dictionary<DateTime, double>();
-
-            foreach (DocumentSnapshot expenseDoc in expensesSnapshot.Documents){
+            foreach (DocumentSnapshot expenseDoc in expensesSnapshot.Documents)
+            {
                 Dictionary<string, object> expenseData = expenseDoc.ToDictionary();
-
-                if (expenseData.TryGetValue("Date", out var dateObj) && DateTime.TryParseExact(dateObj.ToString(), "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime date) &&
-                    expenseData.TryGetValue("Amount", out var amountObj) && double.TryParse(amountObj.ToString(), out double amount)){
+                if (expenseData.TryGetValue("Date", out var dateObj) &&
+                    DateTime.TryParseExact(dateObj.ToString(), "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime date) &&
+                    expenseData.TryGetValue("Amount", out var amountObj) &&
+                    double.TryParse(amountObj.ToString(), out double amount)){
                     if (expensesByDate.ContainsKey(date)){
                         expensesByDate[date] += amount;
                     }
@@ -932,7 +933,74 @@ namespace ExpenseApp
                 }
             }
             return expensesByDate;
-        }   
+        }
+        public static async Task<Dictionary<string, double>> getExpensesGroupedByCategories(string username)
+        {
+            CollectionReference colRef = editInsideUser(username).Collection("Expenses");
+            QuerySnapshot expensesSnapshot = await colRef.GetSnapshotAsync();
+            var expensebyCategories = new Dictionary<string, double>();
+            foreach(DocumentSnapshot docSnap in expensesSnapshot.Documents)
+            {
+                Dictionary<string, object> expenseData = docSnap.ToDictionary();
+                if(expenseData.TryGetValue("Category", out var categoryObj) &&
+                    expenseData.TryGetValue("Amount", out var amountObj) && 
+                    double.TryParse(amountObj.ToString(), out double amount)){
+                    string category = categoryObj.ToString();
+                    if (expensebyCategories.ContainsKey(category)){
+                        expensebyCategories[category] += amount;
+                    }
+                    else{
+                        expensebyCategories[category] = amount; 
+                    }
+                }
+            }
+            return expensebyCategories;
+        }
+        public static async Task<int> getTotalExpensesTransaction(string username, int customDays = 0)
+        {
+            int totalTransaction = 0;
+            CollectionReference colRef = editInsideUser(username).Collection("Expenses");
+            if (customDays == 0)
+            {
+                QuerySnapshot transactionSnap = await colRef.GetSnapshotAsync();
+                totalTransaction = transactionSnap.Documents.Count;
+            }
+            else{
+                DateTime startDate = DateTime.UtcNow.Date.AddDays(-customDays);
+                QuerySnapshot transactionSnap = await colRef
+                    .WhereGreaterThanOrEqualTo("Date", startDate.ToString("yyyy-MM-dd"))
+                    .GetSnapshotAsync();
+                totalTransaction = transactionSnap.Documents.Count;
+            }
+            return totalTransaction;
+        }
+        public static async Task<float> getTotalExpenses(string username, int customDays = 0)
+        {
+            float totalAmount = 0;
+            CollectionReference colRef = editInsideUser(username).Collection("Expenses");
+            if (customDays == 0){
+                QuerySnapshot documentSnapshots = await colRef.GetSnapshotAsync();
+                foreach (DocumentSnapshot docSnap in documentSnapshots.Documents){
+                    Dictionary<string, object> expenses = docSnap.ToDictionary();
+                    if (expenses.TryGetValue("Amount", out var amountObj) && float.TryParse(amountObj.ToString(), out float amount)){
+                        totalAmount += amount;
+                    }
+                }
+            }
+            else{            
+                DateTime startDate = DateTime.UtcNow.Date.AddDays(-customDays);
+                QuerySnapshot documentSnapshots = await colRef
+                    .WhereGreaterThanOrEqualTo("Date", startDate.ToString("yyyy-MM-dd"))
+                    .GetSnapshotAsync();
+                foreach (DocumentSnapshot docSnap in documentSnapshots.Documents){
+                    Dictionary<string, object> expenses = docSnap.ToDictionary();
+                    if (expenses.TryGetValue("Amount", out var amountObj) && float.TryParse(amountObj.ToString(), out float amount)){
+                        totalAmount += amount;
+                    }
+                }
+            }
+            return totalAmount;
+        }
     }
 }
 

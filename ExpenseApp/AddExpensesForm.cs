@@ -151,7 +151,7 @@ namespace ExpenseApp
                             dtpDate.Value = DateTime.Now;
                             txtLocation.Clear();
                             richTxtDesc.Clear();
-                            walletInstance.displayExpenses();
+                            walletInstance.displayData();
                             this.Hide();
                         }
                     }
@@ -183,19 +183,11 @@ namespace ExpenseApp
             RichTextBox rtb = (RichTextBox)sender;
             rtb.Text = "";
         }
-
-        private void richTxtDesc_Leave(object sender, EventArgs e)
-        {
-            RichTextBox rtb = (RichTextBox)sender;
-            rtb.Text = "Name";
-        }
-
         private void richTextNote_Leave(object sender, EventArgs e)
         {
             RichTextBox rtb = (RichTextBox)sender;
             rtb.Text = "Note";
         }
-
         private void richTextNote_Enter(object sender, EventArgs e)
         {
             RichTextBox rtb = (RichTextBox)sender;

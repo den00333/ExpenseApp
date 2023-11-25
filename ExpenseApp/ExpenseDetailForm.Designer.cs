@@ -61,10 +61,9 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Poppins SemiBold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(11, 9);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Location = new System.Drawing.Point(15, 11);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(182, 37);
+            this.label1.Size = new System.Drawing.Size(235, 48);
             this.label1.TabIndex = 0;
             this.label1.Text = "Expense Details";
             // 
@@ -77,19 +76,19 @@
             this.guna2GradientPanel1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(123)))), ((int)(((byte)(47)))));
             this.guna2GradientPanel1.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(180)))), ((int)(((byte)(72)))));
             this.guna2GradientPanel1.Location = new System.Drawing.Point(0, 0);
-            this.guna2GradientPanel1.Margin = new System.Windows.Forms.Padding(2);
+            this.guna2GradientPanel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.guna2GradientPanel1.Name = "guna2GradientPanel1";
-            this.guna2GradientPanel1.Size = new System.Drawing.Size(666, 57);
+            this.guna2GradientPanel1.Size = new System.Drawing.Size(888, 70);
             this.guna2GradientPanel1.TabIndex = 2;
             // 
             // closeBTN
             // 
             this.closeBTN.Cursor = System.Windows.Forms.Cursors.Hand;
             this.closeBTN.Image = global::ExpenseApp.Properties.Resources.delete;
-            this.closeBTN.Location = new System.Drawing.Point(608, 15);
-            this.closeBTN.Margin = new System.Windows.Forms.Padding(2);
+            this.closeBTN.Location = new System.Drawing.Point(811, 18);
+            this.closeBTN.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.closeBTN.Name = "closeBTN";
-            this.closeBTN.Size = new System.Drawing.Size(43, 24);
+            this.closeBTN.Size = new System.Drawing.Size(57, 30);
             this.closeBTN.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.closeBTN.TabIndex = 18;
             this.closeBTN.TabStop = false;
@@ -99,10 +98,9 @@
             // 
             this.lblAmount.AutoSize = true;
             this.lblAmount.Font = new System.Drawing.Font("Poppins SemiBold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAmount.Location = new System.Drawing.Point(174, 163);
-            this.lblAmount.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblAmount.Location = new System.Drawing.Point(232, 201);
             this.lblAmount.Name = "lblAmount";
-            this.lblAmount.Size = new System.Drawing.Size(113, 37);
+            this.lblAmount.Size = new System.Drawing.Size(138, 48);
             this.lblAmount.TabIndex = 3;
             this.lblAmount.Text = "P100,000";
             // 
@@ -110,11 +108,10 @@
             // 
             this.lblCategory.AutoSize = true;
             this.lblCategory.BackColor = System.Drawing.Color.Transparent;
-            this.lblCategory.Font = new System.Drawing.Font("Poppins", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCategory.Location = new System.Drawing.Point(173, 115);
-            this.lblCategory.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblCategory.Font = new System.Drawing.Font("Poppins", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCategory.Location = new System.Drawing.Point(234, 127);
             this.lblCategory.Name = "lblCategory";
-            this.lblCategory.Size = new System.Drawing.Size(87, 48);
+            this.lblCategory.Size = new System.Drawing.Size(162, 88);
             this.lblCategory.TabIndex = 5;
             this.lblCategory.Text = "Food";
             // 
@@ -123,10 +120,9 @@
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Poppins SemiBold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(174, 78);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Location = new System.Drawing.Point(232, 96);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(208, 37);
+            this.label4.Size = new System.Drawing.Size(268, 48);
             this.label4.TabIndex = 4;
             this.label4.Text = "Expense Category";
             // 
@@ -134,10 +130,9 @@
             // 
             this.lblLocation.AutoSize = true;
             this.lblLocation.Font = new System.Drawing.Font("Poppins SemiBold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLocation.Location = new System.Drawing.Point(78, 317);
-            this.lblLocation.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblLocation.Location = new System.Drawing.Point(104, 390);
             this.lblLocation.Name = "lblLocation";
-            this.lblLocation.Size = new System.Drawing.Size(174, 33);
+            this.lblLocation.Size = new System.Drawing.Size(216, 42);
             this.lblLocation.TabIndex = 7;
             this.lblLocation.Text = "Victoria, Laguna";
             // 
@@ -145,10 +140,9 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Poppins SemiBold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(20, 280);
-            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label5.Location = new System.Drawing.Point(27, 345);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(108, 37);
+            this.label5.Size = new System.Drawing.Size(136, 48);
             this.label5.TabIndex = 6;
             this.label5.Text = "Location";
             // 
@@ -156,10 +150,9 @@
             // 
             this.lblDate.AutoSize = true;
             this.lblDate.Font = new System.Drawing.Font("Poppins SemiBold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDate.Location = new System.Drawing.Point(78, 248);
-            this.lblDate.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblDate.Location = new System.Drawing.Point(104, 305);
             this.lblDate.Name = "lblDate";
-            this.lblDate.Size = new System.Drawing.Size(176, 33);
+            this.lblDate.Size = new System.Drawing.Size(222, 42);
             this.lblDate.TabIndex = 9;
             this.lblDate.Text = "October 30, 2023";
             // 
@@ -167,10 +160,9 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Poppins SemiBold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(20, 211);
-            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label6.Location = new System.Drawing.Point(27, 260);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(184, 37);
+            this.label6.Size = new System.Drawing.Size(236, 48);
             this.label6.TabIndex = 8;
             this.label6.Text = "Date of Expense";
             // 
@@ -178,10 +170,9 @@
             // 
             this.lblName.AutoSize = true;
             this.lblName.Font = new System.Drawing.Font("Poppins SemiBold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblName.Location = new System.Drawing.Point(341, 250);
-            this.lblName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblName.Location = new System.Drawing.Point(455, 308);
             this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(55, 33);
+            this.lblName.Size = new System.Drawing.Size(70, 42);
             this.lblName.TabIndex = 11;
             this.lblName.Text = "Title";
             // 
@@ -189,19 +180,18 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Poppins SemiBold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(340, 215);
-            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label7.Location = new System.Drawing.Point(453, 265);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(79, 33);
+            this.label7.Size = new System.Drawing.Size(98, 42);
             this.label7.TabIndex = 10;
             this.label7.Text = "Name ";
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(27, 77);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox1.Location = new System.Drawing.Point(36, 95);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(128, 114);
+            this.pictureBox1.Size = new System.Drawing.Size(171, 140);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 14;
             this.pictureBox1.TabStop = false;
@@ -214,9 +204,9 @@
             // 
             // ExpenseDetailForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(666, 366);
+            this.ClientSize = new System.Drawing.Size(888, 450);
             this.Controls.Add(this.lblAmount);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.pictureBox1);
@@ -229,7 +219,7 @@
             this.Controls.Add(this.guna2GradientPanel1);
             this.Controls.Add(this.lblCategory);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "ExpenseDetailForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ExpenseDetailForm";
