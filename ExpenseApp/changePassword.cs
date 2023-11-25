@@ -17,16 +17,15 @@ namespace ExpenseApp
         public string myOTP;
         public DateTime otpExpirationTime;
         public string username = FirebaseData.Instance.Username;
+        private string email = string.Empty;
         public changePassword()
         {
             InitializeComponent();
         }
-
         private void btnSave_Click(object sender, EventArgs e)
         {
             compareOTP();
         }
-
         private void guna2Button2_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("Are you sure you want to cancel retrieving your account?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -55,36 +54,31 @@ namespace ExpenseApp
                 MessageBox.Show(ex.Message);
             }
         }
-
         private void changePassword_Load(object sender, EventArgs e)
         {
             retrieveInfo();
             panelPassword.Visible= false;
 
         }
-
         private void txtEmail_TextChanged(object sender, EventArgs e)
         {
-            //gunaTextBox = (Guna.UI2.WinForms.Guna2TextBox)sender;
+            gunaTextBox = (Guna.UI2.WinForms.Guna2TextBox)sender;
+            string input = txtEmail.Text;
 
+            int atIndex = input.IndexOf('@');
 
-            //string input = txtEmail.Text;
-
-            //int atIndex = input.IndexOf('@');
-
-            //if (atIndex > 1)
-            //{
-            //    string extracted = input.Substring(0, atIndex);
-            //    string maskedText = extracted[0] + new string('*', extracted.Length - 2) + extracted[extracted.Length - 1] + input.Substring(atIndex);
-            //    gunaTextBox.Text = maskedText;
-            //}
+            if (atIndex > 1)
+            {
+                string extracted = input.Substring(0, atIndex);
+                string maskedText = extracted[0] + new string('*', extracted.Length - 2) + extracted[extracted.Length - 1] + input.Substring(atIndex);
+                gunaTextBox.Text = maskedText;
+                email = input;
+            }
         }
-        
         private void btnSendCode_Click(object sender, EventArgs e)
         {
-            otherFunc.sendOTP(txtEmail.Text, this);
+            otherFunc.sendOTP(email, this);
         }
-
         private void btnSavepass_Click(object sender, EventArgs e)
         {
             string password = txtPassword.Text;
@@ -111,27 +105,6 @@ namespace ExpenseApp
                 MessageBox.Show("Password must contain uppercase and special character", "Invalid Password", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
-
-        private void txtPassword_Validating(object sender, CancelEventArgs e)
-        {
-            string pass = txtPassword.Text;
-
-            if (!string.IsNullOrEmpty(txtPassword.Text)){
-                if (pass.Length > 0 && pass.Length < 8){
-                    errorProvider.SetError(txtPassword, "Password must be at least 8 characters long");
-                }
-                else if ((!pass.Any(char.IsUpper) || !pass.Any(char.IsLower))){
-                    errorProvider.SetError(txtPassword, "Password must contain uppercase");
-                }
-                else if (!pass.Any(char.IsPunctuation)){
-                    errorProvider.SetError(txtPassword, "Password must contain at least one symbol");
-                }
-            }
-            else{
-                errorProvider.Clear();
-            }
-        }
-
         private void showPassword_CheckedChanged(object sender, EventArgs e)
         {
             if(showPassword.Checked){
@@ -143,7 +116,6 @@ namespace ExpenseApp
                 txtConfirmPass.PasswordChar = '●';
             }
         }
-
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("Are you sure you want to cancel retrieving your account?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);            
