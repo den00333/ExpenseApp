@@ -45,10 +45,12 @@
             this.label5 = new System.Windows.Forms.Label();
             this.btnJoin = new Guna.UI2.WinForms.Guna2Button();
             this.groupCodeTB = new Guna.UI2.WinForms.Guna2TextBox();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.guna2GradientPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.closeBTN)).BeginInit();
             this.createPanel.SuspendLayout();
             this.joinPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // guna2GradientPanel1
@@ -119,6 +121,7 @@
             // 
             // createPanel
             // 
+            this.createPanel.BackColor = System.Drawing.Color.Transparent;
             this.createPanel.Controls.Add(this.label3);
             this.createPanel.Controls.Add(this.label2);
             this.createPanel.Controls.Add(this.btnCreate);
@@ -126,7 +129,7 @@
             this.createPanel.Controls.Add(this.groupTB);
             this.createPanel.Location = new System.Drawing.Point(23, 85);
             this.createPanel.Name = "createPanel";
-            this.createPanel.Size = new System.Drawing.Size(352, 336);
+            this.createPanel.Size = new System.Drawing.Size(431, 336);
             this.createPanel.TabIndex = 20;
             // 
             // label3
@@ -191,6 +194,7 @@
             this.participantsTB.SelectedText = "";
             this.participantsTB.Size = new System.Drawing.Size(328, 59);
             this.participantsTB.TabIndex = 19;
+            this.participantsTB.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.participantsTB_KeyPress);
             // 
             // groupTB
             // 
@@ -289,6 +293,10 @@
             this.groupCodeTB.Size = new System.Drawing.Size(328, 59);
             this.groupCodeTB.TabIndex = 18;
             // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
             // createGroup
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -311,6 +319,7 @@
             this.createPanel.PerformLayout();
             this.joinPanel.ResumeLayout(false);
             this.joinPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -332,5 +341,6 @@
         private Guna.UI2.WinForms.Guna2Button btnCreate;
         private Guna.UI2.WinForms.Guna2TextBox participantsTB;
         private Guna.UI2.WinForms.Guna2TextBox groupTB;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

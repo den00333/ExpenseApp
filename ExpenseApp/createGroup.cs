@@ -71,6 +71,7 @@ namespace ExpenseApp
             }
             return codeBuilder.ToString();
         }
+
         bool flag = true;
         private void btnSwitchPanel_Click(object sender, EventArgs e)
         {
@@ -94,70 +95,100 @@ namespace ExpenseApp
         {
             string groupCode = groupCodeTB.Text.ToString();
             var db = otherFunc.FirestoreConn();
-            try
-            {
+            try{
                 DocumentReference groupDocRef = db.Collection("Groups").Document(groupCode);
                 DocumentSnapshot groupDocSnap = await groupDocRef.GetSnapshotAsync();
-                if (groupDocSnap.Exists)
-                {
+                if (groupDocSnap.Exists){
                     string groupName = groupDocSnap.GetValue<string>("GroupName");
                     List<string> groupMembers = groupDocSnap.GetValue<List<string>>("Members");
-                    if (!groupMembers.Contains(username))
-                    {
-                        await groupDocRef.UpdateAsync("Members", FieldValue.ArrayUnion(username));
-                        CollectionReference userCollectionRef = db.Collection("Users");
-                        DocumentReference userDocRef = userCollectionRef.Document(username);
+                    int maxParticipants = groupDocSnap.GetValue<int>("MaxParticipants");
+                    if (groupMembers.Count < maxParticipants){
+                        if (!groupMembers.Contains(username)){
+                            await groupDocRef.UpdateAsync("Members", FieldValue.ArrayUnion(username));
+                            CollectionReference userCollectionRef = db.Collection("Users");
+                            DocumentReference userDocRef = userCollectionRef.Document(username);
 
-                        DocumentSnapshot userDocSnap = await userDocRef.GetSnapshotAsync();
-                        if (!userDocSnap.Exists) {
-                            await userDocRef.SetAsync(new Dictionary<string, object>
-                            {
-                                {"Groups", new List<string> { groupName }}
-                            });
-                            MessageBox.Show("Successfully joined group!", "Success", MessageBoxButtons.OK);
+                            DocumentSnapshot userDocSnap = await userDocRef.GetSnapshotAsync();
+                            if (!userDocSnap.Exists){
+                                await userDocRef.SetAsync(new Dictionary<string, object>
+                                {
+                                    {"Groups", new List<string> { groupName }}
+                                });
+                                MessageBox.Show("Successfully joined group!", "Success", MessageBoxButtons.OK);
+                            }
+                            else{
+                                await userDocRef.UpdateAsync("Groups", FieldValue.ArrayUnion(groupName));
+                                MessageBox.Show("Successfully joined group!", "Success", MessageBoxButtons.OK);
+                            }
                         }
-                        else {
-                            await userDocRef.UpdateAsync("Groups", FieldValue.ArrayUnion(groupName));
-                            MessageBox.Show("Successfully joined group!", "Success", MessageBoxButtons.OK);
-                        }
+                        else{
+                            MessageBox.Show($"You are already a member of group: {groupName}");
+                        } 
                     }
-                    else
-                    {
-                        MessageBox.Show($"You are already a member of group: {groupName}");
+                    else{
+                        MessageBox.Show("Already reached the maximum number of participants","Group is full",MessageBoxButtons.OK);
                     }
                 }
                 else {
                     MessageBox.Show("Group not found. Please check the group code and try again.");
                 }
             }
-            catch (Exception ex)
-            {
+            catch (Exception ex){
                 MessageBox.Show($"Error joining group: {ex.Message}");
             }
         }
         private void btnJoin_Click(object sender, EventArgs e)
         {
-            if (otherFunc.internetConn())
-            {
-                Join();
+            if (otherFunc.internetConn()){
+                if (string.IsNullOrEmpty(groupCodeTB.Text)){
+                    MessageBox.Show("Please enter a group code", "Invalid Action",MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else{
+                    Join();
+                    this.Close();
+                }
             }
             else MessageBox.Show("No Internet Connection!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void btnCreate_Click(object sender, EventArgs e)
         {
-            if (otherFunc.internetConn()){
-                try{
-                    Create();
-                    MessageBox.Show("Group created Succesfully", "Success", MessageBoxButtons.OK);
-                }
-                catch{
-                    MessageBox.Show("Error encountered during saving. Please try again or contact support.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
+            validateAndCreate();
+        }
+        private void participantsTB_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+        private void validateAndCreate()
+        {
+            string groupName = groupTB.Text;
+
+            if (string.IsNullOrEmpty(groupName) || string.IsNullOrEmpty(participantsTB.Text)){
+                MessageBox.Show("Something is missing", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else if (groupName.Length < 3){
+                MessageBox.Show("Group Name must be at least 3 characters", "Invalid", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else if (!int.TryParse(participantsTB.Text, out int maxParticipants)){
+                MessageBox.Show("Invalid input for participants. Please enter a valid number.", "Invalid", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else if (maxParticipants <= 0){
+                MessageBox.Show("Minimum number of participants must be at least 1 user", "Invalid", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else{
-                MessageBox.Show("No Internet Connection!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                try{
+                    Create();
+                    MessageBox.Show("Group created successfully", "Success", MessageBoxButtons.OK,MessageBoxIcon.Information);
+                    this.Close();
+                }
+                catch{
+                    MessageBox.Show("Error encountered during saving!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
     }
+
 }
