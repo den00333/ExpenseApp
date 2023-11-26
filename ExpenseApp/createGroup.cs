@@ -114,9 +114,11 @@ namespace ExpenseApp
                             {
                                 {"Groups", new List<string> { groupName }}
                             });
+                            MessageBox.Show("Successfully joined group!", "Success", MessageBoxButtons.OK);
                         }
                         else {
                             await userDocRef.UpdateAsync("Groups", FieldValue.ArrayUnion(groupName));
+                            MessageBox.Show("Successfully joined group!", "Success", MessageBoxButtons.OK);
                         }
                     }
                     else
@@ -138,9 +140,6 @@ namespace ExpenseApp
             if (otherFunc.internetConn())
             {
                 Join();
-                MessageBox.Show("Successfully joined group!" +
-                    "", "Success", MessageBoxButtons.OK);
-
             }
             else MessageBox.Show("No Internet Connection!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
