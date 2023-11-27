@@ -198,9 +198,8 @@
             // 
             this.guna2Panel4.BorderRadius = 15;
             this.guna2Panel4.Controls.Add(this.label6);
-            this.guna2Panel4.Controls.Add(this.expenseCategoryDonut);
             this.guna2Panel4.FillColor = System.Drawing.Color.White;
-            this.guna2Panel4.Location = new System.Drawing.Point(1057, 77);
+            this.guna2Panel4.Location = new System.Drawing.Point(1054, 216);
             this.guna2Panel4.Name = "guna2Panel4";
             this.guna2Panel4.Size = new System.Drawing.Size(408, 414);
             this.guna2Panel4.TabIndex = 7;
@@ -223,7 +222,7 @@
             legend1.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
             legend1.Name = "Legend1";
             this.expenseCategoryDonut.Legends.Add(legend1);
-            this.expenseCategoryDonut.Location = new System.Drawing.Point(17, 49);
+            this.expenseCategoryDonut.Location = new System.Drawing.Point(1074, 265);
             this.expenseCategoryDonut.Name = "expenseCategoryDonut";
             this.expenseCategoryDonut.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen;
             series2.ChartArea = "ChartArea1";
@@ -312,6 +311,7 @@
             this.Controls.Add(this.btnWeek);
             this.Controls.Add(this.btnAllExpenses);
             this.Controls.Add(this.btnToday);
+            this.Controls.Add(this.expenseCategoryDonut);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.guna2Panel2);

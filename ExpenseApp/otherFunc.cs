@@ -217,7 +217,7 @@ namespace ExpenseApp
             for (int i = 0; i < ordered.Length; i++)
             {
                 cstack.Push(ordered[i]);
-                if ((i + 1) % 3 == 0)
+                if ((i + 1) % 3 == 0 && i + 1 != ordered.Length)
                 {
                     cstack.Push(',');
                 }
