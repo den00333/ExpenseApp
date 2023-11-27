@@ -221,9 +221,9 @@ namespace ExpenseApp
 
         private void btnToday_Click(object sender, EventArgs e)
         {
-            displayCustomExpensesTransaction(1);
-            displayDonut(1);
-            displayExpensesChart(1);
+            displayCustomExpensesTransaction(0);
+            displayDonut(0);
+            displayExpensesChart(0);
         }
 
         private void btnYear_Click(object sender, EventArgs e)

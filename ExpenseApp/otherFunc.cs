@@ -134,7 +134,6 @@ namespace ExpenseApp
                 Ename = 0;
                 return Ename;
             }
-            
         }
 
         public async Task<DocumentReference> SavingNewExpenses(String username)

@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.lblSpendings = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -41,6 +41,7 @@
             this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
             this.lblTransaction = new System.Windows.Forms.Label();
             this.guna2Panel3 = new Guna.UI2.WinForms.Guna2Panel();
+            this.expensesChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.label5 = new System.Windows.Forms.Label();
             this.guna2Panel4 = new Guna.UI2.WinForms.Guna2Panel();
             this.label6 = new System.Windows.Forms.Label();
@@ -49,13 +50,12 @@
             this.btnAllExpenses = new Guna.UI2.WinForms.Guna2Button();
             this.btnWeek = new Guna.UI2.WinForms.Guna2Button();
             this.btnMonth = new Guna.UI2.WinForms.Guna2Button();
-            this.expensesChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.guna2Panel1.SuspendLayout();
             this.guna2Panel2.SuspendLayout();
             this.guna2Panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.expensesChart)).BeginInit();
             this.guna2Panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.expenseCategoryDonut)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.expensesChart)).BeginInit();
             this.SuspendLayout();
             // 
             // guna2Panel1
@@ -138,6 +138,50 @@
             this.guna2Panel3.Size = new System.Drawing.Size(983, 519);
             this.guna2Panel3.TabIndex = 4;
             // 
+            // expensesChart
+            // 
+            this.expensesChart.BorderlineColor = System.Drawing.Color.Transparent;
+            this.expensesChart.BorderlineWidth = 0;
+            chartArea1.AxisX.IsLabelAutoFit = false;
+            chartArea1.AxisX.LabelStyle.Font = new System.Drawing.Font("Poppins", 12.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea1.AxisX.LineWidth = 0;
+            chartArea1.AxisX.MajorGrid.LineColor = System.Drawing.Color.White;
+            chartArea1.AxisX.MajorGrid.LineWidth = 0;
+            chartArea1.AxisX.MajorTickMark.LineColor = System.Drawing.Color.Transparent;
+            chartArea1.AxisX.MajorTickMark.LineWidth = 0;
+            chartArea1.AxisX.MajorTickMark.Size = 5F;
+            chartArea1.AxisY.IsLabelAutoFit = false;
+            chartArea1.AxisY.LabelStyle.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea1.AxisY.LabelStyle.Format = "₱{0}";
+            chartArea1.AxisY.LineWidth = 0;
+            chartArea1.AxisY.MajorGrid.LineWidth = 0;
+            chartArea1.AxisY.MajorTickMark.LineWidth = 0;
+            chartArea1.AxisY.MajorTickMark.Size = 5F;
+            chartArea1.Name = "ChartArea1";
+            this.expensesChart.ChartAreas.Add(chartArea1);
+            this.expensesChart.Location = new System.Drawing.Point(8, 11);
+            this.expensesChart.Name = "expensesChart";
+            this.expensesChart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Pastel;
+            series1.BorderWidth = 5;
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series1.MarkerColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            series1.MarkerSize = 10;
+            series1.Name = "Series1";
+            series1.YValuesPerPoint = 3;
+            this.expensesChart.Series.Add(series1);
+            this.expensesChart.Size = new System.Drawing.Size(966, 502);
+            this.expensesChart.TabIndex = 3;
+            this.expensesChart.Text = "chart1";
+            title1.Alignment = System.Drawing.ContentAlignment.TopLeft;
+            title1.Font = new System.Drawing.Font("Poppins SemiBold", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            title1.Name = "Title1";
+            title1.Text = "Spending Trend";
+            this.expensesChart.Titles.Add(title1);
+            this.expensesChart.MouseEnter += new System.EventHandler(this.expensesChart_MouseEnter);
+            this.expensesChart.MouseLeave += new System.EventHandler(this.expensesChart_MouseLeave);
+            this.expensesChart.MouseMove += new System.Windows.Forms.MouseEventHandler(this.expensesChart_MouseMove);
+            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -154,8 +198,9 @@
             // 
             this.guna2Panel4.BorderRadius = 15;
             this.guna2Panel4.Controls.Add(this.label6);
+            this.guna2Panel4.Controls.Add(this.expenseCategoryDonut);
             this.guna2Panel4.FillColor = System.Drawing.Color.White;
-            this.guna2Panel4.Location = new System.Drawing.Point(1054, 216);
+            this.guna2Panel4.Location = new System.Drawing.Point(1057, 77);
             this.guna2Panel4.Name = "guna2Panel4";
             this.guna2Panel4.Size = new System.Drawing.Size(408, 414);
             this.guna2Panel4.TabIndex = 7;
@@ -173,19 +218,19 @@
             // 
             // expenseCategoryDonut
             // 
-            chartArea4.Name = "ChartArea1";
-            this.expenseCategoryDonut.ChartAreas.Add(chartArea4);
-            legend2.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
-            legend2.Name = "Legend1";
-            this.expenseCategoryDonut.Legends.Add(legend2);
-            this.expenseCategoryDonut.Location = new System.Drawing.Point(1074, 265);
+            chartArea2.Name = "ChartArea1";
+            this.expenseCategoryDonut.ChartAreas.Add(chartArea2);
+            legend1.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
+            legend1.Name = "Legend1";
+            this.expenseCategoryDonut.Legends.Add(legend1);
+            this.expenseCategoryDonut.Location = new System.Drawing.Point(17, 49);
             this.expenseCategoryDonut.Name = "expenseCategoryDonut";
             this.expenseCategoryDonut.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen;
-            series4.ChartArea = "ChartArea1";
-            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
-            series4.Legend = "Legend1";
-            series4.Name = "Series1";
-            this.expenseCategoryDonut.Series.Add(series4);
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            this.expenseCategoryDonut.Series.Add(series2);
             this.expenseCategoryDonut.Size = new System.Drawing.Size(376, 362);
             this.expenseCategoryDonut.TabIndex = 6;
             this.expenseCategoryDonut.Text = "chart1";
@@ -259,50 +304,6 @@
             this.btnMonth.Text = "This Month";
             this.btnMonth.Click += new System.EventHandler(this.btnMonth_Click);
             // 
-            // expensesChart
-            // 
-            this.expensesChart.BorderlineColor = System.Drawing.Color.Transparent;
-            this.expensesChart.BorderlineWidth = 0;
-            chartArea3.AxisX.IsLabelAutoFit = false;
-            chartArea3.AxisX.LabelStyle.Font = new System.Drawing.Font("Poppins", 12.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea3.AxisX.LineWidth = 0;
-            chartArea3.AxisX.MajorGrid.LineColor = System.Drawing.Color.White;
-            chartArea3.AxisX.MajorGrid.LineWidth = 0;
-            chartArea3.AxisX.MajorTickMark.LineColor = System.Drawing.Color.Transparent;
-            chartArea3.AxisX.MajorTickMark.LineWidth = 0;
-            chartArea3.AxisX.MajorTickMark.Size = 5F;
-            chartArea3.AxisY.IsLabelAutoFit = false;
-            chartArea3.AxisY.LabelStyle.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea3.AxisY.LabelStyle.Format = "₱{0}";
-            chartArea3.AxisY.LineWidth = 0;
-            chartArea3.AxisY.MajorGrid.LineWidth = 0;
-            chartArea3.AxisY.MajorTickMark.LineWidth = 0;
-            chartArea3.AxisY.MajorTickMark.Size = 5F;
-            chartArea3.Name = "ChartArea1";
-            this.expensesChart.ChartAreas.Add(chartArea3);
-            this.expensesChart.Location = new System.Drawing.Point(8, 11);
-            this.expensesChart.Name = "expensesChart";
-            this.expensesChart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Pastel;
-            series3.BorderWidth = 5;
-            series3.ChartArea = "ChartArea1";
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series3.MarkerColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            series3.MarkerSize = 10;
-            series3.Name = "Series1";
-            series3.YValuesPerPoint = 3;
-            this.expensesChart.Series.Add(series3);
-            this.expensesChart.Size = new System.Drawing.Size(966, 502);
-            this.expensesChart.TabIndex = 3;
-            this.expensesChart.Text = "chart1";
-            title2.Alignment = System.Drawing.ContentAlignment.TopLeft;
-            title2.Font = new System.Drawing.Font("Poppins SemiBold", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            title2.Name = "Title1";
-            title2.Text = "Spending Trend";
-            this.expensesChart.Titles.Add(title2);
-            this.expensesChart.MouseEnter += new System.EventHandler(this.expensesChart_MouseEnter);
-            this.expensesChart.MouseLeave += new System.EventHandler(this.expensesChart_MouseLeave);
-            this.expensesChart.MouseMove += new System.Windows.Forms.MouseEventHandler(this.expensesChart_MouseMove);
-            // 
             // dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -311,7 +312,6 @@
             this.Controls.Add(this.btnWeek);
             this.Controls.Add(this.btnAllExpenses);
             this.Controls.Add(this.btnToday);
-            this.Controls.Add(this.expenseCategoryDonut);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.guna2Panel2);
@@ -328,10 +328,10 @@
             this.guna2Panel2.ResumeLayout(false);
             this.guna2Panel2.PerformLayout();
             this.guna2Panel3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.expensesChart)).EndInit();
             this.guna2Panel4.ResumeLayout(false);
             this.guna2Panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.expenseCategoryDonut)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.expensesChart)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
