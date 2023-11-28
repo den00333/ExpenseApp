@@ -116,8 +116,7 @@ namespace ExpenseApp
             changeFontColor(btnDashboard, btnAccount, btnWallet);
             if (otherFunc.internetConn())
             {
-                group group = new group();
-                addUserControl(group);
+                checkGroupExists();
             }
             else
             {
@@ -192,6 +191,20 @@ namespace ExpenseApp
                 lblFirstname.Text = "Hello, " + fd.FirstName + "!";
             }
         }
-
+        private async void checkGroupExists()
+        {
+            var db = otherFunc.FirestoreConn();
+            CollectionReference userCollectionRef = db.Collection("Users");
+            DocumentReference userDocRef = userCollectionRef.Document(username);
+            DocumentSnapshot userDocSnap = await userDocRef.GetSnapshotAsync();
+            if (userDocSnap.Exists && userDocSnap.ContainsField("Groups")){
+                group groupControl = new group();
+                addUserControl(groupControl);
+            }
+            else{                
+                NoGroupUC ng = new NoGroupUC();
+                addUserControl(ng);
+            }
+        }
     }
 }

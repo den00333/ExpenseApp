@@ -21,5 +21,11 @@ namespace ExpenseApp
         {
 
         }
+
+        private void btnGroup_Click(object sender, EventArgs e)
+        {
+            createGroup cg = new createGroup();
+            cg.ShowDialog();
+        }
     }
 }

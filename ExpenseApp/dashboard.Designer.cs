@@ -155,7 +155,7 @@
             this.expensesChart.BorderlineColor = System.Drawing.Color.Transparent;
             this.expensesChart.BorderlineWidth = 0;
             chartArea1.AxisX.IsLabelAutoFit = false;
-            chartArea1.AxisX.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea1.AxisX.LabelStyle.Font = new System.Drawing.Font("Poppins", 12.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             chartArea1.AxisX.LineWidth = 0;
             chartArea1.AxisX.MajorGrid.LineColor = System.Drawing.Color.White;
             chartArea1.AxisX.MajorGrid.LineWidth = 0;
@@ -163,7 +163,7 @@
             chartArea1.AxisX.MajorTickMark.LineWidth = 0;
             chartArea1.AxisX.MajorTickMark.Size = 5F;
             chartArea1.AxisY.IsLabelAutoFit = false;
-            chartArea1.AxisY.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea1.AxisY.LabelStyle.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             chartArea1.AxisY.LabelStyle.Format = "₱{0}";
             chartArea1.AxisY.LineWidth = 0;
             chartArea1.AxisY.MajorGrid.LineWidth = 0;
@@ -171,7 +171,7 @@
             chartArea1.AxisY.MajorTickMark.Size = 5F;
             chartArea1.Name = "ChartArea1";
             this.expensesChart.ChartAreas.Add(chartArea1);
-            this.expensesChart.Location = new System.Drawing.Point(6, 9);
+            this.expensesChart.Location = new System.Drawing.Point(8, 11);
             this.expensesChart.Margin = new System.Windows.Forms.Padding(2);
             this.expensesChart.Name = "expensesChart";
             this.expensesChart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Pastel;
@@ -183,11 +183,11 @@
             series1.Name = "Series1";
             series1.YValuesPerPoint = 3;
             this.expensesChart.Series.Add(series1);
-            this.expensesChart.Size = new System.Drawing.Size(724, 408);
+            this.expensesChart.Size = new System.Drawing.Size(966, 502);
             this.expensesChart.TabIndex = 3;
             this.expensesChart.Text = "chart1";
             title1.Alignment = System.Drawing.ContentAlignment.TopLeft;
-            title1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            title1.Font = new System.Drawing.Font("Poppins SemiBold", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             title1.Name = "Title1";
             title1.Text = "Spending Trend";
             this.expensesChart.Titles.Add(title1);
@@ -237,8 +237,7 @@
             legend1.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
             legend1.Name = "Legend1";
             this.expenseCategoryDonut.Legends.Add(legend1);
-            this.expenseCategoryDonut.Location = new System.Drawing.Point(12, 40);
-            this.expenseCategoryDonut.Margin = new System.Windows.Forms.Padding(2);
+            this.expenseCategoryDonut.Location = new System.Drawing.Point(1074, 265);
             this.expenseCategoryDonut.Name = "expenseCategoryDonut";
             this.expenseCategoryDonut.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen;
             series2.ChartArea = "ChartArea1";
@@ -246,7 +245,7 @@
             series2.Legend = "Legend1";
             series2.Name = "Series1";
             this.expenseCategoryDonut.Series.Add(series2);
-            this.expenseCategoryDonut.Size = new System.Drawing.Size(282, 294);
+            this.expenseCategoryDonut.Size = new System.Drawing.Size(376, 362);
             this.expenseCategoryDonut.TabIndex = 6;
             this.expenseCategoryDonut.Text = "chart1";
             this.expenseCategoryDonut.MouseMove += new System.Windows.Forms.MouseEventHandler(this.expenseCategoryDonut_MouseMove);
