@@ -1,5 +1,6 @@
 ﻿using Google.Api;
 using Google.Cloud.Firestore;
+using MaxMind.GeoIP2.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -60,7 +61,7 @@ namespace ExpenseApp
         {
             otherFunc o = new otherFunc();
             String username = FirebaseData.Instance.Username;
-            if (wallet.Equals("Balance"))
+            if (wallet.Equals("Expense"))
             {
                 DocumentReference docRef = await o.SavingWalletAmount(username, wallet);
                 float amount = await o.getWalletAmount(docRef);
@@ -68,31 +69,51 @@ namespace ExpenseApp
                 float balanceAmount = await otherFunc.getShort(username);
                 if (balanceAmount < 0)
                 {
-                    //total += balanceAmount;
-                    float excess = addedAmount + balanceAmount;
-                    
-                    if(excess >= 0)
+                    DialogResult res = MessageBox.Show($"You are short by {otherFunc.amountBeautify(balanceAmount)}\nDo you want to return it?", "Your Balance", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (DialogResult.Yes == res) 
                     {
-                        w.lblShort.Text = "";
-                        otherFunc.setShort(0, username);
-                        amount += excess;
+                        float excess = addedAmount + balanceAmount;
+
+                        if (excess >= 0)
+                        {
+                            w.lblShort.Text = "";
+                            otherFunc.setShort(0, username);
+                            amount += excess;
+                        }
+                        else
+                        {
+                            w.lblShort.Text = otherFunc.amountBeautify(excess);
+                            otherFunc.setShort(excess, username);
+                        }
+
+                        Dictionary<String, object> data = new Dictionary<String, object>()
+                        {
+                            {"Amount", amount},
+                            /*{"Date", DateTime.Now.ToString("yyyy-MM-dd")}*/
+                        };
+                        await docRef.UpdateAsync(data);
+
+                        //adding the returned money in the balance
+                        addingReturnedAmountInBalance(username, addedAmount, balanceAmount);
+
+
+                        txtAmount.Clear();
+                        return amount;
+
                     }
                     else
                     {
-                        w.lblShort.Text = otherFunc.amountBeautify(excess);
-                        otherFunc.setShort(excess, username);
+                        amount += addedAmount;
+                        Dictionary<String, object> data = new Dictionary<String, object>()
+                        {
+                            {"Amount", amount},
+                            /*{"Date", DateTime.Now.ToString("yyyy-MM-dd")}*/
+                        };
+                        await docRef.UpdateAsync(data);
+
+                        txtAmount.Clear();
+                        return amount;
                     }
-
-                    Dictionary<String, object> data = new Dictionary<String, object>()
-                    {
-                        {"Amount", amount},
-                        /*{"Date", DateTime.Now.ToString("yyyy-MM-dd")}*/
-                    };
-                    await docRef.UpdateAsync(data);
-
-                    txtAmount.Clear();
-                    return amount;
-
                 }
                 else
                 {
@@ -123,6 +144,22 @@ namespace ExpenseApp
                 txtAmount.Clear();
                 return total;
             }
+        }
+
+        public async void addingReturnedAmountInBalance(String username, float addedAmount, float Bshort)
+        {
+            otherFunc o = new otherFunc();
+            float val = (addedAmount >= Bshort*-1) ? 0 : (Bshort*-1) - addedAmount;
+            DocumentReference docRef = await o.SavingWalletAmount(username, "Balance");
+            float amount = await o.getWalletAmount(docRef);
+            amount += ((Bshort * -1)  - val );
+            Dictionary<String, object> data = new Dictionary<String, object>()
+            {
+                {"Amount", amount}
+            };
+            await docRef.UpdateAsync(data);
+            w.lblBalance.Text = otherFunc.amountBeautify(amount);
+
         }
 
         private void btnChangeWallet_Click(object sender, EventArgs e)

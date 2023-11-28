@@ -20,6 +20,7 @@ namespace ExpenseApp
         public dashboard()
         {
             InitializeComponent();
+            InitializeChart();
 
         }
         private void dashboard_Load(object sender, EventArgs e)
@@ -27,6 +28,7 @@ namespace ExpenseApp
             displayExpensesChart();
             displayDonut();
             displayExpensesTransaction();
+            
         }
         private List<DataPoint> expensesDataPoints = new List<DataPoint>();
         private ToolTip tooltip = new ToolTip();
@@ -353,6 +355,42 @@ namespace ExpenseApp
                 }
             }
             return expenseByCategories;
+        }
+
+        
+
+        private void InitializeChart()
+        {
+            // Set the ChartType to StackedBar
+            chart1.Series.Clear();
+            //chart1.ChartAreas.Add("ChartArea1");
+            chart1.Series.Add("Series1");
+            chart1.Series.Add("Series2");
+            chart1.Series.Add("Series3");
+
+            chart1.Series["Series1"].ChartType = SeriesChartType.StackedBar;
+            chart1.Series["Series2"].ChartType = SeriesChartType.StackedBar;
+            chart1.Series["Series3"].ChartType = SeriesChartType.StackedBar;
+
+            // Add some sample data
+            chart1.Series["Series1"].Points.AddXY("Category1", 10);
+            chart1.Series["Series2"].Points.AddXY("Category1", 15);
+            chart1.Series["Series3"].Points.AddXY("Category1", 15);
+
+            // Set axis labels
+            //chart1.ChartAreas["ChartArea1"].AxisX.Title = "Categories";
+            //chart1.ChartAreas["ChartArea1"].AxisY.Title = "Values";
+
+            chart1.ChartAreas["ChartArea1"].AxisX.LabelStyle.Enabled = false;
+            chart1.ChartAreas["ChartArea1"].AxisY.LabelStyle.Enabled = false;
+
+            chart1.ChartAreas["ChartArea1"].AxisX.MajorGrid.Enabled = false;
+            chart1.ChartAreas["ChartArea1"].AxisY.MajorGrid.Enabled = false;
+
+
+
+            chart1.Legends.Clear();
+
         }
     }
 }
