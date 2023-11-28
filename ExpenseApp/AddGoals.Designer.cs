@@ -55,10 +55,10 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Poppins SemiBold", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(14, 12);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(157, 48);
+            this.label5.Size = new System.Drawing.Size(150, 31);
             this.label5.TabIndex = 29;
             this.label5.Text = "New Goal:";
             // 
@@ -95,20 +95,20 @@
             this.dtpDate.Format = System.Windows.Forms.DateTimePickerFormat.Long;
             this.dtpDate.Location = new System.Drawing.Point(22, 189);
             this.dtpDate.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
-            this.dtpDate.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
+            this.dtpDate.MinDate = new System.DateTime(2023, 11, 27, 0, 0, 0, 0);
             this.dtpDate.Name = "dtpDate";
             this.dtpDate.Size = new System.Drawing.Size(284, 45);
             this.dtpDate.TabIndex = 31;
             this.dtpDate.TextOffset = new System.Drawing.Point(5, 0);
-            this.dtpDate.Value = new System.DateTime(2023, 11, 1, 0, 0, 0, 0);
+            this.dtpDate.Value = new System.DateTime(2023, 11, 27, 0, 0, 0, 0);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Poppins SemiBold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(22, 153);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(66, 33);
+            this.label2.Size = new System.Drawing.Size(58, 24);
             this.label2.TabIndex = 32;
             this.label2.Text = "Date:";
             // 
@@ -141,10 +141,10 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Poppins SemiBold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(329, 63);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(198, 33);
+            this.label3.Size = new System.Drawing.Size(182, 24);
             this.label3.TabIndex = 26;
             this.label3.Text = "Name/Description:";
             // 
@@ -212,7 +212,7 @@
             this.guna2Button2.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.guna2Button2.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.guna2Button2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(4)))), ((int)(((byte)(45)))));
-            this.guna2Button2.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2Button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2Button2.ForeColor = System.Drawing.Color.White;
             this.guna2Button2.Location = new System.Drawing.Point(323, 266);
             this.guna2Button2.Name = "guna2Button2";

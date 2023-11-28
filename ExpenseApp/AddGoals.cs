@@ -19,6 +19,7 @@ namespace ExpenseApp
             InitializeComponent();
             dtpDate.Value = DateTime.Now.Date;
             this.w = wal;
+            dtpDate.MinDate = DateTime.Today;
         }
 
         private void AddGoals_Load(object sender, EventArgs e)

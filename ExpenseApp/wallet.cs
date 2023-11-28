@@ -153,6 +153,7 @@ namespace ExpenseApp
             Dictionary<string, object> data = await function.getItemsInsideGoalsID(username, goalId);
             GoalDetails gd = new GoalDetails(this);
             gd.displayGoalDetails(data, goalId);
+            gd.displaySuggestions(goalId);
             gd.StartPosition = FormStartPosition.CenterScreen;
             gd.ShowDialog();
         }
