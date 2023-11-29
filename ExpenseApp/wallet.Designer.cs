@@ -508,10 +508,10 @@
         private Guna.UI2.WinForms.Guna2GradientPanel panelSwitch;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.FlowLayoutPanel flpExpenses;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.FlowLayoutPanel flpGoals;
+        public System.Windows.Forms.FlowLayoutPanel flpExpenses;
     }
 }
