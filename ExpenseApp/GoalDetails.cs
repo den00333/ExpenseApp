@@ -25,7 +25,8 @@ namespace ExpenseApp
             lblDate.Text = data["GoalDate"].ToString();
             lblAmount.Text = otherFunc.amountBeautify(float.Parse(data["Amount"].ToString()));
             rtbDesc.Text = data["Description"].ToString();
-            
+            lblGoalStatus.Text = data["Status"].ToString();
+
         }
         private void closeBTN_Click(object sender, EventArgs e)
         {
@@ -47,7 +48,7 @@ namespace ExpenseApp
 
         private void GoalDetails_Load(object sender, EventArgs e)
         {
-           
+
         }
 
         public async void displaySuggestions(String title)
@@ -62,7 +63,7 @@ namespace ExpenseApp
             Console.WriteLine($"{goalAmount} - {currentSavings} = {requiredSavings}");
 
             double daysToGoal = requiredSavings / await otherFunc.dateTargetMinusCurrent(username, title);
-            double daily_savings = daysToGoal != 0? requiredSavings / daysToGoal : 0;
+            double daily_savings = daysToGoal != 0 ? requiredSavings / daysToGoal : 0;
 
             double daysFromStart = await otherFunc.dateCurrentMinusStart(username, title);
             double currentSavingsRate = daysFromStart != 0 ? currentSavings / daysFromStart : 0;
@@ -84,6 +85,5 @@ namespace ExpenseApp
                 }
             }
         }
-
     }
 }

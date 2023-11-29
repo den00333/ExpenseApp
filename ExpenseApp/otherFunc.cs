@@ -42,15 +42,18 @@ namespace ExpenseApp
 
         public static bool internetConn()
         {
-            try {
+            try
+            {
                 Ping ping = new Ping();
                 PingReply reply = ping.Send("www.google.com");
 
-                if (reply != null && reply.Status == IPStatus.Success) {
+                if (reply != null && reply.Status == IPStatus.Success)
+                {
                     return true;
                 }
             }
-            catch (Exception) {
+            catch (Exception)
+            {
 
             }
 
@@ -83,7 +86,8 @@ namespace ExpenseApp
 
         public static IFirebaseClient conn()
         {
-            IFirebaseConfig config = new FirebaseConfig() {
+            IFirebaseConfig config = new FirebaseConfig()
+            {
                 AuthSecret = "LUA3lFfqrsEMSysOLxV5Lt6ZtDwVeFZ7UNTHDPGe",
                 BasePath = "https://xpnsetracker-default-rtdb.asia-southeast1.firebasedatabase.app/"
             }; IFirebaseClient client = new FirebaseClient(config);
@@ -104,7 +108,8 @@ namespace ExpenseApp
 
         public async Task<DocumentSnapshot> logInFunc(String username)
         {
-            if (string.IsNullOrEmpty(username)) {
+            if (string.IsNullOrEmpty(username))
+            {
                 return null;
             }
             FirestoreDb database = FirestoreConn();
@@ -136,7 +141,7 @@ namespace ExpenseApp
                 Ename = 0;
                 return Ename;
             }
-
+        }
         public async Task<DocumentReference> SavingNewExpenses(String username)
         {
             int docNum = await DocNameForExpenses(username);
@@ -153,7 +158,6 @@ namespace ExpenseApp
              * check if the "Expenses" collection has existing document("E1"*) 
              else create new which starts from "E1"*/
         }
-
         public static async void addWalletLogs(String username, String walletName, float amount)
         {
             DocumentReference docRef = editInsideUser(username).Collection("Wallets").Document("LogWallet");
@@ -352,7 +356,8 @@ namespace ExpenseApp
                 FirebaseData am = docSnap.ConvertTo<FirebaseData>();
                 float amount = am.Amount;
                 return amount;
-            } else
+            }
+            else
             {
                 Console.WriteLine("ERROR IN GET WALLET");
                 return 0;
@@ -376,7 +381,8 @@ namespace ExpenseApp
 
         public static async Task<bool> isUsernameExistingAsync(String username)
         {
-            if (string.IsNullOrEmpty(username)) {
+            if (string.IsNullOrEmpty(username))
+            {
                 return false;
             }
             var database = FirestoreConn();
@@ -390,13 +396,16 @@ namespace ExpenseApp
         public bool isValidData(Dictionary<String, bool> data)
         {
             List<String> L = new List<String>();
-            foreach (var row in data) {
-                if (!row.Value) {
+            foreach (var row in data)
+            {
+                if (!row.Value)
+                {
                     L.Add(row.Key);
                 }
             }
 
-            if (L.Count == 0) {
+            if (L.Count == 0)
+            {
                 return true;
             }
             Signup.runErrorMsg(L);
@@ -405,8 +414,10 @@ namespace ExpenseApp
 
         public bool areControlEmpty(params string[] textboxes)
         {
-            foreach (string textbox in textboxes) {
-                if (string.IsNullOrWhiteSpace(textbox)) {
+            foreach (string textbox in textboxes)
+            {
+                if (string.IsNullOrWhiteSpace(textbox))
+                {
                     return true;
                 }
             }
@@ -500,18 +511,24 @@ namespace ExpenseApp
             bool isEmpty = areControlEmpty(fname, lname, email, username, password, repeatpass);
             bool passwordMatched = function.passwordMatched(Security.Decrypt(password), repeatpass);
             int generatedID = await generateUserID();
-            if (!isEmpty) {
-                if (terms.Checked) {
+            if (!isEmpty)
+            {
+                if (terms.Checked)
+                {
                     //Validate email and check if the username exists
                     Dictionary<String, bool> validatingData = new Dictionary<string, bool>(){
                         { "username", !validUsername},
                         { "email", validEmail}
                     };
                     bool validData = function.isValidData(validatingData);
-                    if (validData) {
-                        if (passwordMatched) {
-                            if (function.isValidPassword(password)) {
-                                try {
+                    if (validData)
+                    {
+                        if (passwordMatched)
+                        {
+                            if (function.isValidPassword(password))
+                            {
+                                try
+                                {
                                     DocumentReference docRef = database.Collection("Users").Document(username);
                                     Dictionary<string, object> data = new Dictionary<string, object>()
                                     {
@@ -527,7 +544,8 @@ namespace ExpenseApp
                                     await docRef.SetAsync(data);
 
                                     DialogResult res = MessageBox.Show("Successfully created your account!", "Success", MessageBoxButtons.OK);
-                                    if (res == DialogResult.OK) {
+                                    if (res == DialogResult.OK)
+                                    {
                                         s.Close();
                                     }
                                 }
@@ -536,20 +554,24 @@ namespace ExpenseApp
                                     MessageBox.Show("Cannot process your account", ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 }
                             }
-                            else {
+                            else
+                            {
                                 MessageBox.Show("Password do not meet the standards!", "Invalid Password", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                             }
                         }
-                        else {
+                        else
+                        {
                             MessageBox.Show("Password does not match", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
                     }
                 }
-                else {
+                else
+                {
                     MessageBox.Show("Please agree to the Terms and Condition", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
-            else {
+            else
+            {
                 MessageBox.Show("Something is missing", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
@@ -575,8 +597,10 @@ namespace ExpenseApp
         public bool validDate(String date)
         {
             DateTime parsedDate;
-            if (DateTime.TryParseExact(date, "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.None, out parsedDate)) {
-                if (parsedDate <= DateTime.Now) {
+            if (DateTime.TryParseExact(date, "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.None, out parsedDate))
+            {
+                if (parsedDate <= DateTime.Now)
+                {
                     return true;
                 }
             }
@@ -584,14 +608,19 @@ namespace ExpenseApp
         }
         public bool checkFormControlEmpty(params Control[] controls)
         {
-            foreach (Control control in controls) {
-                if (control is Guna2TextBox) {
-                    if (string.IsNullOrEmpty((control as Guna2TextBox).Text)) {
+            foreach (Control control in controls)
+            {
+                if (control is Guna2TextBox)
+                {
+                    if (string.IsNullOrEmpty((control as Guna2TextBox).Text))
+                    {
                         return true;
                     }
                 }
-                else if (control is Guna2ComboBox) {
-                    if (string.IsNullOrEmpty((control as Guna2ComboBox).Text)) {
+                else if (control is Guna2ComboBox)
+                {
+                    if (string.IsNullOrEmpty((control as Guna2ComboBox).Text))
+                    {
                         return true;
                     }
                 }
@@ -644,17 +673,20 @@ namespace ExpenseApp
         public async void updatePassword(string username, string password)
         {
             var db = FirestoreConn();
-            try {
+            try
+            {
                 DocumentReference docref = db.Collection("Users").Document(username);
                 Dictionary<string, object> data = new Dictionary<string, object>() {
                     {"Password", password }
                 };
                 DocumentSnapshot snap = await docref.GetSnapshotAsync();
-                if (snap.Exists) {
+                if (snap.Exists)
+                {
                     await docref.UpdateAsync(data);
                 }
             }
-            catch (Exception ex) {
+            catch (Exception ex)
+            {
                 MessageBox.Show("Error: " + ex.Message);
             }
         }
@@ -730,8 +762,10 @@ namespace ExpenseApp
 
             List<(string DocName, DocumentSnapshot DocSnapshot)> documentData = new List<(string, DocumentSnapshot)>();
 
-            foreach (DocumentSnapshot docSnap in snap.Documents) {
-                if (docSnap.Exists) {
+            foreach (DocumentSnapshot docSnap in snap.Documents)
+            {
+                if (docSnap.Exists)
+                {
                     string docName = docSnap.Id;
                     documentData.Add((docName, docSnap));
                 }
@@ -743,7 +777,8 @@ namespace ExpenseApp
             FirestoreDb db = otherFunc.FirestoreConn();
             DocumentReference docRef = db.Collection("Users").Document(username).Collection("Expenses").Document(expenseId);
             DocumentSnapshot snap = await docRef.GetSnapshotAsync();
-            if (snap.Exists) {
+            if (snap.Exists)
+            {
                 Dictionary<string, object> data = snap.ToDictionary();
                 return data;
             }
@@ -823,7 +858,8 @@ namespace ExpenseApp
                 using (HttpClient hc = new HttpClient())
                 {
                     HttpResponseMessage timeResponse = await hc.GetAsync(timeApiUrl);
-                    if (timeResponse.IsSuccessStatusCode) {
+                    if (timeResponse.IsSuccessStatusCode)
+                    {
                         DateTime localTime = currentUtcDateTime.ToLocalTime();
                         String Date = localTime.Date.ToString("yyyy-MM-dd");
                         String Time = localTime.TimeOfDay.ToString(@"hh\:mm\:ss");
@@ -833,18 +869,23 @@ namespace ExpenseApp
                         Dictionary<String, object> data = new Dictionary<String, object>();
                         DocumentSnapshot docsnap = await docRef.GetSnapshotAsync();
                         String item = Time + "|" + address;
-                        if (HasAccount) {
-                            if (!docsnap.Exists) {
+                        if (HasAccount)
+                        {
+                            if (!docsnap.Exists)
+                            {
                                 await docRef.SetAsync(new Dictionary<String, object>()); //Create current date document if does not exists
                             }
-                            if (LoggingIn) {
+                            if (LoggingIn)
+                            {
                                 await docRef.UpdateAsync("Login", FieldValue.ArrayUnion(item));
                             }
-                            else {
+                            else
+                            {
                                 await docRef.UpdateAsync("Logout", FieldValue.ArrayUnion(Time));
                             }
                         }
-                        else {
+                        else
+                        {
 
                             ArrayList Log = new ArrayList();
                             Log.Add(item);
@@ -861,7 +902,8 @@ namespace ExpenseApp
         public static void sendOTP(string email, changePassword cp)
         {
             Tuple<string, DateTime> savedOTP = OTPManager.LoadOTP();
-            if (savedOTP != null && DateTime.Now < savedOTP.Item2) {
+            if (savedOTP != null && DateTime.Now < savedOTP.Item2)
+            {
                 MessageBox.Show("You still have a valid OTP. Please use the existing one.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
@@ -887,7 +929,8 @@ namespace ExpenseApp
             smtpClient.EnableSsl = true;
             DateTime currentTime = DateTime.Now;
 
-            try {
+            try
+            {
                 smtpClient.Send(message);
                 MessageBox.Show("Email sent successfully!");
             }
@@ -908,7 +951,8 @@ namespace ExpenseApp
         }
         public static bool compareOTP(string otp, string inputOTP)
         {
-            if (string.IsNullOrEmpty(inputOTP)) {
+            if (string.IsNullOrEmpty(inputOTP))
+            {
                 return false;
             }
             return otp.Equals(inputOTP);
@@ -925,11 +969,14 @@ namespace ExpenseApp
                 if (expenseData.TryGetValue("Date", out var dateObj) &&
                     DateTime.TryParseExact(dateObj.ToString(), "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime date) &&
                     expenseData.TryGetValue("Amount", out var amountObj) &&
-                    double.TryParse(amountObj.ToString(), out double amount)) {
-                    if (expensesByDate.ContainsKey(date)) {
+                    double.TryParse(amountObj.ToString(), out double amount))
+                {
+                    if (expensesByDate.ContainsKey(date))
+                    {
                         expensesByDate[date] += amount;
                     }
-                    else {
+                    else
+                    {
                         expensesByDate[date] = amount;
                     }
                 }
@@ -946,12 +993,15 @@ namespace ExpenseApp
                 Dictionary<string, object> expenseData = docSnap.ToDictionary();
                 if (expenseData.TryGetValue("Category", out var categoryObj) &&
                     expenseData.TryGetValue("Amount", out var amountObj) &&
-                    double.TryParse(amountObj.ToString(), out double amount)) {
+                    double.TryParse(amountObj.ToString(), out double amount))
+                {
                     string category = categoryObj.ToString();
-                    if (expensebyCategories.ContainsKey(category)) {
+                    if (expensebyCategories.ContainsKey(category))
+                    {
                         expensebyCategories[category] += amount;
                     }
-                    else {
+                    else
+                    {
                         expensebyCategories[category] = amount;
                     }
                 }
@@ -967,7 +1017,8 @@ namespace ExpenseApp
                 QuerySnapshot transactionSnap = await colRef.GetSnapshotAsync();
                 totalTransaction = transactionSnap.Documents.Count;
             }
-            else {
+            else
+            {
                 DateTime startDate = DateTime.UtcNow.Date.AddDays(-customDays);
                 QuerySnapshot transactionSnap = await colRef
                     .WhereGreaterThanOrEqualTo("Date", startDate.ToString("yyyy-MM-dd"))
@@ -980,23 +1031,29 @@ namespace ExpenseApp
         {
             float totalAmount = 0;
             CollectionReference colRef = editInsideUser(username).Collection("Expenses");
-            if (customDays == 0) {
+            if (customDays == 0)
+            {
                 QuerySnapshot documentSnapshots = await colRef.GetSnapshotAsync();
-                foreach (DocumentSnapshot docSnap in documentSnapshots.Documents) {
+                foreach (DocumentSnapshot docSnap in documentSnapshots.Documents)
+                {
                     Dictionary<string, object> expenses = docSnap.ToDictionary();
-                    if (expenses.TryGetValue("Amount", out var amountObj) && float.TryParse(amountObj.ToString(), out float amount)) {
+                    if (expenses.TryGetValue("Amount", out var amountObj) && float.TryParse(amountObj.ToString(), out float amount))
+                    {
                         totalAmount += amount;
                     }
                 }
             }
-            else {
+            else
+            {
                 DateTime startDate = DateTime.UtcNow.Date.AddDays(-customDays);
                 QuerySnapshot documentSnapshots = await colRef
                     .WhereGreaterThanOrEqualTo("Date", startDate.ToString("yyyy-MM-dd"))
                     .GetSnapshotAsync();
-                foreach (DocumentSnapshot docSnap in documentSnapshots.Documents) {
+                foreach (DocumentSnapshot docSnap in documentSnapshots.Documents)
+                {
                     Dictionary<string, object> expenses = docSnap.ToDictionary();
-                    if (expenses.TryGetValue("Amount", out var amountObj) && float.TryParse(amountObj.ToString(), out float amount)) {
+                    if (expenses.TryGetValue("Amount", out var amountObj) && float.TryParse(amountObj.ToString(), out float amount))
+                    {
                         totalAmount += amount;
                     }
                 }
@@ -1040,7 +1097,7 @@ namespace ExpenseApp
             }
         }
 
-        public static async Task<double> getCurrentSavings(String username, String titleGoal) 
+        public static async Task<double> getCurrentSavings(String username, String titleGoal)
         {
             DocumentReference docRef = editInsideUser(username).Collection("Goals").Document(titleGoal);
             DocumentSnapshot dSnap = await docRef.GetSnapshotAsync();
@@ -1055,7 +1112,7 @@ namespace ExpenseApp
             return currentSavings;
         }
 
-        public async static Task<double> getGoalAmount(String username, String titleGoal) 
+        public async static Task<double> getGoalAmount(String username, String titleGoal)
         {
             DocumentReference docRef = editInsideUser(username).Collection("Goals").Document(titleGoal);
             DocumentSnapshot dSnap = await docRef.GetSnapshotAsync();
@@ -1064,7 +1121,7 @@ namespace ExpenseApp
             return GoalAmount;
         }
 
-        public async static Task<int> dateTargetMinusCurrent(String username, String titleGoal) 
+        public async static Task<int> dateTargetMinusCurrent(String username, String titleGoal)
         {
             DocumentReference docRef = editInsideUser(username).Collection("Goals").Document(titleGoal);
             DocumentSnapshot dSnap = await docRef.GetSnapshotAsync();
@@ -1078,7 +1135,7 @@ namespace ExpenseApp
 
         }
 
-        public async static Task<int> dateCurrentMinusStart(String username, String titleGoal) 
+        public async static Task<int> dateCurrentMinusStart(String username, String titleGoal)
         {
             DateTime currentDate = DateTime.Today;
             DocumentReference docRef = editInsideUser(username).Collection("Goals").Document(titleGoal);
@@ -1090,7 +1147,5 @@ namespace ExpenseApp
 
             return daysDifference;
         }
-
     }
 }
-

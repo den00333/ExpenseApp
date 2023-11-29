@@ -70,10 +70,10 @@
             this.guna2Panel1.BorderThickness = 5;
             this.guna2Panel1.Controls.Add(this.lblSpendings);
             this.guna2Panel1.FillColor = System.Drawing.Color.Transparent;
-            this.guna2Panel1.Location = new System.Drawing.Point(40, 63);
-            this.guna2Panel1.Margin = new System.Windows.Forms.Padding(2);
+            this.guna2Panel1.Location = new System.Drawing.Point(53, 78);
+            this.guna2Panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.guna2Panel1.Name = "guna2Panel1";
-            this.guna2Panel1.Size = new System.Drawing.Size(236, 78);
+            this.guna2Panel1.Size = new System.Drawing.Size(315, 96);
             this.guna2Panel1.TabIndex = 0;
             // 
             // lblSpendings
@@ -81,22 +81,20 @@
             this.lblSpendings.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblSpendings.AutoSize = true;
             this.lblSpendings.BackColor = System.Drawing.Color.Transparent;
-            this.lblSpendings.Font = new System.Drawing.Font("Microsoft Sans Serif", 25.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSpendings.Location = new System.Drawing.Point(32, 13);
-            this.lblSpendings.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblSpendings.Font = new System.Drawing.Font("Poppins Medium", 25.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSpendings.Location = new System.Drawing.Point(43, 16);
             this.lblSpendings.Name = "lblSpendings";
-            this.lblSpendings.Size = new System.Drawing.Size(172, 39);
+            this.lblSpendings.Size = new System.Drawing.Size(242, 78);
             this.lblSpendings.TabIndex = 1;
             this.lblSpendings.Text = "₱100,000";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(65, 51);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Font = new System.Drawing.Font("Poppins Light", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(87, 63);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(147, 24);
+            this.label1.Size = new System.Drawing.Size(202, 41);
             this.label1.TabIndex = 0;
             this.label1.Text = "Total Spendings";
             // 
@@ -104,11 +102,10 @@
             // 
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.SystemColors.Control;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(305, 51);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Font = new System.Drawing.Font("Poppins Light", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(407, 63);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(163, 24);
+            this.label3.Size = new System.Drawing.Size(228, 41);
             this.label3.TabIndex = 1;
             this.label3.Text = "Total Transactions";
             // 
@@ -119,10 +116,10 @@
             this.guna2Panel2.BorderThickness = 5;
             this.guna2Panel2.Controls.Add(this.lblTransaction);
             this.guna2Panel2.FillColor = System.Drawing.Color.Transparent;
-            this.guna2Panel2.Location = new System.Drawing.Point(292, 63);
-            this.guna2Panel2.Margin = new System.Windows.Forms.Padding(2);
+            this.guna2Panel2.Location = new System.Drawing.Point(389, 78);
+            this.guna2Panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.guna2Panel2.Name = "guna2Panel2";
-            this.guna2Panel2.Size = new System.Drawing.Size(213, 78);
+            this.guna2Panel2.Size = new System.Drawing.Size(284, 96);
             this.guna2Panel2.TabIndex = 2;
             // 
             // lblTransaction
@@ -130,11 +127,10 @@
             this.lblTransaction.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblTransaction.AutoSize = true;
             this.lblTransaction.BackColor = System.Drawing.Color.Transparent;
-            this.lblTransaction.Font = new System.Drawing.Font("Microsoft Sans Serif", 25.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTransaction.Location = new System.Drawing.Point(75, 13);
-            this.lblTransaction.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblTransaction.Font = new System.Drawing.Font("Poppins Medium", 25.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTransaction.Location = new System.Drawing.Point(100, 16);
             this.lblTransaction.Name = "lblTransaction";
-            this.lblTransaction.Size = new System.Drawing.Size(57, 39);
+            this.lblTransaction.Size = new System.Drawing.Size(89, 78);
             this.lblTransaction.TabIndex = 1;
             this.lblTransaction.Text = "20";
             // 
@@ -144,10 +140,10 @@
             this.guna2Panel3.BorderRadius = 15;
             this.guna2Panel3.Controls.Add(this.expensesChart);
             this.guna2Panel3.FillColor = System.Drawing.Color.White;
-            this.guna2Panel3.Location = new System.Drawing.Point(40, 176);
-            this.guna2Panel3.Margin = new System.Windows.Forms.Padding(2);
+            this.guna2Panel3.Location = new System.Drawing.Point(53, 217);
+            this.guna2Panel3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.guna2Panel3.Name = "guna2Panel3";
-            this.guna2Panel3.Size = new System.Drawing.Size(737, 422);
+            this.guna2Panel3.Size = new System.Drawing.Size(983, 519);
             this.guna2Panel3.TabIndex = 4;
             // 
             // expensesChart
@@ -171,8 +167,8 @@
             chartArea1.AxisY.MajorTickMark.Size = 5F;
             chartArea1.Name = "ChartArea1";
             this.expensesChart.ChartAreas.Add(chartArea1);
-            this.expensesChart.Location = new System.Drawing.Point(8, 11);
-            this.expensesChart.Margin = new System.Windows.Forms.Padding(2);
+            this.expensesChart.Location = new System.Drawing.Point(8, 14);
+            this.expensesChart.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.expensesChart.Name = "expensesChart";
             this.expensesChart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Pastel;
             series1.BorderWidth = 5;
@@ -183,7 +179,7 @@
             series1.Name = "Series1";
             series1.YValuesPerPoint = 3;
             this.expensesChart.Series.Add(series1);
-            this.expensesChart.Size = new System.Drawing.Size(966, 502);
+            this.expensesChart.Size = new System.Drawing.Size(969, 499);
             this.expensesChart.TabIndex = 3;
             this.expensesChart.Text = "chart1";
             title1.Alignment = System.Drawing.ContentAlignment.TopLeft;
@@ -200,9 +196,10 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.Location = new System.Drawing.Point(25, 12);
+            this.label5.Location = new System.Drawing.Point(33, 15);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(156, 31);
+            this.label5.Size = new System.Drawing.Size(193, 39);
             this.label5.TabIndex = 5;
             this.label5.Text = "Dashboard";
             // 
@@ -212,21 +209,20 @@
             this.guna2Panel4.Controls.Add(this.label6);
             this.guna2Panel4.Controls.Add(this.expenseCategoryDonut);
             this.guna2Panel4.FillColor = System.Drawing.Color.White;
-            this.guna2Panel4.Location = new System.Drawing.Point(790, 176);
-            this.guna2Panel4.Margin = new System.Windows.Forms.Padding(2);
+            this.guna2Panel4.Location = new System.Drawing.Point(1053, 217);
+            this.guna2Panel4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.guna2Panel4.Name = "guna2Panel4";
-            this.guna2Panel4.Size = new System.Drawing.Size(306, 336);
+            this.guna2Panel4.Size = new System.Drawing.Size(408, 414);
             this.guna2Panel4.TabIndex = 7;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.Color.Transparent;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(20, 13);
-            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label6.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(27, 16);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(244, 20);
+            this.label6.Size = new System.Drawing.Size(338, 35);
             this.label6.TabIndex = 8;
             this.label6.Text = "Categories Expenses Distribution";
             // 
@@ -237,7 +233,8 @@
             legend1.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
             legend1.Name = "Legend1";
             this.expenseCategoryDonut.Legends.Add(legend1);
-            this.expenseCategoryDonut.Location = new System.Drawing.Point(1074, 265);
+            this.expenseCategoryDonut.Location = new System.Drawing.Point(14, 41);
+            this.expenseCategoryDonut.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.expenseCategoryDonut.Name = "expenseCategoryDonut";
             this.expenseCategoryDonut.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen;
             series2.ChartArea = "ChartArea1";
@@ -245,7 +242,7 @@
             series2.Legend = "Legend1";
             series2.Name = "Series1";
             this.expenseCategoryDonut.Series.Add(series2);
-            this.expenseCategoryDonut.Size = new System.Drawing.Size(376, 362);
+            this.expenseCategoryDonut.Size = new System.Drawing.Size(390, 370);
             this.expenseCategoryDonut.TabIndex = 6;
             this.expenseCategoryDonut.Text = "chart1";
             this.expenseCategoryDonut.MouseMove += new System.Windows.Forms.MouseEventHandler(this.expenseCategoryDonut_MouseMove);
@@ -258,12 +255,12 @@
             this.btnToday.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnToday.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnToday.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(123)))), ((int)(((byte)(47)))));
-            this.btnToday.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnToday.Font = new System.Drawing.Font("Poppins", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnToday.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnToday.Location = new System.Drawing.Point(521, 104);
-            this.btnToday.Margin = new System.Windows.Forms.Padding(2);
+            this.btnToday.Location = new System.Drawing.Point(695, 128);
+            this.btnToday.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnToday.Name = "btnToday";
-            this.btnToday.Size = new System.Drawing.Size(118, 37);
+            this.btnToday.Size = new System.Drawing.Size(157, 46);
             this.btnToday.TabIndex = 8;
             this.btnToday.Text = "Today";
             this.btnToday.Click += new System.EventHandler(this.btnToday_Click);
@@ -276,12 +273,12 @@
             this.btnAllExpenses.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnAllExpenses.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnAllExpenses.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(123)))), ((int)(((byte)(47)))));
-            this.btnAllExpenses.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAllExpenses.Font = new System.Drawing.Font("Poppins", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAllExpenses.ForeColor = System.Drawing.Color.White;
-            this.btnAllExpenses.Location = new System.Drawing.Point(521, 63);
-            this.btnAllExpenses.Margin = new System.Windows.Forms.Padding(2);
+            this.btnAllExpenses.Location = new System.Drawing.Point(695, 78);
+            this.btnAllExpenses.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnAllExpenses.Name = "btnAllExpenses";
-            this.btnAllExpenses.Size = new System.Drawing.Size(118, 37);
+            this.btnAllExpenses.Size = new System.Drawing.Size(157, 46);
             this.btnAllExpenses.TabIndex = 9;
             this.btnAllExpenses.Text = "All Expenses";
             this.btnAllExpenses.Click += new System.EventHandler(this.btnAllExpenses_Click);
@@ -294,12 +291,12 @@
             this.btnWeek.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnWeek.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnWeek.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(123)))), ((int)(((byte)(47)))));
-            this.btnWeek.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnWeek.Font = new System.Drawing.Font("Poppins", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnWeek.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnWeek.Location = new System.Drawing.Point(659, 63);
-            this.btnWeek.Margin = new System.Windows.Forms.Padding(2);
+            this.btnWeek.Location = new System.Drawing.Point(879, 78);
+            this.btnWeek.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnWeek.Name = "btnWeek";
-            this.btnWeek.Size = new System.Drawing.Size(118, 37);
+            this.btnWeek.Size = new System.Drawing.Size(157, 46);
             this.btnWeek.TabIndex = 10;
             this.btnWeek.Text = "This Week";
             this.btnWeek.Click += new System.EventHandler(this.btnWeek_Click);
@@ -312,12 +309,12 @@
             this.btnMonth.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnMonth.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnMonth.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(123)))), ((int)(((byte)(47)))));
-            this.btnMonth.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMonth.Font = new System.Drawing.Font("Poppins", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnMonth.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnMonth.Location = new System.Drawing.Point(659, 104);
-            this.btnMonth.Margin = new System.Windows.Forms.Padding(2);
+            this.btnMonth.Location = new System.Drawing.Point(879, 128);
+            this.btnMonth.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnMonth.Name = "btnMonth";
-            this.btnMonth.Size = new System.Drawing.Size(118, 37);
+            this.btnMonth.Size = new System.Drawing.Size(157, 46);
             this.btnMonth.TabIndex = 11;
             this.btnMonth.Text = "This Month";
             this.btnMonth.Click += new System.EventHandler(this.btnMonth_Click);
@@ -328,19 +325,20 @@
             this.chart1.ChartAreas.Add(chartArea3);
             legend2.Name = "Legend1";
             this.chart1.Legends.Add(legend2);
-            this.chart1.Location = new System.Drawing.Point(790, 517);
+            this.chart1.Location = new System.Drawing.Point(1053, 636);
+            this.chart1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.chart1.Name = "chart1";
             series3.ChartArea = "ChartArea1";
             series3.Legend = "Legend1";
             series3.Name = "Series1";
             this.chart1.Series.Add(series3);
-            this.chart1.Size = new System.Drawing.Size(306, 76);
+            this.chart1.Size = new System.Drawing.Size(408, 94);
             this.chart1.TabIndex = 12;
             this.chart1.Text = "chart1";
             // 
             // dashboard
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.chart1);
             this.Controls.Add(this.btnMonth);
@@ -354,8 +352,9 @@
             this.Controls.Add(this.guna2Panel1);
             this.Controls.Add(this.guna2Panel3);
             this.Controls.Add(this.guna2Panel4);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "dashboard";
-            this.Size = new System.Drawing.Size(1112, 620);
+            this.Size = new System.Drawing.Size(1483, 763);
             this.Load += new System.EventHandler(this.dashboard_Load);
             this.guna2Panel1.ResumeLayout(false);
             this.guna2Panel1.PerformLayout();

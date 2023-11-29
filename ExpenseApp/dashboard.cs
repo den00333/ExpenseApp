@@ -106,7 +106,6 @@ namespace ExpenseApp
                 if (result.ChartElementType == ChartElementType.DataPoint)
                 {
                     DataPoint dataPoint = expensesDataPoints[result.PointIndex];
-                    double xValue = dataPoint.XValue;
                     double yValue = dataPoint.YValues[0];
 
                     tooltip.RemoveAll();
@@ -216,7 +215,7 @@ namespace ExpenseApp
 
         private void btnMonth_Click(object sender, EventArgs e)
         {
-            displayCustomExpensesTransaction(30);
+            displayCustomExpensesTransaction(30);   
             displayDonut(30);
             displayExpensesChart(30);
         }
@@ -226,6 +225,7 @@ namespace ExpenseApp
             displayCustomExpensesTransaction(0);
             displayDonut(0);
             displayExpensesChart(0);
+
         }
 
         private void btnYear_Click(object sender, EventArgs e)
@@ -251,6 +251,8 @@ namespace ExpenseApp
                     .GetSnapshotAsync();
 
                 totalTransaction = transactionSnap.Documents.Count;
+                Console.WriteLine(endDate);
+                Console.WriteLine(startDate);
             }
             else
             {
