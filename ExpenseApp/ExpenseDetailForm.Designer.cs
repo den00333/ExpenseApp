@@ -100,7 +100,6 @@
             this.lblAmount.Font = new System.Drawing.Font("Poppins SemiBold", 20.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAmount.Location = new System.Drawing.Point(261, 190);
             this.lblAmount.Name = "lblAmount";
-            this.lblAmount.Size = new System.Drawing.Size(185, 62);
             this.lblAmount.TabIndex = 3;
             this.lblAmount.Text = "P100,000";
             // 
@@ -142,9 +141,9 @@
             this.label5.Font = new System.Drawing.Font("Poppins SemiBold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(27, 345);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(136, 48);
+            this.label5.Size = new System.Drawing.Size(143, 48);
             this.label5.TabIndex = 6;
-            this.label5.Text = "Location";
+            this.label5.Text = "Location:";
             // 
             // lblDate
             // 
@@ -162,9 +161,9 @@
             this.label6.Font = new System.Drawing.Font("Poppins SemiBold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(27, 260);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(236, 48);
+            this.label6.Size = new System.Drawing.Size(243, 48);
             this.label6.TabIndex = 8;
-            this.label6.Text = "Date of Expense";
+            this.label6.Text = "Date of Expense:";
             // 
             // lblName
             // 
@@ -182,9 +181,9 @@
             this.label7.Font = new System.Drawing.Font("Poppins SemiBold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.Location = new System.Drawing.Point(453, 265);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(98, 42);
+            this.label7.Size = new System.Drawing.Size(163, 42);
             this.label7.TabIndex = 10;
-            this.label7.Text = "Name ";
+            this.label7.Text = "Description:";
             // 
             // pictureBox1
             // 

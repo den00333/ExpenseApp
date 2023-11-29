@@ -153,6 +153,7 @@ namespace ExpenseApp
             Dictionary<string, object> data = await function.getItemsInsideGoalsID(username, goalId);
             GoalDetails gd = new GoalDetails(this);
             gd.displayGoalDetails(data, goalId);
+            gd.displaySuggestions(goalId);
             gd.StartPosition = FormStartPosition.CenterScreen;
             gd.ShowDialog();
         }
@@ -346,7 +347,6 @@ namespace ExpenseApp
                     flpExpenses.Controls.Add(pnl);
                 }
             }
-            
         }   
         public async void PnlExpenses_DoubleClick(object sender, EventArgs e, string dn)
         {
@@ -356,7 +356,7 @@ namespace ExpenseApp
 
             ExpenseDetailForm edf = new ExpenseDetailForm();
             edf.displayExpenseDetails(data);
-            edf.StartPosition = FormStartPosition.CenterScreen;
+            edf.StartPosition = FormStartPosition.Manual;
             int x = Screen.PrimaryScreen.WorkingArea.Right - edf.Width;
             int y = Screen.PrimaryScreen.WorkingArea.Top + (Screen.PrimaryScreen.WorkingArea.Height - edf.Height) / 2;
             edf.Location = new Point(x, y);

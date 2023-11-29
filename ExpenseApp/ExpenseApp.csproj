@@ -230,6 +230,12 @@
     <Compile Include="connectionForm.Designer.cs">
       <DependentUpon>connectionForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="createGroup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="createGroup.Designer.cs">
+      <DependentUpon>createGroup.cs</DependentUpon>
+    </Compile>
     <Compile Include="customizeCategory.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -285,6 +291,12 @@
     </Compile>
     <Compile Include="NoConnectionUC.Designer.cs">
       <DependentUpon>NoConnectionUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NoGroupUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="NoGroupUC.Designer.cs">
+      <DependentUpon>NoGroupUC.cs</DependentUpon>
     </Compile>
     <Compile Include="otherFunc.cs" />
     <Compile Include="OTPManager.cs" />
@@ -348,6 +360,9 @@
     <EmbeddedResource Include="connectionForm.resx">
       <DependentUpon>connectionForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="createGroup.resx">
+      <DependentUpon>createGroup.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="customizeCategory.resx">
       <DependentUpon>customizeCategory.cs</DependentUpon>
     </EmbeddedResource>
@@ -374,6 +389,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="NoConnectionUC.resx">
       <DependentUpon>NoConnectionUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NoGroupUC.resx">
+      <DependentUpon>NoGroupUC.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -413,8 +431,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\profileBG1.png" />
     <None Include="Resources\show.png" />
     <None Include="Resources\transportation.png" />
+    <None Include="Resources\add.png" />
     <Content Include="Resources\GeoLite2-City.mmdb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

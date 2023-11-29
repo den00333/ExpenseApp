@@ -25,6 +25,8 @@ namespace ExpenseApp
             lblDate.Text = data["GoalDate"].ToString();
             lblAmount.Text = otherFunc.amountBeautify(float.Parse(data["Amount"].ToString()));
             rtbDesc.Text = data["Description"].ToString();
+            lblGoalStatus.Text = data["Status"].ToString();
+
         }
         private void closeBTN_Click(object sender, EventArgs e)
         {
@@ -47,6 +49,41 @@ namespace ExpenseApp
         private void GoalDetails_Load(object sender, EventArgs e)
         {
 
+        }
+
+        public async void displaySuggestions(String title)
+        {
+            String username = FirebaseData.Instance.Username;
+            //double goalAmount = await otherFunc.getTotalGoalAmount(username);
+            double currentSavings = await otherFunc.getCurrentSavings(username, title);
+            //rtbSuggestion.Text = Math.Round(currentSavings, 2).ToString();
+            double goalAmount = await otherFunc.getGoalAmount(username, title);
+
+            double requiredSavings = goalAmount - currentSavings;
+            Console.WriteLine($"{goalAmount} - {currentSavings} = {requiredSavings}");
+
+            double daysToGoal = requiredSavings / await otherFunc.dateTargetMinusCurrent(username, title);
+            double daily_savings = daysToGoal != 0 ? requiredSavings / daysToGoal : 0;
+
+            double daysFromStart = await otherFunc.dateCurrentMinusStart(username, title);
+            double currentSavingsRate = daysFromStart != 0 ? currentSavings / daysFromStart : 0;
+            Console.WriteLine($"dailySavings: {daily_savings} and currentSavingsRate: {currentSavingsRate}");
+            Console.WriteLine($"daysToGOal: {daysToGoal} -    - daysFromStart: {daysFromStart}");
+            if (currentSavings >= goalAmount)
+            {
+                rtbSuggestion.Text = "Goal has beena achieved";
+            }
+            else
+            {
+                if (daily_savings < currentSavingsRate)
+                {
+                    rtbSuggestion.Text = "Maintain your current savings or increase";
+                }
+                else
+                {
+                    rtbSuggestion.Text = "increase your savings or reduce your expenses";
+                }
+            }
         }
     }
 }
