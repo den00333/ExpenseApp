@@ -431,6 +431,8 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\search.png" />
+    <None Include="Resources\red arrow.png" />
     <None Include="Resources\profileBG1.png" />
     <None Include="Resources\show.png" />
     <None Include="Resources\transportation.png" />

@@ -56,6 +56,8 @@ namespace ExpenseApp
                 lblLastname.Text = fd.LastName;
                 lblEmail.Text = fd.Email;
                 rtbBio.Text = fd.Bio;
+                Home h = new Home();
+                h.getFirstName(username);
             }
         }
         

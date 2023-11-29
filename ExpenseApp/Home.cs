@@ -38,6 +38,7 @@ namespace ExpenseApp
             timer1.Interval = 5000;
             timer1.Tick += new EventHandler(timer1_Tick);
             timer1.Start();
+            this.FormBorderStyle = FormBorderStyle.None;
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -181,7 +182,7 @@ namespace ExpenseApp
             button2.ForeColor = Color.White;
             button3.ForeColor = Color.White;
         }
-        async void getFirstName(string username)
+        public async void getFirstName(string username)
         {
             otherFunc o = new otherFunc();
             DocumentSnapshot snap = await o.logInFunc(username);
