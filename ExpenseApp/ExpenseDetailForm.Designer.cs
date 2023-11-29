@@ -97,10 +97,10 @@
             // lblAmount
             // 
             this.lblAmount.AutoSize = true;
-            this.lblAmount.Font = new System.Drawing.Font("Poppins SemiBold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAmount.Location = new System.Drawing.Point(232, 201);
+            this.lblAmount.Font = new System.Drawing.Font("Poppins SemiBold", 20.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAmount.Location = new System.Drawing.Point(261, 190);
             this.lblAmount.Name = "lblAmount";
-            this.lblAmount.Size = new System.Drawing.Size(138, 48);
+            this.lblAmount.Size = new System.Drawing.Size(185, 62);
             this.lblAmount.TabIndex = 3;
             this.lblAmount.Text = "P100,000";
             // 
@@ -108,10 +108,10 @@
             // 
             this.lblCategory.AutoSize = true;
             this.lblCategory.BackColor = System.Drawing.Color.Transparent;
-            this.lblCategory.Font = new System.Drawing.Font("Poppins", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCategory.Location = new System.Drawing.Point(234, 127);
+            this.lblCategory.Font = new System.Drawing.Font("Poppins", 35F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCategory.Location = new System.Drawing.Point(234, 114);
             this.lblCategory.Name = "lblCategory";
-            this.lblCategory.Size = new System.Drawing.Size(162, 88);
+            this.lblCategory.Size = new System.Drawing.Size(192, 104);
             this.lblCategory.TabIndex = 5;
             this.lblCategory.Text = "Food";
             // 
@@ -120,7 +120,7 @@
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Poppins SemiBold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(232, 96);
+            this.label4.Location = new System.Drawing.Point(232, 83);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(268, 48);
             this.label4.TabIndex = 4;
@@ -129,10 +129,10 @@
             // lblLocation
             // 
             this.lblLocation.AutoSize = true;
-            this.lblLocation.Font = new System.Drawing.Font("Poppins SemiBold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLocation.Location = new System.Drawing.Point(104, 390);
+            this.lblLocation.Font = new System.Drawing.Font("Poppins", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLocation.Location = new System.Drawing.Point(58, 390);
             this.lblLocation.Name = "lblLocation";
-            this.lblLocation.Size = new System.Drawing.Size(216, 42);
+            this.lblLocation.Size = new System.Drawing.Size(207, 41);
             this.lblLocation.TabIndex = 7;
             this.lblLocation.Text = "Victoria, Laguna";
             // 
@@ -149,10 +149,10 @@
             // lblDate
             // 
             this.lblDate.AutoSize = true;
-            this.lblDate.Font = new System.Drawing.Font("Poppins SemiBold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDate.Location = new System.Drawing.Point(104, 305);
+            this.lblDate.Font = new System.Drawing.Font("Poppins", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDate.Location = new System.Drawing.Point(58, 305);
             this.lblDate.Name = "lblDate";
-            this.lblDate.Size = new System.Drawing.Size(222, 42);
+            this.lblDate.Size = new System.Drawing.Size(211, 41);
             this.lblDate.TabIndex = 9;
             this.lblDate.Text = "October 30, 2023";
             // 
@@ -169,10 +169,10 @@
             // lblName
             // 
             this.lblName.AutoSize = true;
-            this.lblName.Font = new System.Drawing.Font("Poppins SemiBold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblName.Location = new System.Drawing.Point(455, 308);
+            this.lblName.Font = new System.Drawing.Font("Poppins", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblName.Location = new System.Drawing.Point(482, 305);
             this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(70, 42);
+            this.lblName.Size = new System.Drawing.Size(64, 41);
             this.lblName.TabIndex = 11;
             this.lblName.Text = "Title";
             // 

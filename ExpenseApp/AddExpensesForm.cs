@@ -151,7 +151,9 @@ namespace ExpenseApp
                             dtpDate.Value = DateTime.Now;
                             txtLocation.Clear();
                             richTxtDesc.Clear();
-                            walletInstance.displayData();
+                            w.flpExpenses.Controls.Clear();
+                            w.displayData();
+                            this.DialogResult = DialogResult.OK;
                             this.Hide();
                         }
                     }
