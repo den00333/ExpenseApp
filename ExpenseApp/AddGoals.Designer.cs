@@ -151,6 +151,7 @@
             // btnSave
             // 
             this.btnSave.AutoRoundedCorners = true;
+            this.btnSave.BackColor = System.Drawing.Color.Transparent;
             this.btnSave.BorderColor = System.Drawing.Color.Transparent;
             this.btnSave.BorderRadius = 21;
             this.btnSave.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -161,7 +162,7 @@
             this.btnSave.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(123)))), ((int)(((byte)(47)))));
             this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Location = new System.Drawing.Point(200, 266);
+            this.btnSave.Location = new System.Drawing.Point(424, 266);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(117, 45);
             this.btnSave.TabIndex = 34;
@@ -206,6 +207,7 @@
             // 
             // guna2Button2
             // 
+            this.guna2Button2.BackColor = System.Drawing.Color.Transparent;
             this.guna2Button2.BorderRadius = 21;
             this.guna2Button2.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.guna2Button2.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
@@ -214,7 +216,7 @@
             this.guna2Button2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(4)))), ((int)(((byte)(45)))));
             this.guna2Button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2Button2.ForeColor = System.Drawing.Color.White;
-            this.guna2Button2.Location = new System.Drawing.Point(323, 266);
+            this.guna2Button2.Location = new System.Drawing.Point(559, 266);
             this.guna2Button2.Name = "guna2Button2";
             this.guna2Button2.Size = new System.Drawing.Size(117, 45);
             this.guna2Button2.TabIndex = 37;
@@ -225,6 +227,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = global::ExpenseApp.Properties.Resources.profileBG;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(696, 323);
             this.Controls.Add(this.guna2Button2);
             this.Controls.Add(this.txtTitle);
@@ -236,6 +240,7 @@
             this.Controls.Add(this.dtpDate);
             this.Controls.Add(this.txtAmount);
             this.Controls.Add(this.label5);
+            this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "AddGoals";
             this.Text = "AddGoals";

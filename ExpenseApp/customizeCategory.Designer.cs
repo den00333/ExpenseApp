@@ -59,6 +59,7 @@
             // btnDelete
             // 
             this.btnDelete.AutoRoundedCorners = true;
+            this.btnDelete.BackColor = System.Drawing.Color.Transparent;
             this.btnDelete.BorderColor = System.Drawing.Color.Transparent;
             this.btnDelete.BorderRadius = 17;
             this.btnDelete.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
@@ -122,7 +123,7 @@
             this.closeBTN.Cursor = System.Windows.Forms.Cursors.Hand;
             this.closeBTN.Image = global::ExpenseApp.Properties.Resources.delete;
             this.closeBTN.Location = new System.Drawing.Point(288, 11);
-            this.closeBTN.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.closeBTN.Margin = new System.Windows.Forms.Padding(2);
             this.closeBTN.Name = "closeBTN";
             this.closeBTN.Size = new System.Drawing.Size(45, 27);
             this.closeBTN.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -134,12 +135,15 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = global::ExpenseApp.Properties.Resources.profileBG;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(344, 410);
             this.Controls.Add(this.txtCategory);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.closeBTN);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.chbCategories);
+            this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "customizeCategory";
             this.Text = "customizeCategory";

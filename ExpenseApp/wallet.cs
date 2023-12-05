@@ -102,7 +102,7 @@ namespace ExpenseApp
                 if (docsnap.Exists)
                 {
                     string docname = docName;
-                    string amount = am.ToString();
+                    float amount = am;
                     string date = d.ToString();
 
                     Guna2GradientPanel pnl = new Guna2GradientPanel();
@@ -127,7 +127,7 @@ namespace ExpenseApp
                     lblAmount.Size = new Size(113, 24);
                     lblAmount.Location = new Point(193, 22);
                     lblAmount.ForeColor = Color.FromArgb(187, 141, 228);
-                    lblAmount.Text = "₱" + amount;
+                    lblAmount.Text = otherFunc.amountBeautify(amount);
 
                     System.Windows.Forms.Label lblDate = new System.Windows.Forms.Label();
                     lblDate.Font = new Font("Poppins", 12f, FontStyle.Bold | FontStyle.Regular);

@@ -49,6 +49,8 @@ namespace ExpenseApp
         public string imgString {get; set;}
         [FirestoreProperty]
         public string Date { get; set; }
+        [FirestoreProperty]
+        public string GroupName { get; set; }
     }
 
     public class ctg 
@@ -56,4 +58,5 @@ namespace ExpenseApp
         [JsonProperty("listOfCategories")]
         public List<String> LCategory { get; set; }
     }
+
 }

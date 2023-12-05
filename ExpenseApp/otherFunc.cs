@@ -627,20 +627,25 @@ namespace ExpenseApp
             }
             return false;
         }
-        public async void updateData(string username, string fname, string lname, string email, string bio, string password, updateAcc update, profile p)
+        public async void updateData(string username, string fname, string lname, string email, string bio, string password, string confirmPass,updateAcc update, profile p)
         {
             var database = FirestoreConn();
             otherFunc function = new otherFunc();
             bool validEmail = otherFunc.isValidEmail(email);
             bool isEmpty = areControlEmpty(fname, lname, email, password);
             bool validUsername = await otherFunc.isUsernameExistingAsync(username);
+            bool passMatched = function.passwordMatched(Security.Decrypt(password), confirmPass);
 
             if (!isEmpty)
             {
-                try
+                if (passMatched)
                 {
-                    DocumentReference docref = database.Collection("Users").Document(username);
-                    Dictionary<string, object> data = new Dictionary<string, object>()
+                    if (function.isValidPassword(password))
+                    {
+                        try
+                        {
+                            DocumentReference docref = database.Collection("Users").Document(username);
+                            Dictionary<string, object> data = new Dictionary<string, object>()
                         {
                             {"First Name", fname},
                             {"Last Name", lname},
@@ -648,21 +653,31 @@ namespace ExpenseApp
                             {"Bio", bio},
                             {"Password", Security.Encrypt(password)},
                         };
-                    DocumentSnapshot snap = await docref.GetSnapshotAsync();
-                    if (snap.Exists)
-                    {
-                        await docref.UpdateAsync(data);
-                        DialogResult respond = MessageBox.Show("Successfully update your account!", "Success", MessageBoxButtons.OK);
-                        if (respond == DialogResult.OK)
+                            DocumentSnapshot snap = await docref.GetSnapshotAsync();
+                            if (snap.Exists)
+                            {
+                                await docref.UpdateAsync(data);
+                                DialogResult respond = MessageBox.Show("Successfully update your account!", "Success", MessageBoxButtons.OK);
+                                if (respond == DialogResult.OK)
+                                {
+                                    p.displayProfile();
+                                    update.Hide();
+                                }
+                            }
+                        }
+                        catch (Exception ex)
                         {
-                            p.displayProfile();
-                            update.Hide();
+                            MessageBox.Show("Error: " + ex.Message);
                         }
                     }
+                    else
+                    {
+                        MessageBox.Show("Password do not meet the standards!", "Invalid Password", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    }
                 }
-                catch (Exception ex)
+                else
                 {
-                    MessageBox.Show("Error: " + ex.Message);
+                    MessageBox.Show("Password does not match", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
             else
@@ -1164,6 +1179,24 @@ namespace ExpenseApp
 
             return daysDifference;
         }
+        public async Task<string[]> getGroups(string username)
+        {
+            otherFunc o = new otherFunc();
+            DocumentSnapshot docsnap = await o.logInFunc(username);
+            
+            if (docsnap.Exists)
+            {
+                if (docsnap.ContainsField("Groups"))
+                {
+                    return docsnap.GetValue<string[]>("Groups");
+                }
+                else
+                {
+                    return new string[0];
+                }
+               
+            }
+            return null;
 
         public static String dateBeautifyForRE(String dateText, String period)
         {

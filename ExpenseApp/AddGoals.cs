@@ -53,6 +53,8 @@ namespace ExpenseApp
                     txtAmount.Clear();
                     txtTitle.Clear();
                     richTxtDesc.Clear();
+                    w.flpGoals.Controls.Clear();
+                    w.displayGoals();
                 }
                 else
                 {

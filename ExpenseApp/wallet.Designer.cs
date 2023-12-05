@@ -149,7 +149,7 @@
             this.guna2Transition1.SetDecoration(this.lblShort, Guna.UI2.AnimatorNS.DecorationType.None);
             this.lblShort.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblShort.ForeColor = System.Drawing.Color.White;
-            this.lblShort.Location = new System.Drawing.Point(217, 11);
+            this.lblShort.Location = new System.Drawing.Point(217, 12);
             this.lblShort.Name = "lblShort";
             this.lblShort.Size = new System.Drawing.Size(19, 20);
             this.lblShort.TabIndex = 10;
@@ -609,8 +609,8 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private System.Windows.Forms.FlowLayoutPanel flpGoals;
         public System.Windows.Forms.FlowLayoutPanel flpExpenses;
+        public System.Windows.Forms.FlowLayoutPanel flpGoals;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
         private System.Windows.Forms.Label label5;
         private Guna.UI2.WinForms.Guna2ShadowPanel guna2ShadowPanel3;

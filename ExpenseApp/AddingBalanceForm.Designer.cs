@@ -121,6 +121,7 @@
             // 
             // txtAmount
             // 
+            this.txtAmount.BackColor = System.Drawing.Color.Transparent;
             this.txtAmount.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(123)))), ((int)(((byte)(47)))));
             this.txtAmount.BorderRadius = 15;
             this.txtAmount.Cursor = System.Windows.Forms.Cursors.IBeam;
@@ -139,12 +140,13 @@
             this.txtAmount.PasswordChar = '\0';
             this.txtAmount.PlaceholderText = "Add New Amount";
             this.txtAmount.SelectedText = "";
-            this.txtAmount.Size = new System.Drawing.Size(265, 52);
+            this.txtAmount.Size = new System.Drawing.Size(316, 52);
             this.txtAmount.TabIndex = 17;
             this.txtAmount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAmount_KeyPress);
             // 
             // btnAddAmount
             // 
+            this.btnAddAmount.BackColor = System.Drawing.Color.Transparent;
             this.btnAddAmount.BorderRadius = 25;
             this.btnAddAmount.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnAddAmount.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
@@ -165,11 +167,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = global::ExpenseApp.Properties.Resources.profileBG;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(484, 158);
             this.Controls.Add(this.btnAddAmount);
             this.Controls.Add(this.txtAmount);
             this.Controls.Add(this.closeBTN);
             this.Controls.Add(this.guna2ShadowPanel1);
+            this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "AddingBalanceForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

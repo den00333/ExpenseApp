@@ -193,6 +193,7 @@
             this.txtNewPass.SelectedText = "";
             this.txtNewPass.Size = new System.Drawing.Size(233, 48);
             this.txtNewPass.TabIndex = 16;
+            this.txtNewPass.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNewPass_KeyPress_1);
             // 
             // btnSendCode
             // 
@@ -262,7 +263,7 @@
             this.panelPassword.Controls.Add(this.btnSavepass);
             this.panelPassword.Controls.Add(this.showPassword);
             this.panelPassword.FillColor = System.Drawing.Color.White;
-            this.panelPassword.Location = new System.Drawing.Point(12, 162);
+            this.panelPassword.Location = new System.Drawing.Point(12, 156);
             this.panelPassword.Name = "panelPassword";
             this.panelPassword.Radius = 15;
             this.panelPassword.ShadowColor = System.Drawing.Color.Black;
@@ -287,7 +288,7 @@
             this.txtConfirmPass.ForeColor = System.Drawing.Color.Black;
             this.txtConfirmPass.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtConfirmPass.Location = new System.Drawing.Point(34, 74);
-            this.txtConfirmPass.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtConfirmPass.Margin = new System.Windows.Forms.Padding(4);
             this.txtConfirmPass.Name = "txtConfirmPass";
             this.txtConfirmPass.PasswordChar = '●';
             this.txtConfirmPass.PlaceholderText = "Confirm password";
@@ -310,7 +311,7 @@
             this.txtPassword.ForeColor = System.Drawing.Color.Black;
             this.txtPassword.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtPassword.Location = new System.Drawing.Point(34, 17);
-            this.txtPassword.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtPassword.Margin = new System.Windows.Forms.Padding(4);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '●';
             this.txtPassword.PlaceholderText = "Enter new password";
@@ -342,7 +343,7 @@
             this.showPassword.AutoSize = true;
             this.showPassword.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.showPassword.Location = new System.Drawing.Point(34, 130);
-            this.showPassword.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.showPassword.Margin = new System.Windows.Forms.Padding(2);
             this.showPassword.Name = "showPassword";
             this.showPassword.Size = new System.Drawing.Size(155, 32);
             this.showPassword.TabIndex = 17;
@@ -360,7 +361,7 @@
             this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox1.Image = global::ExpenseApp.Properties.Resources.delete;
             this.pictureBox1.Location = new System.Drawing.Point(424, 2);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(43, 24);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;

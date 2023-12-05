@@ -17,6 +17,7 @@ namespace ExpenseApp
     public partial class updateAcc : Form
     {
         private profile profile;
+        string password = string.Empty;
         public updateAcc(profile p)
         {
             InitializeComponent();
@@ -75,7 +76,7 @@ namespace ExpenseApp
                 txtLastname.Text = fd.LastName;
                 txtEmail.Text = fd.Email;
                 rtbBio.Text = fd.Bio;
-                txtPassword.Text = Security.Decrypt(fd.Password.ToString());
+                password = Security.Decrypt(fd.Password.ToString());
             }
         }
 
@@ -86,12 +87,13 @@ namespace ExpenseApp
             string lastname = txtLastname.Text;
             string email = txtEmail.Text;
             string bio = rtbBio.Text;
-            string password = txtPassword.Text;
+            string password = Security.Encrypt(txtNewPass.Text);
+            string confirmPass = txtConfirmPass.Text;
             profile p = profile;
 
             string username = FirebaseData.Instance.Username;
 
-            o.updateData(username, firstname, lastname, email, bio, password, this, p);
+            o.updateData(username, firstname, lastname, email, bio, password, confirmPass, this, p);
             storeImage();
         }
 
@@ -123,6 +125,66 @@ namespace ExpenseApp
             };
             var set = otherFunc.conn().Set("images" + username, fd);
         }
-        
+
+        private void txtCurrentPassword_Validating(object sender, CancelEventArgs e)
+        {
+            checkPassword();
+        }
+        public void checkPassword()
+        {
+            string pass = txtCurrentPassword.Text;
+
+            if (!string.IsNullOrEmpty(txtCurrentPassword.Text))
+            {
+                if (pass == password)
+                {
+                    txtNewPass.Enabled = true;
+                    txtConfirmPass.Enabled = true;
+                    errorProvider.Clear();
+                }
+                else
+                {
+                    errorProvider.SetError(txtCurrentPassword, "Invalid Current Password");
+                }
+            }
+            else
+            {
+                txtNewPass.Enabled = false;
+                txtConfirmPass.Enabled = false;
+                errorProvider.Clear();
+            }
+        }
+
+        private void txtCurrentPassword_TextChanged(object sender, EventArgs e)
+        {
+            checkPassword();
+        }
+        private void UpdatePasswordMatchLabel()
+        {
+            if (string.IsNullOrWhiteSpace(txtNewPass.Text) && string.IsNullOrWhiteSpace(txtConfirmPass.Text) || string.IsNullOrEmpty(txtConfirmPass.Text))
+            {
+                checkPass.Text = "";
+            }
+            else if (txtNewPass.Text == txtConfirmPass.Text)
+            {
+                checkPass.Text = "Password Matched";
+                checkPass.ForeColor = System.Drawing.Color.Green;
+            }
+            else
+            {
+                checkPass.Text = "Password Doesn't Match";
+                checkPass.ForeColor = System.Drawing.Color.Red;
+            }
+        }
+
+        private void txtNewPass_TextChanged(object sender, EventArgs e)
+        {
+            UpdatePasswordMatchLabel();
+        }
+
+        private void txtConfirmPass_TextChanged(object sender, EventArgs e)
+        {
+            UpdatePasswordMatchLabel();
+        }
     }
 }

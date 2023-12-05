@@ -84,18 +84,7 @@ namespace ExpenseApp
                 MessageBox.Show("Password cannot contain whitespaces", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        private void UpdatePasswordMatchLabel()
-        {
-            if (string.IsNullOrWhiteSpace(txtPassword.Text) && string.IsNullOrWhiteSpace(txtrepeatpass.Text) || string.IsNullOrEmpty(txtrepeatpass.Text)) {
-                checkPass.Text = "";
-            }else if (txtPassword.Text == txtrepeatpass.Text){
-                checkPass.Text = "Password Matched";
-                checkPass.ForeColor = System.Drawing.Color.Green;
-            }else{
-                checkPass.Text = "Password Doesn't Match";
-                checkPass.ForeColor = System.Drawing.Color.Red;
-            }
-        }
+        
 
         private void txtPassword_Validating(object sender, CancelEventArgs e)
         {
@@ -111,10 +100,6 @@ namespace ExpenseApp
                 {
                     errorProvider.SetError(txtPassword, "Password must contain uppercase");
                 }
-                else if (!pass.Any(char.IsPunctuation))
-                {
-                    errorProvider.SetError(txtPassword, "Password must contain at least one symbol");
-                } 
             }
             else{
                 errorProvider.Clear();
@@ -157,6 +142,24 @@ namespace ExpenseApp
                 else{
                     termsConditions.Checked = false;
                 }
+            }
+        }
+
+        private void UpdatePasswordMatchLabel()
+        {
+            if (string.IsNullOrWhiteSpace(txtPassword.Text) && string.IsNullOrWhiteSpace(txtrepeatpass.Text) || string.IsNullOrEmpty(txtrepeatpass.Text))
+            {
+                checkPass.Text = "";
+            }
+            else if (txtPassword.Text == txtrepeatpass.Text)
+            {
+                checkPass.Text = "Password Matched";
+                checkPass.ForeColor = System.Drawing.Color.Green;
+            }
+            else
+            {
+                checkPass.Text = "Password Doesn't Match";
+                checkPass.ForeColor = System.Drawing.Color.Red;
             }
         }
 

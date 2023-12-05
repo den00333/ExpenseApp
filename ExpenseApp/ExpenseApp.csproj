@@ -449,6 +449,8 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\search.png" />
+    <None Include="Resources\red arrow.png" />
     <None Include="Resources\profileBG1.png" />
     <None Include="Resources\show.png" />
     <None Include="Resources\transportation.png" />
@@ -530,6 +532,7 @@
     <None Include="Resources\housing.png" />
     <None Include="Resources\noimage.png" />
     <None Include="Resources\hide.png" />
+    <None Include="Resources\members.png" />
     <Content Include="Resources\philippine_provinces_cities_municipalities_and_barangays_2019v2.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
