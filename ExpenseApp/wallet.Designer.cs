@@ -57,6 +57,13 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.flpGoals = new System.Windows.Forms.FlowLayoutPanel();
+            this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            this.label5 = new System.Windows.Forms.Label();
+            this.guna2ShadowPanel3 = new Guna.UI2.WinForms.Guna2ShadowPanel();
+            this.guna2GradientPanel3 = new Guna.UI2.WinForms.Guna2GradientPanel();
+            this.btnViewRE = new Guna.UI2.WinForms.Guna2Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.btnAddRE = new Guna.UI2.WinForms.Guna2Button();
             this.toolTip2 = new System.Windows.Forms.ToolTip(this.components);
             this.guna2ShadowPanel1.SuspendLayout();
             this.guna2GradientPanel1.SuspendLayout();
@@ -69,6 +76,9 @@
             this.tableLayoutPanel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
+            this.guna2Panel1.SuspendLayout();
+            this.guna2ShadowPanel3.SuspendLayout();
+            this.guna2GradientPanel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -311,7 +321,7 @@
             this.guna2ShadowPanel5.Controls.Add(this.panelSwitch);
             this.guna2Transition1.SetDecoration(this.guna2ShadowPanel5, Guna.UI2.AnimatorNS.DecorationType.None);
             this.guna2ShadowPanel5.FillColor = System.Drawing.Color.White;
-            this.guna2ShadowPanel5.Location = new System.Drawing.Point(742, 63);
+            this.guna2ShadowPanel5.Location = new System.Drawing.Point(742, 158);
             this.guna2ShadowPanel5.Name = "guna2ShadowPanel5";
             this.guna2ShadowPanel5.Radius = 6;
             this.guna2ShadowPanel5.ShadowColor = System.Drawing.Color.Black;
@@ -387,9 +397,9 @@
             // 
             this.panel2.Controls.Add(this.tableLayoutPanel2);
             this.guna2Transition1.SetDecoration(this.panel2, Guna.UI2.AnimatorNS.DecorationType.None);
-            this.panel2.Location = new System.Drawing.Point(742, 141);
+            this.panel2.Location = new System.Drawing.Point(742, 281);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(347, 442);
+            this.panel2.Size = new System.Drawing.Size(347, 302);
             this.panel2.TabIndex = 8;
             // 
             // tableLayoutPanel2
@@ -406,7 +416,7 @@
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(347, 442);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(347, 302);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // flpGoals
@@ -417,14 +427,122 @@
             this.guna2Transition1.SetDecoration(this.flpGoals, Guna.UI2.AnimatorNS.DecorationType.None);
             this.flpGoals.Location = new System.Drawing.Point(5, 3);
             this.flpGoals.Name = "flpGoals";
-            this.flpGoals.Size = new System.Drawing.Size(337, 436);
+            this.flpGoals.Size = new System.Drawing.Size(337, 296);
             this.flpGoals.TabIndex = 0;
+            // 
+            // guna2Panel1
+            // 
+            this.guna2Panel1.BorderRadius = 15;
+            this.guna2Panel1.Controls.Add(this.label5);
+            this.guna2Transition1.SetDecoration(this.guna2Panel1, Guna.UI2.AnimatorNS.DecorationType.None);
+            this.guna2Panel1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(187)))), ((int)(((byte)(141)))), ((int)(((byte)(228)))));
+            this.guna2Panel1.Location = new System.Drawing.Point(742, 236);
+            this.guna2Panel1.Name = "guna2Panel1";
+            this.guna2Panel1.Size = new System.Drawing.Size(203, 42);
+            this.guna2Panel1.TabIndex = 9;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.Transparent;
+            this.guna2Transition1.SetDecoration(this.label5, Guna.UI2.AnimatorNS.DecorationType.None);
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.White;
+            this.label5.Location = new System.Drawing.Point(69, 7);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(68, 25);
+            this.label5.TabIndex = 8;
+            this.label5.Text = "Goals";
+            // 
+            // guna2ShadowPanel3
+            // 
+            this.guna2ShadowPanel3.BackColor = System.Drawing.Color.Transparent;
+            this.guna2ShadowPanel3.Controls.Add(this.guna2GradientPanel3);
+            this.guna2Transition1.SetDecoration(this.guna2ShadowPanel3, Guna.UI2.AnimatorNS.DecorationType.None);
+            this.guna2ShadowPanel3.FillColor = System.Drawing.Color.White;
+            this.guna2ShadowPanel3.Location = new System.Drawing.Point(742, 63);
+            this.guna2ShadowPanel3.Name = "guna2ShadowPanel3";
+            this.guna2ShadowPanel3.Radius = 6;
+            this.guna2ShadowPanel3.ShadowColor = System.Drawing.Color.Black;
+            this.guna2ShadowPanel3.ShadowDepth = 130;
+            this.guna2ShadowPanel3.ShadowShift = 10;
+            this.guna2ShadowPanel3.ShadowStyle = Guna.UI2.WinForms.Guna2ShadowPanel.ShadowMode.ForwardDiagonal;
+            this.guna2ShadowPanel3.Size = new System.Drawing.Size(347, 89);
+            this.guna2ShadowPanel3.TabIndex = 10;
+            // 
+            // guna2GradientPanel3
+            // 
+            this.guna2GradientPanel3.BorderRadius = 13;
+            this.guna2GradientPanel3.Controls.Add(this.btnViewRE);
+            this.guna2GradientPanel3.Controls.Add(this.label6);
+            this.guna2GradientPanel3.Controls.Add(this.btnAddRE);
+            this.guna2Transition1.SetDecoration(this.guna2GradientPanel3, Guna.UI2.AnimatorNS.DecorationType.None);
+            this.guna2GradientPanel3.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(92)))), ((int)(((byte)(124)))));
+            this.guna2GradientPanel3.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(97)))), ((int)(((byte)(86)))), ((int)(((byte)(252)))));
+            this.guna2GradientPanel3.Location = new System.Drawing.Point(0, 3);
+            this.guna2GradientPanel3.Name = "guna2GradientPanel3";
+            this.guna2GradientPanel3.Size = new System.Drawing.Size(337, 76);
+            this.guna2GradientPanel3.TabIndex = 0;
+            // 
+            // btnViewRE
+            // 
+            this.btnViewRE.BorderRadius = 10;
+            this.guna2Transition1.SetDecoration(this.btnViewRE, Guna.UI2.AnimatorNS.DecorationType.None);
+            this.btnViewRE.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnViewRE.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnViewRE.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnViewRE.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnViewRE.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(187)))), ((int)(((byte)(141)))), ((int)(((byte)(228)))));
+            this.btnViewRE.FocusedColor = System.Drawing.Color.DarkOrchid;
+            this.btnViewRE.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnViewRE.ForeColor = System.Drawing.Color.White;
+            this.btnViewRE.Location = new System.Drawing.Point(281, 24);
+            this.btnViewRE.Name = "btnViewRE";
+            this.btnViewRE.Size = new System.Drawing.Size(44, 39);
+            this.btnViewRE.TabIndex = 9;
+            this.btnViewRE.Text = "V";
+            this.toolTip2.SetToolTip(this.btnViewRE, "View your recurring expenses");
+            this.btnViewRE.Click += new System.EventHandler(this.btnViewRE_Click);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.guna2Transition1.SetDecoration(this.label6, Guna.UI2.AnimatorNS.DecorationType.None);
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.White;
+            this.label6.Location = new System.Drawing.Point(20, 24);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(183, 24);
+            this.label6.TabIndex = 8;
+            this.label6.Text = "Recurring Expenses";
+            // 
+            // btnAddRE
+            // 
+            this.btnAddRE.BorderRadius = 10;
+            this.guna2Transition1.SetDecoration(this.btnAddRE, Guna.UI2.AnimatorNS.DecorationType.None);
+            this.btnAddRE.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnAddRE.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnAddRE.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnAddRE.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnAddRE.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(187)))), ((int)(((byte)(141)))), ((int)(((byte)(228)))));
+            this.btnAddRE.FocusedColor = System.Drawing.Color.DarkOrchid;
+            this.btnAddRE.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddRE.ForeColor = System.Drawing.Color.White;
+            this.btnAddRE.Location = new System.Drawing.Point(209, 24);
+            this.btnAddRE.Name = "btnAddRE";
+            this.btnAddRE.Size = new System.Drawing.Size(46, 39);
+            this.btnAddRE.TabIndex = 3;
+            this.btnAddRE.Text = "+";
+            this.toolTip2.SetToolTip(this.btnAddRE, "add recurring expenses");
+            this.btnAddRE.Click += new System.EventHandler(this.btnAddRE_Click);
             // 
             // wallet
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
+            this.Controls.Add(this.guna2ShadowPanel3);
+            this.Controls.Add(this.guna2Panel1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.guna2ShadowPanel5);
@@ -454,6 +572,11 @@
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
+            this.guna2Panel1.ResumeLayout(false);
+            this.guna2Panel1.PerformLayout();
+            this.guna2ShadowPanel3.ResumeLayout(false);
+            this.guna2GradientPanel3.ResumeLayout(false);
+            this.guna2GradientPanel3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -488,5 +611,12 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         public System.Windows.Forms.FlowLayoutPanel flpExpenses;
         public System.Windows.Forms.FlowLayoutPanel flpGoals;
+        private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
+        private System.Windows.Forms.Label label5;
+        private Guna.UI2.WinForms.Guna2ShadowPanel guna2ShadowPanel3;
+        private Guna.UI2.WinForms.Guna2GradientPanel guna2GradientPanel3;
+        private System.Windows.Forms.Label label6;
+        private Guna.UI2.WinForms.Guna2Button btnAddRE;
+        private Guna.UI2.WinForms.Guna2Button btnViewRE;
     }
 }

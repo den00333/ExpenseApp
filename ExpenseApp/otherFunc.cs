@@ -770,6 +770,23 @@ namespace ExpenseApp
             return documentData;
         }
 
+        public async static Task<List<DocumentSnapshot>> displayRecurringData(String username)
+        {
+            CollectionReference colRef = editInsideUser(username).Collection("RecurringExpenses");
+            QuerySnapshot qsnap = await colRef.OrderByDescending("timestamp").GetSnapshotAsync();
+
+            List<DocumentSnapshot> data = new List<DocumentSnapshot>();
+            foreach(DocumentSnapshot snap in qsnap.Documents)
+            {
+                if (snap.Exists)
+                {
+                    data.Add(snap);
+                }
+            }
+            return data;
+
+        }
+
         public async Task<List<(string DocName, DocumentSnapshot DocSnapshot)>> displayDataWithDocNames(string username)
         {
             CollectionReference colRef = editInsideUser(username).Collection("Expenses");
@@ -1180,6 +1197,28 @@ namespace ExpenseApp
                
             }
             return null;
+
+        public static String dateBeautifyForRE(String dateText, String period)
+        {
+            //Console.WriteLine($"date: {dateText} | period: {period}");
+            String toBeReturned = "";   
+            switch (period)
+            {
+                case "Daily":
+                    toBeReturned = "Day";
+                    break;
+                case "Weekly":
+                    String[] days = { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };
+                    int ndays = int.Parse(dateText);
+                    toBeReturned = days[ndays-1];
+                    
+                    break;
+                default:
+                    toBeReturned = "error";
+                    break;
+            }
+
+            return toBeReturned;
         }
 
     }

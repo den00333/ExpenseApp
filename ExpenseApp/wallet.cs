@@ -368,5 +368,19 @@ namespace ExpenseApp
         {
 
         }
+
+        private void btnAddRE_Click(object sender, EventArgs e)
+        {
+            AddRecurringExpenses ARE = new AddRecurringExpenses();
+            ARE.StartPosition = FormStartPosition.CenterScreen;
+            ARE.ShowDialog();
+        }
+
+        private void btnViewRE_Click(object sender, EventArgs e)
+        {
+            RecurringExpensesForm REF = new RecurringExpensesForm();
+            REF.StartPosition = FormStartPosition.CenterScreen;
+            REF.ShowDialog();
+        }
     }
 }

@@ -218,6 +218,12 @@
     <Compile Include="AddingBalanceForm.Designer.cs">
       <DependentUpon>AddingBalanceForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="AddRecurringExpenses.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddRecurringExpenses.Designer.cs">
+      <DependentUpon>AddRecurringExpenses.cs</DependentUpon>
+    </Compile>
     <Compile Include="changePassword.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -307,6 +313,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="RecurringExpensesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RecurringExpensesForm.Designer.cs">
+      <DependentUpon>RecurringExpensesForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="RegionData.cs" />
     <Compile Include="Security.cs" />
     <Compile Include="findYourAccount.cs">
@@ -354,6 +366,9 @@
     <EmbeddedResource Include="AddingBalanceForm.resx">
       <DependentUpon>AddingBalanceForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AddRecurringExpenses.resx">
+      <DependentUpon>AddRecurringExpenses.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="changePassword.resx">
       <DependentUpon>changePassword.cs</DependentUpon>
     </EmbeddedResource>
@@ -400,6 +415,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="findYourAccount.resx">
       <DependentUpon>findYourAccount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RecurringExpensesForm.resx">
+      <DependentUpon>RecurringExpensesForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Signup.resx">
       <DependentUpon>Signup.cs</DependentUpon>
