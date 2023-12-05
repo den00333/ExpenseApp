@@ -514,6 +514,7 @@
     <None Include="Resources\housing.png" />
     <None Include="Resources\noimage.png" />
     <None Include="Resources\hide.png" />
+    <None Include="Resources\members.png" />
     <Content Include="Resources\philippine_provinces_cities_municipalities_and_barangays_2019v2.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

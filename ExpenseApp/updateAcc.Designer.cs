@@ -40,21 +40,22 @@
             this.txtFirstname = new Guna.UI2.WinForms.Guna2TextBox();
             this.rtbBio = new System.Windows.Forms.RichTextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.guna2ShadowPanel3 = new Guna.UI2.WinForms.Guna2ShadowPanel();
-            this.txtPassword = new Guna.UI2.WinForms.Guna2TextBox();
-            this.label6 = new System.Windows.Forms.Label();
+            this.txtConfirmPass = new Guna.UI2.WinForms.Guna2TextBox();
+            this.txtNewPass = new Guna.UI2.WinForms.Guna2TextBox();
+            this.txtCurrentPassword = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
             this.label7 = new System.Windows.Forms.Label();
             this.guna2AnimateWindow1 = new Guna.UI2.WinForms.Guna2AnimateWindow(this.components);
+            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.checkPass = new System.Windows.Forms.Label();
             this.guna2ShadowPanel1.SuspendLayout();
             this.guna2GradientPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbPic)).BeginInit();
             this.guna2ShadowPanel2.SuspendLayout();
             this.guna2ShadowPanel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // guna2BorderlessForm1
@@ -76,7 +77,7 @@
             this.guna2ShadowPanel1.ShadowDepth = 150;
             this.guna2ShadowPanel1.ShadowShift = 7;
             this.guna2ShadowPanel1.ShadowStyle = Guna.UI2.WinForms.Guna2ShadowPanel.ShadowMode.ForwardDiagonal;
-            this.guna2ShadowPanel1.Size = new System.Drawing.Size(238, 280);
+            this.guna2ShadowPanel1.Size = new System.Drawing.Size(238, 255);
             this.guna2ShadowPanel1.TabIndex = 0;
             // 
             // guna2GradientPanel1
@@ -88,7 +89,7 @@
             this.guna2GradientPanel1.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(123)))), ((int)(((byte)(47)))));
             this.guna2GradientPanel1.Location = new System.Drawing.Point(-1, 0);
             this.guna2GradientPanel1.Name = "guna2GradientPanel1";
-            this.guna2GradientPanel1.Size = new System.Drawing.Size(236, 277);
+            this.guna2GradientPanel1.Size = new System.Drawing.Size(236, 249);
             this.guna2GradientPanel1.TabIndex = 0;
             // 
             // guna2Button3
@@ -103,7 +104,7 @@
             this.guna2Button3.FillColor = System.Drawing.Color.Transparent;
             this.guna2Button3.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2Button3.ForeColor = System.Drawing.Color.White;
-            this.guna2Button3.Location = new System.Drawing.Point(52, 203);
+            this.guna2Button3.Location = new System.Drawing.Point(49, 183);
             this.guna2Button3.Name = "guna2Button3";
             this.guna2Button3.Size = new System.Drawing.Size(145, 45);
             this.guna2Button3.TabIndex = 5;
@@ -132,9 +133,6 @@
             this.guna2ShadowPanel2.Controls.Add(this.txtFirstname);
             this.guna2ShadowPanel2.Controls.Add(this.rtbBio);
             this.guna2ShadowPanel2.Controls.Add(this.label4);
-            this.guna2ShadowPanel2.Controls.Add(this.label3);
-            this.guna2ShadowPanel2.Controls.Add(this.label2);
-            this.guna2ShadowPanel2.Controls.Add(this.label1);
             this.guna2ShadowPanel2.FillColor = System.Drawing.Color.White;
             this.guna2ShadowPanel2.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2ShadowPanel2.Location = new System.Drawing.Point(277, 50);
@@ -144,7 +142,7 @@
             this.guna2ShadowPanel2.ShadowDepth = 150;
             this.guna2ShadowPanel2.ShadowShift = 7;
             this.guna2ShadowPanel2.ShadowStyle = Guna.UI2.WinForms.Guna2ShadowPanel.ShadowMode.ForwardDiagonal;
-            this.guna2ShadowPanel2.Size = new System.Drawing.Size(480, 280);
+            this.guna2ShadowPanel2.Size = new System.Drawing.Size(480, 228);
             this.guna2ShadowPanel2.TabIndex = 1;
             // 
             // txtEmail
@@ -161,13 +159,13 @@
             this.txtEmail.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEmail.ForeColor = System.Drawing.Color.Black;
             this.txtEmail.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtEmail.Location = new System.Drawing.Point(129, 110);
+            this.txtEmail.Location = new System.Drawing.Point(36, 64);
             this.txtEmail.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.PasswordChar = '\0';
-            this.txtEmail.PlaceholderText = "";
+            this.txtEmail.PlaceholderText = "Email";
             this.txtEmail.SelectedText = "";
-            this.txtEmail.Size = new System.Drawing.Size(319, 35);
+            this.txtEmail.Size = new System.Drawing.Size(412, 35);
             this.txtEmail.TabIndex = 15;
             // 
             // txtLastname
@@ -184,13 +182,13 @@
             this.txtLastname.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtLastname.ForeColor = System.Drawing.Color.Black;
             this.txtLastname.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtLastname.Location = new System.Drawing.Point(129, 66);
+            this.txtLastname.Location = new System.Drawing.Point(244, 21);
             this.txtLastname.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtLastname.Name = "txtLastname";
             this.txtLastname.PasswordChar = '\0';
-            this.txtLastname.PlaceholderText = "";
+            this.txtLastname.PlaceholderText = "Lastname";
             this.txtLastname.SelectedText = "";
-            this.txtLastname.Size = new System.Drawing.Size(319, 35);
+            this.txtLastname.Size = new System.Drawing.Size(204, 35);
             this.txtLastname.TabIndex = 14;
             this.txtLastname.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLastname_KeyPress);
             // 
@@ -208,20 +206,20 @@
             this.txtFirstname.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtFirstname.ForeColor = System.Drawing.Color.Black;
             this.txtFirstname.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtFirstname.Location = new System.Drawing.Point(129, 21);
+            this.txtFirstname.Location = new System.Drawing.Point(36, 21);
             this.txtFirstname.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtFirstname.Name = "txtFirstname";
             this.txtFirstname.PasswordChar = '\0';
-            this.txtFirstname.PlaceholderText = "";
+            this.txtFirstname.PlaceholderText = "Firstname";
             this.txtFirstname.SelectedText = "";
-            this.txtFirstname.Size = new System.Drawing.Size(319, 35);
+            this.txtFirstname.Size = new System.Drawing.Size(204, 35);
             this.txtFirstname.TabIndex = 13;
             this.txtFirstname.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFirstname_KeyPress);
             // 
             // rtbBio
             // 
             this.rtbBio.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rtbBio.Location = new System.Drawing.Point(35, 180);
+            this.rtbBio.Location = new System.Drawing.Point(35, 133);
             this.rtbBio.Name = "rtbBio";
             this.rtbBio.Size = new System.Drawing.Size(413, 68);
             this.rtbBio.TabIndex = 4;
@@ -231,90 +229,107 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Poppins SemiBold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(30, 151);
+            this.label4.Location = new System.Drawing.Point(30, 104);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(40, 26);
             this.label4.TabIndex = 3;
             this.label4.Text = "Bio:";
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Poppins SemiBold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(31, 114);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(58, 26);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Email:";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Poppins SemiBold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(31, 70);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(92, 26);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Lastname:";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Poppins SemiBold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(30, 26);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(93, 26);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Firstname:";
-            // 
             // guna2ShadowPanel3
             // 
             this.guna2ShadowPanel3.BackColor = System.Drawing.Color.Transparent;
-            this.guna2ShadowPanel3.Controls.Add(this.txtPassword);
-            this.guna2ShadowPanel3.Controls.Add(this.label6);
+            this.guna2ShadowPanel3.Controls.Add(this.checkPass);
+            this.guna2ShadowPanel3.Controls.Add(this.txtConfirmPass);
+            this.guna2ShadowPanel3.Controls.Add(this.txtNewPass);
+            this.guna2ShadowPanel3.Controls.Add(this.txtCurrentPassword);
             this.guna2ShadowPanel3.FillColor = System.Drawing.Color.White;
-            this.guna2ShadowPanel3.Location = new System.Drawing.Point(277, 339);
+            this.guna2ShadowPanel3.Location = new System.Drawing.Point(277, 284);
             this.guna2ShadowPanel3.Name = "guna2ShadowPanel3";
             this.guna2ShadowPanel3.Radius = 10;
             this.guna2ShadowPanel3.ShadowColor = System.Drawing.Color.Black;
             this.guna2ShadowPanel3.ShadowDepth = 150;
             this.guna2ShadowPanel3.ShadowShift = 7;
             this.guna2ShadowPanel3.ShadowStyle = Guna.UI2.WinForms.Guna2ShadowPanel.ShadowMode.ForwardDiagonal;
-            this.guna2ShadowPanel3.Size = new System.Drawing.Size(480, 141);
+            this.guna2ShadowPanel3.Size = new System.Drawing.Size(480, 145);
             this.guna2ShadowPanel3.TabIndex = 2;
             // 
-            // txtPassword
+            // txtConfirmPass
             // 
-            this.txtPassword.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(123)))), ((int)(((byte)(47)))));
-            this.txtPassword.BorderRadius = 10;
-            this.txtPassword.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtPassword.DefaultText = "";
-            this.txtPassword.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtPassword.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtPassword.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtPassword.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtPassword.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtPassword.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPassword.ForeColor = System.Drawing.Color.Black;
-            this.txtPassword.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtPassword.Location = new System.Drawing.Point(129, 22);
-            this.txtPassword.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtPassword.Name = "txtPassword";
-            this.txtPassword.PasswordChar = '\0';
-            this.txtPassword.PlaceholderText = "Enter your Current Password";
-            this.txtPassword.SelectedText = "";
-            this.txtPassword.Size = new System.Drawing.Size(319, 35);
-            this.txtPassword.TabIndex = 19;
+            this.txtConfirmPass.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(123)))), ((int)(((byte)(47)))));
+            this.txtConfirmPass.BorderRadius = 10;
+            this.txtConfirmPass.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtConfirmPass.DefaultText = "";
+            this.txtConfirmPass.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtConfirmPass.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtConfirmPass.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtConfirmPass.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtConfirmPass.Enabled = false;
+            this.txtConfirmPass.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtConfirmPass.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtConfirmPass.ForeColor = System.Drawing.Color.Black;
+            this.txtConfirmPass.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtConfirmPass.Location = new System.Drawing.Point(240, 68);
+            this.txtConfirmPass.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtConfirmPass.Name = "txtConfirmPass";
+            this.txtConfirmPass.PasswordChar = '●';
+            this.txtConfirmPass.PlaceholderText = "Confirm Password";
+            this.txtConfirmPass.SelectedText = "";
+            this.txtConfirmPass.Size = new System.Drawing.Size(205, 35);
+            this.txtConfirmPass.TabIndex = 21;
+            this.txtConfirmPass.UseSystemPasswordChar = true;
+            this.txtConfirmPass.TextChanged += new System.EventHandler(this.txtConfirmPass_TextChanged);
             // 
-            // label6
+            // txtNewPass
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Poppins SemiBold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(31, 26);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(90, 26);
-            this.label6.TabIndex = 18;
-            this.label6.Text = "Password:";
+            this.txtNewPass.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(123)))), ((int)(((byte)(47)))));
+            this.txtNewPass.BorderRadius = 10;
+            this.txtNewPass.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtNewPass.DefaultText = "";
+            this.txtNewPass.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtNewPass.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtNewPass.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtNewPass.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtNewPass.Enabled = false;
+            this.txtNewPass.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtNewPass.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNewPass.ForeColor = System.Drawing.Color.Black;
+            this.txtNewPass.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtNewPass.Location = new System.Drawing.Point(33, 68);
+            this.txtNewPass.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtNewPass.Name = "txtNewPass";
+            this.txtNewPass.PasswordChar = '●';
+            this.txtNewPass.PlaceholderText = "New Password";
+            this.txtNewPass.SelectedText = "";
+            this.txtNewPass.Size = new System.Drawing.Size(204, 35);
+            this.txtNewPass.TabIndex = 20;
+            this.txtNewPass.UseSystemPasswordChar = true;
+            this.txtNewPass.TextChanged += new System.EventHandler(this.txtNewPass_TextChanged);
+            // 
+            // txtCurrentPassword
+            // 
+            this.txtCurrentPassword.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(123)))), ((int)(((byte)(47)))));
+            this.txtCurrentPassword.BorderRadius = 10;
+            this.txtCurrentPassword.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtCurrentPassword.DefaultText = "";
+            this.txtCurrentPassword.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtCurrentPassword.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtCurrentPassword.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtCurrentPassword.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtCurrentPassword.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtCurrentPassword.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCurrentPassword.ForeColor = System.Drawing.Color.Black;
+            this.txtCurrentPassword.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtCurrentPassword.Location = new System.Drawing.Point(33, 25);
+            this.txtCurrentPassword.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtCurrentPassword.Name = "txtCurrentPassword";
+            this.txtCurrentPassword.PasswordChar = '●';
+            this.txtCurrentPassword.PlaceholderText = "Enter your Current Password";
+            this.txtCurrentPassword.SelectedText = "";
+            this.txtCurrentPassword.Size = new System.Drawing.Size(412, 35);
+            this.txtCurrentPassword.TabIndex = 19;
+            this.txtCurrentPassword.UseSystemPasswordChar = true;
+            this.txtCurrentPassword.TextChanged += new System.EventHandler(this.txtCurrentPassword_TextChanged);
+            this.txtCurrentPassword.Validating += new System.ComponentModel.CancelEventHandler(this.txtCurrentPassword_Validating);
             // 
             // guna2Button1
             // 
@@ -326,7 +341,7 @@
             this.guna2Button1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(123)))), ((int)(((byte)(47)))));
             this.guna2Button1.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2Button1.ForeColor = System.Drawing.Color.White;
-            this.guna2Button1.Location = new System.Drawing.Point(22, 379);
+            this.guna2Button1.Location = new System.Drawing.Point(22, 334);
             this.guna2Button1.Name = "guna2Button1";
             this.guna2Button1.Size = new System.Drawing.Size(238, 45);
             this.guna2Button1.TabIndex = 3;
@@ -343,7 +358,7 @@
             this.guna2Button2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(4)))), ((int)(((byte)(45)))));
             this.guna2Button2.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2Button2.ForeColor = System.Drawing.Color.White;
-            this.guna2Button2.Location = new System.Drawing.Point(22, 429);
+            this.guna2Button2.Location = new System.Drawing.Point(22, 384);
             this.guna2Button2.Name = "guna2Button2";
             this.guna2Button2.Size = new System.Drawing.Size(238, 45);
             this.guna2Button2.TabIndex = 4;
@@ -353,11 +368,11 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Font = new System.Drawing.Font("Poppins SemiBold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.Black;
-            this.label7.Location = new System.Drawing.Point(16, 9);
+            this.label7.Location = new System.Drawing.Point(15, 9);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(287, 31);
+            this.label7.Size = new System.Drawing.Size(243, 37);
             this.label7.TabIndex = 6;
             this.label7.Text = "Update your Account";
             // 
@@ -367,13 +382,27 @@
             this.guna2AnimateWindow1.Interval = 50;
             this.guna2AnimateWindow1.TargetForm = this;
             // 
+            // errorProvider
+            // 
+            this.errorProvider.ContainerControl = this;
+            // 
+            // checkPass
+            // 
+            this.checkPass.AutoSize = true;
+            this.checkPass.Font = new System.Drawing.Font("Poppins SemiBold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkPass.ForeColor = System.Drawing.Color.Black;
+            this.checkPass.Location = new System.Drawing.Point(31, 107);
+            this.checkPass.Name = "checkPass";
+            this.checkPass.Size = new System.Drawing.Size(0, 26);
+            this.checkPass.TabIndex = 22;
+            // 
             // updateAcc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::ExpenseApp.Properties.Resources.profileBG;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(778, 505);
+            this.ClientSize = new System.Drawing.Size(778, 464);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.guna2Button2);
             this.Controls.Add(this.guna2Button1);
@@ -384,7 +413,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "updateAcc";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "updateAcc";
+            this.Text = " ";
             this.Load += new System.EventHandler(this.updateAcc_Load);
             this.guna2ShadowPanel1.ResumeLayout(false);
             this.guna2GradientPanel1.ResumeLayout(false);
@@ -393,6 +422,7 @@
             this.guna2ShadowPanel2.PerformLayout();
             this.guna2ShadowPanel3.ResumeLayout(false);
             this.guna2ShadowPanel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -409,17 +439,17 @@
         private Guna.UI2.WinForms.Guna2Button guna2Button3;
         private Guna.UI2.WinForms.Guna2PictureBox pbPic;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.RichTextBox rtbBio;
         private Guna.UI2.WinForms.Guna2TextBox txtEmail;
         private Guna.UI2.WinForms.Guna2TextBox txtLastname;
         private Guna.UI2.WinForms.Guna2TextBox txtFirstname;
-        private Guna.UI2.WinForms.Guna2TextBox txtPassword;
-        private System.Windows.Forms.Label label6;
+        private Guna.UI2.WinForms.Guna2TextBox txtCurrentPassword;
         private System.Windows.Forms.Label label7;
         private Guna.UI2.WinForms.Guna2GradientPanel guna2GradientPanel1;
         private Guna.UI2.WinForms.Guna2AnimateWindow guna2AnimateWindow1;
+        private Guna.UI2.WinForms.Guna2TextBox txtConfirmPass;
+        private Guna.UI2.WinForms.Guna2TextBox txtNewPass;
+        private System.Windows.Forms.ErrorProvider errorProvider;
+        private System.Windows.Forms.Label checkPass;
     }
 }

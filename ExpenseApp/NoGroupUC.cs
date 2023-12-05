@@ -30,6 +30,7 @@ namespace ExpenseApp
 
         private void btnCreate_Click(object sender, EventArgs e)
         {
+            
             createGroup cg = new createGroup();
             cg.ShowDialog();
         }

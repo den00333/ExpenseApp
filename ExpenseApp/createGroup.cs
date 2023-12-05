@@ -14,6 +14,7 @@ namespace ExpenseApp
     public partial class createGroup : Form
     {
         private string username = FirebaseData.Instance.Username;
+        
         public createGroup()
         {
             InitializeComponent();
@@ -50,12 +51,14 @@ namespace ExpenseApp
             {
                 await userDocRef.SetAsync(new Dictionary<string, object>
             {
-                {"Groups", new List<string> { groupName }}
+                {"Groups", new List<string> { groupCode }}
             });
             }
             else {
-                await userDocRef.UpdateAsync("Groups", FieldValue.ArrayUnion(groupName));
+                await userDocRef.UpdateAsync("Groups", FieldValue.ArrayUnion(groupCode));
             }
+             Home h = new Home();
+            h.checkGroupExists();
         }
         public string generateCode()
         {
@@ -112,7 +115,7 @@ namespace ExpenseApp
                             if (!userDocSnap.Exists){
                                 await userDocRef.SetAsync(new Dictionary<string, object>
                                 {
-                                    {"Groups", new List<string> { groupName }}
+                                    {"Groups", new List<string> { groupCode }}
                                 });
                                 MessageBox.Show("Successfully joined group!", "Success", MessageBoxButtons.OK);
                             }

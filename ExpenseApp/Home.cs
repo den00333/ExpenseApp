@@ -192,7 +192,7 @@ namespace ExpenseApp
                 lblFirstname.Text = "Hello, " + fd.FirstName + "!";
             }
         }
-        private async void checkGroupExists()
+        public async void checkGroupExists()
         {
             var db = otherFunc.FirestoreConn();
             CollectionReference userCollectionRef = db.Collection("Users");
