@@ -1183,7 +1183,7 @@ namespace ExpenseApp
         {
             otherFunc o = new otherFunc();
             DocumentSnapshot docsnap = await o.logInFunc(username);
-            
+
             if (docsnap.Exists)
             {
                 if (docsnap.ContainsField("Groups"))
@@ -1194,14 +1194,14 @@ namespace ExpenseApp
                 {
                     return new string[0];
                 }
-               
+
             }
             return null;
-
+        }
         public static String dateBeautifyForRE(String dateText, String period)
         {
             //Console.WriteLine($"date: {dateText} | period: {period}");
-            String toBeReturned = "";   
+            String toBeReturned = "";
             switch (period)
             {
                 case "Daily":
@@ -1210,16 +1210,14 @@ namespace ExpenseApp
                 case "Weekly":
                     String[] days = { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };
                     int ndays = int.Parse(dateText);
-                    toBeReturned = days[ndays-1];
-                    
+                    toBeReturned = days[ndays - 1];
+
                     break;
                 default:
                     toBeReturned = "error";
                     break;
             }
-
             return toBeReturned;
         }
-
     }
 }
