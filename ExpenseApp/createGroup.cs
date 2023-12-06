@@ -120,7 +120,7 @@ namespace ExpenseApp
                                 MessageBox.Show("Successfully joined group!", "Success", MessageBoxButtons.OK);
                             }
                             else{
-                                await userDocRef.UpdateAsync("Groups", FieldValue.ArrayUnion(groupName));
+                                await userDocRef.UpdateAsync("Groups", FieldValue.ArrayUnion(groupCode));
                                 MessageBox.Show("Successfully joined group!", "Success", MessageBoxButtons.OK);
                             }
                         }

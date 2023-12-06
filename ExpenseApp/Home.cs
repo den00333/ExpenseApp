@@ -19,6 +19,8 @@ namespace ExpenseApp
         string username;
         connectionForm cf;
         Timer timer1;
+        //private bool groupWallet = false;
+        //private bool soloWallet = false;
         public Home()
         {
             InitializeComponent();
@@ -92,6 +94,8 @@ namespace ExpenseApp
 
         private void btnWallet_Click(object sender, EventArgs e)
         {
+            //soloWallet = true;
+            //groupWallet = false;
             btnWallet.FillColor = SystemColors.Control;
             btnWallet.ForeColor = Color.Black;
             changeButtonColor(btnDashboard, btnAccount, btnGroup);
@@ -99,8 +103,16 @@ namespace ExpenseApp
 
             if (otherFunc.internetConn())
             {
+
                 wallet wallet = new wallet();
                 addUserControl(wallet);
+                AddExpensesForm adf = new AddExpensesForm(new wallet(), false, null, new group());
+                AddingBalanceForm abf = new AddingBalanceForm(wallet, false, null, new group());
+                
+                //adf.SetWalletValues(groupWallet, soloWallet);
+                //abf.SetWalletValues(groupWallet, soloWallet);
+
+
             }
             else
             {
@@ -111,6 +123,8 @@ namespace ExpenseApp
 
         private void btnGroup_Click(object sender, EventArgs e)
         {
+            //groupWallet = true;
+            //soloWallet = false;
             btnGroup.FillColor = SystemColors.Control;
             btnGroup.ForeColor = Color.Black;
             changeButtonColor(btnDashboard, btnAccount, btnWallet);
@@ -118,6 +132,11 @@ namespace ExpenseApp
             if (otherFunc.internetConn())
             {
                 checkGroupExists();
+                AddExpensesForm adf = new AddExpensesForm(new wallet(), true, null, new group());
+                AddingBalanceForm abf = new AddingBalanceForm(new wallet(), true, null, new group());
+                
+                //adf.SetWalletValues(groupWallet, soloWallet);
+                //abf.SetWalletValues(groupWallet, soloWallet);
             }
             else
             {
