@@ -111,6 +111,7 @@ namespace ExpenseApp
                     bool hasExistingAcc = await otherFunc.checkLog(userN);
                     otherFunc.RecordLogs(userN, hasExistingAcc, true);
                     otherFunc.CheckAccountStatus(username);
+                    otherFunc.updateAllGoals();
                     home.Show();
                 }
                 else

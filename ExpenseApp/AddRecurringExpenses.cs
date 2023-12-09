@@ -50,7 +50,7 @@ namespace ExpenseApp
                     lblDate.Hide();
                     txtSetDate.Enabled = true;
                     dtpDate.Enabled = false;
-                    txtSetDate.PlaceholderText = "Choose from 1 to 30";
+                    txtSetDate.PlaceholderText = "Choose from 1 to 31";
                     //day = txtSetDate.Text;
                     break;
                 case "Quarterly":
@@ -72,6 +72,49 @@ namespace ExpenseApp
 
         }
 
+        public static String calculateTargetDate(String period, DateTime TargetDate, int nDays, int desiredDay)
+        {
+            DateTime currentDate = DateTime.Now;
+            DateTime newDate = DateTime.Now;
+            String d = "";
+            switch (period)
+            {
+                case "Daily":
+                    newDate = currentDate.AddDays(1);
+                    d = newDate.ToString("yyyy-MM-dd");
+                    break;
+                case "Weekly":
+                    newDate = currentDate.AddDays(nDays);
+                    d = newDate.ToString("yyyy-MM-dd");
+                    break;
+                case "Monthly":
+                    DateTime NextMonth = currentDate.AddMonths(1);
+                    NextMonth = new DateTime(NextMonth.Year, NextMonth.Month, NextMonth.Day);
+
+                    int lastDayOfMonth = DateTime.DaysInMonth(NextMonth.Year, NextMonth.Month);
+                    if (desiredDay > lastDayOfMonth)
+                    {
+                        desiredDay = lastDayOfMonth;
+                        NextMonth = new DateTime(NextMonth.Year, NextMonth.Month, desiredDay);
+                        
+                    }
+                    d = NextMonth.ToString("yyyy-MM-dd");
+                    break;
+                case "Quarterly":
+                    DateTime NextFourMonth = currentDate.AddMonths(3);
+                    NextFourMonth = new DateTime(NextFourMonth.Year, NextFourMonth.Month, NextFourMonth.Day);
+                    d = NextFourMonth.ToString("yyyy-MM-dd");
+                    break;
+                case "Annually":
+                    DateTime NextYear = currentDate.AddMonths(12);
+                    NextYear = new DateTime(NextYear.Year, NextYear.Month, NextYear.Day);
+                    d = NextYear.ToString("yyyy-MM-dd");
+                    break;
+
+            }
+            return d;
+        }
+
         private String save(String period, String day, DateTime dt)
         {
             String username = FirebaseData.Instance.Username;
@@ -82,6 +125,10 @@ namespace ExpenseApp
             bool flag = true;
             data.Add("Title", txtTitle.Text.ToString().Trim());
             data.Add("timestamp", FieldValue.ServerTimestamp);
+            //
+            String dateStr = calculateTargetDate(period,dt,nday, nday);
+            data.Add("TargetDate", dateStr);
+            //
             switch (period)
             {
                 case "Daily":
