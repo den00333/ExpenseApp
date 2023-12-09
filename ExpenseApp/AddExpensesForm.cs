@@ -138,53 +138,6 @@ namespace ExpenseApp
                 MessageBox.Show("No Internet Connection!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        private async void updateUserExpenses()
-        {
-            otherFunc o = new otherFunc();
-            String user = FirebaseData.Instance.Username;
-            bool hasInternet = otherFunc.internetConn();
-            if (hasInternet)
-            {
-                try
-                {
-                    Save();
-                    //arr[0] is the total and arr[1] is the negativetotal
-                    float[] arrNum = await o.SubtractExpensesFromWalletExpenses(user);
-                    if (arrNum[1] != 0)
-                    {
-                        otherFunc.setShort(arrNum[1], user);
-                        w.lblExpenses.Text = otherFunc.amountBeautify(arrNum[0]);
-                        float newNegativeVal = arrNum[1] + await otherFunc.getShort(user);
-                        otherFunc.setShort(newNegativeVal, user);
-                        DocumentReference dRef = await o.SavingWalletAmount(user, "Balance");
-                        float currentWalletAmount = await o.getWalletAmount(dRef);
-                        float newBalance = currentWalletAmount + arrNum[1];
-                        Dictionary<String, object> data = new Dictionary<String, object>
-                        {
-                            {"Amount", newBalance}
-                        };
-
-                        await dRef.UpdateAsync(data);
-                        otherFunc.setNewWalletAmount(user, "Balance", newBalance);
-                        w.lblBalance.Text = otherFunc.amountBeautify(newBalance);
-                        w.lblShort.Text = otherFunc.amountBeautify(newNegativeVal);
-                        w.lblShort.ForeColor = System.Drawing.Color.Red;
-                    }
-                    else
-                    {
-                        w.lblExpenses.Text = otherFunc.amountBeautify(arrNum[0]);
-                    }
-                }
-                catch
-                {
-                    MessageBox.Show("Error occured during saving!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-            else
-            {
-                MessageBox.Show("No Internet Connection!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
         private async Task saveGroupExpenses()
         {
             Console.WriteLine($"start save group0:-{myGroup}");
@@ -241,6 +194,53 @@ namespace ExpenseApp
             else
             {
                 MessageBox.Show("Something is missing", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+        private async void updateUserExpenses()
+        {
+            otherFunc o = new otherFunc();
+            String user = FirebaseData.Instance.Username;
+            bool hasInternet = otherFunc.internetConn();
+            if (hasInternet)
+            {
+                try
+                {
+                    Save();
+                    //arr[0] is the total and arr[1] is the negativetotal
+                    float[] arrNum = await o.SubtractExpensesFromWalletExpenses(user);
+                    if (arrNum[1] != 0)
+                    {
+                        otherFunc.setShort(arrNum[1], user);
+                        w.lblExpenses.Text = otherFunc.amountBeautify(arrNum[0]);
+                        float newNegativeVal = arrNum[1] + await otherFunc.getShort(user);
+                        otherFunc.setShort(newNegativeVal, user);
+                        DocumentReference dRef = await o.SavingWalletAmount(user, "Balance");
+                        float currentWalletAmount = await o.getWalletAmount(dRef);
+                        float newBalance = currentWalletAmount + arrNum[1];
+                        Dictionary<String, object> data = new Dictionary<String, object>
+                        {
+                            {"Amount", newBalance}
+                        };
+
+                        await dRef.UpdateAsync(data);
+                        otherFunc.setNewWalletAmount(user, "Balance", newBalance);
+                        w.lblBalance.Text = otherFunc.amountBeautify(newBalance);
+                        w.lblShort.Text = otherFunc.amountBeautify(newNegativeVal);
+                        w.lblShort.ForeColor = System.Drawing.Color.Red;
+                    }
+                    else
+                    {
+                        w.lblExpenses.Text = otherFunc.amountBeautify(arrNum[0]);
+                    }
+                }
+                catch
+                {
+                    MessageBox.Show("Error occured during saving!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show("No Internet Connection!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         private async void Save()
