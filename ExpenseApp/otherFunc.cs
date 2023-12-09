@@ -1516,5 +1516,17 @@ namespace ExpenseApp
             }
             return toBeReturned;
         }
+        public async Task<string[]> getMembers(string groupCode)
+        {
+            var db = otherFunc.FirestoreConn();
+            DocumentReference docref = db.Collection("Groups").Document(groupCode);
+            DocumentSnapshot docsnap = await docref.GetSnapshotAsync();
+
+            if(docsnap.Exists)
+            {
+                return docsnap.GetValue<string[]>("Members");
+            }
+            return null;
+        }
     }
 }

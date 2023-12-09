@@ -64,6 +64,8 @@ namespace ExpenseApp
                     //string[] members = docsnap.GetValue<string[]>("Members");
                     //int totalMembers = members.Count();
 
+                    lblGN.Text = groupN;
+
                     Guna2GradientPanel pnl = new Guna2GradientPanel();
                     pnl.Size = new Size(195, 52);
                     pnl.BorderRadius = 13;
@@ -100,6 +102,8 @@ namespace ExpenseApp
             AddExpensesForm adf = new AddExpensesForm(new wallet(), true, groupCode, this);
             Console.WriteLine(groupCode);
             loadWalletGroup();
+            flpMembers.Controls.Clear();
+            displayMembers(groupCode);
         }
 
         private void btnAddMoney_Click(object sender, EventArgs e)
@@ -133,6 +137,40 @@ namespace ExpenseApp
             else
             {
                 lblShort.Text = "";
+            }
+        }
+        public async void displayMembers(string groupCode)
+        {
+            Console.WriteLine(groupCode);
+            otherFunc o = new otherFunc();
+            string[] members = await o.getMembers(groupCode);
+            foreach (string member in members)
+            {
+                Console.WriteLine(member);
+                var db = otherFunc.FirestoreConn();
+                DocumentReference docref = db.Collection("Users").Document(member);
+                DocumentSnapshot docsnap = await docref.GetSnapshotAsync();
+
+                if (docsnap.Exists)
+                {
+                    FirebaseData fd = docsnap.ConvertTo<FirebaseData>();
+                    string firstname = fd.FirstName;
+                    string lastname = fd.LastName;
+
+                    Panel pnl = new Panel();
+                    pnl.Size = new Size(229, 40);
+
+                    System.Windows.Forms.Label lblname = new System.Windows.Forms.Label();
+                    lblname.Font = new Font("Poppins", 9.75f, FontStyle.Bold);
+                    lblname.BackColor = Color.Transparent;
+                    lblname.Size = new Size(185, 19);
+                    lblname.Location = new Point(35, 9);
+                    lblname.ForeColor = Color.Black;
+                    lblname.Text = firstname + " " + lastname;
+
+                    pnl.Controls.Add(lblname);
+                    flpMembers.Controls.Add(pnl);
+                }
             }
         }
     }
