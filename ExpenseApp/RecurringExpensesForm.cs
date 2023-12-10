@@ -36,6 +36,7 @@ namespace ExpenseApp
                 {
                     String title = dsnap.GetValue<String>("Title");
                     String[] date = dsnap.GetValue<String>("Date").Split('|');
+                    String target = dsnap.GetValue<String>("TargetDate");
 
                     Guna2GradientPanel pnl = new Guna2GradientPanel();
                     pnl.Size = new Size(329, 92);
@@ -68,11 +69,21 @@ namespace ExpenseApp
                     lblDate.Location = new Point(170, 22);
                     lblDate.ForeColor = Color.FromArgb(187, 141, 228);
                     String nameDay = otherFunc.dateBeautifyForRE(date[0], date[1]);
-                    lblDate.Text = "Every: "+nameDay;
+                    
+                    lblDate.Text = nameDay;
+
+                    System.Windows.Forms.Label lblTarget = new System.Windows.Forms.Label();
+                    lblTarget.Font = new Font("Poppins", 11f, FontStyle.Bold | FontStyle.Regular);
+                    lblTarget.BackColor = Color.Transparent;
+                    lblTarget.Size = new Size(200, 22);
+                    lblTarget.Location = new Point(170, 50);
+                    lblTarget.ForeColor = Color.FromArgb(187, 141, 228);
+                    lblTarget.Text = target;
 
                     pnl.Controls.Add(lblTitle);
                     pnl.Controls.Add(lblPeriod);
                     pnl.Controls.Add(lblDate);
+                    pnl.Controls.Add(lblTarget);
                     flpRE.Controls.Add(pnl);
                 }
             }

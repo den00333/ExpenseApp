@@ -93,22 +93,47 @@ namespace ExpenseApp
             otherFunc o = new otherFunc();
             List<(string DocName, DocumentSnapshot DocSnapshot)> documentData = await o.getGoalsWithDocNames(username);
             //dgvExpenses.Rows.Clear();
+            int r = 0;
+            int g = 0;
+            int b = 0;
             foreach ((string docName, DocumentSnapshot docsnap) in documentData)
             {
                 float am = docsnap.GetValue<float>("Amount");
                 String d = docsnap.GetValue<String>("GoalDate");
+                String status = docsnap.GetValue<String>("Status");
                 if (docsnap.Exists)
                 {
                     string docname = docName;
                     float amount = am;
                     string date = d.ToString();
+                    
 
                     Guna2GradientPanel pnl = new Guna2GradientPanel();
                     pnl.Size = new Size(329, 92);
                     pnl.BackColor = Color.Transparent;
                     pnl.BorderThickness = 2;
                     pnl.BorderStyle = DashStyle.Solid;
-                    pnl.BorderColor = Color.FromArgb(187, 141, 228);
+
+                    if (status.Equals("Ongoing"))
+                    {
+                        r = 187;
+                        g = 141;
+                        b = 228;
+                    }
+                    else if(status.Equals("Achieved"))
+                    {
+                        r = 139;
+                        g = 237;
+                        b = 19;
+                    }
+                    else
+                    {
+                        pnl.BorderColor = Color.FromArgb(217, 28, 28);
+                        r = 217;
+                        g = 28;
+                        b = 28;
+                    }
+                    pnl.BorderColor = Color.FromArgb(r, g, b);
                     pnl.BorderRadius = 13;
 
                     System.Windows.Forms.Label lblDocname = new System.Windows.Forms.Label();
@@ -116,7 +141,7 @@ namespace ExpenseApp
                     lblDocname.BackColor = Color.Transparent;
                     lblDocname.Size = new Size(100, 24);
                     lblDocname.Location = new Point(23, 22);
-                    lblDocname.ForeColor = Color.FromArgb(187, 141, 228);
+                    lblDocname.ForeColor = Color.FromArgb(r, g, b);
                     lblDocname.Text = docname;
 
                     System.Windows.Forms.Label lblAmount = new System.Windows.Forms.Label();
@@ -124,7 +149,7 @@ namespace ExpenseApp
                     lblAmount.BackColor = Color.Transparent;
                     lblAmount.Size = new Size(113, 24);
                     lblAmount.Location = new Point(193, 22);
-                    lblAmount.ForeColor = Color.FromArgb(187, 141, 228);
+                    lblAmount.ForeColor = Color.FromArgb(r, g, b);
                     lblAmount.Text = otherFunc.amountBeautify(amount);
 
                     System.Windows.Forms.Label lblDate = new System.Windows.Forms.Label();
@@ -132,7 +157,7 @@ namespace ExpenseApp
                     lblDate.BackColor = Color.Transparent;
                     lblDate.Size = new Size(140, 20);
                     lblDate.Location = new Point(23, 49);
-                    lblDate.ForeColor = Color.FromArgb(187, 141, 228);
+                    lblDate.ForeColor = Color.FromArgb(r, g, b);
                     lblDate.Text = date;
 
                     pnl.DoubleClick += (sender, e) => PnlGoals_DoubleClick(sender, e, docname);

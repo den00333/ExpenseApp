@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace ExpenseApp
 {
@@ -49,7 +50,7 @@ namespace ExpenseApp
         {
 
         }
-
+        public int flag { get; set; }
         public async void displaySuggestions(String title)
         {
             String username = FirebaseData.Instance.Username;
@@ -66,11 +67,11 @@ namespace ExpenseApp
 
             double daysFromStart = await otherFunc.dateCurrentMinusStart(username, title);
             double currentSavingsRate = daysFromStart != 0 ? currentSavings / daysFromStart : 0;
-            Console.WriteLine($"dailySavings: {daily_savings} and currentSavingsRate: {currentSavingsRate}");
-            Console.WriteLine($"daysToGOal: {daysToGoal} -    - daysFromStart: {daysFromStart}");
+            //Console.WriteLine($"dailySavings: {daily_savings} and currentSavingsRate: {currentSavingsRate}");
+            //Console.WriteLine($"daysToGOal: {daysToGoal} -    - daysFromStart: {daysFromStart}");
             if (currentSavings >= goalAmount)
             {
-                rtbSuggestion.Text = "Goal has beena achieved";
+                rtbSuggestion.Text = "Goal has been achieved";
             }
             else
             {
@@ -83,6 +84,34 @@ namespace ExpenseApp
                     rtbSuggestion.Text = "increase your savings or reduce your expenses";
                 }
             }
+
         }
+
+        public async Task<int> checkSuggestion(String title)
+        {
+            int suggestionCode = 0;
+            String username = FirebaseData.Instance.Username;
+            double currentSavings = await otherFunc.getCurrentSavings(username, title);
+            double goalAmount = await otherFunc.getGoalAmount(username, title);
+
+            double requiredSavings = goalAmount - currentSavings;
+            Console.WriteLine($"{goalAmount} - {currentSavings} = {requiredSavings}");
+
+            double daysToGoal = requiredSavings / await otherFunc.dateTargetMinusCurrent(username, title);
+            double daily_savings = daysToGoal != 0 ? requiredSavings / daysToGoal : 0;
+
+            double daysFromStart = await otherFunc.dateCurrentMinusStart(username, title);
+            double currentSavingsRate = daysFromStart != 0 ? currentSavings / daysFromStart : 0;
+            //Console.WriteLine($"40404dailySavings: {daily_savings} and currentSavingsRate: {currentSavingsRate}");
+            //Console.WriteLine($"40404daysToGOal: {daysToGoal} -    - daysFromStart: {daysFromStart}");
+            Console.WriteLine($"CurrentSavings: {currentSavings} -  -   goalAmount: {goalAmount}");
+            if (currentSavings >= goalAmount)
+            {
+                suggestionCode = 1;
+            }
+            Console.WriteLine($"code: {suggestionCode}");
+            return suggestionCode;
+        }
+
     }
 }

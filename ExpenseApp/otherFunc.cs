@@ -471,10 +471,11 @@ namespace ExpenseApp
                     {"GoalDate", goalDate},
                     {"Description", desc},
                     {"timestamp", FieldValue.ServerTimestamp},
-                    {"Percentage", 0}
+                    {"Percentage", 0},
+                    {"Status", "Ongoing"}
                 };
                 await docRef.SetAsync(data);
-                updatePercentagePerGoal(username);
+                await updatePercentagePerGoal(username);
                 return "Successfully Added!";
             }
             else
@@ -1050,6 +1051,43 @@ namespace ExpenseApp
             }
         }
 
+        public static int dateDifference(String GoalDate)
+        {
+            DateTime targetDate = DateTime.ParseExact(GoalDate, "yyyy-MM-dd", null);
+            DateTime currentDate = DateTime.Now;
+            int remainingDays = (int)(targetDate - currentDate).TotalDays;
+            return remainingDays;
+        }
+        public async static void updateAllGoals()
+        {
+            GoalDetails GD = new GoalDetails(new wallet());
+            String username = FirebaseData.Instance.Username;
+            CollectionReference colRef = editInsideUser(username).Collection("Goals");
+            QuerySnapshot qsnap = await colRef.GetSnapshotAsync();
+            foreach (DocumentSnapshot dsnap in qsnap.Documents)
+            {
+                String docTitle = dsnap.Id;
+                String goalDate = dsnap.GetValue<String>("GoalDate");
+                int remainingDays = dateDifference(goalDate);
+                if(remainingDays <= 0)
+                {
+                    DocumentReference dRef = dsnap.Reference;
+                    Dictionary<String, object> data = new Dictionary<String, object>();
+                    int code = await GD.checkSuggestion(docTitle);
+                    if(code == 1)
+                    {
+                        data.Add("Status", "Achieved");
+                    }
+                    else
+                    {
+                        data.Add("Status", "Failed");
+                    }
+                    await dRef.UpdateAsync(data);
+                }
+            }
+
+        }
+
         public async Task<List<(string DocName, DocumentSnapshot DocSnapshot)>> getGoalsWithDocNames(String username)
         {
             CollectionReference colRef = editInsideUser(username).Collection("Goals");
@@ -1406,7 +1444,7 @@ namespace ExpenseApp
 
         }
 
-        public static async void updatePercentagePerGoal(String username)
+        public static async Task updatePercentagePerGoal(String username)
         {
             double totalAmount = await getTotalGoalAmount(username);
             CollectionReference colRef = editInsideUser(username).Collection("Goals");
@@ -1431,7 +1469,6 @@ namespace ExpenseApp
             DocumentReference docRef = editInsideUser(username).Collection("Goals").Document(titleGoal);
             DocumentSnapshot dSnap = await docRef.GetSnapshotAsync();
             double percentage = dSnap.GetValue<double>("Percentage");
-
             DocumentReference docRefWallet = editInsideUser(username).Collection("Wallets").Document("Balance");
             DocumentSnapshot dSnapWallet = await docRefWallet.GetSnapshotAsync();
             double amountWallet = dSnapWallet.GetValue<double>("Amount");
@@ -1502,16 +1539,34 @@ namespace ExpenseApp
             switch (period)
             {
                 case "Daily":
-                    toBeReturned = "Day";
+                    toBeReturned = "Everyday";
                     break;
                 case "Weekly":
                     String[] days = { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };
                     int ndays = int.Parse(dateText);
-                    toBeReturned = days[ndays - 1];
+                    toBeReturned = "Every " + days[ndays - 1];
 
                     break;
+                case "Monthly":
+                    char[] dayCA = dateText.ToCharArray();
+                    if (dayCA[dayCA.Length-1] == '1')
+                    {
+                        toBeReturned = dateText + "st";
+                    } else if(dayCA[dayCA.Length - 1] == '2')
+                    {
+                        toBeReturned = dateText + "nd";
+                    }
+                    else if (dayCA[dayCA.Length - 1] == '3')
+                    {
+                        toBeReturned = dateText + "rd";
+                    }
+                    else
+                    {
+                        toBeReturned = dateText + "th";
+                    }
+                    break;
                 default:
-                    toBeReturned = "error";
+                    toBeReturned = "";
                     break;
             }
             return toBeReturned;

@@ -40,6 +40,7 @@ namespace ExpenseApp
             String title = txtTitle.Text.ToString();
             String desc = richTxtDesc.Text.ToString();
             String res = await otherFunc.addNewGoal(username,gd, amount, title, desc);
+            otherFunc.updateAllGoals();
             //if (!w.flagGoal)
             //{
             //    w.displayGoals();
