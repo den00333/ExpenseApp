@@ -231,6 +231,7 @@ namespace ExpenseApp
         private void btnAddGoal_Click(object sender, EventArgs e)
         {
             AddGoals addGoal = new AddGoals(new wallet(), true, groupCode, this);
+            addGoal.StartPosition = FormStartPosition.CenterScreen;
             addGoal.ShowDialog();
         }
         public async void displayData()

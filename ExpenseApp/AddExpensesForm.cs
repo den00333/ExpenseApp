@@ -175,8 +175,8 @@ namespace ExpenseApp
                             dtpDate.Value = DateTime.Now;
                             txtLocation.Clear();
                             richTxtDesc.Clear();
-                            w.flpExpenses.Controls.Clear();
-                            w.displayData();
+                            g.flpExpenses.Controls.Clear();
+                            g.displayData();
                             this.DialogResult = DialogResult.OK;
                             this.Hide();
                         }

@@ -168,6 +168,7 @@ namespace ExpenseApp
         public static DocumentReference editInsideGroup(String groupCode)
         {
             var db = FirestoreConn();
+            Console.WriteLine($"EDITINSIDEGROUP: {groupCode}");
             DocumentReference docRef = db.Collection("Groups").Document(groupCode);
             return docRef;
         }

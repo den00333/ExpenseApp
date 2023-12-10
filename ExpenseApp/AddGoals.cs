@@ -61,6 +61,13 @@ namespace ExpenseApp
             String res = await otherFunc.addNewGroupGoal(myGroup, gd, amount, title, desc, username);
             otherFunc.updateAllGroupGoals(myGroup);
             DialogResult r = MessageBox.Show(res, "Response", MessageBoxButtons.OK);
+
+            if (res.Equals("Successfully Added!"))
+            {
+                g.flpGoals.Controls.Clear();
+                g.displayGoals();
+            }
+
             if (r == DialogResult.OK)
             {
                 if (res.Equals("Successfully Added!"))
@@ -69,8 +76,6 @@ namespace ExpenseApp
                     txtAmount.Clear();
                     txtTitle.Clear();
                     richTxtDesc.Clear();
-                    g.flpGoals.Controls.Clear();
-                    //g.displayGoals();
                 }
                 else
                 {
