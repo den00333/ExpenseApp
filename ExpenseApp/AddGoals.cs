@@ -58,7 +58,7 @@ namespace ExpenseApp
             float amount = float.Parse(txtAmount.Text);
             String title = txtTitle.Text.ToString();
             String desc = richTxtDesc.Text.ToString();
-            String res = await otherFunc.addNewGroupGoal(myGroup, gd, amount, title, desc);
+            String res = await otherFunc.addNewGroupGoal(myGroup, gd, amount, title, desc, username);
             otherFunc.updateAllGroupGoals(myGroup);
             DialogResult r = MessageBox.Show(res, "Response", MessageBoxButtons.OK);
             if (r == DialogResult.OK)

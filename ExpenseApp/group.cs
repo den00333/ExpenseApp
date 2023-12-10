@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -140,6 +141,10 @@ namespace ExpenseApp
             loadWalletGroup();
             flpMembers.Controls.Clear();
             displayMembers(groupCode);
+            flpExpenses.Controls.Clear();
+            displayData();
+            flpGoals.Controls.Clear();
+            displayGoals();
         }
 
         private void btnAddMoney_Click(object sender, EventArgs e)
@@ -227,6 +232,182 @@ namespace ExpenseApp
         {
             AddGoals addGoal = new AddGoals(new wallet(), true, groupCode, this);
             addGoal.ShowDialog();
+        }
+        public async void displayData()
+        {
+            otherFunc o = new otherFunc();
+            List<(string DocName, DocumentSnapshot DocSnapshot)> documentData = await o.displayDataWithDocNamesGroup(groupCode);
+
+            //dgvExpenses.Rows.Clear();
+
+            foreach ((string docName, DocumentSnapshot docsnap) in documentData)
+            {
+                FirebaseData fd = docsnap.ConvertTo<FirebaseData>();
+                if (docsnap.Exists)
+                {
+                    string dn = docName;
+                    string creator = fd.Creator;
+                    string category = fd.Category;
+                    string amount = fd.Amount.ToString();
+                    string date = fd.Date.ToString();
+
+                    Guna2GradientPanel pnl = new Guna2GradientPanel();
+                    pnl.Size = new Size(440, 106);
+                    pnl.BackColor = Color.Transparent;
+                    pnl.BorderThickness = 2;
+                    pnl.BorderStyle = DashStyle.Solid;
+                    pnl.BorderColor = Color.FromArgb(83, 123, 47);
+                    pnl.BorderRadius = 20;
+
+                    System.Windows.Forms.Label lblCat = new System.Windows.Forms.Label();
+                    lblCat.Font = new Font("Poppins", 11.25f, FontStyle.Bold | FontStyle.Regular);
+                    lblCat.BackColor = Color.Transparent;
+                    lblCat.Size = new Size(220, 37);
+                    lblCat.Location = new Point(37, 19);
+                    lblCat.ForeColor = Color.FromArgb(83, 123, 47);
+                    lblCat.Text = category;
+
+                    System.Windows.Forms.Label lblAmount = new System.Windows.Forms.Label();
+                    lblAmount.Font = new Font("Poppins", 11.25f, FontStyle.Bold | FontStyle.Regular);
+                    lblAmount.BackColor = Color.Transparent;
+                    lblAmount.Size = new Size(220, 37);
+                    lblAmount.Location = new Point(302, 19);
+                    lblAmount.ForeColor = Color.FromArgb(83, 123, 47);
+                    lblAmount.Text = "₱" + amount;
+
+                    System.Windows.Forms.Label lblcreator = new System.Windows.Forms.Label();
+                    lblcreator.Font = new Font("Poppins", 9.75f, FontStyle.Regular);
+                    lblcreator.BackColor = Color.Transparent;
+                    lblcreator.Size = new Size(276, 37);
+                    lblcreator.Location = new Point(37, 52);
+                    lblcreator.ForeColor = Color.FromArgb(83, 123, 47);
+                    lblcreator.Text = "Added By: " + await o.getFirstname(creator);
+
+                    System.Windows.Forms.Label lblDate = new System.Windows.Forms.Label();
+                    lblDate.Font = new Font("Poppins", 9.75f, FontStyle.Regular);
+                    lblDate.BackColor = Color.Transparent;
+                    lblDate.Size = new Size(220, 37);
+                    lblDate.Location = new Point(302, 52);
+                    lblDate.ForeColor = Color.FromArgb(83, 123, 47);
+                    lblDate.Text = date;
+
+                    pnl.DoubleClick += (sender, e) => PnlExpenses_DoubleClick(sender, e, dn);
+
+                    pnl.Controls.Add(lblCat);
+                    pnl.Controls.Add(lblAmount);
+                    pnl.Controls.Add(lblcreator);
+                    pnl.Controls.Add(lblDate);
+                    flpExpenses.Controls.Add(pnl);
+                }
+            }
+        }
+        public async void PnlExpenses_DoubleClick(object sender, EventArgs e, string dn)
+        {
+            otherFunc function = new otherFunc();
+            string expenseId = dn;
+            Dictionary<string, object> data = await function.getItemsInsideExpenseIdGroup(username, expenseId);
+
+            ExpenseDetailForm edf = new ExpenseDetailForm();
+            edf.displayExpenseDetails(data);
+            edf.StartPosition = FormStartPosition.Manual;
+            int x = Screen.PrimaryScreen.WorkingArea.Right - edf.Width;
+            int y = Screen.PrimaryScreen.WorkingArea.Top + (Screen.PrimaryScreen.WorkingArea.Height - edf.Height) / 2;
+            edf.Location = new Point(x, y);
+            edf.ShowDialog();
+        }
+        public async void displayGoals()
+        {
+            otherFunc o = new otherFunc();
+            List<(string DocName, DocumentSnapshot DocSnapshot)> documentData = await o.getGoalsWithDocNamesGroup(groupCode);
+            //dgvExpenses.Rows.Clear();
+            int r = 0;
+            int g = 0;
+            int b = 0;
+            foreach ((string docName, DocumentSnapshot docsnap) in documentData)
+            {
+                float am = docsnap.GetValue<float>("Amount");
+                String d = docsnap.GetValue<String>("GoalDate");
+                String status = docsnap.GetValue<String>("Status");
+                string c = docsnap.GetValue<String>("Creator");
+                if (docsnap.Exists)
+                {
+                    string docname = docName;
+                    float amount = am;
+                    string date = d.ToString();
+                    string creator = c;
+
+
+                    Guna2GradientPanel pnl = new Guna2GradientPanel();
+                    pnl.Size = new Size(306, 107);
+                    pnl.BackColor = Color.Transparent;
+                    pnl.BorderThickness = 2;
+                    pnl.BorderStyle = DashStyle.Solid;
+
+                    if (status.Equals("Ongoing"))
+                    {
+                        r = 187;
+                        g = 141;
+                        b = 228;
+                    }
+                    else if (status.Equals("Achieved"))
+                    {
+                        r = 139;
+                        g = 237;
+                        b = 19;
+                    }
+                    else
+                    {
+                        pnl.BorderColor = Color.FromArgb(217, 28, 28);
+                        r = 217;
+                        g = 28;
+                        b = 28;
+                    }
+                    pnl.BorderColor = Color.FromArgb(r, g, b);
+                    pnl.BorderRadius = 13;
+
+                    System.Windows.Forms.Label lblDocname = new System.Windows.Forms.Label();
+                    lblDocname.Font = new Font("Poppins", 9.75f, FontStyle.Bold | FontStyle.Regular);
+                    lblDocname.BackColor = Color.Transparent;
+                    lblDocname.Size = new Size(180, 24);
+                    lblDocname.Location = new Point(23, 22);
+                    lblDocname.ForeColor = Color.FromArgb(r, g, b);
+                    lblDocname.Text = "Added By: "+ await o.getFirstname(creator);
+
+                    System.Windows.Forms.Label lblAmount = new System.Windows.Forms.Label();
+                    lblAmount.Font = new Font("Poppins", 9.75f, FontStyle.Bold | FontStyle.Regular);
+                    lblAmount.BackColor = Color.Transparent;
+                    lblAmount.Size = new Size(113, 24);
+                    lblAmount.Location = new Point(188, 22);
+                    lblAmount.ForeColor = Color.FromArgb(r, g, b);
+                    lblAmount.Text = otherFunc.amountBeautify(amount);
+
+                    System.Windows.Forms.Label lblDate = new System.Windows.Forms.Label();
+                    lblDate.Font = new Font("Poppins", 9.75f, FontStyle.Bold | FontStyle.Regular);
+                    lblDate.BackColor = Color.Transparent;
+                    lblDate.Size = new Size(140, 20);
+                    lblDate.Location = new Point(23, 49);
+                    lblDate.ForeColor = Color.FromArgb(r, g, b);
+                    lblDate.Text = date;
+
+                    pnl.DoubleClick += (sender, e) => PnlGoals_DoubleClick(sender, e, docname);
+
+                    pnl.Controls.Add(lblDocname);
+                    pnl.Controls.Add(lblAmount);
+                    pnl.Controls.Add(lblDate);
+                    flpGoals.Controls.Add(pnl);
+                }
+            }
+        }
+        public async void PnlGoals_DoubleClick(object sender, EventArgs e, string dn)
+        {
+            otherFunc function = new otherFunc();
+            string goalId = dn;
+            Dictionary<string, object> data = await function.getItemsInsideGoalsID(username, goalId);
+            GoalDetails gd = new GoalDetails(new wallet(), this); ;
+            gd.displayGoalDetails(data, goalId);
+            gd.displaySuggestions(goalId);
+            gd.StartPosition = FormStartPosition.CenterScreen;
+            gd.ShowDialog();
         }
     }
 }

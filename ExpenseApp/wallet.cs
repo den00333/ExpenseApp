@@ -174,7 +174,7 @@ namespace ExpenseApp
             otherFunc function = new otherFunc();
             string goalId = dn;
             Dictionary<string, object> data = await function.getItemsInsideGoalsID(username, goalId);
-            GoalDetails gd = new GoalDetails(this);
+            GoalDetails gd = new GoalDetails(this, new group());
             gd.displayGoalDetails(data, goalId);
             gd.displaySuggestions(goalId);
             gd.StartPosition = FormStartPosition.CenterScreen;

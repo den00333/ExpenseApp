@@ -14,10 +14,12 @@ namespace ExpenseApp
     public partial class GoalDetails : Form
     {
         wallet w;
-        public GoalDetails(wallet wal)
+        group group;
+        public GoalDetails(wallet wal, group g)
         {
             InitializeComponent();
             this.w = wal;
+            this.group = g;
         }
 
         public void displayGoalDetails(Dictionary<string, object> data, String title)

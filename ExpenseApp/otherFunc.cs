@@ -35,6 +35,7 @@ using System.Diagnostics;
 using System.Runtime.Remoting.Metadata.W3cXsd2001;
 using static Google.Cloud.Firestore.V1.Firestore;
 using System.Web;
+using System.Collections.Specialized;
 
 namespace ExpenseApp
 {
@@ -457,7 +458,7 @@ namespace ExpenseApp
             DocumentReference docRef = db.Collection("Users").Document(username);
             return docRef;
         }
-        public async static Task<String> addNewGroupGoal(string groupCode, string goalDate, float amount, string title, string desc)
+        public async static Task<String> addNewGroupGoal(string groupCode, string goalDate, float amount, string title, string desc,string username)
         {
             DocumentReference docRef = editInsideGroup(groupCode).Collection("Goals").Document(title);
             DocumentSnapshot docSnap = await docRef.GetSnapshotAsync();
@@ -467,6 +468,7 @@ namespace ExpenseApp
                     {"Amount", amount},
                     {"GoalDate", goalDate},
                     {"Description", desc},
+                    {"Creator", username},
                     {"timestamp", FieldValue.ServerTimestamp},
                     {"Percentage", 0},
                     {"Status", "Ongoing"}
@@ -1059,7 +1061,7 @@ namespace ExpenseApp
         }
         public async static void updateAllGoals()
         {
-            GoalDetails GD = new GoalDetails(new wallet());
+            GoalDetails GD = new GoalDetails(new wallet(), new group());
             String username = FirebaseData.Instance.Username;
             CollectionReference colRef = editInsideUser(username).Collection("Goals");
             QuerySnapshot qsnap = await colRef.GetSnapshotAsync();
@@ -1088,7 +1090,7 @@ namespace ExpenseApp
         }
         public async static void updateAllGroupGoals(string groupCode)
         {
-            GoalDetails G = new GoalDetails(new wallet());
+            GoalDetails G = new GoalDetails(new wallet(), new group());
             string username  = FirebaseData.Instance.Username;
             CollectionReference colRef = editInsideGroup(groupCode).Collection("Goals");
             QuerySnapshot qsnap = await colRef.GetSnapshotAsync();
@@ -1119,6 +1121,23 @@ namespace ExpenseApp
         public async Task<List<(string DocName, DocumentSnapshot DocSnapshot)>> getGoalsWithDocNames(String username)
         {
             CollectionReference colRef = editInsideUser(username).Collection("Goals");
+            QuerySnapshot snap = await colRef.OrderByDescending("timestamp").GetSnapshotAsync();
+
+            List<(string DocName, DocumentSnapshot DocSnapshot)> documentData = new List<(string, DocumentSnapshot)>();
+            foreach (DocumentSnapshot docSnap in snap.Documents)
+            {
+                if (docSnap.Exists)
+                {
+                    string docName = docSnap.Id;
+                    documentData.Add((docName, docSnap));
+                }
+            }
+            return documentData;
+        }
+        public async Task<List<(string DocName, DocumentSnapshot DocSnapshot)>> getGoalsWithDocNamesGroup(String groupcode)
+        {
+            var db = otherFunc.FirestoreConn();
+            CollectionReference colRef = db.Collection("Groups").Document(groupcode).Collection("Goals");
             QuerySnapshot snap = await colRef.OrderByDescending("timestamp").GetSnapshotAsync();
 
             List<(string DocName, DocumentSnapshot DocSnapshot)> documentData = new List<(string, DocumentSnapshot)>();
@@ -1167,10 +1186,41 @@ namespace ExpenseApp
             }
             return documentData;
         }
+        public async Task<List<(string DocName, DocumentSnapshot DocSnapshot)>> displayDataWithDocNamesGroup(string groupcode)
+        {
+            var db = otherFunc.FirestoreConn();
+            CollectionReference colRef = db.Collection("Groups").Document(groupcode).Collection("Expenses");
+            QuerySnapshot snap = await colRef.OrderByDescending("timestamp").GetSnapshotAsync();
+
+            List<(string DocName, DocumentSnapshot DocSnapshot)> documentData = new List<(string, DocumentSnapshot)>();
+
+            foreach (DocumentSnapshot docSnap in snap.Documents)
+            {
+                if (docSnap.Exists)
+                {
+                    string docName = docSnap.Id;
+                    documentData.Add((docName, docSnap));
+                }
+            }
+            return documentData;
+        }
         public async Task<Dictionary<string, object>> getItemsInsideExpenseId(string username, string expenseId)
         {
             FirestoreDb db = otherFunc.FirestoreConn();
             DocumentReference docRef = db.Collection("Users").Document(username).Collection("Expenses").Document(expenseId);
+            DocumentSnapshot snap = await docRef.GetSnapshotAsync();
+            if (snap.Exists)
+            {
+                Dictionary<string, object> data = snap.ToDictionary();
+                return data;
+            }
+            return null;
+
+        }
+        public async Task<Dictionary<string, object>> getItemsInsideExpenseIdGroup(string groupcode, string expenseId)
+        {
+            FirestoreDb db = otherFunc.FirestoreConn();
+            DocumentReference docRef = db.Collection("Groups").Document(groupcode).Collection("Expenses").Document(expenseId);
             DocumentSnapshot snap = await docRef.GetSnapshotAsync();
             if (snap.Exists)
             {
@@ -1639,6 +1689,18 @@ namespace ExpenseApp
             if(docsnap.Exists)
             {
                 return docsnap.GetValue<string[]>("Members");
+            }
+            return null;
+        }
+        public async Task<string> getFirstname(string username)
+        {
+            var db = otherFunc.FirestoreConn();
+            DocumentReference colref = db.Collection("Users").Document(username);
+            DocumentSnapshot docsnap = await colref.GetSnapshotAsync();
+
+            if (docsnap.Exists)
+            {
+                return docsnap.GetValue<string>("First Name");
             }
             return null;
         }
