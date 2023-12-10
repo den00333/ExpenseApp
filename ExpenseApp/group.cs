@@ -309,6 +309,7 @@ namespace ExpenseApp
             Dictionary<string, object> data = await function.getItemsInsideExpenseIdGroup(username, expenseId);
 
             ExpenseDetailForm edf = new ExpenseDetailForm();
+
             edf.displayExpenseDetails(data);
             edf.StartPosition = FormStartPosition.Manual;
             int x = Screen.PrimaryScreen.WorkingArea.Right - edf.Width;

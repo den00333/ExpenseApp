@@ -379,10 +379,7 @@ namespace ExpenseApp
 
             ExpenseDetailForm edf = new ExpenseDetailForm();
             edf.displayExpenseDetails(data);
-            edf.StartPosition = FormStartPosition.Manual;
-            int x = Screen.PrimaryScreen.WorkingArea.Right - edf.Width;
-            int y = Screen.PrimaryScreen.WorkingArea.Top + (Screen.PrimaryScreen.WorkingArea.Height - edf.Height) / 2;
-            edf.Location = new Point(x, y);
+            edf.StartPosition = FormStartPosition.CenterScreen;
             edf.ShowDialog();
         }
 
