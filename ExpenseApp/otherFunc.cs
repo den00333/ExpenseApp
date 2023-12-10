@@ -427,9 +427,9 @@ namespace ExpenseApp
             DocumentReference docRefExpenses = await getDocRefExpensesGroup(groupcode);
             Console.WriteLine("START OF 1ST GETWALLET");
 
-            float expense = await getWalletAmountGroup(docRefExpenses);
+            float expense = await getGroupWalletAmount(docRefExpenses);
             Console.WriteLine("EXPENSE:" + expense);
-            DocumentReference docRefWallet = await SavingWalletAmountOfGroup(groupcode, "Expense");
+           DocumentReference docRefWallet = await SavingWalletAmountOfGroup(groupcode, "Expense");
             float currentAmountInExpenses = await getWalletAmount(docRefWallet);
             Console.WriteLine("Sencond: " + currentAmountInExpenses);
             float total = currentAmountInExpenses - expense;
@@ -593,13 +593,10 @@ namespace ExpenseApp
         public async Task<DocumentReference> getDocRefExpensesGroup(String groupCode)
         {
             int docNum = await DocNameForGroupExpenses(groupCode);
-            Console.WriteLine($"dnum: {docNum}");
-            String docName = string.Concat("E", (docNum + 1).ToString());
+            String docName = string.Concat("E", (docNum).ToString());
             FirestoreDb database = FirestoreConn();
             DocumentReference docRef = database.Collection("Groups").Document(groupCode).Collection("Expenses").Document(docName);
             
-            
-
             DocumentSnapshot ds = await docRef.GetSnapshotAsync();
             Console.WriteLine("ndajsdjas " + ds.Exists);
             return docRef;
@@ -621,21 +618,7 @@ namespace ExpenseApp
                 return 0;
             }
         }
-        public async Task<float> getWalletAmountGroup(DocumentReference docRef)
-        {
-            DocumentSnapshot docSnap = await docRef.GetSnapshotAsync();
-            if (docSnap.Exists)
-            {
-                float amount = docSnap.GetValue<float>("Amount"); ;
-                return amount;
-            }
-            else
-            {
-                Console.WriteLine("ERROR IN GET WALLET");
-                return 0;
-            }
-        }
-        public async Task<float>getGroupWalletAmount (DocumentReference docRef)
+        public async Task<float>getGroupWalletAmount(DocumentReference docRef)
         {
             DocumentSnapshot docSnap = await docRef.GetSnapshotAsync();
             if (docSnap.Exists)
@@ -672,10 +655,6 @@ namespace ExpenseApp
             await docref.UpdateAsync(data);
 
         }
-
-
-
-
 
         public static async Task<bool> isUsernameExistingAsync(String username)
         {
