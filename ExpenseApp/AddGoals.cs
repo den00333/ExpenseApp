@@ -13,13 +13,22 @@ namespace ExpenseApp
 {
     public partial class AddGoals : Form
     {
+        String username = FirebaseData.Instance.Username;
+        string myGroup;
         wallet w;
-        public AddGoals(wallet wal)
+        group g;
+        bool flag = true;
+        public AddGoals(wallet wal, bool f, string groupCode, group g)
         {
             InitializeComponent();
             dtpDate.Value = DateTime.Now.Date;
             this.w = wal;
+            this.myGroup = groupCode;
+            this.g = g;
+            this.flag= f;
+
             dtpDate.MinDate = DateTime.Today;
+
         }
 
         private void AddGoals_Load(object sender, EventArgs e)
@@ -32,21 +41,58 @@ namespace ExpenseApp
             this.Hide();
         }
 
-        private async void btnSave_Click(object sender, EventArgs e)
+        private void btnSave_Click(object sender, EventArgs e)
         {
-            String username = FirebaseData.Instance.Username;
+            if (flag)
+            {
+                SaveGroupGoal();
+            }
+            else
+            {
+                SaveUserGoal();
+            }
+        }
+        private async void SaveGroupGoal()
+        {
             String gd = dtpDate.Value.Date.ToString("yyyy-MM-dd");
             float amount = float.Parse(txtAmount.Text);
             String title = txtTitle.Text.ToString();
             String desc = richTxtDesc.Text.ToString();
-            String res = await otherFunc.addNewGoal(username,gd, amount, title, desc);
+            String res = await otherFunc.addNewGroupGoal(myGroup, gd, amount, title, desc);
+            otherFunc.updateAllGroupGoals(myGroup);
+            DialogResult r = MessageBox.Show(res, "Response", MessageBoxButtons.OK);
+            if (r == DialogResult.OK)
+            {
+                if (res.Equals("Successfully Added!"))
+                {
+                    dtpDate.Value = DateTime.Now.Date;
+                    txtAmount.Clear();
+                    txtTitle.Clear();
+                    richTxtDesc.Clear();
+                    g.flpGoals.Controls.Clear();
+                    //g.displayGoals();
+                }
+                else
+                {
+                    txtTitle.Clear();
+                }
+            }
+
+        }
+        private async void SaveUserGoal()
+        {
+            String gd = dtpDate.Value.Date.ToString("yyyy-MM-dd");
+            float amount = float.Parse(txtAmount.Text);
+            String title = txtTitle.Text.ToString();
+            String desc = richTxtDesc.Text.ToString();
+            String res = await otherFunc.addNewGoal(username, gd, amount, title, desc);
             otherFunc.updateAllGoals();
             //if (!w.flagGoal)
             //{
             //    w.displayGoals();
             //}
             DialogResult r = MessageBox.Show(res, "Response", MessageBoxButtons.OK);
-            if(r == DialogResult.OK)
+            if (r == DialogResult.OK)
             {
                 if (res.Equals("Successfully Added!"))
                 {
@@ -62,7 +108,7 @@ namespace ExpenseApp
                     txtTitle.Clear();
                 }
             }
-        }
+        } 
 
         private void txtAmount_KeyPress(object sender, KeyPressEventArgs e)
         {

@@ -457,7 +457,27 @@ namespace ExpenseApp
             DocumentReference docRef = db.Collection("Users").Document(username);
             return docRef;
         }
-
+        public async static Task<String> addNewGroupGoal(string groupCode, string goalDate, float amount, string title, string desc)
+        {
+            DocumentReference docRef = editInsideGroup(groupCode).Collection("Goals").Document(title);
+            DocumentSnapshot docSnap = await docRef.GetSnapshotAsync();
+            if (!docSnap.Exists) {
+                Dictionary<String, object> data = new Dictionary<String, object>
+                {
+                    {"Amount", amount},
+                    {"GoalDate", goalDate},
+                    {"Description", desc},
+                    {"timestamp", FieldValue.ServerTimestamp},
+                    {"Percentage", 0},
+                    {"Status", "Ongoing"}
+                };
+                await docRef.SetAsync(data);
+                await updatePercentagePerGroupGoal(groupCode);
+                return "Successfully Added!";
+            }else{
+                return "Title already existing!";
+            }
+        }
         public async static Task<String> addNewGoal(String username, String goalDate, float amount, String title, String desc)
         {
 
@@ -1066,6 +1086,35 @@ namespace ExpenseApp
             }
 
         }
+        public async static void updateAllGroupGoals(string groupCode)
+        {
+            GoalDetails G = new GoalDetails(new wallet());
+            string username  = FirebaseData.Instance.Username;
+            CollectionReference colRef = editInsideGroup(groupCode).Collection("Goals");
+            QuerySnapshot qsnap = await colRef.GetSnapshotAsync();
+            foreach (DocumentSnapshot dsnap in qsnap.Documents)
+            {
+                String docTitle = dsnap.Id;
+                String goalDate = dsnap.GetValue<String>("GoalDate");
+                int remainingDays = dateDifference(goalDate);
+                if (remainingDays <= 0)
+                {
+                    DocumentReference dRef = dsnap.Reference;
+                    Dictionary<String, object> data = new Dictionary<String, object>();
+                    int code = await G.checkSuggestion(docTitle);
+                    if (code == 1)
+                    {
+                        data.Add("Status", "Achieved");
+                    }
+                    else
+                    {
+                        data.Add("Status", "Failed");
+                    }
+                    await dRef.UpdateAsync(data);
+                }
+            }
+
+        }
 
         public async Task<List<(string DocName, DocumentSnapshot DocSnapshot)>> getGoalsWithDocNames(String username)
         {
@@ -1406,7 +1455,19 @@ namespace ExpenseApp
             }
             return totalAmount;
         }
+        public static async Task<double> getTotalGroupGoalAmount(string groupCode)
+        {
+            double totalAmount = 0;
+            CollectionReference colRef = editInsideGroup(groupCode).Collection("Goals");
+            QuerySnapshot qSnap = await colRef.GetSnapshotAsync();
 
+            foreach (DocumentSnapshot docSnap in qSnap.Documents)
+            {
+                double amount = docSnap.GetValue<double>("Amount");
+                totalAmount += amount;
+            }
+            return totalAmount;
+        }
         public static async Task<double> getTotalGoalAmount(String username)
         {
             double totalAmount = 0;
@@ -1427,6 +1488,25 @@ namespace ExpenseApp
         {
             double totalAmount = await getTotalGoalAmount(username);
             CollectionReference colRef = editInsideUser(username).Collection("Goals");
+            QuerySnapshot qSnap = await colRef.GetSnapshotAsync();
+
+            foreach (DocumentSnapshot docSnap in qSnap.Documents)
+            {
+                DocumentReference docRef = docSnap.Reference;
+                double amount = docSnap.GetValue<double>("Amount");
+                double percentage = amount / totalAmount;
+                Dictionary<String, object> data = new Dictionary<String, object>
+                {
+                    {"Percentage", percentage}
+                };
+
+                await docRef.UpdateAsync(data);
+            }
+        }
+        public static async Task updatePercentagePerGroupGoal(string groupCode)
+        {
+            double totalAmount = await getTotalGroupGoalAmount(groupCode);
+            CollectionReference colRef = editInsideGroup(groupCode).Collection("Goals");
             QuerySnapshot qSnap = await colRef.GetSnapshotAsync();
 
             foreach (DocumentSnapshot docSnap in qSnap.Documents)

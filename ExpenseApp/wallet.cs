@@ -233,7 +233,7 @@ namespace ExpenseApp
 
         private void btnAddGoal_Click(object sender, EventArgs e)
         {
-            AddGoals ag = new AddGoals(this);
+            AddGoals ag = new AddGoals(this, false, null, new group());
             ag.StartPosition = FormStartPosition.CenterScreen;
             ag.ShowDialog();
         }

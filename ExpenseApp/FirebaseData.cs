@@ -51,6 +51,8 @@ namespace ExpenseApp
         public string Date { get; set; }
         [FirestoreProperty]
         public string GroupName { get; set; }
+        [FirestoreProperty]
+        public string status {  get; set; }
     }
 
     public class ctg 

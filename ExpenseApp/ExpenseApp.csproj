@@ -533,6 +533,8 @@
     <None Include="Resources\noimage.png" />
     <None Include="Resources\hide.png" />
     <None Include="Resources\members.png" />
+    <None Include="Resources\online.png" />
+    <None Include="Resources\offline.png" />
     <Content Include="Resources\philippine_provinces_cities_municipalities_and_barangays_2019v2.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
