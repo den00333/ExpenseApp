@@ -56,19 +56,17 @@ namespace ExpenseApp
             {
                 lblShort.Text = "";
             }
-            
-
         }
 
         private void btnAddXpns_Click(object sender, EventArgs e)
         {   
-            AddExpensesForm AEF = new AddExpensesForm(this);
+            AddExpensesForm AEF = new AddExpensesForm(new wallet(), false, null, new group());
             AEF.ShowDialog();
         }
 
         private void btnAddMoney_Click(object sender, EventArgs e)
         {
-            AddingBalanceForm ABF = new AddingBalanceForm(this);
+            AddingBalanceForm ABF = new AddingBalanceForm(this, false, null, new group());
             ABF.ShowDialog();
         }
         //public async void displayExpenses()

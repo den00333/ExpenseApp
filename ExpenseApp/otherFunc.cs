@@ -34,6 +34,7 @@ using System.Net;
 using System.Diagnostics;
 using System.Runtime.Remoting.Metadata.W3cXsd2001;
 using static Google.Cloud.Firestore.V1.Firestore;
+using System.Web;
 
 namespace ExpenseApp
 {
@@ -142,6 +143,58 @@ namespace ExpenseApp
                 return Ename;
             }
         }
+        public async Task<int> DocNameForGroupExpenses(String groupCode)
+        {
+            int Ename = 0;
+            FirestoreDb database = FirestoreConn();
+            CollectionReference cRef = database.Collection("Groups").Document(groupCode).Collection("Expenses");
+            Query q = cRef.OrderByDescending("timestamp").Limit(1);
+            QuerySnapshot qSnap = await q.GetSnapshotAsync();
+            if (qSnap.Count > 0)
+            {
+                DocumentSnapshot docSnap = qSnap.Documents[0];
+                String docName = docSnap.Id;
+                Ename = int.Parse(docName.Trim('E'));
+                return Ename;
+            }
+            else
+            {
+                Ename = 0;
+                return Ename;
+            }
+        }
+
+        public static DocumentReference editInsideGroup(String groupCode)
+        {
+            var db = FirestoreConn();
+            DocumentReference docRef = db.Collection("Groups").Document(groupCode);
+            return docRef;
+        }
+
+        public async Task<int> NameForExpenses(String groupCode)
+        {
+            Console.WriteLine($"this part00-{groupCode}-");
+            int Ename = 0;
+            CollectionReference cRef = editInsideGroup(groupCode).Collection("Expenses");
+            Console.WriteLine("this part01");
+            Query q = cRef.OrderByDescending("timestamp").Limit(1);
+            Console.WriteLine("this part02");
+            QuerySnapshot qSnap = await q.GetSnapshotAsync();
+            Console.WriteLine("this part03");
+            if (qSnap.Count > 0)
+            {
+                DocumentSnapshot docSnap = qSnap.Documents[0];
+                String docName = docSnap.Id;
+                Ename = int.Parse(docName.Trim('E'));
+                return Ename;
+
+            }
+            else
+            {
+                Ename = 0;
+                return Ename;
+            }
+        }
         public async Task<DocumentReference> SavingNewExpenses(String username)
         {
             int docNum = await DocNameForExpenses(username);
@@ -157,6 +210,19 @@ namespace ExpenseApp
             /*Process: 
              * check if the "Expenses" collection has existing document("E1"*) 
              else create new which starts from "E1"*/
+        }
+        public async Task<DocumentReference> saveGroupExpenses(String groupCode)
+        {
+            int docNum = await NameForExpenses(groupCode);
+            Console.WriteLine($"this partSavegroupExpenses-{groupCode}-");
+            Console.WriteLine("docNum: " + docNum);
+            String docName = string.Concat("E", (docNum + 1).ToString());
+            Console.WriteLine("docName: " + docName);
+            FirestoreDb database = FirestoreConn();
+            DocumentReference docRef = database.Collection("Groups").Document(groupCode).Collection("Expenses").Document(docName);
+            DocumentSnapshot docSnap = await docRef.GetSnapshotAsync();
+            return docRef;
+
         }
         public static async void addWalletLogs(String username, String walletName, float amount)
         {
@@ -182,12 +248,92 @@ namespace ExpenseApp
                 await docRef.UpdateAsync("LogWallet", FieldValue.ArrayUnion(item));
             }
         }
+        public static async void addGroupWalletLogs(string groupCode, string walletName, float amount, string username)
+        {
+            DocumentReference docRef = editInsideGroup(groupCode).Collection("Wallets").Document("LogWallet");
+            DocumentSnapshot docSnap = await docRef.GetSnapshotAsync();
+            String dateInputted = DateTime.Now.ToString("yyyy-MM-dd");
+            String timeInputted = DateTime.Now.ToString("HH:mm:ss");
+            String item = $"{amount}|{walletName}|{dateInputted}|{timeInputted}|{username}";
+            ArrayList logWallet = new ArrayList();
+            logWallet.Add(item);
 
+            Dictionary<String, object> data = new Dictionary<String, object>
+            {
+                {"LogWallet", logWallet}
+            };
+
+            if (!docSnap.Exists)
+            {
+                await docRef.SetAsync(data);
+            }
+            else
+            {
+                await docRef.UpdateAsync("LogWallet", FieldValue.ArrayUnion(item));
+            }
+        }
+        //public static async void addGroupWalletLogs(string groupCode, string walletName, float amount)
+        //{
+        //    var db = otherFunc.FirestoreConn();
+        //    DocumentReference docRef = db.Collection("Groups").Document(groupCode).Collection("Wallets").Document("LogWallet");
+        //    DocumentSnapshot docSnap = await docRef.GetSnapshotAsync();
+        //    String dateInputted = DateTime.Now.ToString("yyyy-MM-dd");
+        //    String timeInputted = DateTime.Now.ToString("HH:mm:ss");
+        //    String item = $"{amount}|{walletName}|{dateInputted}|{timeInputted}";
+        //    ArrayList logWallet = new ArrayList();
+        //    logWallet.Add(item);
+
+        //    Dictionary<String, object> data = new Dictionary<String, object>
+        //    {
+        //        {"LogWallet", logWallet}
+        //    };
+
+        //    if (!docSnap.Exists)
+        //    {
+        //        await docRef.SetAsync(data);
+        //    }
+        //    else
+        //    {
+        //        await docRef.UpdateAsync("LogWallet", FieldValue.ArrayUnion(item));
+        //    }
+        //}
+        //public async Task<DocumentReference> SavingGroupWalletAmount(string groupCode, string walletName)
+        //{
+        //    var db = otherFunc.FirestoreConn();
+        //    DocumentReference docRef = db.Collection("Groups").Document(groupCode).Collection("Wallets").Document(walletName);
+        //    DocumentSnapshot docSnap = await docRef.GetSnapshotAsync();
+        //    if (!docSnap.Exists)
+        //    {
+        //        Dictionary<String, object> data = new Dictionary<String, object>()
+        //        {
+        //            {"Amount", 0}
+        //        };
+        //        await docRef.SetAsync(data);
+        //    }
+        //    return docRef;
+        //}
         public async Task<DocumentReference> SavingWalletAmount(String username, String walletName)
         {
             //CollectionReference colRef = database.Collection("Users").Document(username).Collection("Wallets");
             //QuerySnapshot qSnap = await colRef.GetSnapshotAsync();
             DocumentReference docRef = editInsideUser(username).Collection("Wallets").Document(walletName);
+            DocumentSnapshot docSnap = await docRef.GetSnapshotAsync();
+            if (!docSnap.Exists)
+            {
+                Dictionary<String, object> data = new Dictionary<String, object>()
+                {
+                    {"Amount", 0}
+                };
+                await docRef.SetAsync(data);
+            }
+            return docRef;
+        }
+        public async Task<DocumentReference> SavingWalletAmountOfGroup(String groupcode, String walletName)
+        {
+            //CollectionReference colRef = database.Collection("Users").Document(username).Collection("Wallets");
+            //QuerySnapshot qSnap = await colRef.GetSnapshotAsync();
+            var db = otherFunc.FirestoreConn();
+            DocumentReference docRef = db.Collection("Groups").Document(groupcode).Collection("Wallets").Document(walletName);
             DocumentSnapshot docSnap = await docRef.GetSnapshotAsync();
             if (!docSnap.Exists)
             {
@@ -270,7 +416,41 @@ namespace ExpenseApp
             return twoReturnVal;
 
         }
+        public async Task<float[]> SubtractExpensesFromWalletExpensesGroup(String groupcode)
+        {
+            //get the latest added expense
+            //get the latest docname
+            //get the amount of that docname
+            //get the current amount availabe in expenses then subtract then update
+            float[] twoReturnVal = new float[2];
+            float negativeVal = 0;
+            DocumentReference docRefExpenses = await getDocRefExpensesGroup(groupcode);
+            Console.WriteLine("START OF 1ST GETWALLET");
 
+            float expense = await getWalletAmountGroup(docRefExpenses);
+            Console.WriteLine("EXPENSE:" + expense);
+            DocumentReference docRefWallet = await SavingWalletAmountOfGroup(groupcode, "Expense");
+            float currentAmountInExpenses = await getWalletAmount(docRefWallet);
+            Console.WriteLine("Sencond: " + currentAmountInExpenses);
+            float total = currentAmountInExpenses - expense;
+            Console.WriteLine("Total Value: " + total);
+            //check if it is negative total then return 0
+            if (total < 0)
+            {
+                negativeVal = total;
+                total = 0;
+            }
+            Dictionary<String, object> data = new Dictionary<String, object>()
+            {
+                {"Amount", total}
+            };
+            await docRefWallet.UpdateAsync(data);
+            Console.WriteLine("negative Value: " + negativeVal);
+            twoReturnVal[0] = total;
+            twoReturnVal[1] = negativeVal;
+            return twoReturnVal;
+
+        }
         public static DocumentReference editInsideUser(String username)
         {
             var db = FirestoreConn();
@@ -312,6 +492,28 @@ namespace ExpenseApp
 
             docRef.UpdateAsync(data);
         }
+        public static void setShortGroup(float negativeVal, String groupcode)
+        {
+            var db = otherFunc.FirestoreConn();
+            DocumentReference docRef = db.Collection("Groups").Document(groupcode).Collection("Wallets").Document("Expense");
+            Dictionary<String, object> data = new Dictionary<String, object>
+            {
+                {"short", negativeVal}
+            };
+
+            docRef.UpdateAsync(data);
+        }
+        //public static void setGroupShort(float negativeVal, string groupCode)
+        //{
+        //    var db = otherFunc.FirestoreConn();
+        //    DocumentReference docRef = db.Collection("Groups").Document(groupCode).Collection("Wallets").Document("Expense");
+        //    Dictionary<String, object> data = new Dictionary<String, object>
+        //    {
+        //        {"short", negativeVal}
+        //    };
+
+        //    docRef.UpdateAsync(data);
+        //}
 
         public async static Task<float> getShort(String username)
         {
@@ -333,11 +535,53 @@ namespace ExpenseApp
                 return shrt;
             }
         }
+        public async static Task<float> getShortGroup(String groupcode)
+        {
+            float shrt = 0;
+            var db = otherFunc.FirestoreConn();
+            DocumentReference docRef = db.Collection("Groups").Document(groupcode).Collection("Wallets").Document("Expense");
+            DocumentSnapshot docSnap = await docRef.GetSnapshotAsync();
+            if (docSnap.ContainsField("short"))
+            {
+                shrt = docSnap.GetValue<float>("short");
+                return shrt;
+            }
+            else
+            {
+                Dictionary<String, object> data = new Dictionary<String, object>
+                {
+                    {"short", 0}
+                };
+                await docRef.SetAsync(data);
+                return shrt;
+            }
+        }
+        public async static Task<float> getGroupShort(string groupCode)
+        {
+            var db = otherFunc.FirestoreConn();
+            float shrt = 0;
+            DocumentReference docRef = db.Collection("Groups").Document(groupCode).Collection("Wallets").Document("Expense");
+            DocumentSnapshot docSnap = await docRef.GetSnapshotAsync();
+            if (docSnap.ContainsField("short"))
+            {
+                shrt = docSnap.GetValue<float>("short");
+                return shrt;
+            }
+            else
+            {
+                Dictionary<String, object> data = new Dictionary<String, object>
+                {
+                    {"short", 0}
+                };
+                await docRef.SetAsync(data);
+                return shrt;
+            }
+        }
 
         public async Task<DocumentReference> getDocRefExpenses(String username)
         {
             int docNum = await DocNameForExpenses(username);
-
+            
             String docName = string.Concat("E", (docNum + 1).ToString());
             FirestoreDb database = FirestoreConn();
             DocumentReference docRef = database.Collection("Users").Document(username).Collection("Expenses").Document(docName);
@@ -345,10 +589,52 @@ namespace ExpenseApp
             Console.WriteLine("is the " + docName + "from getdocrefexpenses exists?: " + ds.Exists);
             return docRef;
         }
+        public async Task<DocumentReference> getDocRefExpensesGroup(String groupCode)
+        {
+            int docNum = await DocNameForGroupExpenses(groupCode);
+            Console.WriteLine($"dnum: {docNum}");
+            String docName = string.Concat("E", (docNum + 1).ToString());
+            FirestoreDb database = FirestoreConn();
+            DocumentReference docRef = database.Collection("Groups").Document(groupCode).Collection("Expenses").Document(docName);
+            
+            
 
+            DocumentSnapshot ds = await docRef.GetSnapshotAsync();
+            Console.WriteLine("ndajsdjas " + ds.Exists);
+            return docRef;
+        }
 
 
         public async Task<float> getWalletAmount(DocumentReference docRef)
+        {
+            DocumentSnapshot docSnap = await docRef.GetSnapshotAsync();
+            if (docSnap.Exists)
+            {
+                FirebaseData am = docSnap.ConvertTo<FirebaseData>();
+                float amount = am.Amount;
+                return amount;
+            }
+            else
+            {
+                Console.WriteLine("ERROR IN GET WALLET");
+                return 0;
+            }
+        }
+        public async Task<float> getWalletAmountGroup(DocumentReference docRef)
+        {
+            DocumentSnapshot docSnap = await docRef.GetSnapshotAsync();
+            if (docSnap.Exists)
+            {
+                float amount = docSnap.GetValue<float>("Amount"); ;
+                return amount;
+            }
+            else
+            {
+                Console.WriteLine("ERROR IN GET WALLET");
+                return 0;
+            }
+        }
+        public async Task<float>getGroupWalletAmount (DocumentReference docRef)
         {
             DocumentSnapshot docSnap = await docRef.GetSnapshotAsync();
             if (docSnap.Exists)
@@ -367,6 +653,17 @@ namespace ExpenseApp
         public async static void setNewWalletAmount(String username, String walletName, float newAmount)
         {
             DocumentReference docref = editInsideUser(username).Collection("Wallets").Document(walletName);
+            Dictionary<String, object> data = new Dictionary<String, object>
+            {
+                {"Amount", newAmount}
+            };
+            await docref.UpdateAsync(data);
+
+        }
+        public async static void setNewWalletAmountGroup(String groupcode, String walletName, float newAmount)
+        {
+            var db = otherFunc.FirestoreConn();
+            DocumentReference docref = db.Collection("Groups").Document(groupcode).Collection("Wallets").Document(walletName);
             Dictionary<String, object> data = new Dictionary<String, object>
             {
                 {"Amount", newAmount}
@@ -1218,6 +1515,18 @@ namespace ExpenseApp
                     break;
             }
             return toBeReturned;
+        }
+        public async Task<string[]> getMembers(string groupCode)
+        {
+            var db = otherFunc.FirestoreConn();
+            DocumentReference docref = db.Collection("Groups").Document(groupCode);
+            DocumentSnapshot docsnap = await docref.GetSnapshotAsync();
+
+            if(docsnap.Exists)
+            {
+                return docsnap.GetValue<string[]>("Members");
+            }
+            return null;
         }
     }
 }
