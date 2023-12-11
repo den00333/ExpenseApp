@@ -17,20 +17,47 @@ namespace ExpenseApp
         {
             InitializeComponent();
         }
-        public void displayExpenseDetails(Dictionary<string, object> data)
+        public async Task displayExpenseDetails(Dictionary<string, object> data, bool flag)
         {
-            string amountString = data["Amount"].ToString();
-            string category = data["Category"].ToString();
-            if (int.TryParse(amountString, out int amount)){
-                string beautifyAmount = otherFunc.amountBeautify(amount);
-                lblAmount.Text = beautifyAmount;    
+            //true -> USER
+            //false -> GROUP
+            if (flag)
+            {
+                string amountString = data["Amount"].ToString();
+                string category = data["Category"].ToString();
+                if (int.TryParse(amountString, out int amount))
+                {
+                    string beautifyAmount = otherFunc.amountBeautify(amount);
+                    lblAmount.Text = beautifyAmount;
+                }
+                pictureBox1.Image = imageCategory(category);
+                lblCategory.Text = category;
+                lblDate.Text = data["Date"].ToString();
+                lblLocation.Text = data["Location"].ToString();
+                lblName.Text = data["Name"].ToString();
+                lblCreator.Hide();
+                pnlBack.Hide();
+                Console.WriteLine(category);
             }
-            pictureBox1.Image = imageCategory(category);
-            lblCategory.Text = category;
-            lblDate.Text = data["Date"].ToString();
-            lblLocation.Text = data["Location"].ToString();
-            lblName.Text = data["Name"].ToString();
-            Console.WriteLine(category);
+            else
+            {
+                String username = FirebaseData.Instance.Username;
+                string amountString = data["Amount"].ToString();
+                string category = data["Category"].ToString();
+                if (int.TryParse(amountString, out int amount))
+                {
+                    string beautifyAmount = otherFunc.amountBeautify(amount);
+                    lblAmount.Text = beautifyAmount;
+                }
+                pictureBox1.Image = imageCategory(category);
+                lblCategory.Text = category;
+                lblDate.Text = data["Date"].ToString();
+                lblLocation.Text = data["Location"].ToString();
+                lblName.Text = data["Description"].ToString();
+                String fullName = await otherFunc.getFullName(username);
+                lblCreator.Text = $"By: {fullName}";
+                Console.WriteLine(category);
+            }
         }
         private Image imageCategory(string category)
         {

@@ -174,9 +174,9 @@ namespace ExpenseApp
             otherFunc function = new otherFunc();
             string goalId = dn;
             Dictionary<string, object> data = await function.getItemsInsideGoalsID(username, goalId);
-            GoalDetails gd = new GoalDetails(this);
+            GoalDetails gd = new GoalDetails(this, new group());
             gd.displayGoalDetails(data, goalId);
-            gd.displaySuggestions(goalId);
+            gd.displaySuggestions(goalId, true, "");
             gd.StartPosition = FormStartPosition.CenterScreen;
             gd.ShowDialog();
         }
@@ -378,11 +378,8 @@ namespace ExpenseApp
             Dictionary<string, object> data = await function.getItemsInsideExpenseId(username, expenseId);
 
             ExpenseDetailForm edf = new ExpenseDetailForm();
-            edf.displayExpenseDetails(data);
-            edf.StartPosition = FormStartPosition.Manual;
-            int x = Screen.PrimaryScreen.WorkingArea.Right - edf.Width;
-            int y = Screen.PrimaryScreen.WorkingArea.Top + (Screen.PrimaryScreen.WorkingArea.Height - edf.Height) / 2;
-            edf.Location = new Point(x, y);
+            await edf.displayExpenseDetails(data, true);
+            edf.StartPosition = FormStartPosition.CenterScreen;
             edf.ShowDialog();
         }
 

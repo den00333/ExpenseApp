@@ -14,10 +14,13 @@ namespace ExpenseApp
     public partial class GoalDetails : Form
     {
         wallet w;
-        public GoalDetails(wallet wal)
+        group group;
+        public GoalDetails(wallet wal, group g)
         {
             InitializeComponent();
             this.w = wal;
+            this.group = g;
+            
         }
 
         public void displayGoalDetails(Dictionary<string, object> data, String title)
@@ -50,23 +53,42 @@ namespace ExpenseApp
         {
 
         }
-        public int flag { get; set; }
-        public async void displaySuggestions(String title)
+        public async void displaySuggestions(String title, bool flag, String groupCode)
         {
-            String username = FirebaseData.Instance.Username;
-            //double goalAmount = await otherFunc.getTotalGoalAmount(username);
-            double currentSavings = await otherFunc.getCurrentSavings(username, title);
-            //rtbSuggestion.Text = Math.Round(currentSavings, 2).ToString();
-            double goalAmount = await otherFunc.getGoalAmount(username, title);
+            double currentSavings, goalAmount, requiredSavings, daysToGoal, daily_savings, daysFromStart, currentSavingsRate;
 
-            double requiredSavings = goalAmount - currentSavings;
-            Console.WriteLine($"{goalAmount} - {currentSavings} = {requiredSavings}");
+            if (flag)
+            {
+                String username = FirebaseData.Instance.Username;
+                //double goalAmount = await otherFunc.getTotalGoalAmount(username);
+                currentSavings = await otherFunc.getCurrentSavings(username, title);
+                //rtbSuggestion.Text = Math.Round(currentSavings, 2).ToString();
+                goalAmount = await otherFunc.getGoalAmount(username, title);
 
-            double daysToGoal = requiredSavings / await otherFunc.dateTargetMinusCurrent(username, title);
-            double daily_savings = daysToGoal != 0 ? requiredSavings / daysToGoal : 0;
+                requiredSavings = goalAmount - currentSavings;
+                Console.WriteLine($"{goalAmount} - {currentSavings} = {requiredSavings}");
 
-            double daysFromStart = await otherFunc.dateCurrentMinusStart(username, title);
-            double currentSavingsRate = daysFromStart != 0 ? currentSavings / daysFromStart : 0;
+                daysToGoal = requiredSavings / await otherFunc.dateTargetMinusCurrent(username, title);
+                daily_savings = daysToGoal != 0 ? requiredSavings / daysToGoal : 0;
+
+                daysFromStart = await otherFunc.dateCurrentMinusStart(username, title);
+                currentSavingsRate = daysFromStart != 0 ? currentSavings / daysFromStart : 0;
+            }
+            else
+            {
+                currentSavings = await otherFunc.getCurrentSavingsGroup(groupCode, title);
+                //rtbSuggestion.Text = Math.Round(currentSavings, 2).ToString();
+                goalAmount = await otherFunc.getGoalAmountGroup(groupCode, title);
+
+                requiredSavings = goalAmount - currentSavings;
+                Console.WriteLine($"{goalAmount} - {currentSavings} = {requiredSavings}");
+
+                daysToGoal = requiredSavings / await otherFunc.dateTargetMinusCurrentGroup(groupCode, title);
+                daily_savings = daysToGoal != 0 ? requiredSavings / daysToGoal : 0;
+
+                daysFromStart = await otherFunc.dateCurrentMinusStartGroup(groupCode, title);
+                currentSavingsRate = daysFromStart != 0 ? currentSavings / daysFromStart : 0;
+            }
             //Console.WriteLine($"dailySavings: {daily_savings} and currentSavingsRate: {currentSavingsRate}");
             //Console.WriteLine($"daysToGOal: {daysToGoal} -    - daysFromStart: {daysFromStart}");
             if (currentSavings >= goalAmount)
@@ -87,29 +109,55 @@ namespace ExpenseApp
 
         }
 
-        public async Task<int> checkSuggestion(String title)
+        public async Task<int> checkSuggestion(String title, bool flag, String groupCode)
         {
             int suggestionCode = 0;
-            String username = FirebaseData.Instance.Username;
-            double currentSavings = await otherFunc.getCurrentSavings(username, title);
-            double goalAmount = await otherFunc.getGoalAmount(username, title);
-
-            double requiredSavings = goalAmount - currentSavings;
-            Console.WriteLine($"{goalAmount} - {currentSavings} = {requiredSavings}");
-
-            double daysToGoal = requiredSavings / await otherFunc.dateTargetMinusCurrent(username, title);
-            double daily_savings = daysToGoal != 0 ? requiredSavings / daysToGoal : 0;
-
-            double daysFromStart = await otherFunc.dateCurrentMinusStart(username, title);
-            double currentSavingsRate = daysFromStart != 0 ? currentSavings / daysFromStart : 0;
-            //Console.WriteLine($"40404dailySavings: {daily_savings} and currentSavingsRate: {currentSavingsRate}");
-            //Console.WriteLine($"40404daysToGOal: {daysToGoal} -    - daysFromStart: {daysFromStart}");
-            Console.WriteLine($"CurrentSavings: {currentSavings} -  -   goalAmount: {goalAmount}");
-            if (currentSavings >= goalAmount)
+            double currentSavings, goalAmount, requiredSavings, daysToGoal, daily_savings, daysFromStart, currentSavingsRate;
+            if (flag)
             {
-                suggestionCode = 1;
+                String username = FirebaseData.Instance.Username;
+                currentSavings = await otherFunc.getCurrentSavings(username, title);
+                goalAmount = await otherFunc.getGoalAmount(username, title);
+
+                requiredSavings = goalAmount - currentSavings;
+                Console.WriteLine($"{goalAmount} - {currentSavings} = {requiredSavings}");
+
+                daysToGoal = requiredSavings / await otherFunc.dateTargetMinusCurrent(username, title);
+                daily_savings = daysToGoal != 0 ? requiredSavings / daysToGoal : 0;
+
+                daysFromStart = await otherFunc.dateCurrentMinusStart(username, title);
+                currentSavingsRate = daysFromStart != 0 ? currentSavings / daysFromStart : 0;
+                //Console.WriteLine($"40404dailySavings: {daily_savings} and currentSavingsRate: {currentSavingsRate}");
+                //Console.WriteLine($"40404daysToGOal: {daysToGoal} -    - daysFromStart: {daysFromStart}");
+                Console.WriteLine($"CurrentSavings: {currentSavings} -  -   goalAmount: {goalAmount}");
+                if (currentSavings >= goalAmount)
+                {
+                    suggestionCode = 1;
+                }
+                Console.WriteLine($"code: {suggestionCode}");
             }
-            Console.WriteLine($"code: {suggestionCode}");
+            else
+            {
+                currentSavings = await otherFunc.getCurrentSavingsGroup(groupCode, title);
+                goalAmount = await otherFunc.getGoalAmountGroup(groupCode, title);
+
+                requiredSavings = goalAmount - currentSavings;
+                Console.WriteLine($"{goalAmount} - {currentSavings} = {requiredSavings}");
+
+                daysToGoal = requiredSavings / await otherFunc.dateTargetMinusCurrentGroup(groupCode, title);
+                daily_savings = daysToGoal != 0 ? requiredSavings / daysToGoal : 0;
+
+                daysFromStart = await otherFunc.dateCurrentMinusStartGroup(groupCode, title);
+                currentSavingsRate = daysFromStart != 0 ? currentSavings / daysFromStart : 0;
+                //Console.WriteLine($"40404dailySavings: {daily_savings} and currentSavingsRate: {currentSavingsRate}");
+                //Console.WriteLine($"40404daysToGOal: {daysToGoal} -    - daysFromStart: {daysFromStart}");
+                Console.WriteLine($"CurrentSavings: {currentSavings} -  -   goalAmount: {goalAmount}");
+                if (currentSavings >= goalAmount)
+                {
+                    suggestionCode = 1;
+                }
+                Console.WriteLine($"code: {suggestionCode}");
+            }
             return suggestionCode;
         }
 
