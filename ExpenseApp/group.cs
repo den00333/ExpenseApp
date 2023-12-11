@@ -150,12 +150,14 @@ namespace ExpenseApp
         private void btnAddMoney_Click(object sender, EventArgs e)
         {
             AddingBalanceForm abf = new AddingBalanceForm(new wallet(), true, groupCode, this);
+            abf.StartPosition = FormStartPosition.CenterScreen; 
             abf.ShowDialog();
         }
 
         private void btnAddXpns_Click(object sender, EventArgs e)
         {
             AddExpensesForm adf = new AddExpensesForm(new wallet(), true, groupCode, this);
+            adf.StartPosition = FormStartPosition.CenterScreen;
             adf.ShowDialog();
         }
         private async void loadWalletGroup()
@@ -292,7 +294,11 @@ namespace ExpenseApp
                     lblDate.ForeColor = Color.FromArgb(83, 123, 47);
                     lblDate.Text = date;
 
-                    pnl.DoubleClick += (sender, e) => PnlExpenses_DoubleClick(sender, e, dn);
+                    pnl.Click += (sender, e) => PnlExpenses_Click(sender, e, dn);
+                    lblAmount.Click += (sender, e) => PnlExpenses_Click(sender, e, dn);
+                    lblCat.Click += (sender, e) => PnlExpenses_Click(sender, e, dn);
+                    lblcreator.Click += (sender, e) => PnlExpenses_Click(sender, e, dn);
+                    lblDate.Click += (sender, e) => PnlExpenses_Click(sender, e, dn);
 
                     pnl.Controls.Add(lblCat);
                     pnl.Controls.Add(lblAmount);
@@ -302,19 +308,17 @@ namespace ExpenseApp
                 }
             }
         }
-        public async void PnlExpenses_DoubleClick(object sender, EventArgs e, string dn)
+        public async void PnlExpenses_Click(object sender, EventArgs e, string dn)
         {
+            Console.WriteLine("pnlexpensesDoubleclick is working");
             otherFunc function = new otherFunc();
             string expenseId = dn;
-            Dictionary<string, object> data = await function.getItemsInsideExpenseIdGroup(username, expenseId);
+            Dictionary<string, object> data = await function.getItemsInsideExpenseIdGroup(groupCode, expenseId);
 
             ExpenseDetailForm edf = new ExpenseDetailForm();
 
-            edf.displayExpenseDetails(data);
-            edf.StartPosition = FormStartPosition.Manual;
-            int x = Screen.PrimaryScreen.WorkingArea.Right - edf.Width;
-            int y = Screen.PrimaryScreen.WorkingArea.Top + (Screen.PrimaryScreen.WorkingArea.Height - edf.Height) / 2;
-            edf.Location = new Point(x, y);
+            await edf.displayExpenseDetails(data, false);
+            edf.StartPosition = FormStartPosition.CenterScreen;
             edf.ShowDialog();
         }
         public async void displayGoals()
@@ -392,6 +396,9 @@ namespace ExpenseApp
                     lblDate.Text = date;
 
                     pnl.DoubleClick += (sender, e) => PnlGoals_DoubleClick(sender, e, docname);
+                    lblDocname.DoubleClick += (sender, e) => PnlGoals_DoubleClick(sender, e, docname);
+                    lblDate.DoubleClick += (sender, e) => PnlGoals_DoubleClick(sender, e, docname);
+                    lblAmount.DoubleClick += (sender, e) => PnlGoals_DoubleClick(sender, e, docname);
 
                     pnl.Controls.Add(lblDocname);
                     pnl.Controls.Add(lblAmount);
@@ -404,10 +411,10 @@ namespace ExpenseApp
         {
             otherFunc function = new otherFunc();
             string goalId = dn;
-            Dictionary<string, object> data = await function.getItemsInsideGoalsID(username, goalId);
+            Dictionary<string, object> data = await function.getItemsInsideGoalsIDGroup(groupCode, goalId);
             GoalDetails gd = new GoalDetails(new wallet(), this); ;
             gd.displayGoalDetails(data, goalId);
-            gd.displaySuggestions(goalId);
+            gd.displaySuggestions(goalId, false, groupCode);
             gd.StartPosition = FormStartPosition.CenterScreen;
             gd.ShowDialog();
         }

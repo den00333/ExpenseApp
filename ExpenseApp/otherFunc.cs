@@ -1075,7 +1075,7 @@ namespace ExpenseApp
                 {
                     DocumentReference dRef = dsnap.Reference;
                     Dictionary<String, object> data = new Dictionary<String, object>();
-                    int code = await GD.checkSuggestion(docTitle);
+                    int code = await GD.checkSuggestion(docTitle, true, "");
                     if(code == 1)
                     {
                         data.Add("Status", "Achieved");
@@ -1104,7 +1104,7 @@ namespace ExpenseApp
                 {
                     DocumentReference dRef = dsnap.Reference;
                     Dictionary<String, object> data = new Dictionary<String, object>();
-                    int code = await G.checkSuggestion(docTitle);
+                    int code = await G.checkSuggestion(docTitle, false, groupCode);
                     if (code == 1)
                     {
                         data.Add("Status", "Achieved");
@@ -1235,6 +1235,18 @@ namespace ExpenseApp
         public async Task<Dictionary<string, object>> getItemsInsideGoalsID(string username, string goalsId)
         {
             DocumentReference docRef = editInsideUser(username).Collection("Goals").Document(goalsId);
+            DocumentSnapshot snap = await docRef.GetSnapshotAsync();
+            if (snap.Exists)
+            {
+                Dictionary<string, object> data = snap.ToDictionary();
+                return data;
+            }
+            return null;
+        }
+
+        public async Task<Dictionary<string, object>> getItemsInsideGoalsIDGroup(string groupCode, string goalsId)
+        {
+            DocumentReference docRef = editInsideGroup(groupCode).Collection("Goals").Document(goalsId);
             DocumentSnapshot snap = await docRef.GetSnapshotAsync();
             if (snap.Exists)
             {
@@ -1588,9 +1600,32 @@ namespace ExpenseApp
             return currentSavings;
         }
 
+        public static async Task<double> getCurrentSavingsGroup(String groupCode, String titleGoal)
+        {
+            DocumentReference docRef = editInsideGroup(groupCode).Collection("Goals").Document(titleGoal);
+            DocumentSnapshot dSnap = await docRef.GetSnapshotAsync();
+            double percentage = dSnap.GetValue<double>("Percentage");
+            DocumentReference docRefWallet = editInsideGroup(groupCode).Collection("Wallets").Document("Balance");
+            DocumentSnapshot dSnapWallet = await docRefWallet.GetSnapshotAsync();
+            double amountWallet = dSnapWallet.GetValue<double>("Amount");
+
+            double currentSavings = amountWallet * percentage;
+
+            return currentSavings;
+        }
+
         public async static Task<double> getGoalAmount(String username, String titleGoal)
         {
             DocumentReference docRef = editInsideUser(username).Collection("Goals").Document(titleGoal);
+            DocumentSnapshot dSnap = await docRef.GetSnapshotAsync();
+            double GoalAmount = dSnap.GetValue<double>("Amount");
+
+            return GoalAmount;
+        }
+
+        public async static Task<double> getGoalAmountGroup(String groupCode, String titleGoal)
+        {
+            DocumentReference docRef = editInsideGroup(groupCode).Collection("Goals").Document(titleGoal);
             DocumentSnapshot dSnap = await docRef.GetSnapshotAsync();
             double GoalAmount = dSnap.GetValue<double>("Amount");
 
@@ -1610,11 +1645,36 @@ namespace ExpenseApp
             return daysDifference;
 
         }
+        public async static Task<int> dateTargetMinusCurrentGroup(String groupCode, String titleGoal)
+        {
+            DocumentReference docRef = editInsideGroup(groupCode).Collection("Goals").Document(titleGoal);
+            DocumentSnapshot dSnap = await docRef.GetSnapshotAsync();
+            String sDate = dSnap.GetValue<String>("GoalDate");
+            DateTime fDate = DateTime.ParseExact(sDate, "yyyy-MM-dd", CultureInfo.InvariantCulture);
+            DateTime currentDate = DateTime.Today;
+
+            int daysDifference = (int)(fDate - currentDate).TotalDays;
+
+            return daysDifference;
+
+        }
 
         public async static Task<int> dateCurrentMinusStart(String username, String titleGoal)
         {
             DateTime currentDate = DateTime.Today;
             DocumentReference docRef = editInsideUser(username).Collection("Goals").Document(titleGoal);
+            DocumentSnapshot dSnap = await docRef.GetSnapshotAsync();
+            Timestamp fTimeStamp = dSnap.GetValue<Timestamp>("timestamp");
+            DateTime startedDate = fTimeStamp.ToDateTime();
+
+            int daysDifference = (int)(currentDate - startedDate).TotalDays;
+
+            return daysDifference;
+        }
+        public async static Task<int> dateCurrentMinusStartGroup(String groupCode, String titleGoal)
+        {
+            DateTime currentDate = DateTime.Today;
+            DocumentReference docRef = editInsideGroup(groupCode).Collection("Goals").Document(titleGoal);
             DocumentSnapshot dSnap = await docRef.GetSnapshotAsync();
             Timestamp fTimeStamp = dSnap.GetValue<Timestamp>("timestamp");
             DateTime startedDate = fTimeStamp.ToDateTime();
@@ -1704,6 +1764,22 @@ namespace ExpenseApp
                 return docsnap.GetValue<string>("First Name");
             }
             return null;
+        }
+
+        public async static Task<String> getFullName(String username)
+        {
+            String name = "";
+            DocumentReference docref = editInsideUser(username);
+            DocumentSnapshot docSnap = await docref.GetSnapshotAsync();
+            if (docSnap.Exists)
+            {
+                String fname = docSnap.GetValue<String>("First Name");
+                String lname = docSnap.GetValue<String>("Last Name");
+                name = $"{fname} {lname}";
+                return name;
+            }
+            return "Cannot find it...";
+
         }
     }
 }
