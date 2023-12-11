@@ -32,8 +32,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(profile));
             this.label1 = new System.Windows.Forms.Label();
             this.guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
-            this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
-            this.btnEdit = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
             this.pbProfilepic = new Guna.UI2.WinForms.Guna2CirclePictureBox();
             this.lblFullname = new System.Windows.Forms.Label();
@@ -42,20 +40,21 @@
             this.label2 = new System.Windows.Forms.Label();
             this.guna2ShadowPanel3 = new Guna.UI2.WinForms.Guna2ShadowPanel();
             this.guna2Panel6 = new Guna.UI2.WinForms.Guna2Panel();
-            this.lblDate = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.lblDate = new System.Windows.Forms.Label();
             this.guna2ShadowPanel2 = new Guna.UI2.WinForms.Guna2ShadowPanel();
             this.guna2Panel3 = new Guna.UI2.WinForms.Guna2Panel();
-            this.lblEmail = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.lblEmail = new System.Windows.Forms.Label();
             this.guna2ShadowPanel1 = new Guna.UI2.WinForms.Guna2ShadowPanel();
             this.guna2Panel5 = new Guna.UI2.WinForms.Guna2Panel();
             this.lblUsername = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.guna2Panel1.SuspendLayout();
+            this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            this.btnEdit = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbProfilepic)).BeginInit();
             this.guna2Panel4.SuspendLayout();
@@ -68,6 +67,7 @@
             this.guna2ShadowPanel1.SuspendLayout();
             this.guna2Panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.guna2Panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -86,39 +86,6 @@
             // 
             this.guna2Elipse1.BorderRadius = 10;
             this.guna2Elipse1.TargetControl = this.guna2Panel2;
-            // 
-            // guna2Panel1
-            // 
-            this.guna2Panel1.BorderRadius = 10;
-            this.guna2Panel1.Controls.Add(this.btnEdit);
-            this.guna2Panel1.Controls.Add(this.guna2Panel2);
-            this.guna2Panel1.FillColor = System.Drawing.Color.WhiteSmoke;
-            this.guna2Panel1.Location = new System.Drawing.Point(36, 58);
-            this.guna2Panel1.Name = "guna2Panel1";
-            this.guna2Panel1.Size = new System.Drawing.Size(1394, 686);
-            this.guna2Panel1.TabIndex = 17;
-            // 
-            // btnEdit
-            // 
-            this.btnEdit.AutoRoundedCorners = true;
-            this.btnEdit.BackColor = System.Drawing.Color.Transparent;
-            this.btnEdit.BorderColor = System.Drawing.Color.Transparent;
-            this.btnEdit.BorderRadius = 26;
-            this.btnEdit.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnEdit.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnEdit.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnEdit.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnEdit.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnEdit.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(123)))), ((int)(((byte)(47)))));
-            this.btnEdit.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEdit.ForeColor = System.Drawing.Color.White;
-            this.btnEdit.Location = new System.Drawing.Point(1094, 612);
-            this.btnEdit.Margin = new System.Windows.Forms.Padding(5);
-            this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(268, 55);
-            this.btnEdit.TabIndex = 21;
-            this.btnEdit.Text = "Edit Profile";
-            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // guna2Panel2
             // 
@@ -220,24 +187,11 @@
             this.guna2Panel6.Controls.Add(this.label8);
             this.guna2Panel6.Controls.Add(this.pictureBox3);
             this.guna2Panel6.Controls.Add(this.lblDate);
-            this.guna2Panel6.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.guna2Panel6.Location = new System.Drawing.Point(11, 5);
+            this.guna2Panel6.FillColor = System.Drawing.Color.White;
+            this.guna2Panel6.Location = new System.Drawing.Point(6, 4);
             this.guna2Panel6.Name = "guna2Panel6";
-            this.guna2Panel6.Size = new System.Drawing.Size(525, 68);
+            this.guna2Panel6.Size = new System.Drawing.Size(531, 70);
             this.guna2Panel6.TabIndex = 0;
-            // 
-            // lblDate
-            // 
-            this.lblDate.AutoSize = true;
-            this.lblDate.BackColor = System.Drawing.Color.Transparent;
-            this.lblDate.Font = new System.Drawing.Font("Poppins Medium", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDate.ForeColor = System.Drawing.Color.Black;
-            this.lblDate.Location = new System.Drawing.Point(114, 0);
-            this.lblDate.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblDate.Name = "lblDate";
-            this.lblDate.Size = new System.Drawing.Size(158, 42);
-            this.lblDate.TabIndex = 22;
-            this.lblDate.Text = "2023-12-10";
             // 
             // label8
             // 
@@ -262,6 +216,19 @@
             this.pictureBox3.TabIndex = 21;
             this.pictureBox3.TabStop = false;
             // 
+            // lblDate
+            // 
+            this.lblDate.AutoSize = true;
+            this.lblDate.BackColor = System.Drawing.Color.Transparent;
+            this.lblDate.Font = new System.Drawing.Font("Poppins Medium", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDate.ForeColor = System.Drawing.Color.Black;
+            this.lblDate.Location = new System.Drawing.Point(114, 0);
+            this.lblDate.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblDate.Name = "lblDate";
+            this.lblDate.Size = new System.Drawing.Size(158, 42);
+            this.lblDate.TabIndex = 22;
+            this.lblDate.Text = "2023-12-10";
+            // 
             // guna2ShadowPanel2
             // 
             this.guna2ShadowPanel2.BackColor = System.Drawing.Color.Transparent;
@@ -282,23 +249,11 @@
             this.guna2Panel3.Controls.Add(this.label6);
             this.guna2Panel3.Controls.Add(this.pictureBox1);
             this.guna2Panel3.Controls.Add(this.lblEmail);
-            this.guna2Panel3.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.guna2Panel3.Location = new System.Drawing.Point(11, 5);
+            this.guna2Panel3.FillColor = System.Drawing.Color.White;
+            this.guna2Panel3.Location = new System.Drawing.Point(6, 4);
             this.guna2Panel3.Name = "guna2Panel3";
-            this.guna2Panel3.Size = new System.Drawing.Size(525, 68);
+            this.guna2Panel3.Size = new System.Drawing.Size(531, 70);
             this.guna2Panel3.TabIndex = 0;
-            // 
-            // lblEmail
-            // 
-            this.lblEmail.BackColor = System.Drawing.Color.Transparent;
-            this.lblEmail.Font = new System.Drawing.Font("Poppins Medium", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEmail.ForeColor = System.Drawing.Color.Black;
-            this.lblEmail.Location = new System.Drawing.Point(114, 0);
-            this.lblEmail.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblEmail.Name = "lblEmail";
-            this.lblEmail.Size = new System.Drawing.Size(407, 37);
-            this.lblEmail.TabIndex = 22;
-            this.lblEmail.Text = "my email";
             // 
             // label6
             // 
@@ -323,6 +278,18 @@
             this.pictureBox1.TabIndex = 21;
             this.pictureBox1.TabStop = false;
             // 
+            // lblEmail
+            // 
+            this.lblEmail.BackColor = System.Drawing.Color.Transparent;
+            this.lblEmail.Font = new System.Drawing.Font("Poppins Medium", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEmail.ForeColor = System.Drawing.Color.Black;
+            this.lblEmail.Location = new System.Drawing.Point(114, 0);
+            this.lblEmail.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblEmail.Name = "lblEmail";
+            this.lblEmail.Size = new System.Drawing.Size(407, 37);
+            this.lblEmail.TabIndex = 22;
+            this.lblEmail.Text = "my email";
+            // 
             // guna2ShadowPanel1
             // 
             this.guna2ShadowPanel1.BackColor = System.Drawing.Color.Transparent;
@@ -331,7 +298,6 @@
             this.guna2ShadowPanel1.Location = new System.Drawing.Point(22, 15);
             this.guna2ShadowPanel1.Name = "guna2ShadowPanel1";
             this.guna2ShadowPanel1.ShadowColor = System.Drawing.Color.Black;
-            this.guna2ShadowPanel1.ShadowDepth = 50;
             this.guna2ShadowPanel1.ShadowShift = 10;
             this.guna2ShadowPanel1.Size = new System.Drawing.Size(545, 77);
             this.guna2ShadowPanel1.TabIndex = 17;
@@ -342,10 +308,10 @@
             this.guna2Panel5.Controls.Add(this.lblUsername);
             this.guna2Panel5.Controls.Add(this.label3);
             this.guna2Panel5.Controls.Add(this.pictureBox2);
-            this.guna2Panel5.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.guna2Panel5.Location = new System.Drawing.Point(11, 5);
+            this.guna2Panel5.FillColor = System.Drawing.Color.White;
+            this.guna2Panel5.Location = new System.Drawing.Point(6, 3);
             this.guna2Panel5.Name = "guna2Panel5";
-            this.guna2Panel5.Size = new System.Drawing.Size(525, 68);
+            this.guna2Panel5.Size = new System.Drawing.Size(531, 70);
             this.guna2Panel5.TabIndex = 0;
             // 
             // lblUsername
@@ -384,6 +350,39 @@
             this.pictureBox2.TabIndex = 21;
             this.pictureBox2.TabStop = false;
             // 
+            // guna2Panel1
+            // 
+            this.guna2Panel1.BorderRadius = 10;
+            this.guna2Panel1.Controls.Add(this.btnEdit);
+            this.guna2Panel1.Controls.Add(this.guna2Panel2);
+            this.guna2Panel1.FillColor = System.Drawing.Color.WhiteSmoke;
+            this.guna2Panel1.Location = new System.Drawing.Point(36, 58);
+            this.guna2Panel1.Name = "guna2Panel1";
+            this.guna2Panel1.Size = new System.Drawing.Size(1394, 686);
+            this.guna2Panel1.TabIndex = 17;
+            // 
+            // btnEdit
+            // 
+            this.btnEdit.AutoRoundedCorners = true;
+            this.btnEdit.BackColor = System.Drawing.Color.Transparent;
+            this.btnEdit.BorderColor = System.Drawing.Color.Transparent;
+            this.btnEdit.BorderRadius = 26;
+            this.btnEdit.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEdit.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnEdit.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnEdit.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnEdit.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnEdit.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(123)))), ((int)(((byte)(47)))));
+            this.btnEdit.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEdit.ForeColor = System.Drawing.Color.White;
+            this.btnEdit.Location = new System.Drawing.Point(1094, 612);
+            this.btnEdit.Margin = new System.Windows.Forms.Padding(5);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(268, 55);
+            this.btnEdit.TabIndex = 21;
+            this.btnEdit.Text = "Edit Profile";
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
+            // 
             // profile
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -395,7 +394,6 @@
             this.Name = "profile";
             this.Size = new System.Drawing.Size(1479, 763);
             this.Load += new System.EventHandler(this.profile_Load);
-            this.guna2Panel1.ResumeLayout(false);
             this.guna2Panel2.ResumeLayout(false);
             this.guna2Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbProfilepic)).EndInit();
@@ -413,6 +411,7 @@
             this.guna2Panel5.ResumeLayout(false);
             this.guna2Panel5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.guna2Panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
