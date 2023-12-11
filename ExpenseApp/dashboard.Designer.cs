@@ -34,9 +34,6 @@
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.lblSpendings = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -53,14 +50,12 @@
             this.btnAllExpenses = new Guna.UI2.WinForms.Guna2Button();
             this.btnWeek = new Guna.UI2.WinForms.Guna2Button();
             this.btnMonth = new Guna.UI2.WinForms.Guna2Button();
-            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.guna2Panel1.SuspendLayout();
             this.guna2Panel2.SuspendLayout();
             this.guna2Panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.expensesChart)).BeginInit();
             this.guna2Panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.expenseCategoryDonut)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.SuspendLayout();
             // 
             // guna2Panel1
@@ -84,7 +79,7 @@
             this.lblSpendings.Font = new System.Drawing.Font("Poppins Medium", 25.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSpendings.Location = new System.Drawing.Point(43, 16);
             this.lblSpendings.Name = "lblSpendings";
-            this.lblSpendings.Size = new System.Drawing.Size(242, 78);
+            this.lblSpendings.Size = new System.Drawing.Size(240, 76);
             this.lblSpendings.TabIndex = 1;
             this.lblSpendings.Text = "₱100,000";
             // 
@@ -94,7 +89,7 @@
             this.label1.Font = new System.Drawing.Font("Poppins Light", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(87, 63);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(202, 41);
+            this.label1.Size = new System.Drawing.Size(201, 40);
             this.label1.TabIndex = 0;
             this.label1.Text = "Total Spendings";
             // 
@@ -105,7 +100,7 @@
             this.label3.Font = new System.Drawing.Font("Poppins Light", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(407, 63);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(228, 41);
+            this.label3.Size = new System.Drawing.Size(227, 40);
             this.label3.TabIndex = 1;
             this.label3.Text = "Total Transactions";
             // 
@@ -130,7 +125,7 @@
             this.lblTransaction.Font = new System.Drawing.Font("Poppins Medium", 25.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTransaction.Location = new System.Drawing.Point(100, 16);
             this.lblTransaction.Name = "lblTransaction";
-            this.lblTransaction.Size = new System.Drawing.Size(89, 78);
+            this.lblTransaction.Size = new System.Drawing.Size(87, 76);
             this.lblTransaction.TabIndex = 1;
             this.lblTransaction.Text = "20";
             // 
@@ -222,7 +217,7 @@
             this.label6.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(27, 16);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(338, 35);
+            this.label6.Size = new System.Drawing.Size(338, 36);
             this.label6.TabIndex = 8;
             this.label6.Text = "Categories Expenses Distribution";
             // 
@@ -234,7 +229,7 @@
             legend1.Name = "Legend1";
             this.expenseCategoryDonut.Legends.Add(legend1);
             this.expenseCategoryDonut.Location = new System.Drawing.Point(14, 41);
-            this.expenseCategoryDonut.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.expenseCategoryDonut.Margin = new System.Windows.Forms.Padding(4);
             this.expenseCategoryDonut.Name = "expenseCategoryDonut";
             this.expenseCategoryDonut.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen;
             series2.ChartArea = "ChartArea1";
@@ -319,28 +314,10 @@
             this.btnMonth.Text = "This Month";
             this.btnMonth.Click += new System.EventHandler(this.btnMonth_Click);
             // 
-            // chart1
-            // 
-            chartArea3.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea3);
-            legend2.Name = "Legend1";
-            this.chart1.Legends.Add(legend2);
-            this.chart1.Location = new System.Drawing.Point(1053, 636);
-            this.chart1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.chart1.Name = "chart1";
-            series3.ChartArea = "ChartArea1";
-            series3.Legend = "Legend1";
-            series3.Name = "Series1";
-            this.chart1.Series.Add(series3);
-            this.chart1.Size = new System.Drawing.Size(408, 94);
-            this.chart1.TabIndex = 12;
-            this.chart1.Text = "chart1";
-            // 
             // dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.chart1);
             this.Controls.Add(this.btnMonth);
             this.Controls.Add(this.btnWeek);
             this.Controls.Add(this.btnAllExpenses);
@@ -352,7 +329,7 @@
             this.Controls.Add(this.guna2Panel1);
             this.Controls.Add(this.guna2Panel3);
             this.Controls.Add(this.guna2Panel4);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "dashboard";
             this.Size = new System.Drawing.Size(1483, 763);
             this.Load += new System.EventHandler(this.dashboard_Load);
@@ -365,7 +342,6 @@
             this.guna2Panel4.ResumeLayout(false);
             this.guna2Panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.expenseCategoryDonut)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -389,6 +365,5 @@
         private Guna.UI2.WinForms.Guna2Button btnWeek;
         private Guna.UI2.WinForms.Guna2Button btnMonth;
         private System.Windows.Forms.DataVisualization.Charting.Chart expensesChart;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
     }
 }

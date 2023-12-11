@@ -36,6 +36,7 @@ using System.Runtime.Remoting.Metadata.W3cXsd2001;
 using static Google.Cloud.Firestore.V1.Firestore;
 using System.Web;
 using System.Collections.Specialized;
+using System.Data;
 
 namespace ExpenseApp
 {
@@ -1414,12 +1415,16 @@ namespace ExpenseApp
             }
             return otp.Equals(inputOTP);
         }
-        public static async Task<Dictionary<DateTime, double>> GetExpensesGroupedByDate(string username)
+        public static async Task<DataTable> GetExpensesGroupedByDate(string username)
         {
             var db = otherFunc.FirestoreConn();
             CollectionReference expensesCollection = editInsideUser(username).Collection("Expenses");
             QuerySnapshot expensesSnapshot = await expensesCollection.GetSnapshotAsync();
-            var expensesByDate = new Dictionary<DateTime, double>();
+
+            DataTable expensesTable = new DataTable();
+            expensesTable.Columns.Add("Date", typeof(DateTime));
+            expensesTable.Columns.Add("Amount", typeof(double));
+
             foreach (DocumentSnapshot expenseDoc in expensesSnapshot.Documents)
             {
                 Dictionary<string, object> expenseData = expenseDoc.ToDictionary();
@@ -1428,95 +1433,93 @@ namespace ExpenseApp
                     expenseData.TryGetValue("Amount", out var amountObj) &&
                     double.TryParse(amountObj.ToString(), out double amount))
                 {
-                    if (expensesByDate.ContainsKey(date))
+                    DataRow existingRow = expensesTable.Rows.Cast<DataRow>()
+                        .FirstOrDefault(row => (DateTime)row["Date"] == date);
+
+                    if (existingRow != null)
                     {
-                        expensesByDate[date] += amount;
+                        existingRow["Amount"] = (double)existingRow["Amount"] + amount;
                     }
                     else
                     {
-                        expensesByDate[date] = amount;
+                        DataRow newRow = expensesTable.NewRow();
+                        newRow["Date"] = date;
+                        newRow["Amount"] = amount;
+                        expensesTable.Rows.Add(newRow);
                     }
                 }
             }
-            return expensesByDate;
+
+            return expensesTable;
         }
-        public static async Task<Dictionary<string, double>> getExpensesGroupedByCategories(string username)
+        public static async Task<DataTable> GetExpensesGroupedByCategories(string username)
         {
-            CollectionReference colRef = editInsideUser(username).Collection("Expenses");
-            QuerySnapshot expensesSnapshot = await colRef.GetSnapshotAsync();
-            var expensebyCategories = new Dictionary<string, double>();
-            foreach (DocumentSnapshot docSnap in expensesSnapshot.Documents)
+            var db = otherFunc.FirestoreConn();
+            CollectionReference expensesCollection = editInsideUser(username).Collection("Expenses");
+            QuerySnapshot expensesSnapshot = await expensesCollection.GetSnapshotAsync();
+
+            DataTable expensesTable = new DataTable();
+            expensesTable.Columns.Add("Date", typeof(string));
+            expensesTable.Columns.Add("Category", typeof(string));
+            expensesTable.Columns.Add("Amount", typeof(double));
+
+            foreach (DocumentSnapshot expenseDoc in expensesSnapshot.Documents)
             {
-                Dictionary<string, object> expenseData = docSnap.ToDictionary();
-                if (expenseData.TryGetValue("Category", out var categoryObj) &&
+                Dictionary<string, object> expenseData = expenseDoc.ToDictionary();
+                if (expenseData.TryGetValue("Date", out var dateObj) &&
+                    DateTime.TryParseExact(dateObj.ToString(), "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime date) &&
+                    expenseData.TryGetValue("Category", out var categoryObj) &&
                     expenseData.TryGetValue("Amount", out var amountObj) &&
                     double.TryParse(amountObj.ToString(), out double amount))
                 {
-                    string category = categoryObj.ToString();
-                    if (expensebyCategories.ContainsKey(category))
+                    DataRow existingRow = expensesTable.Rows.Cast<DataRow>()
+                            .FirstOrDefault(row => (string)row["Category"] == categoryObj.ToString() &&
+                            DateTime.TryParse(row["Date"].ToString(), out DateTime rowDate) &&
+                            rowDate == date);
+
+                    if (existingRow != null)
                     {
-                        expensebyCategories[category] += amount;
+                        existingRow["Amount"] = (double)existingRow["Amount"] + amount;
                     }
                     else
                     {
-                        expensebyCategories[category] = amount;
+                        DataRow newRow = expensesTable.NewRow();
+                        newRow["Date"] = date;
+                        newRow["Category"] = categoryObj.ToString();
+                        newRow["Amount"] = amount;
+                        expensesTable.Rows.Add(newRow);
                     }
                 }
             }
-            return expensebyCategories;
+            return expensesTable;
         }
-        public static async Task<int> getTotalExpensesTransaction(string username, int customDays = 0)
+        public static async Task<DataTable> GetTransactions(string username)
         {
-            int totalTransaction = 0;
-            CollectionReference colRef = editInsideUser(username).Collection("Expenses");
-            if (customDays == 0)
+            var db = otherFunc.FirestoreConn();
+            CollectionReference expensesCollection = editInsideUser(username).Collection("Expenses");
+            QuerySnapshot expensesSnapshot = await expensesCollection.GetSnapshotAsync();
+
+            DataTable transactionsTable = new DataTable();
+            transactionsTable.Columns.Add("Date", typeof(string));
+            transactionsTable.Columns.Add("Amount", typeof(double));
+
+            foreach (DocumentSnapshot expenseDoc in expensesSnapshot.Documents)
             {
-                QuerySnapshot transactionSnap = await colRef.GetSnapshotAsync();
-                totalTransaction = transactionSnap.Documents.Count;
-            }
-            else
-            {
-                DateTime startDate = DateTime.UtcNow.Date.AddDays(-customDays);
-                QuerySnapshot transactionSnap = await colRef
-                    .WhereGreaterThanOrEqualTo("Date", startDate.ToString("yyyy-MM-dd"))
-                    .GetSnapshotAsync();
-                totalTransaction = transactionSnap.Documents.Count;
-            }
-            return totalTransaction;
-        }
-        public static async Task<float> getTotalExpenses(string username, int customDays = 0)
-        {
-            float totalAmount = 0;
-            CollectionReference colRef = editInsideUser(username).Collection("Expenses");
-            if (customDays == 0)
-            {
-                QuerySnapshot documentSnapshots = await colRef.GetSnapshotAsync();
-                foreach (DocumentSnapshot docSnap in documentSnapshots.Documents)
+                Dictionary<string, object> expenseData = expenseDoc.ToDictionary();
+                if (expenseData.TryGetValue("Date", out var dateObj) &&
+                    DateTime.TryParseExact(dateObj.ToString(), "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime date) &&
+                    expenseData.TryGetValue("Amount", out var amountObj) &&
+                    double.TryParse(amountObj.ToString(), out double amount))
                 {
-                    Dictionary<string, object> expenses = docSnap.ToDictionary();
-                    if (expenses.TryGetValue("Amount", out var amountObj) && float.TryParse(amountObj.ToString(), out float amount))
-                    {
-                        totalAmount += amount;
-                    }
+                    DataRow newRow = transactionsTable.NewRow();
+                    newRow["Date"] = date;
+                    newRow["Amount"] = amount;
+                    transactionsTable.Rows.Add(newRow);
                 }
             }
-            else
-            {
-                DateTime startDate = DateTime.UtcNow.Date.AddDays(-customDays);
-                QuerySnapshot documentSnapshots = await colRef
-                    .WhereGreaterThanOrEqualTo("Date", startDate.ToString("yyyy-MM-dd"))
-                    .GetSnapshotAsync();
-                foreach (DocumentSnapshot docSnap in documentSnapshots.Documents)
-                {
-                    Dictionary<string, object> expenses = docSnap.ToDictionary();
-                    if (expenses.TryGetValue("Amount", out var amountObj) && float.TryParse(amountObj.ToString(), out float amount))
-                    {
-                        totalAmount += amount;
-                    }
-                }
-            }
-            return totalAmount;
+            return transactionsTable;
         }
+
         public static async Task<double> getTotalGroupGoalAmount(string groupCode)
         {
             double totalAmount = 0;
