@@ -151,7 +151,7 @@ namespace ExpenseApp
         private void btnAddXpns_Click(object sender, EventArgs e)
         {
             AddExpensesForm adf = new AddExpensesForm(new wallet(), true, groupCode, this);
-            adf.ShowDialog();
+            adf.ShowDialog();   
         }
         private async void loadWalletGroup()
         {

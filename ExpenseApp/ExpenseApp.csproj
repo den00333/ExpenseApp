@@ -449,12 +449,16 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\user.png" />
     <None Include="Resources\search.png" />
     <None Include="Resources\red arrow.png" />
     <None Include="Resources\profileBG1.png" />
     <None Include="Resources\show.png" />
     <None Include="Resources\transportation.png" />
     <None Include="Resources\add.png" />
+    <None Include="Resources\calendar.png" />
+    <None Include="Resources\background1.jpg" />
+    <None Include="Resources\eAccount.png" />
     <Content Include="Resources\GeoLite2-City.mmdb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
