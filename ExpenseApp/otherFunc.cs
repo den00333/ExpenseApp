@@ -892,7 +892,6 @@ namespace ExpenseApp
         {
             String pattern = @"^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@#$%^&+=!])[A-Za-z\d@#$%^&+=!]{8,}$";
             return Regex.IsMatch(password, pattern);
-
         }
         public bool validDate(String date)
         {
@@ -1658,7 +1657,6 @@ namespace ExpenseApp
             return daysDifference;
 
         }
-
         public async static Task<int> dateCurrentMinusStart(String username, String titleGoal)
         {
             DateTime currentDate = DateTime.Today;
