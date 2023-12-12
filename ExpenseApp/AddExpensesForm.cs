@@ -271,6 +271,8 @@ namespace ExpenseApp
                                 {"timestamp", FieldValue.ServerTimestamp}
                             };
                             await docRef.SetAsync(data);
+                            w.flpExpenses.Controls.Clear();
+                            w.displayData();
                             DialogResult res = MessageBox.Show("Succesfully added to your expenses!", "Saved Expenses!", MessageBoxButtons.OK);
                             if (res == DialogResult.OK)
                             {
@@ -279,8 +281,6 @@ namespace ExpenseApp
                                 dtpDate.Value = DateTime.Now;
                                 txtLocation.Clear();
                                 richTxtDesc.Clear();
-                                w.flpExpenses.Controls.Clear();
-                                w.displayData();
                                 this.DialogResult = DialogResult.OK;
                                 this.Hide();
                             }

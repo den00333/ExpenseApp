@@ -60,7 +60,7 @@ namespace ExpenseApp
 
         private void btnAddXpns_Click(object sender, EventArgs e)
         {   
-            AddExpensesForm AEF = new AddExpensesForm(new wallet(), false, null, new group());
+            AddExpensesForm AEF = new AddExpensesForm(this, false, null, new group());
             AEF.ShowDialog();
         }
 
