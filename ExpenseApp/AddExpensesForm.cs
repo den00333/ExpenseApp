@@ -33,7 +33,6 @@ namespace ExpenseApp
             this.myGroup = groupCode;
             this.g = g;
         }
-
         private void initializeCMB()
         {
             catG = FileFunc.initializeData();
@@ -45,17 +44,14 @@ namespace ExpenseApp
             LocationForm location = new LocationForm(this);
             location.Show();
         }
-
         private void AddExpensesForm_Load(object sender, EventArgs e)
         {
             dtpDate.Value = DateTime.Now;
         }
-
         private void btnBack_Click(object sender, EventArgs e)
         {
             this.Hide();
         }
-
         private void txtAmount_KeyPress(object sender, KeyPressEventArgs e)
         {
             string pattern = @"[\d\b]";
@@ -64,13 +60,11 @@ namespace ExpenseApp
                 e.Handled = true;
             }
         }
-
         private void btnCustomize_Click(object sender, EventArgs e)
         {
             customizeCategory ccg = new customizeCategory(this);
             ccg.Show();
         }
-
         private void btnSave_Click(object sender, EventArgs e)
         {
             Console.WriteLine($"flag{flag}");
