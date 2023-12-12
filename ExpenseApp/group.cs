@@ -251,7 +251,7 @@ namespace ExpenseApp
                 if (docsnap.Exists)
                 {
                     string dn = docName;
-                    string creator = fd.Creator;
+                    string creator = docsnap.GetValue<String>("Creator");
                     string category = fd.Category;
                     string amount = fd.Amount.ToString();
                     string date = fd.Date.ToString();

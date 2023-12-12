@@ -48,6 +48,7 @@ namespace ExpenseApp
         bool inWallet = true;
         private async void btnAddAmount_Click(object sender, EventArgs e)
         {
+            
             if (!string.IsNullOrWhiteSpace(txtAmount.Text))
             {
                 if (flag)
@@ -178,7 +179,7 @@ namespace ExpenseApp
         //txtAmount.Clear();
         //        return total;
         //    }
-    float addedAmount = 0;
+        float addedAmount = 0;
         private async Task<float> AddGroupMoney(string wallet)
         {
             otherFunc function = new otherFunc();
@@ -270,6 +271,9 @@ namespace ExpenseApp
             {
                 DocumentReference docRef = await o.SavingWalletAmount(username, wallet);
                 float amount = await o.getWalletAmount(docRef);
+
+                
+
                 addedAmount = float.Parse(txtAmount.Text.ToString());
                 float balanceAmount = await otherFunc.getShort(username);
                 if (balanceAmount < 0)

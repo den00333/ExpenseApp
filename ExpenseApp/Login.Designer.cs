@@ -128,7 +128,7 @@ namespace ExpenseApp
             this.signupBTN.Location = new System.Drawing.Point(110, 553);
             this.signupBTN.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.signupBTN.Name = "signupBTN";
-            this.signupBTN.Size = new System.Drawing.Size(240, 33);
+            this.signupBTN.Size = new System.Drawing.Size(240, 34);
             this.signupBTN.TabIndex = 14;
             this.signupBTN.Text = "Don\'t have an account?";
             this.signupBTN.Click += new System.EventHandler(this.signupBTN_Click);
@@ -161,6 +161,7 @@ namespace ExpenseApp
             this.passwordTB.Size = new System.Drawing.Size(328, 59);
             this.passwordTB.TabIndex = 13;
             this.passwordTB.IconRightClick += new System.EventHandler(this.passwordTB_IconRightClick);
+            this.passwordTB.KeyUp += new System.Windows.Forms.KeyEventHandler(this.passwordTB_KeyUp);
             // 
             // usernameTB
             // 
@@ -184,6 +185,7 @@ namespace ExpenseApp
             this.usernameTB.SelectedText = "";
             this.usernameTB.Size = new System.Drawing.Size(328, 59);
             this.usernameTB.TabIndex = 12;
+            this.usernameTB.KeyUp += new System.Windows.Forms.KeyEventHandler(this.usernameTB_KeyUp);
             // 
             // forgotPassBTN
             // 
@@ -193,7 +195,7 @@ namespace ExpenseApp
             this.forgotPassBTN.Location = new System.Drawing.Point(198, 442);
             this.forgotPassBTN.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.forgotPassBTN.Name = "forgotPassBTN";
-            this.forgotPassBTN.Size = new System.Drawing.Size(183, 33);
+            this.forgotPassBTN.Size = new System.Drawing.Size(183, 34);
             this.forgotPassBTN.TabIndex = 10;
             this.forgotPassBTN.Text = "Forgot Password?";
             this.forgotPassBTN.Click += new System.EventHandler(this.forgotPassBTN_Click);
@@ -251,6 +253,7 @@ namespace ExpenseApp
             this.btnLogin.TabIndex = 2;
             this.btnLogin.Text = "Login";
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
+            this.btnLogin.KeyUp += new System.Windows.Forms.KeyEventHandler(this.btnLogin_KeyUp);
             // 
             // timer1
             // 
