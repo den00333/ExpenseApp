@@ -58,7 +58,7 @@ namespace ExpenseApp
             areaSeries.BackGradientStyle = GradientStyle.TopBottom;
             foreach (var row in sortedExpenses){
                 DateTime date = row.Field<DateTime>("Date");
-                double totalAmount = row.Field<double>("Amount");
+                double totalAmount = row.Field<double>("Amount");   
 
                 DataPoint dataPoint = new DataPoint();
                 dataPoint.AxisLabel = date.ToString("MM/dd");

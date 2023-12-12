@@ -407,6 +407,7 @@ namespace ExpenseApp
             {
                 negativeVal = total;
                 total = 0;
+
             }
             Dictionary<String, object> data = new Dictionary<String, object>()
             {
@@ -419,6 +420,25 @@ namespace ExpenseApp
             return twoReturnVal;
 
         }
+
+        public async Task<bool> checkSubtractCurrentExpenses(double useramount, String username)
+        {
+            DocumentReference docRefWallet = await SavingWalletAmount(username, "Expense");
+            float currentAmountInExpenses = await getWalletAmount(docRefWallet);
+
+            double newBal = currentAmountInExpenses - useramount;
+
+            if (newBal < 0)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+
+        }
+
         public async Task<float[]> SubtractExpensesFromWalletExpensesGroup(String groupcode)
         {
             //get the latest added expense
@@ -607,7 +627,7 @@ namespace ExpenseApp
         {
             int docNum = await DocNameForExpenses(username);
             
-            String docName = string.Concat("E", (docNum + 1).ToString());
+            String docName = string.Concat("E", (docNum).ToString());
             FirestoreDb database = FirestoreConn();
             DocumentReference docRef = database.Collection("Users").Document(username).Collection("Expenses").Document(docName);
             DocumentSnapshot ds = await docRef.GetSnapshotAsync();

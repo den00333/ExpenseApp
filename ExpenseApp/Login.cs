@@ -69,6 +69,7 @@ namespace ExpenseApp
             if (otherFunc.internetConn())
             {
                 logIn();
+                btnLogin.Enabled = false;
             }
             else
             {
@@ -179,6 +180,35 @@ namespace ExpenseApp
                 passwordTB.PasswordChar = '●';
                 flag = true;
                 passwordTB.IconRight = Properties.Resources.show;
+            }
+        }
+
+        private void btnLogin_KeyDown(object sender, KeyEventArgs e)
+        {
+
+        }
+
+        private void btnLogin_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnLogin.PerformClick();
+            }
+        }
+
+        private void usernameTB_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnLogin.PerformClick();
+            }
+        }
+
+        private void passwordTB_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnLogin.PerformClick();
             }
         }
     }

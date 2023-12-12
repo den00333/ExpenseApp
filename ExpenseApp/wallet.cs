@@ -161,6 +161,9 @@ namespace ExpenseApp
                     lblDate.Text = date;
 
                     pnl.DoubleClick += (sender, e) => PnlGoals_DoubleClick(sender, e, docname);
+                    lblDocname.DoubleClick += (sender, e) => PnlGoals_DoubleClick(sender, e, docname);
+                    lblAmount.DoubleClick += (sender, e) => PnlGoals_DoubleClick(sender, e, docname);
+                    lblDate.DoubleClick += (sender, e) => PnlGoals_DoubleClick(sender, e, docname);
 
                     pnl.Controls.Add(lblDocname);
                     pnl.Controls.Add(lblAmount);
@@ -362,6 +365,11 @@ namespace ExpenseApp
                     lblDate.Text = date;
 
                     pnl.DoubleClick += (sender, e) => PnlExpenses_DoubleClick(sender, e, dn);
+                    lblAmount.DoubleClick += (sender, e) => PnlExpenses_DoubleClick(sender, e, dn);
+                    lblCat.DoubleClick += (sender, e) => PnlExpenses_DoubleClick(sender, e, dn);
+                    lblDate.DoubleClick += (sender, e) => PnlExpenses_DoubleClick(sender, e, dn);
+                    lbldocname.DoubleClick += (sender, e) => PnlExpenses_DoubleClick(sender, e, dn);
+
 
                     pnl.Controls.Add(lblCat);
                     pnl.Controls.Add(lblAmount);
