@@ -449,6 +449,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\verify.png" />
     <None Include="Resources\user.png" />
     <None Include="Resources\search.png" />
     <None Include="Resources\red arrow.png" />

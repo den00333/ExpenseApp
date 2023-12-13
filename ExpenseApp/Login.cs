@@ -36,7 +36,7 @@ namespace ExpenseApp
             //cliente = otherFunc.conn();
             timer1.Tick += new EventHandler(timer1_Tick);
             timer1.Start();
-            
+            OTPManager.createFile();
         }
 
         private void closeBTN_Click(object sender, EventArgs e)

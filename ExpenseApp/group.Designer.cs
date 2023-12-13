@@ -78,6 +78,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
             this.label5 = new System.Windows.Forms.Label();
+            this.lblGroupCode = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.pnlMembers.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -286,10 +287,11 @@
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.lblGroupCode);
+            this.panel3.Controls.Add(this.lblGN);
             this.panel3.Controls.Add(this.panel4);
             this.panel3.Controls.Add(this.guna2ShadowPanel5);
             this.panel3.Controls.Add(this.panel5);
-            this.panel3.Controls.Add(this.lblGN);
             this.panel3.Controls.Add(this.guna2ShadowPanel2);
             this.panel3.Controls.Add(this.guna2ShadowPanel1);
             this.panel3.Controls.Add(this.guna2Panel3);
@@ -528,11 +530,11 @@
             // 
             this.lblGN.AutoSize = true;
             this.lblGN.BackColor = System.Drawing.Color.Transparent;
-            this.lblGN.Font = new System.Drawing.Font("Poppins SemiBold", 26F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblGN.Font = new System.Drawing.Font("Poppins SemiBold", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblGN.ForeColor = System.Drawing.Color.Black;
-            this.lblGN.Location = new System.Drawing.Point(3, 4);
+            this.lblGN.Location = new System.Drawing.Point(12, 5);
             this.lblGN.Name = "lblGN";
-            this.lblGN.Size = new System.Drawing.Size(254, 62);
+            this.lblGN.Size = new System.Drawing.Size(194, 48);
             this.lblGN.TabIndex = 15;
             this.lblGN.Text = "Group Name";
             // 
@@ -541,7 +543,7 @@
             this.guna2ShadowPanel2.BackColor = System.Drawing.Color.Transparent;
             this.guna2ShadowPanel2.Controls.Add(this.guna2GradientPanel2);
             this.guna2ShadowPanel2.FillColor = System.Drawing.Color.White;
-            this.guna2ShadowPanel2.Location = new System.Drawing.Point(328, 71);
+            this.guna2ShadowPanel2.Location = new System.Drawing.Point(328, 77);
             this.guna2ShadowPanel2.Name = "guna2ShadowPanel2";
             this.guna2ShadowPanel2.Radius = 10;
             this.guna2ShadowPanel2.ShadowColor = System.Drawing.Color.Black;
@@ -608,7 +610,7 @@
             this.guna2ShadowPanel1.BackColor = System.Drawing.Color.Transparent;
             this.guna2ShadowPanel1.Controls.Add(this.guna2GradientPanel1);
             this.guna2ShadowPanel1.FillColor = System.Drawing.Color.White;
-            this.guna2ShadowPanel1.Location = new System.Drawing.Point(28, 71);
+            this.guna2ShadowPanel1.Location = new System.Drawing.Point(28, 77);
             this.guna2ShadowPanel1.Name = "guna2ShadowPanel1";
             this.guna2ShadowPanel1.Radius = 10;
             this.guna2ShadowPanel1.ShadowColor = System.Drawing.Color.Black;
@@ -727,6 +729,18 @@
             this.label5.TabIndex = 8;
             this.label5.Text = "Goals";
             // 
+            // lblGroupCode
+            // 
+            this.lblGroupCode.AutoSize = true;
+            this.lblGroupCode.BackColor = System.Drawing.Color.Transparent;
+            this.lblGroupCode.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblGroupCode.ForeColor = System.Drawing.Color.Gray;
+            this.lblGroupCode.Location = new System.Drawing.Point(18, 44);
+            this.lblGroupCode.Name = "lblGroupCode";
+            this.lblGroupCode.Size = new System.Drawing.Size(111, 28);
+            this.lblGroupCode.TabIndex = 23;
+            this.lblGroupCode.Text = "Group Code:";
+            // 
             // group
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -835,5 +849,6 @@
         private Guna.UI2.WinForms.Guna2GradientPanel guna2GradientPanel4;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label lblGroupCode;
     }
 }

@@ -130,6 +130,7 @@ namespace ExpenseApp
             groupCode = gc;
             AddExpensesForm adf = new AddExpensesForm(new wallet(), true, groupCode, this);
             lblGN.Text = groupN;
+            lblGroupCode.Text = "Group Code: " + groupCode;
             Console.WriteLine(groupCode);
             loadWalletGroup();
             flpMembers.Controls.Clear();
@@ -140,6 +141,7 @@ namespace ExpenseApp
             groupCode = gc;
             AddExpensesForm adf = new AddExpensesForm(new wallet(), true, groupCode, this);
             lblGN.Text = groupN;
+            lblGroupCode.Text = "Group Code: " + groupCode;
             loadWalletGroup();
             flpMembers.Controls.Clear();
             displayMembers(groupCode);

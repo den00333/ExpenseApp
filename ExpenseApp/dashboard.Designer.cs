@@ -50,6 +50,8 @@
             this.btnAllExpenses = new Guna.UI2.WinForms.Guna2Button();
             this.btnWeek = new Guna.UI2.WinForms.Guna2Button();
             this.btnMonth = new Guna.UI2.WinForms.Guna2Button();
+            this.cmbGroup = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.guna2Panel1.SuspendLayout();
             this.guna2Panel2.SuspendLayout();
             this.guna2Panel3.SuspendLayout();
@@ -208,7 +210,7 @@
             this.guna2Panel4.Controls.Add(this.label6);
             this.guna2Panel4.Controls.Add(this.expenseCategoryDonut);
             this.guna2Panel4.FillColor = System.Drawing.Color.White;
-            this.guna2Panel4.Location = new System.Drawing.Point(780, 176);
+            this.guna2Panel4.Location = new System.Drawing.Point(778, 218);
             this.guna2Panel4.Margin = new System.Windows.Forms.Padding(2);
             this.guna2Panel4.Name = "guna2Panel4";
             this.guna2Panel4.Size = new System.Drawing.Size(306, 336);
@@ -219,7 +221,7 @@
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(20, 13);
+            this.label6.Location = new System.Drawing.Point(22, 10);
             this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(271, 28);
@@ -233,7 +235,7 @@
             legend2.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
             legend2.Name = "Legend1";
             this.expenseCategoryDonut.Legends.Add(legend2);
-            this.expenseCategoryDonut.Location = new System.Drawing.Point(10, 33);
+            this.expenseCategoryDonut.Location = new System.Drawing.Point(11, 32);
             this.expenseCategoryDonut.Name = "expenseCategoryDonut";
             this.expenseCategoryDonut.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen;
             series4.ChartArea = "ChartArea1";
@@ -256,7 +258,7 @@
             this.btnToday.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(123)))), ((int)(((byte)(47)))));
             this.btnToday.Font = new System.Drawing.Font("Poppins", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnToday.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnToday.Location = new System.Drawing.Point(521, 104);
+            this.btnToday.Location = new System.Drawing.Point(508, 104);
             this.btnToday.Margin = new System.Windows.Forms.Padding(2);
             this.btnToday.Name = "btnToday";
             this.btnToday.Size = new System.Drawing.Size(118, 37);
@@ -274,7 +276,7 @@
             this.btnAllExpenses.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(123)))), ((int)(((byte)(47)))));
             this.btnAllExpenses.Font = new System.Drawing.Font("Poppins", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAllExpenses.ForeColor = System.Drawing.Color.White;
-            this.btnAllExpenses.Location = new System.Drawing.Point(521, 63);
+            this.btnAllExpenses.Location = new System.Drawing.Point(508, 63);
             this.btnAllExpenses.Margin = new System.Windows.Forms.Padding(2);
             this.btnAllExpenses.Name = "btnAllExpenses";
             this.btnAllExpenses.Size = new System.Drawing.Size(118, 37);
@@ -292,7 +294,7 @@
             this.btnWeek.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(123)))), ((int)(((byte)(47)))));
             this.btnWeek.Font = new System.Drawing.Font("Poppins", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnWeek.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnWeek.Location = new System.Drawing.Point(659, 63);
+            this.btnWeek.Location = new System.Drawing.Point(646, 63);
             this.btnWeek.Margin = new System.Windows.Forms.Padding(2);
             this.btnWeek.Name = "btnWeek";
             this.btnWeek.Size = new System.Drawing.Size(118, 37);
@@ -310,7 +312,7 @@
             this.btnMonth.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(123)))), ((int)(((byte)(47)))));
             this.btnMonth.Font = new System.Drawing.Font("Poppins", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnMonth.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnMonth.Location = new System.Drawing.Point(659, 104);
+            this.btnMonth.Location = new System.Drawing.Point(646, 104);
             this.btnMonth.Margin = new System.Windows.Forms.Padding(2);
             this.btnMonth.Name = "btnMonth";
             this.btnMonth.Size = new System.Drawing.Size(118, 37);
@@ -318,10 +320,42 @@
             this.btnMonth.Text = "This Month";
             this.btnMonth.Click += new System.EventHandler(this.btnMonth_Click);
             // 
+            // cmbGroup
+            // 
+            this.cmbGroup.BackColor = System.Drawing.Color.Transparent;
+            this.cmbGroup.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(123)))), ((int)(((byte)(47)))));
+            this.cmbGroup.BorderRadius = 10;
+            this.cmbGroup.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cmbGroup.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbGroup.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cmbGroup.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cmbGroup.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbGroup.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.cmbGroup.ItemHeight = 30;
+            this.cmbGroup.Location = new System.Drawing.Point(908, 19);
+            this.cmbGroup.Name = "cmbGroup";
+            this.cmbGroup.Size = new System.Drawing.Size(162, 36);
+            this.cmbGroup.TabIndex = 18;
+            this.cmbGroup.SelectedIndexChanged += new System.EventHandler(this.cmbGroup_SelectedIndexChanged);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.SystemColors.Control;
+            this.label2.Font = new System.Drawing.Font("Poppins SemiBold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(828, 22);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(75, 28);
+            this.label2.TabIndex = 19;
+            this.label2.Text = "Groups:";
+            // 
             // dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.cmbGroup);
             this.Controls.Add(this.btnMonth);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.btnWeek);
@@ -368,5 +402,7 @@
         private Guna.UI2.WinForms.Guna2Button btnWeek;
         private Guna.UI2.WinForms.Guna2Button btnMonth;
         private System.Windows.Forms.DataVisualization.Charting.Chart expensesChart;
+        private Guna.UI2.WinForms.Guna2ComboBox cmbGroup;
+        private System.Windows.Forms.Label label2;
     }
 }
