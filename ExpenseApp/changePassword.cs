@@ -77,7 +77,7 @@ namespace ExpenseApp
         }
         private void btnSendCode_Click(object sender, EventArgs e)
         {
-            otherFunc.sendOTP(email,true);
+            otherFunc.sendOTP(email, this);
         }
         private void btnSavepass_Click(object sender, EventArgs e)
         {
@@ -139,16 +139,15 @@ namespace ExpenseApp
                     panelPassword.BringToFront();
                 }
                 else{
-                    Tuple<string, DateTime, string> otpData = OTPManager.LoadOTP();
+                    Tuple<string, DateTime> otpData = OTPManager.LoadOTP();
                     if (otpData != null)
                     {
                         DateTime expirationTime = otpData.Item2;
                         string storedOTP = otpData.Item1;
-                        string prevEmail = otpData.Item3;
                         bool isEqualStoredOTP = otherFunc.compareOTP(inputOTP, storedOTP);
                         if (isEqualStoredOTP)
                         {
-                            if (DateTime.Now < expirationTime && email.Equals(prevEmail))
+                            if (DateTime.Now < expirationTime)
                             {
                                 panelPassword.Visible = true;
                                 panelPassword.BringToFront();
@@ -170,6 +169,7 @@ namespace ExpenseApp
             }
         }
 
+       
 
         private void txtNewPass_KeyPress_1(object sender, KeyPressEventArgs e)
         {

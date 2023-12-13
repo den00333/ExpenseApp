@@ -36,7 +36,7 @@ namespace ExpenseApp
             //cliente = otherFunc.conn();
             timer1.Tick += new EventHandler(timer1_Tick);
             timer1.Start();
-            OTPManager.createFile();
+            
         }
 
         private void closeBTN_Click(object sender, EventArgs e)
@@ -107,7 +107,7 @@ namespace ExpenseApp
 
                     this.Hide();
                     FirebaseData.Instance.Username = username;
-                    homeForm home = new homeForm();
+                    Home home = new Home();
                     String userN = FirebaseData.Instance.Username;
                     bool hasExistingAcc = await otherFunc.checkLog(userN);
                     otherFunc.RecordLogs(userN, hasExistingAcc, true);
@@ -119,12 +119,10 @@ namespace ExpenseApp
                 {
 
                     MessageBox.Show("Invalid username or password", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    btnLogin.Enabled = true;
                 }
             }
             else{
                 MessageBox.Show("Invalid username or password!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                btnLogin.Enabled = true;
             }
         }
 

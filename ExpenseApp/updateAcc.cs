@@ -11,18 +11,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace ExpenseApp
 {
     public partial class updateAcc : Form
     {
-        string username = FirebaseData.Instance.Username;
         private profile profile;
         string password = string.Empty;
-        String fname, lname, email, userN, pass, repeatpass;
-        bool flag = false;
-        public string otp;
         public updateAcc(profile p)
         {
             InitializeComponent();
@@ -71,7 +66,7 @@ namespace ExpenseApp
         async void updateAccount()
         {
             Security s = new Security();
-            
+            string username = FirebaseData.Instance.Username;
             otherFunc o = new otherFunc();
             DocumentSnapshot snap = await o.logInFunc(username);
             if (snap.Exists)
@@ -88,39 +83,18 @@ namespace ExpenseApp
         private void guna2Button1_Click(object sender, EventArgs e)
         {
             otherFunc o = new otherFunc();
-            fname = txtFirstname.Text;
-            lname = txtLastname.Text;
-            email = txtEmail.Text;
+            string firstname = txtFirstname.Text;
+            string lastname = txtLastname.Text;
+            string email = txtEmail.Text;
             string bio = rtbBio.Text;
-            pass = txtNewPass.Text;
-            repeatpass = txtConfirmPass.Text;
+            string password = Security.Encrypt(txtNewPass.Text);
+            string confirmPass = txtConfirmPass.Text;
             profile p = profile;
-            bool isEmpty = otherFunc.areControlEmpty(fname, lname, pass, repeatpass, email);
-            bool hasInternet = otherFunc.internetConn();
-            if (hasInternet)
-            {
-                otherFunc function = new otherFunc();
-                if (!isEmpty)
-                {
-                    if (flag)
-                    {
-                        o.updateData(username, fname, lname, email, bio, pass, repeatpass, this, p);
-                        storeImage();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Email not verified!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Something is missing", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-            }
-            else
-            {
-                MessageBox.Show("No Internet Connection!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+
+            string username = FirebaseData.Instance.Username;
+
+            o.updateData(username, firstname, lastname, email, bio, password, confirmPass, this, p);
+            storeImage();
         }
 
         private void txtFirstname_KeyPress(object sender, KeyPressEventArgs e)
@@ -185,30 +159,6 @@ namespace ExpenseApp
         {
             checkPassword();
         }
-
-        private void btnVerify_Click(object sender, EventArgs e)
-        {
-            Tuple<string, DateTime, string> storedOTP = OTPManager.LoadOTP();
-            string prevEmail = storedOTP.Item3;
-            string inputOTP = txtOTP.Text.ToString();
-
-            if (inputOTP.Equals(storedOTP.Item1))
-            {
-                txtOTP.Visible = false;
-                btnVerify.Visible = false;
-                btnSendOTP.Visible = false;
-                txtEmail.Text = email;
-                ptbVerified.Visible = true;
-                MessageBox.Show("Email Verified", "Success", MessageBoxButtons.OK);
-                flag = true;
-                txtEmail.ReadOnly = true;
-            }
-            else
-            {
-                MessageBox.Show("Please enter your OTP", "Invalid", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }
-        }
-
         private void UpdatePasswordMatchLabel()
         {
             if (string.IsNullOrWhiteSpace(txtNewPass.Text) && string.IsNullOrWhiteSpace(txtConfirmPass.Text) || string.IsNullOrEmpty(txtConfirmPass.Text))
@@ -235,49 +185,6 @@ namespace ExpenseApp
         private void txtConfirmPass_TextChanged(object sender, EventArgs e)
         {
             UpdatePasswordMatchLabel();
-        }
-
-        private void btnSendOTP_Click(object sender, EventArgs e)
-        {
-            Tuple<string, DateTime, string> storedOTP = OTPManager.LoadOTP();
-            DateTime expireDate = storedOTP.Item2;
-            DateTime currentDate = DateTime.Now;
-            string prevCode = storedOTP.Item1;
-            string prevEmail = storedOTP.Item3;
-
-            if (string.IsNullOrEmpty(txtEmail.Text))
-            {
-                MessageBox.Show("Enter your email", "Invalid", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }
-            else
-            {
-                if (otherFunc.isValidEmail(txtEmail.Text.Trim()))
-                {
-                    string inputEmail = txtEmail.Text.Trim();
-                    if (expireDate > currentDate && prevEmail.Equals(inputEmail))
-                    {
-                        MessageBox.Show("You still have a valid OTP. Please use the existing one.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        return;
-                    }
-                    else
-                    {
-                        otherFunc.sendOTP(inputEmail, false);
-                        txtOTP.Visible = true;
-                        btnVerify.Visible = true;
-                        email = inputEmail;
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Invalid email", "Invalid", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                }
-            }
-        }
-        private void otpTimer_Tick(object sender, EventArgs e)
-        {
-            txtOTP.Visible = false;
-            btnVerify.Visible = false;
-            otpTimer.Stop();
         }
     }
 }

@@ -85,11 +85,11 @@
             // 
             this.label1.AutoSize = true;
             this.guna2Transition1.SetDecoration(this.label1, Guna.UI2.AnimatorNS.DecorationType.None);
-            this.label1.Font = new System.Drawing.Font("Poppins SemiBold", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(19, 9);
+            this.label1.Location = new System.Drawing.Point(25, 12);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(140, 42);
+            this.label1.Size = new System.Drawing.Size(141, 31);
             this.label1.TabIndex = 1;
             this.label1.Text = "My Wallet";
             // 
@@ -117,7 +117,7 @@
             this.guna2ShadowPanel1.Controls.Add(this.guna2GradientPanel1);
             this.guna2Transition1.SetDecoration(this.guna2ShadowPanel1, Guna.UI2.AnimatorNS.DecorationType.None);
             this.guna2ShadowPanel1.FillColor = System.Drawing.Color.White;
-            this.guna2ShadowPanel1.Location = new System.Drawing.Point(26, 63);
+            this.guna2ShadowPanel1.Location = new System.Drawing.Point(33, 63);
             this.guna2ShadowPanel1.Name = "guna2ShadowPanel1";
             this.guna2ShadowPanel1.Radius = 10;
             this.guna2ShadowPanel1.ShadowColor = System.Drawing.Color.Black;
@@ -203,7 +203,7 @@
             this.guna2ShadowPanel2.Controls.Add(this.guna2GradientPanel2);
             this.guna2Transition1.SetDecoration(this.guna2ShadowPanel2, Guna.UI2.AnimatorNS.DecorationType.None);
             this.guna2ShadowPanel2.FillColor = System.Drawing.Color.White;
-            this.guna2ShadowPanel2.Location = new System.Drawing.Point(379, 63);
+            this.guna2ShadowPanel2.Location = new System.Drawing.Point(386, 63);
             this.guna2ShadowPanel2.Name = "guna2ShadowPanel2";
             this.guna2ShadowPanel2.Radius = 10;
             this.guna2ShadowPanel2.ShadowColor = System.Drawing.Color.Black;
@@ -277,7 +277,7 @@
             this.panelTitle.Controls.Add(this.label7);
             this.guna2Transition1.SetDecoration(this.panelTitle, Guna.UI2.AnimatorNS.DecorationType.None);
             this.panelTitle.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(123)))), ((int)(((byte)(47)))));
-            this.panelTitle.Location = new System.Drawing.Point(26, 236);
+            this.panelTitle.Location = new System.Drawing.Point(33, 236);
             this.panelTitle.Name = "panelTitle";
             this.panelTitle.Size = new System.Drawing.Size(203, 42);
             this.panelTitle.TabIndex = 6;
@@ -321,7 +321,7 @@
             this.guna2ShadowPanel5.Controls.Add(this.panelSwitch);
             this.guna2Transition1.SetDecoration(this.guna2ShadowPanel5, Guna.UI2.AnimatorNS.DecorationType.None);
             this.guna2ShadowPanel5.FillColor = System.Drawing.Color.White;
-            this.guna2ShadowPanel5.Location = new System.Drawing.Point(735, 158);
+            this.guna2ShadowPanel5.Location = new System.Drawing.Point(742, 158);
             this.guna2ShadowPanel5.Name = "guna2ShadowPanel5";
             this.guna2ShadowPanel5.Radius = 6;
             this.guna2ShadowPanel5.ShadowColor = System.Drawing.Color.Black;
@@ -360,9 +360,9 @@
             // 
             this.panel1.Controls.Add(this.tableLayoutPanel1);
             this.guna2Transition1.SetDecoration(this.panel1, Guna.UI2.AnimatorNS.DecorationType.None);
-            this.panel1.Location = new System.Drawing.Point(26, 281);
+            this.panel1.Location = new System.Drawing.Point(33, 281);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(694, 278);
+            this.panel1.Size = new System.Drawing.Size(694, 305);
             this.panel1.TabIndex = 7;
             // 
             // tableLayoutPanel1
@@ -379,7 +379,7 @@
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(694, 278);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(694, 305);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // flpExpenses
@@ -390,16 +390,16 @@
             this.guna2Transition1.SetDecoration(this.flpExpenses, Guna.UI2.AnimatorNS.DecorationType.None);
             this.flpExpenses.Location = new System.Drawing.Point(7, 3);
             this.flpExpenses.Name = "flpExpenses";
-            this.flpExpenses.Size = new System.Drawing.Size(680, 272);
+            this.flpExpenses.Size = new System.Drawing.Size(680, 299);
             this.flpExpenses.TabIndex = 0;
             // 
             // panel2
             // 
             this.panel2.Controls.Add(this.tableLayoutPanel2);
             this.guna2Transition1.SetDecoration(this.panel2, Guna.UI2.AnimatorNS.DecorationType.None);
-            this.panel2.Location = new System.Drawing.Point(735, 281);
+            this.panel2.Location = new System.Drawing.Point(742, 281);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(347, 278);
+            this.panel2.Size = new System.Drawing.Size(347, 302);
             this.panel2.TabIndex = 8;
             // 
             // tableLayoutPanel2
@@ -416,7 +416,7 @@
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(347, 278);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(347, 302);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // flpGoals
@@ -427,7 +427,7 @@
             this.guna2Transition1.SetDecoration(this.flpGoals, Guna.UI2.AnimatorNS.DecorationType.None);
             this.flpGoals.Location = new System.Drawing.Point(5, 3);
             this.flpGoals.Name = "flpGoals";
-            this.flpGoals.Size = new System.Drawing.Size(337, 272);
+            this.flpGoals.Size = new System.Drawing.Size(337, 296);
             this.flpGoals.TabIndex = 0;
             // 
             // guna2Panel1
@@ -436,7 +436,7 @@
             this.guna2Panel1.Controls.Add(this.label5);
             this.guna2Transition1.SetDecoration(this.guna2Panel1, Guna.UI2.AnimatorNS.DecorationType.None);
             this.guna2Panel1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(187)))), ((int)(((byte)(141)))), ((int)(((byte)(228)))));
-            this.guna2Panel1.Location = new System.Drawing.Point(735, 236);
+            this.guna2Panel1.Location = new System.Drawing.Point(742, 236);
             this.guna2Panel1.Name = "guna2Panel1";
             this.guna2Panel1.Size = new System.Drawing.Size(203, 42);
             this.guna2Panel1.TabIndex = 9;
@@ -460,7 +460,7 @@
             this.guna2ShadowPanel3.Controls.Add(this.guna2GradientPanel3);
             this.guna2Transition1.SetDecoration(this.guna2ShadowPanel3, Guna.UI2.AnimatorNS.DecorationType.None);
             this.guna2ShadowPanel3.FillColor = System.Drawing.Color.White;
-            this.guna2ShadowPanel3.Location = new System.Drawing.Point(735, 63);
+            this.guna2ShadowPanel3.Location = new System.Drawing.Point(742, 63);
             this.guna2ShadowPanel3.Name = "guna2ShadowPanel3";
             this.guna2ShadowPanel3.Radius = 6;
             this.guna2ShadowPanel3.ShadowColor = System.Drawing.Color.Black;
@@ -553,7 +553,7 @@
             this.guna2Transition1.SetDecoration(this, Guna.UI2.AnimatorNS.DecorationType.None);
             this.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.Name = "wallet";
-            this.Size = new System.Drawing.Size(1102, 575);
+            this.Size = new System.Drawing.Size(1109, 620);
             this.Load += new System.EventHandler(this.wallet_Load);
             this.guna2ShadowPanel1.ResumeLayout(false);
             this.guna2GradientPanel1.ResumeLayout(false);

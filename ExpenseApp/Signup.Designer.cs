@@ -45,16 +45,11 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.termsConditions = new Guna.UI2.WinForms.Guna2CheckBox();
             this.signupPanel = new Guna.UI2.WinForms.Guna2Panel();
-            this.btnVerify = new Guna.UI2.WinForms.Guna2Button();
-            this.txtOTP = new Guna.UI2.WinForms.Guna2TextBox();
-            this.btnSendOTP = new Guna.UI2.WinForms.Guna2Button();
+            this.guna2ContextMenuStrip1 = new Guna.UI2.WinForms.Guna2ContextMenuStrip();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
-            this.otpTimer = new System.Windows.Forms.Timer(this.components);
-            this.ptbVerified = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.closeBTN)).BeginInit();
             this.signupPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ptbVerified)).BeginInit();
             this.SuspendLayout();
             // 
             // guna2BorderlessForm1
@@ -243,7 +238,7 @@
             this.txtEmail.PasswordChar = '\0';
             this.txtEmail.PlaceholderText = "Email";
             this.txtEmail.SelectedText = "";
-            this.txtEmail.Size = new System.Drawing.Size(275, 50);
+            this.txtEmail.Size = new System.Drawing.Size(342, 50);
             this.txtEmail.TabIndex = 13;
             // 
             // label4
@@ -325,10 +320,6 @@
             // 
             // signupPanel
             // 
-            this.signupPanel.Controls.Add(this.ptbVerified);
-            this.signupPanel.Controls.Add(this.btnVerify);
-            this.signupPanel.Controls.Add(this.txtOTP);
-            this.signupPanel.Controls.Add(this.btnSendOTP);
             this.signupPanel.Controls.Add(this.termsConditions);
             this.signupPanel.Controls.Add(this.panel1);
             this.signupPanel.Controls.Add(this.label2);
@@ -347,90 +338,24 @@
             this.signupPanel.Size = new System.Drawing.Size(371, 523);
             this.signupPanel.TabIndex = 1;
             // 
-            // btnVerify
+            // guna2ContextMenuStrip1
             // 
-            this.btnVerify.AutoRoundedCorners = true;
-            this.btnVerify.BorderRadius = 17;
-            this.btnVerify.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnVerify.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnVerify.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnVerify.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnVerify.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(123)))), ((int)(((byte)(47)))));
-            this.btnVerify.Font = new System.Drawing.Font("Poppins", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVerify.ForeColor = System.Drawing.Color.White;
-            this.btnVerify.Location = new System.Drawing.Point(301, 175);
-            this.btnVerify.Name = "btnVerify";
-            this.btnVerify.Size = new System.Drawing.Size(60, 37);
-            this.btnVerify.TabIndex = 25;
-            this.btnVerify.Text = "Verify";
-            this.btnVerify.TextOffset = new System.Drawing.Point(0, 2);
-            this.btnVerify.Visible = false;
-            this.btnVerify.Click += new System.EventHandler(this.btnVerify_Click);
-            // 
-            // txtOTP
-            // 
-            this.txtOTP.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(123)))), ((int)(((byte)(47)))));
-            this.txtOTP.BorderRadius = 15;
-            this.txtOTP.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtOTP.DefaultText = "";
-            this.txtOTP.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtOTP.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtOTP.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtOTP.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtOTP.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtOTP.Font = new System.Drawing.Font("Poppins", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtOTP.ForeColor = System.Drawing.Color.Black;
-            this.txtOTP.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtOTP.Location = new System.Drawing.Point(19, 167);
-            this.txtOTP.Margin = new System.Windows.Forms.Padding(4);
-            this.txtOTP.MaxLength = 6;
-            this.txtOTP.Name = "txtOTP";
-            this.txtOTP.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.txtOTP.PasswordChar = '\0';
-            this.txtOTP.PlaceholderText = "One-Time Password";
-            this.txtOTP.SelectedText = "";
-            this.txtOTP.Size = new System.Drawing.Size(275, 50);
-            this.txtOTP.TabIndex = 24;
-            this.txtOTP.Visible = false;
-            // 
-            // btnSendOTP
-            // 
-            this.btnSendOTP.AutoRoundedCorners = true;
-            this.btnSendOTP.BorderRadius = 17;
-            this.btnSendOTP.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnSendOTP.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnSendOTP.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnSendOTP.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnSendOTP.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(123)))), ((int)(((byte)(47)))));
-            this.btnSendOTP.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSendOTP.ForeColor = System.Drawing.Color.White;
-            this.btnSendOTP.Location = new System.Drawing.Point(301, 175);
-            this.btnSendOTP.Name = "btnSendOTP";
-            this.btnSendOTP.Size = new System.Drawing.Size(60, 37);
-            this.btnSendOTP.TabIndex = 23;
-            this.btnSendOTP.Text = "OTP";
-            this.btnSendOTP.TextOffset = new System.Drawing.Point(0, 2);
-            this.btnSendOTP.Click += new System.EventHandler(this.btnSendOTP_Click);
+            this.guna2ContextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.guna2ContextMenuStrip1.Name = "guna2ContextMenuStrip1";
+            this.guna2ContextMenuStrip1.RenderStyle.ArrowColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
+            this.guna2ContextMenuStrip1.RenderStyle.BorderColor = System.Drawing.Color.Gainsboro;
+            this.guna2ContextMenuStrip1.RenderStyle.ColorTable = null;
+            this.guna2ContextMenuStrip1.RenderStyle.RoundedEdges = true;
+            this.guna2ContextMenuStrip1.RenderStyle.SelectionArrowColor = System.Drawing.Color.White;
+            this.guna2ContextMenuStrip1.RenderStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            this.guna2ContextMenuStrip1.RenderStyle.SelectionForeColor = System.Drawing.Color.White;
+            this.guna2ContextMenuStrip1.RenderStyle.SeparatorColor = System.Drawing.Color.Gainsboro;
+            this.guna2ContextMenuStrip1.RenderStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
+            this.guna2ContextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
             // errorProvider
             // 
             this.errorProvider.ContainerControl = this;
-            // 
-            // otpTimer
-            // 
-            this.otpTimer.Tick += new System.EventHandler(this.otpTimer_Tick);
-            // 
-            // ptbVerified
-            // 
-            this.ptbVerified.BackColor = System.Drawing.Color.Transparent;
-            this.ptbVerified.Image = global::ExpenseApp.Properties.Resources.verify;
-            this.ptbVerified.Location = new System.Drawing.Point(315, 175);
-            this.ptbVerified.Name = "ptbVerified";
-            this.ptbVerified.Size = new System.Drawing.Size(37, 37);
-            this.ptbVerified.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.ptbVerified.TabIndex = 18;
-            this.ptbVerified.TabStop = false;
-            this.ptbVerified.Visible = false;
             // 
             // Signup
             // 
@@ -450,7 +375,6 @@
             this.signupPanel.ResumeLayout(false);
             this.signupPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ptbVerified)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -470,14 +394,10 @@
         private Guna.UI2.WinForms.Guna2Button btnSignup;
         private Guna.UI2.WinForms.Guna2TextBox txtPassword;
         private Guna.UI2.WinForms.Guna2TextBox txtUsername;
+        private Guna.UI2.WinForms.Guna2ContextMenuStrip guna2ContextMenuStrip1;
         public Guna.UI2.WinForms.Guna2CheckBox termsConditions;
         public Guna.UI2.WinForms.Guna2TextBox txtFirstname;
         public Guna.UI2.WinForms.Guna2TextBox txtrepeatpass;
         private System.Windows.Forms.ErrorProvider errorProvider;
-        private Guna.UI2.WinForms.Guna2Button btnSendOTP;
-        public Guna.UI2.WinForms.Guna2Button btnVerify;
-        public Guna.UI2.WinForms.Guna2TextBox txtOTP;
-        private System.Windows.Forms.PictureBox ptbVerified;
-        public System.Windows.Forms.Timer otpTimer;
     }
 }
