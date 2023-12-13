@@ -20,6 +20,15 @@ namespace ExpenseApp
             InitializeComponent();
         }
 
+        private void guna2Button2_Click(object sender, EventArgs e)
+        {
+            updateAcc ua = new updateAcc(this);
+            ua.ShowDialog();
+        }
+        /*async void diplayProfile()
+        {
+
+        }*/
         
         private void profile_Load(object sender, EventArgs e)
         {
@@ -41,28 +50,16 @@ namespace ExpenseApp
             if (snap.Exists)
             {
                 FirebaseData fd = snap.ConvertTo<FirebaseData>();
-                Timestamp timestamp = fd.DateCreated;
-                lblFullname.Text = fd.FirstName + " " + fd.LastName;
-                lblEmail.Text = fd.Email;
+                lblFirstname.Text = fd.FirstName;
+                lblFirstname1.Text = fd.FirstName;
                 lblUsername.Text = fd.Username;
-                lblBio.Text = fd.Bio;
-                if (timestamp != null)
-                {
-                    DateTime date = timestamp.ToDateTime();
-                    string dateString = date.ToString("yyyy-MM-dd");
-                    lblDate.Text = dateString;
-                }
+                lblLastname.Text = fd.LastName;
+                lblEmail.Text = fd.Email;
+                rtbBio.Text = fd.Bio;
                 Home h = new Home();
-
                 h.getFirstName(username);
             }
         }
-
-        private void btnEdit_Click(object sender, EventArgs e)
-        {
-            updateAcc ua = new updateAcc(this);
-            ua.ShowDialog();
-
-        }
+        
     }
 }
