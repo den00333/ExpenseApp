@@ -1,6 +1,7 @@
 ﻿using Google.Cloud.Firestore;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -33,6 +34,16 @@ namespace ExpenseApp
             this.myGroup = groupCode;
             this.g = g;
         }
+        bool offlineFlag = false;
+        offWalletUC ouc;
+        public AddExpensesForm(bool fl, offWalletUC ow)
+        {
+            InitializeComponent();
+            initializeCMB();
+            this.offlineFlag = fl;
+            this.ouc = ow;
+        }
+
         private void initializeCMB()
         {
             catG = FileFunc.initializeData();
@@ -65,6 +76,40 @@ namespace ExpenseApp
             customizeCategory ccg = new customizeCategory(this);
             ccg.Show();
         }
+
+        private void savingOffline()
+        {
+            offlineFunc of = new offlineFunc(ouc);
+            String path = ouc.p;
+            if (ouc.lblBalance.Text.Equals("0"))
+            {
+                MessageBox.Show("Insufficient amount");
+            }
+            else
+            {
+                if (File.Exists(path))
+                {
+
+                    if (of.minus(path, double.Parse(txtAmount.Text)))
+                    {
+                        String[] lines = File.ReadAllLines(path);
+                        lines[4] += $"{txtAmount.Text}|{cmbCategory.Text}|{dtpDate.Value.ToString("yyyy-MM-dd")}|{txtLocation.Text}|{richTxtDesc.Text}~";
+                        File.WriteAllLines(path, lines);
+                    }
+                }
+                else
+                {
+                    offlineFunc.createTXT(path);
+                    if (of.minus(path, double.Parse(txtAmount.Text)))
+                    {
+                        String[] lines = File.ReadAllLines(path);
+                        lines[4] += $"{txtAmount.Text}|{cmbCategory.Text}|{dtpDate.Value.ToString("yyyy-MM-dd")}|{txtLocation.Text}|{richTxtDesc.Text}~";
+                        File.WriteAllLines(path, lines);
+                    }
+                }
+            }
+        }
+
         private void btnSave_Click(object sender, EventArgs e)
         {
             Console.WriteLine($"flag{flag}");
@@ -76,16 +121,26 @@ namespace ExpenseApp
             //{
             //    updateUserExpenses();
             //}
-            if (flag)
+            if (offlineFlag)
             {
-                updateGroupExpenses();
+                savingOffline();
+                ouc.flpExpenses.Controls.Clear();
+
+                ouc.loadData(ouc.p);
             }
             else
             {
-                updateUserExpenses();
+                if (flag)
+                {
+                    updateGroupExpenses();
+                }
+                else
+                {
+                    updateUserExpenses();
+                }
+                Console.WriteLine($"flag{flag}");
             }
-            Console.WriteLine($"flag{flag}");
-           //onsole.WriteLine(groupWallet);
+            //onsole.WriteLine(groupWallet);
         }
         private async void updateGroupExpenses()
         {
@@ -250,14 +305,17 @@ namespace ExpenseApp
             String userN = FirebaseData.Instance.Username;
             otherFunc function = new otherFunc();
             string date = dtpDate.Value.ToString("yyyy-MM-dd");
-            bool isEmpty = function.checkFormControlEmpty(txtAmount, cmbCategory,txtLocation);
-            if (!isEmpty){
-                if (function.validDate(date)){
+            bool isEmpty = function.checkFormControlEmpty(txtAmount, cmbCategory, txtLocation);
+            if (!isEmpty)
+            {
+                if (function.validDate(date))
+                {
                     double amount = double.Parse(txtAmount.Text);
                     string category = cmbCategory.Text.ToString();
                     string location = txtLocation.Text.ToString();
                     string name = richTxtDesc.Text.ToString();
-                    try{
+                    try
+                    {
                         bool f = await function.checkSubtractCurrentExpenses(amount, username);
                         if (f)
                         {
@@ -324,7 +382,7 @@ namespace ExpenseApp
                                 }
                                 else
                                 {
-                                    MessageBox.Show("Insufficient Balance", "Warning",MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
+                                    MessageBox.Show("Insufficient Balance", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                                 }
                             }
                             else
@@ -333,15 +391,18 @@ namespace ExpenseApp
                             }
                         }
                     }
-                    catch{
+                    catch
+                    {
                         MessageBox.Show("We cannot process your transaction right now", "Transaction Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
-                else{
+                else
+                {
                     MessageBox.Show("Invalid date selected!", "Invalid Date", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            else{
+            else
+            {
                 MessageBox.Show("Something is missing", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }

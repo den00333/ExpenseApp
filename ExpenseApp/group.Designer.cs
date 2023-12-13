@@ -115,7 +115,7 @@
             this.panel1.Controls.Add(this.panelTitle);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(356, 763);
             this.panel1.TabIndex = 0;
@@ -126,7 +126,7 @@
             this.pnlMembers.BorderThickness = 5;
             this.pnlMembers.Controls.Add(this.tableLayoutPanel2);
             this.pnlMembers.Location = new System.Drawing.Point(11, 422);
-            this.pnlMembers.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlMembers.Margin = new System.Windows.Forms.Padding(4);
             this.pnlMembers.Name = "pnlMembers";
             this.pnlMembers.Size = new System.Drawing.Size(332, 300);
             this.pnlMembers.TabIndex = 17;
@@ -142,7 +142,7 @@
             this.tableLayoutPanel2.Controls.Add(this.flpMembers, 0, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -156,7 +156,7 @@
             this.flpMembers.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.flpMembers.Controls.Add(this.panel6);
             this.flpMembers.Location = new System.Drawing.Point(16, 4);
-            this.flpMembers.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.flpMembers.Margin = new System.Windows.Forms.Padding(4);
             this.flpMembers.Name = "flpMembers";
             this.flpMembers.Size = new System.Drawing.Size(299, 292);
             this.flpMembers.TabIndex = 0;
@@ -166,7 +166,7 @@
             this.panel6.Controls.Add(this.ptbActiveStatus);
             this.panel6.Controls.Add(this.label9);
             this.panel6.Location = new System.Drawing.Point(4, 4);
-            this.panel6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel6.Margin = new System.Windows.Forms.Padding(4);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(305, 49);
             this.panel6.TabIndex = 0;
@@ -191,7 +191,7 @@
             this.label9.Location = new System.Drawing.Point(47, 11);
             this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(220, 23);
+            this.label9.Size = new System.Drawing.Size(283, 30);
             this.label9.TabIndex = 0;
             this.label9.Text = "label9dsadassdfsdfdfdsfsdfsfsd";
             // 
@@ -199,7 +199,7 @@
             // 
             this.pnlGroups.Controls.Add(this.tableLayoutPanel1);
             this.pnlGroups.Location = new System.Drawing.Point(11, 84);
-            this.pnlGroups.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlGroups.Margin = new System.Windows.Forms.Padding(4);
             this.pnlGroups.Name = "pnlGroups";
             this.pnlGroups.Size = new System.Drawing.Size(332, 260);
             this.pnlGroups.TabIndex = 16;
@@ -214,7 +214,7 @@
             this.tableLayoutPanel1.Controls.Add(this.flpGroup, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -226,7 +226,7 @@
             this.flpGroup.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.flpGroup.AutoScroll = true;
             this.flpGroup.Location = new System.Drawing.Point(5, 4);
-            this.flpGroup.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.flpGroup.Margin = new System.Windows.Forms.Padding(4);
             this.flpGroup.Name = "flpGroup";
             this.flpGroup.Size = new System.Drawing.Size(322, 252);
             this.flpGroup.TabIndex = 0;
@@ -237,7 +237,7 @@
             this.panel2.Controls.Add(this.btnAdd);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(356, 76);
             this.panel2.TabIndex = 15;
@@ -248,7 +248,7 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Poppins SemiBold", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(25, 11);
+            this.label1.Location = new System.Drawing.Point(22, 11);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(117, 53);
@@ -268,7 +268,7 @@
             this.btnAdd.Image = global::ExpenseApp.Properties.Resources.add;
             this.btnAdd.ImageSize = new System.Drawing.Size(25, 25);
             this.btnAdd.Location = new System.Drawing.Point(255, 11);
-            this.btnAdd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAdd.Margin = new System.Windows.Forms.Padding(4);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(61, 48);
             this.btnAdd.TabIndex = 14;
@@ -280,7 +280,7 @@
             this.panelTitle.Controls.Add(this.label7);
             this.panelTitle.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(123)))), ((int)(((byte)(47)))));
             this.panelTitle.Location = new System.Drawing.Point(11, 382);
-            this.panelTitle.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panelTitle.Margin = new System.Windows.Forms.Padding(4);
             this.panelTitle.Name = "panelTitle";
             this.panelTitle.Size = new System.Drawing.Size(199, 64);
             this.panelTitle.TabIndex = 18;
@@ -310,7 +310,7 @@
             this.panel3.Controls.Add(this.guna2Panel2);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(356, 0);
-            this.panel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel3.Margin = new System.Windows.Forms.Padding(4);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1123, 763);
             this.panel3.TabIndex = 1;
@@ -319,7 +319,7 @@
             // 
             this.panel4.Controls.Add(this.tableLayoutPanel4);
             this.panel4.Location = new System.Drawing.Point(687, 350);
-            this.panel4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel4.Margin = new System.Windows.Forms.Padding(4);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(424, 377);
             this.panel4.TabIndex = 21;
@@ -335,7 +335,7 @@
             this.tableLayoutPanel4.Controls.Add(this.flpGoals, 0, 0);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel4.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 1;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -349,7 +349,7 @@
             this.flpGoals.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.flpGoals.Controls.Add(this.guna2GradientPanel4);
             this.flpGoals.Location = new System.Drawing.Point(4, 4);
-            this.flpGoals.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.flpGoals.Margin = new System.Windows.Forms.Padding(4);
             this.flpGoals.Name = "flpGoals";
             this.flpGoals.Size = new System.Drawing.Size(416, 369);
             this.flpGoals.TabIndex = 0;
@@ -363,7 +363,7 @@
             this.guna2GradientPanel4.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(180)))), ((int)(((byte)(72)))));
             this.guna2GradientPanel4.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(123)))), ((int)(((byte)(47)))));
             this.guna2GradientPanel4.Location = new System.Drawing.Point(4, 4);
-            this.guna2GradientPanel4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.guna2GradientPanel4.Margin = new System.Windows.Forms.Padding(4);
             this.guna2GradientPanel4.Name = "guna2GradientPanel4";
             this.guna2GradientPanel4.Size = new System.Drawing.Size(408, 132);
             this.guna2GradientPanel4.TabIndex = 11;
@@ -399,7 +399,7 @@
             this.guna2ShadowPanel5.Controls.Add(this.panelSwitch);
             this.guna2ShadowPanel5.FillColor = System.Drawing.Color.White;
             this.guna2ShadowPanel5.Location = new System.Drawing.Point(821, 204);
-            this.guna2ShadowPanel5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.guna2ShadowPanel5.Margin = new System.Windows.Forms.Padding(4);
             this.guna2ShadowPanel5.Name = "guna2ShadowPanel5";
             this.guna2ShadowPanel5.Radius = 6;
             this.guna2ShadowPanel5.ShadowColor = System.Drawing.Color.Black;
@@ -417,7 +417,7 @@
             this.panelSwitch.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(187)))), ((int)(((byte)(141)))), ((int)(((byte)(228)))));
             this.panelSwitch.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(148)))), ((int)(((byte)(98)))));
             this.panelSwitch.Location = new System.Drawing.Point(0, 4);
-            this.panelSwitch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panelSwitch.Margin = new System.Windows.Forms.Padding(4);
             this.panelSwitch.Name = "panelSwitch";
             this.panelSwitch.Size = new System.Drawing.Size(281, 73);
             this.panelSwitch.TabIndex = 0;
@@ -446,7 +446,7 @@
             this.btnAddGoal.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddGoal.ForeColor = System.Drawing.Color.White;
             this.btnAddGoal.Location = new System.Drawing.Point(192, 11);
-            this.btnAddGoal.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAddGoal.Margin = new System.Windows.Forms.Padding(4);
             this.btnAddGoal.Name = "btnAddGoal";
             this.btnAddGoal.Size = new System.Drawing.Size(56, 43);
             this.btnAddGoal.TabIndex = 3;
@@ -457,7 +457,7 @@
             // 
             this.panel5.Controls.Add(this.tableLayoutPanel3);
             this.panel5.Location = new System.Drawing.Point(39, 351);
-            this.panel5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel5.Margin = new System.Windows.Forms.Padding(4);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(640, 375);
             this.panel5.TabIndex = 17;
@@ -473,7 +473,7 @@
             this.tableLayoutPanel3.Controls.Add(this.flpExpenses, 0, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -487,7 +487,7 @@
             this.flpExpenses.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.flpExpenses.Controls.Add(this.guna2GradientPanel3);
             this.flpExpenses.Location = new System.Drawing.Point(4, 4);
-            this.flpExpenses.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.flpExpenses.Margin = new System.Windows.Forms.Padding(4);
             this.flpExpenses.Name = "flpExpenses";
             this.flpExpenses.Size = new System.Drawing.Size(632, 367);
             this.flpExpenses.TabIndex = 0;
@@ -503,7 +503,7 @@
             this.guna2GradientPanel3.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(180)))), ((int)(((byte)(72)))));
             this.guna2GradientPanel3.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(123)))), ((int)(((byte)(47)))));
             this.guna2GradientPanel3.Location = new System.Drawing.Point(4, 4);
-            this.guna2GradientPanel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.guna2GradientPanel3.Margin = new System.Windows.Forms.Padding(4);
             this.guna2GradientPanel3.Name = "guna2GradientPanel3";
             this.guna2GradientPanel3.Size = new System.Drawing.Size(624, 130);
             this.guna2GradientPanel3.TabIndex = 1;
@@ -576,7 +576,7 @@
             this.guna2ShadowPanel2.Controls.Add(this.guna2GradientPanel2);
             this.guna2ShadowPanel2.FillColor = System.Drawing.Color.White;
             this.guna2ShadowPanel2.Location = new System.Drawing.Point(437, 87);
-            this.guna2ShadowPanel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.guna2ShadowPanel2.Margin = new System.Windows.Forms.Padding(4);
             this.guna2ShadowPanel2.Name = "guna2ShadowPanel2";
             this.guna2ShadowPanel2.Radius = 10;
             this.guna2ShadowPanel2.ShadowColor = System.Drawing.Color.Black;
@@ -595,7 +595,7 @@
             this.guna2GradientPanel2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(183)))), ((int)(((byte)(142)))), ((int)(((byte)(81)))));
             this.guna2GradientPanel2.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(66)))), ((int)(((byte)(86)))));
             this.guna2GradientPanel2.Location = new System.Drawing.Point(0, 0);
-            this.guna2GradientPanel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.guna2GradientPanel2.Margin = new System.Windows.Forms.Padding(4);
             this.guna2GradientPanel2.Name = "guna2GradientPanel2";
             this.guna2GradientPanel2.Size = new System.Drawing.Size(372, 193);
             this.guna2GradientPanel2.TabIndex = 0;
@@ -635,7 +635,7 @@
             this.btnAddXpns.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddXpns.ForeColor = System.Drawing.Color.White;
             this.btnAddXpns.Location = new System.Drawing.Point(85, 150);
-            this.btnAddXpns.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAddXpns.Margin = new System.Windows.Forms.Padding(4);
             this.btnAddXpns.Name = "btnAddXpns";
             this.btnAddXpns.Size = new System.Drawing.Size(209, 55);
             this.btnAddXpns.TabIndex = 2;
@@ -648,7 +648,7 @@
             this.guna2ShadowPanel1.Controls.Add(this.guna2GradientPanel1);
             this.guna2ShadowPanel1.FillColor = System.Drawing.Color.White;
             this.guna2ShadowPanel1.Location = new System.Drawing.Point(37, 87);
-            this.guna2ShadowPanel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.guna2ShadowPanel1.Margin = new System.Windows.Forms.Padding(4);
             this.guna2ShadowPanel1.Name = "guna2ShadowPanel1";
             this.guna2ShadowPanel1.Radius = 10;
             this.guna2ShadowPanel1.ShadowColor = System.Drawing.Color.Black;
@@ -668,7 +668,7 @@
             this.guna2GradientPanel1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(180)))), ((int)(((byte)(72)))));
             this.guna2GradientPanel1.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(123)))), ((int)(((byte)(47)))));
             this.guna2GradientPanel1.Location = new System.Drawing.Point(0, 0);
-            this.guna2GradientPanel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.guna2GradientPanel1.Margin = new System.Windows.Forms.Padding(4);
             this.guna2GradientPanel1.Name = "guna2GradientPanel1";
             this.guna2GradientPanel1.Size = new System.Drawing.Size(372, 193);
             this.guna2GradientPanel1.TabIndex = 0;
@@ -697,7 +697,7 @@
             this.btnAddMoney.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddMoney.ForeColor = System.Drawing.Color.White;
             this.btnAddMoney.Location = new System.Drawing.Point(79, 150);
-            this.btnAddMoney.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAddMoney.Margin = new System.Windows.Forms.Padding(4);
             this.btnAddMoney.Name = "btnAddMoney";
             this.btnAddMoney.Size = new System.Drawing.Size(209, 55);
             this.btnAddMoney.TabIndex = 9;
@@ -734,7 +734,7 @@
             this.guna2Panel3.Controls.Add(this.label6);
             this.guna2Panel3.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(123)))), ((int)(((byte)(47)))));
             this.guna2Panel3.Location = new System.Drawing.Point(39, 306);
-            this.guna2Panel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.guna2Panel3.Margin = new System.Windows.Forms.Padding(4);
             this.guna2Panel3.Name = "guna2Panel3";
             this.guna2Panel3.Size = new System.Drawing.Size(273, 64);
             this.guna2Panel3.TabIndex = 19;
@@ -758,7 +758,7 @@
             this.guna2Panel2.Controls.Add(this.label5);
             this.guna2Panel2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(187)))), ((int)(((byte)(141)))), ((int)(((byte)(228)))));
             this.guna2Panel2.Location = new System.Drawing.Point(911, 306);
-            this.guna2Panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.guna2Panel2.Margin = new System.Windows.Forms.Padding(4);
             this.guna2Panel2.Name = "guna2Panel2";
             this.guna2Panel2.Size = new System.Drawing.Size(200, 64);
             this.guna2Panel2.TabIndex = 22;
@@ -783,7 +783,7 @@
             this.BackColor = System.Drawing.SystemColors.Control;
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "group";
             this.Size = new System.Drawing.Size(1479, 763);
             this.Load += new System.EventHandler(this.group_Load);
