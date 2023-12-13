@@ -951,7 +951,12 @@ namespace ExpenseApp
                 f.cmbCategory.Items.Add(c);
             }
         }
-        
+        public bool isValidPassword(string password)
+        {
+            String pattern = @"^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@#$%^&+=!])[A-Za-z\d@#$%^&+=!]{8,}$";
+            return Regex.IsMatch(password, pattern);
+
+        }
         public bool validDate(String date)
         {
             DateTime parsedDate;
@@ -1791,6 +1796,7 @@ namespace ExpenseApp
             return daysDifference;
 
         }
+
         public async static Task<int> dateCurrentMinusStart(String username, String titleGoal)
         {
             DateTime currentDate = DateTime.Today;

@@ -74,12 +74,10 @@ namespace ExpenseApp
                     System.Windows.Forms.Label lblGroupname = new System.Windows.Forms.Label();
                     lblGroupname.Font = new Font("Poppins Regular", 14.25f);
                     lblGroupname.BackColor = Color.Transparent;
-                    lblGroupname.Size = new Size(195, 52);
-                    lblGroupname.Location = new Point(0, 0);
+                    lblGroupname.Size = new Size(200, 33);
+                    lblGroupname.Location = new Point(19, 12);
                     lblGroupname.ForeColor = Color.White;
                     lblGroupname.Text = groupN;
-                    lblGroupname.TextAlign = ContentAlignment.MiddleCenter;
-                    lblGroupname.AutoSize = false;
                     lblGroupname.Cursor = Cursors.Hand;
 
                     pnl.Click += (sender, e) => {
@@ -211,7 +209,7 @@ namespace ExpenseApp
                     System.Windows.Forms.Label lblname = new System.Windows.Forms.Label();
                     lblname.Font = new Font("Poppins", 9.75f,FontStyle.Bold);
                     lblname.BackColor = Color.Transparent;
-                    lblname.Size = new Size(155, 19);
+                    lblname.Size = new Size(185, 19);
                     lblname.Location = new Point(47, 13);
                     lblname.ForeColor = Color.Black;
                     lblname.Text = firstname + " " + lastname;

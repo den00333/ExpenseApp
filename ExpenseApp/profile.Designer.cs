@@ -28,8 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(profile));
+            this.guna2ShadowPanel1 = new Guna.UI2.WinForms.Guna2ShadowPanel();
+            this.guna2GradientPanel1 = new Guna.UI2.WinForms.Guna2GradientPanel();
+            this.guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
+            this.lblUsername = new System.Windows.Forms.Label();
+            this.lblFirstname = new System.Windows.Forms.Label();
+            this.pbProfilepic = new Guna.UI2.WinForms.Guna2PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
@@ -46,13 +50,10 @@
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.lblDate = new System.Windows.Forms.Label();
             this.guna2ShadowPanel2 = new Guna.UI2.WinForms.Guna2ShadowPanel();
-            this.guna2Panel3 = new Guna.UI2.WinForms.Guna2Panel();
-            this.label6 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lblEmail = new System.Windows.Forms.Label();
-            this.guna2ShadowPanel1 = new Guna.UI2.WinForms.Guna2ShadowPanel();
-            this.guna2Panel5 = new Guna.UI2.WinForms.Guna2Panel();
-            this.lblUsername = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.lblLastname = new System.Windows.Forms.Label();
+            this.lblFirstname1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -64,10 +65,6 @@
             this.guna2Panel1.SuspendLayout();
             this.guna2Panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbProfilepic)).BeginInit();
-            this.guna2Panel4.SuspendLayout();
-            this.guna2ShadowPanel3.SuspendLayout();
-            this.guna2Panel6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.guna2ShadowPanel2.SuspendLayout();
             this.guna2Panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -80,7 +77,7 @@
             this.guna2Panel7.SuspendLayout();
             this.SuspendLayout();
             // 
-            // label1
+            // guna2ShadowPanel1
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
@@ -92,10 +89,16 @@
             this.label1.TabIndex = 5;
             this.label1.Text = "Account Setting";
             // 
-            // guna2Elipse1
+            // lblUsername
             // 
-            this.guna2Elipse1.BorderRadius = 10;
-            this.guna2Elipse1.TargetControl = this.guna2Panel2;
+            this.lblUsername.AutoSize = true;
+            this.lblUsername.Font = new System.Drawing.Font("Poppins", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUsername.ForeColor = System.Drawing.Color.White;
+            this.lblUsername.Location = new System.Drawing.Point(206, 73);
+            this.lblUsername.Name = "lblUsername";
+            this.lblUsername.Size = new System.Drawing.Size(125, 37);
+            this.lblUsername.TabIndex = 8;
+            this.lblUsername.Text = "Username";
             // 
             // guna2Panel1
             // 
@@ -148,6 +151,7 @@
             // pbProfilepic
             // 
             this.pbProfilepic.BackColor = System.Drawing.Color.Transparent;
+            this.pbProfilepic.BorderRadius = 62;
             this.pbProfilepic.Image = global::ExpenseApp.Properties.Resources.accountBlack;
             this.pbProfilepic.ImageRotate = 0F;
             this.pbProfilepic.Location = new System.Drawing.Point(23, 11);
@@ -156,8 +160,9 @@
             this.pbProfilepic.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
             this.pbProfilepic.Size = new System.Drawing.Size(106, 101);
             this.pbProfilepic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbProfilepic.TabIndex = 20;
+            this.pbProfilepic.TabIndex = 0;
             this.pbProfilepic.TabStop = false;
+            this.pbProfilepic.UseTransparentBackground = true;
             // 
             // lblFullname
             // 
@@ -283,8 +288,9 @@
             this.guna2ShadowPanel2.Location = new System.Drawing.Point(16, 80);
             this.guna2ShadowPanel2.Margin = new System.Windows.Forms.Padding(2);
             this.guna2ShadowPanel2.Name = "guna2ShadowPanel2";
+            this.guna2ShadowPanel2.Radius = 15;
             this.guna2ShadowPanel2.ShadowColor = System.Drawing.Color.Black;
-            this.guna2ShadowPanel2.ShadowDepth = 50;
+            this.guna2ShadowPanel2.ShadowDepth = 200;
             this.guna2ShadowPanel2.ShadowShift = 10;
             this.guna2ShadowPanel2.Size = new System.Drawing.Size(409, 63);
             this.guna2ShadowPanel2.TabIndex = 18;
@@ -468,6 +474,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
+            this.Controls.Add(this.guna2ShadowPanel2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.guna2Panel1);
             this.Name = "profile";
@@ -477,12 +484,6 @@
             this.guna2Panel2.ResumeLayout(false);
             this.guna2Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbProfilepic)).EndInit();
-            this.guna2Panel4.ResumeLayout(false);
-            this.guna2Panel4.PerformLayout();
-            this.guna2ShadowPanel3.ResumeLayout(false);
-            this.guna2Panel6.ResumeLayout(false);
-            this.guna2Panel6.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.guna2ShadowPanel2.ResumeLayout(false);
             this.guna2Panel3.ResumeLayout(false);
             this.guna2Panel3.PerformLayout();
@@ -503,25 +504,17 @@
         }
 
         #endregion
-        private System.Windows.Forms.Label label1;
-        private Guna.UI2.WinForms.Guna2Elipse guna2Elipse1;
-        private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
-        private System.Windows.Forms.Label lblFullname;
+
+        private Guna.UI2.WinForms.Guna2PictureBox pbProfilepic;
         private Guna.UI2.WinForms.Guna2ShadowPanel guna2ShadowPanel1;
-        private Guna.UI2.WinForms.Guna2Panel guna2Panel2;
-        private Guna.UI2.WinForms.Guna2Panel guna2Panel4;
-        private Guna.UI2.WinForms.Guna2Panel guna2Panel5;
-        private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.Label label2;
+        private Guna.UI2.WinForms.Guna2GradientPanel guna2GradientPanel1;
+        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblUsername;
-        private System.Windows.Forms.Label label3;
-        private Guna.UI2.WinForms.Guna2ShadowPanel guna2ShadowPanel3;
-        private Guna.UI2.WinForms.Guna2Panel guna2Panel6;
-        private System.Windows.Forms.Label lblDate;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.Label lblFirstname;
+        private Guna.UI2.WinForms.Guna2Button guna2Button2;
         private Guna.UI2.WinForms.Guna2ShadowPanel guna2ShadowPanel2;
-        private Guna.UI2.WinForms.Guna2Panel guna2Panel3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.RichTextBox rtbBio;
         private System.Windows.Forms.Label lblEmail;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.PictureBox pictureBox1;
