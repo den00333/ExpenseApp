@@ -8,6 +8,8 @@ using System.ComponentModel.Design;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net.Mail;
+using System.Net;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -19,6 +21,8 @@ namespace ExpenseApp
     public partial class Signup : Form
     {
         String fname, lname, email, username, password, repeatpass;
+        bool flag = false;
+        public string otp;
         public Signup()
         {
             InitializeComponent();
@@ -84,21 +88,29 @@ namespace ExpenseApp
                 MessageBox.Show("Password cannot contain whitespaces", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        
+
 
         private void txtPassword_Validating(object sender, CancelEventArgs e)
         {
             string pass = txtPassword.Text;
 
             //check if the passwordTB is empty, do not show error message when empty
-            if (!string.IsNullOrEmpty(txtPassword.Text)){
+            if (!string.IsNullOrEmpty(txtPassword.Text)) {
                 if (pass.Length > 0 && pass.Length < 8)
                 {
                     errorProvider.SetError(txtPassword, "Password must be at least 8 characters long");
                 }
-                else if ((!pass.Any(char.IsUpper) || !pass.Any(char.IsLower)))
+                else if (!pass.Any(char.IsUpper) || !pass.Any(char.IsLower))
                 {
-                    errorProvider.SetError(txtPassword, "Password must contain uppercase");
+                    errorProvider.SetError(txtPassword, "Password must contain upper and lower case");
+                }
+                else if (!pass.Any(char.IsSymbol))
+                {
+                    errorProvider.SetError(txtPassword, "Password must contain symbol(!@#$%^&)");
+                }
+                else
+                {
+                    errorProvider.Clear();
                 }
             }
             else{
@@ -163,6 +175,73 @@ namespace ExpenseApp
             }
         }
 
+        private void otpTimer_Tick(object sender, EventArgs e)
+        {
+            txtOTP.Visible = false;
+            btnVerify.Visible = false;
+            otpTimer.Stop();
+        }
+
+        private void btnVerify_Click(object sender, EventArgs e)
+        {
+            Tuple<string, DateTime, string> storedOTP = OTPManager.LoadOTP();
+            string prevEmail = storedOTP.Item3;
+            string inputOTP = txtOTP.Text.ToString();
+
+            if (inputOTP.Equals(storedOTP.Item1))
+            {
+                txtOTP.Visible = false;
+                btnVerify.Visible = false;
+                btnSendOTP.Visible = false;
+                txtEmail.Text = email;
+                ptbVerified.Visible = true;
+                MessageBox.Show("Email Verified", "Success", MessageBoxButtons.OK);
+                flag = true;
+                txtEmail.ReadOnly = true;
+            }
+            else
+            {
+                MessageBox.Show("Please enter your OTP", "Invalid", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+        }
+
+        private void btnSendOTP_Click(object sender, EventArgs e)
+        {
+            Tuple<string, DateTime, string> storedOTP = OTPManager.LoadOTP();
+            DateTime expireDate = storedOTP.Item2;
+            DateTime currentDate = DateTime.Now;
+            string prevCode = storedOTP.Item1;
+            string prevEmail = storedOTP.Item3;
+
+            if (string.IsNullOrEmpty(txtEmail.Text))
+            {
+                MessageBox.Show("Enter your email", "Invalid", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            else
+            {
+                if (otherFunc.isValidEmail(txtEmail.Text.Trim()))
+                {
+                    string inputEmail = txtEmail.Text.Trim();
+                    if(expireDate > currentDate && prevEmail.Equals(inputEmail))
+                    {
+                        MessageBox.Show("You still have a valid OTP. Please use the existing one.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        return;
+                    }
+                    else
+                    {
+                        otherFunc.sendOTP(inputEmail, false);
+                        txtOTP.Visible = true;
+                        btnVerify.Visible = true;
+                        email = inputEmail;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Invalid email", "Invalid", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+            }
+        }
+
         private void txtPassword_TextChanged(object sender, EventArgs e)
         {
             UpdatePasswordMatchLabel();
@@ -179,14 +258,28 @@ namespace ExpenseApp
             fname = txtFirstname.Text.ToString().Trim();
             lname = txtLastname.Text.ToString().Trim();
             email = txtEmail.Text.ToString().Trim();
-            password = Security.Encrypt(txtPassword.Text.ToString());
+            password = txtPassword.Text.ToString();
             repeatpass = txtrepeatpass.Text.ToString().Trim();
             CheckBox terms = termsConditions;
-
+            bool isEmpty = otherFunc.areControlEmpty(username, fname, lname, password, repeatpass, email);
             bool hasInternet = otherFunc.internetConn();
             if (hasInternet) {
                 otherFunc function = new otherFunc();
-                function.signingUp(username, fname, lname, email, password, repeatpass, terms, this);
+                if (!isEmpty)
+                {
+                    if (flag)
+                    {
+                        function.signingUp(username, fname, lname, email, password, repeatpass, terms, this);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Email not verified!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    } 
+                }
+                else
+                {
+                    MessageBox.Show("Something is missing", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }
             else {
                 MessageBox.Show("No Internet Connection!","Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -197,6 +290,5 @@ namespace ExpenseApp
             String Lval = string.Join(Environment.NewLine, lst);
             MessageBox.Show("Invalid: \n"+Lval, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
-
     }
 }
