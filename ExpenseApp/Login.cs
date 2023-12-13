@@ -176,12 +176,12 @@ namespace ExpenseApp
             if (flag){
                 passwordTB.PasswordChar= '\0';
                 flag = false;
-                passwordTB.IconRight = Properties.Resources.hide;
+                passwordTB.IconRight = Properties.Resources.show;
             }
             else {
                 passwordTB.PasswordChar = '●';
                 flag = true;
-                passwordTB.IconRight = Properties.Resources.show;
+                passwordTB.IconRight = Properties.Resources.hide;
             }
         }
 
