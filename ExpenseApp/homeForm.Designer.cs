@@ -84,7 +84,7 @@
             this.guna2Panel1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(123)))), ((int)(((byte)(47)))));
             this.guna2Panel1.Location = new System.Drawing.Point(-11, 62);
             this.guna2Panel1.Name = "guna2Panel1";
-            this.guna2Panel1.Size = new System.Drawing.Size(183, 620);
+            this.guna2Panel1.Size = new System.Drawing.Size(183, 584);
             this.guna2Panel1.TabIndex = 1;
             // 
             // btnLogout
@@ -202,7 +202,7 @@
             // 
             // guna2Elipse1
             // 
-            this.guna2Elipse1.BorderRadius = 15;
+            this.guna2Elipse1.BorderRadius = 30;
             this.guna2Elipse1.TargetControl = this.guna2Panel1;
             // 
             // guna2BorderlessForm1

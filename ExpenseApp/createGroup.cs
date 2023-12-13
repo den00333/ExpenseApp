@@ -29,18 +29,18 @@ namespace ExpenseApp
             string groupName = groupTB.Text.ToString();
             int numberOfParticipants = int.Parse(participantsTB.Text.Trim());
             string groupCode = generateCode();
-            var db = otherFunc.FirestoreConn();
 
+            var db = otherFunc.FirestoreConn();
             CollectionReference groupsCollectionRef = db.Collection("Groups");
             DocumentReference groupDocRef = groupsCollectionRef.Document(groupCode);
             List<string> initialMembers = new List<string> { username };
             Dictionary<string, object> groupData = new Dictionary<string, object>()
-            {
-                {"GroupName", groupName},
-                {"MaxParticipants", numberOfParticipants},
-                {"GroupCode", groupCode},
-                {"Members", initialMembers},
-            };
+                {
+            {"GroupName", groupName},
+            {"MaxParticipants", numberOfParticipants},
+            {"GroupCode", groupCode},
+            {"Members", initialMembers},
+                };
             await groupDocRef.SetAsync(groupData);
 
             CollectionReference userCollectionRef = db.Collection("Users");
@@ -50,14 +50,14 @@ namespace ExpenseApp
             if (!userDocSnap.Exists)
             {
                 await userDocRef.SetAsync(new Dictionary<string, object>
-            {
-                {"Groups", new List<string> { groupCode }}
-            });
+                {
+                    {"Groups", new List<string> { groupCode }}
+                });
             }
-            else {
+            else
+            {
                 await userDocRef.UpdateAsync("Groups", FieldValue.ArrayUnion(groupCode));
             }
-            
         }
         public string generateCode()
         {
@@ -177,8 +177,8 @@ namespace ExpenseApp
             else if (!int.TryParse(participantsTB.Text, out int maxParticipants)){
                 MessageBox.Show("Invalid input for participants. Please enter a valid number.", "Invalid", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            else if (maxParticipants <= 0){
-                MessageBox.Show("Minimum number of participants must be at least 1 user", "Invalid", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            else if (maxParticipants <= 1){
+                MessageBox.Show("Minimum number of participants must be at least 2 user", "Invalid", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else{
                 try{
