@@ -58,13 +58,6 @@ namespace ExpenseApp
                 home.lblFirstname.Text = await otherFunc.getFirstname(username);
             }
         }
-
-        private void btnEdit_Click(object sender, EventArgs e)
-        {
-            updateAcc ua = new updateAcc(this);
-            ua.ShowDialog();
-
-        }
         async Task<List<List<String>>> getDate(string username)
         {
             var db = otherFunc.FirestoreConn();
@@ -118,6 +111,12 @@ namespace ExpenseApp
                 }
             }
             
+        }
+
+        private void btnEdit_Click_1(object sender, EventArgs e)
+        {
+            updateAcc ua = new updateAcc(this);
+            ua.ShowDialog();
         }
     }
 }

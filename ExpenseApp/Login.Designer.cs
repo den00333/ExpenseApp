@@ -110,7 +110,7 @@ namespace ExpenseApp
             // closeBTN
             // 
             this.closeBTN.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.closeBTN.Image = global::ExpenseApp.Properties.Resources.close;
+            this.closeBTN.Image = global::ExpenseApp.Properties.Resources.delete;
             this.closeBTN.Location = new System.Drawing.Point(372, 5);
             this.closeBTN.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.closeBTN.Name = "closeBTN";
@@ -243,7 +243,7 @@ namespace ExpenseApp
             this.btnLogin.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnLogin.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnLogin.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(123)))), ((int)(((byte)(47)))));
-            this.btnLogin.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogin.Font = new System.Drawing.Font("Poppins", 12F);
             this.btnLogin.ForeColor = System.Drawing.Color.White;
             this.btnLogin.Location = new System.Drawing.Point(53, 483);
             this.btnLogin.Margin = new System.Windows.Forms.Padding(4);

@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -32,9 +33,20 @@ namespace ExpenseApp
             this.g = g;
         }
 
+        bool offlineFlag = false;
+        offWalletUC owuc;
+        public AddingBalanceForm(bool f, offWalletUC ow)
+        {
+            InitializeComponent();
+            this.offlineFlag = f;
+            this.owuc = ow;
+        }
+
+
         private void closeBTN_Click(object sender, EventArgs e)
         {
             this.Hide();
+
         }
 
         private void txtAmount_KeyPress(object sender, KeyPressEventArgs e)
@@ -45,42 +57,200 @@ namespace ExpenseApp
                 e.Handled = true;
             }
         }
-        bool inWallet = true;
-        private async void btnAddAmount_Click(object sender, EventArgs e)
+
+        private void addWalletAmount_Offline(String path, String wName, double wAmount)
         {
-            
-            if (!string.IsNullOrWhiteSpace(txtAmount.Text))
+            List<Double> list = new List<Double>();
+            list.Add(wAmount);
+            if (File.Exists(path))
             {
-                if (flag)
+
+            }
+            else
+            {
+                var data = new { wName = list };
+            }
+        }
+
+
+        private void addWalletTXT(String path, int loc, String toBeAdded, bool flag)
+        {
+            String d = System.DateTime.Now.ToString("yyyy-MM-dd");
+            String t = System.DateTime.Now.ToString("HH:mm:ss");
+            if (flag)
+            {
+                String[] lines = File.ReadAllLines(path);
+                String[] splittedLines = lines[loc].Split(':');
+                double newTotal = double.Parse(splittedLines[1]) + double.Parse(toBeAdded);
+                lines[loc] = lines[loc].Replace(splittedLines[1], newTotal.ToString());
+                File.WriteAllLines(path, lines);
+            }
+            else
+            {
+                String[] lines = File.ReadAllLines(path);
+                String[] splittedLines = lines[loc].Split(':');
+                double newTotal = double.Parse(splittedLines[1]) + double.Parse(toBeAdded);
+                Console.WriteLine($"NEWTOTAL: {newTotal}");
+                if (newTotal < 0)
                 {
-                    if (inWallet)
-                    {
-                        float b_total = await AddGroupMoney("Balance");
-                        otherFunc.addGroupWalletLogs(currentGroup, "Balance", addedAmount, username);
-                        g.lblBalance.Text = otherFunc.amountBeautify(b_total);
-                    }
-                    else
-                    {
-                        float e_total = await AddGroupMoney("Expense");
-                        otherFunc.addGroupWalletLogs(currentGroup, "Expense", addedAmount, username);
-                        g.lblExpenses.Text = otherFunc.amountBeautify(e_total);
-                    }
+                    lines[loc] = lines[loc].Replace(splittedLines[1], newTotal.ToString());
                 }
                 else
                 {
-                    String username = FirebaseData.Instance.Username;
-                    if (inWallet)
+                    lines[loc] = lines[loc].Replace(splittedLines[1], "0");
+                }
+
+
+
+                File.WriteAllLines(path, lines);
+
+            }
+        }
+
+
+
+        String walletN = "";
+        bool inWallet = true;
+        private async void btnAddAmount_Click(object sender, EventArgs e)
+        {
+            if (offlineFlag)
+            {
+
+                String walletName = btnChangeWallet.Text;
+                double amount = double.Parse(txtAmount.Text);
+                String path = owuc.p;
+                if (File.Exists(path))
+                {
+                    if (walletName.Equals("Expenses"))
                     {
-                        float b_total = await AddMoney("Balance");
-                        otherFunc.addWalletLogs(username, "Balance", addedAmount);
-                        w.lblBalance.Text = otherFunc.amountBeautify(b_total);
+                        walletN = "Balance";
+                        addWalletTXT(path, 0, amount.ToString(), true);
+                        float fAmount = float.Parse(offlineFunc.readTxt(path, 0));
+                        owuc.lblBalance.Text = otherFunc.amountBeautify(fAmount);
                     }
                     else
                     {
-                        float e_total = await AddMoney("Expense");
-                        otherFunc.addWalletLogs(username, "Expense", addedAmount);
-                        w.lblExpenses.Text = otherFunc.amountBeautify(e_total);
+                        walletN = "Expense";
 
+
+                        double currentShort = double.Parse(offlineFunc.readTxt(path, 2));
+                        if (currentShort < 0)
+                        {
+
+                            DialogResult res = MessageBox.Show($"Do you want to return {otherFunc.amountBeautify((float)currentShort)}?", "Returning short", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                            if (res == DialogResult.Yes)
+                            {
+                                //addWalletTXT(path, 2, amount.ToString(), true);
+                                double newTotal = amount + currentShort;
+                                Console.WriteLine($"addexpenses {newTotal} = {amount}+{currentShort}");
+
+                                if (newTotal < 0)
+                                {
+                                    addWalletTXT(path, 2, amount.ToString(), false);
+
+                                    addWalletTXT(path, 0, amount.ToString(), true);
+                                }
+                                else
+                                {
+                                    double newAmount = amount - newTotal;
+                                    Console.WriteLine($"{newAmount} = {amount} + {newTotal}");
+                                    //addWalletTXT(path, 0, "", true);
+                                    addWalletTXT(path, 0, newAmount.ToString(), true);
+                                    addWalletTXT(path, 1, newTotal.ToString(), true);
+                                    addWalletTXT(path, 2, amount.ToString(), false);
+
+
+                                }
+
+                            }
+                            else
+                            {
+                                addWalletTXT(path, 1, amount.ToString(), true);
+                            }
+                        }
+                        else
+                        {
+
+                            addWalletTXT(path, 1, amount.ToString(), true);
+                            Console.WriteLine("outer if of expense");
+                        }
+
+                        float fBalance = float.Parse(offlineFunc.readTxt(path, 0));
+                        owuc.lblBalance.Text = otherFunc.amountBeautify(fBalance);
+
+                        float fAmount = float.Parse(offlineFunc.readTxt(path, 1));
+                        owuc.lblExpenses.Text = otherFunc.amountBeautify(fAmount);
+
+                        float fShort = float.Parse(offlineFunc.readTxt(path, 2));
+                        owuc.lblShort.Text = otherFunc.amountBeautify(fShort);
+
+                        owuc.checkShort(fShort);
+
+
+
+                    }
+
+                }
+                else
+                {
+                    MessageBox.Show("created new txtfile");
+                    offlineFunc.createTXT(path);
+                    //Expenses means it is in balance, vise versa
+                    // 0 -> balance | 1 -> expense | 2 -> short
+                    if (walletName.Equals("Expenses"))
+                    {
+                        walletN = "Balance";
+                        addWalletTXT(path, 0, amount.ToString(), true);
+                        float fAmount = float.Parse(offlineFunc.readTxt(path, 0));
+                        owuc.lblBalance.Text = otherFunc.amountBeautify(fAmount);
+
+                    }
+                    else
+                    {
+                        walletN = "Expense";
+                        addWalletTXT(path, 1, amount.ToString(), true);
+                        float fAmount = float.Parse(offlineFunc.readTxt(path, 1));
+                        owuc.lblExpenses.Text = otherFunc.amountBeautify(fAmount);
+
+                    }
+                }
+
+            }
+            else
+            {
+                if (!string.IsNullOrWhiteSpace(txtAmount.Text))
+                {
+                    if (flag)
+                    {
+                        if (inWallet)
+                        {
+                            float b_total = await AddGroupMoney("Balance");
+                            otherFunc.addGroupWalletLogs(currentGroup, "Balance", addedAmount, username);
+                            g.lblBalance.Text = otherFunc.amountBeautify(b_total);
+                        }
+                        else
+                        {
+                            float e_total = await AddGroupMoney("Expense");
+                            otherFunc.addGroupWalletLogs(currentGroup, "Expense", addedAmount, username);
+                            g.lblExpenses.Text = otherFunc.amountBeautify(e_total);
+                        }
+                    }
+                    else
+                    {
+                        String username = FirebaseData.Instance.Username;
+                        if (inWallet)
+                        {
+                            float b_total = await AddMoney("Balance");
+                            otherFunc.addWalletLogs(username, "Balance", addedAmount);
+                            w.lblBalance.Text = otherFunc.amountBeautify(b_total);
+                        }
+                        else
+                        {
+                            float e_total = await AddMoney("Expense");
+                            otherFunc.addWalletLogs(username, "Expense", addedAmount);
+                            w.lblExpenses.Text = otherFunc.amountBeautify(e_total);
+
+                        }
                     }
                 }
             }
@@ -249,7 +419,7 @@ namespace ExpenseApp
             }
             else
             {
-                DocumentReference docRef = await function.SavingWalletAmountOfGroup(currentGroup,wallet);
+                DocumentReference docRef = await function.SavingWalletAmountOfGroup(currentGroup, wallet);
                 float amount = await function.getGroupWalletAmount(docRef);
                 addedAmount = float.Parse(txtAmount.Text.ToString());
                 float total = addedAmount + amount;
@@ -272,14 +442,14 @@ namespace ExpenseApp
                 DocumentReference docRef = await o.SavingWalletAmount(username, wallet);
                 float amount = await o.getWalletAmount(docRef);
 
-                
+
 
                 addedAmount = float.Parse(txtAmount.Text.ToString());
                 float balanceAmount = await otherFunc.getShort(username);
                 if (balanceAmount < 0)
                 {
                     DialogResult res = MessageBox.Show($"You are short by {otherFunc.amountBeautify(balanceAmount)}\nDo you want to return it?", "Your Balance", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                    if (DialogResult.Yes == res) 
+                    if (DialogResult.Yes == res)
                     {
                         float excess = addedAmount + balanceAmount;
 
@@ -357,10 +527,10 @@ namespace ExpenseApp
         public async void addingReturnedAmountInBalance(String username, float addedAmount, float Bshort)
         {
             otherFunc o = new otherFunc();
-            float val = (addedAmount >= Bshort*-1) ? 0 : (Bshort*-1) - addedAmount;
+            float val = (addedAmount >= Bshort * -1) ? 0 : (Bshort * -1) - addedAmount;
             DocumentReference docRef = await o.SavingWalletAmount(username, "Balance");
             float amount = await o.getWalletAmount(docRef);
-            amount += ((Bshort * -1)  - val );
+            amount += ((Bshort * -1) - val);
             Dictionary<String, object> data = new Dictionary<String, object>()
             {
                 {"Amount", amount}
@@ -401,7 +571,7 @@ namespace ExpenseApp
         private void btnChangeWallet_Click(object sender, EventArgs e)
         {
             System.Drawing.Color currentColor = btnChangeWallet.FillColor;
-            if(currentColor == System.Drawing.Color.FromArgb(227, 180, 72))
+            if (currentColor == System.Drawing.Color.FromArgb(227, 180, 72))
             {
                 inWallet = false;
                 btnChangeWallet.FillColor = System.Drawing.Color.FromArgb(222, 66, 86);

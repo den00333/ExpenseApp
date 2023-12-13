@@ -23,7 +23,6 @@ namespace ExpenseApp
         {
             InitializeComponent();
         }
-
         private void wallet_Load(object sender, EventArgs e)
         {
             loadWallet();
@@ -32,8 +31,8 @@ namespace ExpenseApp
             //loadWallet();
             displayData();
             displayGoals();
-        }
 
+        }
         private async void loadWallet()
         {
             String username = FirebaseData.Instance.Username;
@@ -47,7 +46,7 @@ namespace ExpenseApp
             lblExpenses.Text = otherFunc.amountBeautify(ExpenseAmount);
 
             float negVal = await otherFunc.getShort(username);
-            if(negVal != 0)
+            if (negVal != 0)
             {
                 lblShort.Text = otherFunc.amountBeautify(negVal);
                 lblShort.ForeColor = Color.Red;
@@ -59,7 +58,7 @@ namespace ExpenseApp
         }
 
         private void btnAddXpns_Click(object sender, EventArgs e)
-        {   
+        {
             AddExpensesForm AEF = new AddExpensesForm(this, false, null, new group());
             AEF.ShowDialog();
         }
@@ -106,7 +105,7 @@ namespace ExpenseApp
                     string docname = docName;
                     float amount = am;
                     string date = d.ToString();
-                    
+
 
                     Guna2GradientPanel pnl = new Guna2GradientPanel();
                     pnl.Size = new Size(329, 92);
@@ -120,7 +119,7 @@ namespace ExpenseApp
                         g = 141;
                         b = 228;
                     }
-                    else if(status.Equals("Achieved"))
+                    else if (status.Equals("Achieved"))
                     {
                         r = 139;
                         g = 237;
@@ -378,7 +377,7 @@ namespace ExpenseApp
                     flpExpenses.Controls.Add(pnl);
                 }
             }
-        }   
+        }
         public async void PnlExpenses_DoubleClick(object sender, EventArgs e, string dn)
         {
             otherFunc function = new otherFunc();
@@ -410,5 +409,13 @@ namespace ExpenseApp
             REF.StartPosition = FormStartPosition.CenterScreen;
             REF.ShowDialog();
         }
+
+        private void loadOfflineVersion()
+        {
+            lblBalance.Text = "0";
+            lblExpenses.Text = "0";
+            lblShort.Text = "0";
+        }
+
     }
 }

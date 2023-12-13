@@ -280,6 +280,12 @@
     <Compile Include="homeForm.Designer.cs">
       <DependentUpon>homeForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ListOfOfflineDatacs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ListOfOfflineDatacs.Designer.cs">
+      <DependentUpon>ListOfOfflineDatacs.cs</DependentUpon>
+    </Compile>
     <Compile Include="LocationForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -304,6 +310,19 @@
     <Compile Include="NoGroupUC.Designer.cs">
       <DependentUpon>NoGroupUC.cs</DependentUpon>
     </Compile>
+    <Compile Include="offlineFunc.cs" />
+    <Compile Include="offWallet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="offWallet.Designer.cs">
+      <DependentUpon>offWallet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="offWalletUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="offWalletUC.Designer.cs">
+      <DependentUpon>offWalletUC.cs</DependentUpon>
+    </Compile>
     <Compile Include="otherFunc.cs" />
     <Compile Include="OTPManager.cs" />
     <Compile Include="Program.cs" />
@@ -320,7 +339,6 @@
       <DependentUpon>RecurringExpensesForm.cs</DependentUpon>
     </Compile>
     <Compile Include="RegionData.cs" />
-    <Compile Include="Resources.cs" />
     <Compile Include="Security.cs" />
     <Compile Include="findYourAccount.cs">
       <SubType>Form</SubType>
@@ -447,6 +465,8 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\user.png" />
+    <None Include="Resources\verify.png" />
     <None Include="Resources\profileBG.png" />
     <None Include="Resources\search.png" />
     <None Include="Resources\red arrow.png" />
@@ -454,6 +474,10 @@
     <None Include="Resources\show.png" />
     <None Include="Resources\transportation.png" />
     <None Include="Resources\add.png" />
+    <None Include="Resources\edit.png" />
+    <None Include="Resources\edit1.png" />
+    <None Include="Resources\email1.png" />
+    <None Include="Resources\9604f85f17b2a849866e750e1991963e.jpg" />
     <Content Include="Resources\GeoLite2-City.mmdb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -535,6 +559,7 @@
     <None Include="Resources\online.png" />
     <None Include="Resources\offline.png" />
     <None Include="Resources\password.png" />
+    <None Include="Resources\join.png" />
     <Content Include="Resources\philippine_provinces_cities_municipalities_and_barangays_2019v2.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

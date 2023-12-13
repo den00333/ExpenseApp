@@ -49,7 +49,7 @@ namespace ExpenseApp
                     otherFunc.retrieveImage(username, pbProfile);
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
@@ -57,7 +57,7 @@ namespace ExpenseApp
         private void changePassword_Load(object sender, EventArgs e)
         {
             retrieveInfo();
-            panelPassword.Visible= false;
+            panelPassword.Visible = false;
 
         }
         private void txtEmail_TextChanged(object sender, EventArgs e)
@@ -77,49 +77,57 @@ namespace ExpenseApp
         }
         private void btnSendCode_Click(object sender, EventArgs e)
         {
-            otherFunc.sendOTP(email, this);
+            otherFunc.sendOTP(email, true);
         }
         private void btnSavepass_Click(object sender, EventArgs e)
         {
             string password = txtPassword.Text;
             string confirmPass = txtConfirmPass.Text;
-            if(string.IsNullOrEmpty(txtPassword.Text) || string.IsNullOrEmpty(txtConfirmPass.Text)) {
+            if (string.IsNullOrEmpty(txtPassword.Text) || string.IsNullOrEmpty(txtConfirmPass.Text))
+            {
                 MessageBox.Show("Please input your password", "Input credentials", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             otherFunc function = new otherFunc();
             bool equalPassword = function.passwordMatched(password, confirmPass);
             bool isValidPassword = function.isValidPassword(password);
 
-            if(isValidPassword) {
-                if (equalPassword){
-                    function.updatePassword(username,Security.Encrypt(password));
+            if (isValidPassword)
+            {
+                if (equalPassword)
+                {
+                    function.updatePassword(username, Security.Encrypt(password));
                     MessageBox.Show("Successfully updated your password!", "Success", MessageBoxButtons.OK);
                     OTPManager.ClearOTP();
                     this.Hide();
                 }
-                else{
+                else
+                {
                     MessageBox.Show("Password does not match", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
-            else{
+            else
+            {
                 MessageBox.Show("Password must contain uppercase and special character", "Invalid Password", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
         private void showPassword_CheckedChanged(object sender, EventArgs e)
         {
-            if(showPassword.Checked){
+            if (showPassword.Checked)
+            {
                 txtPassword.PasswordChar = '\0';
                 txtConfirmPass.PasswordChar = '\0';
             }
-            else{
+            else
+            {
                 txtPassword.PasswordChar = '●';
                 txtConfirmPass.PasswordChar = '●';
             }
         }
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("Are you sure you want to cancel retrieving your account?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);            
-            if (result == DialogResult.Yes){
+            DialogResult result = MessageBox.Show("Are you sure you want to cancel retrieving your account?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
                 this.Hide();
             }
         }
@@ -127,27 +135,32 @@ namespace ExpenseApp
         {
             string inputOTP = txtNewPass.Text;
 
-            if (string.IsNullOrEmpty(inputOTP)){
+            if (string.IsNullOrEmpty(inputOTP))
+            {
                 MessageBox.Show("Please enter OTP", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            else{
+            else
+            {
                 string generatedOTP = myOTP;
                 bool isEqualOTP = otherFunc.compareOTP(inputOTP, generatedOTP);
 
-                if (isEqualOTP){
+                if (isEqualOTP)
+                {
                     panelPassword.Visible = true;
                     panelPassword.BringToFront();
                 }
-                else{
-                    Tuple<string, DateTime,string> otpData = OTPManager.LoadOTP();
+                else
+                {
+                    Tuple<string, DateTime, string> otpData = OTPManager.LoadOTP();
                     if (otpData != null)
                     {
                         DateTime expirationTime = otpData.Item2;
                         string storedOTP = otpData.Item1;
+                        string prevEmail = otpData.Item3;
                         bool isEqualStoredOTP = otherFunc.compareOTP(inputOTP, storedOTP);
                         if (isEqualStoredOTP)
                         {
-                            if (DateTime.Now < expirationTime)
+                            if (DateTime.Now < expirationTime && email.Equals(prevEmail))
                             {
                                 panelPassword.Visible = true;
                                 panelPassword.BringToFront();
@@ -162,14 +175,14 @@ namespace ExpenseApp
                             MessageBox.Show("OTP does not match", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
                     }
-                    else {
+                    else
+                    {
                         MessageBox.Show("Please click the button to send new OTP", "OTP Expired", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                 }
             }
         }
 
-       
 
         private void txtNewPass_KeyPress_1(object sender, KeyPressEventArgs e)
         {
