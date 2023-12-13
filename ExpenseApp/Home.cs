@@ -8,15 +8,20 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 using System.Windows.Forms;
 
 namespace ExpenseApp
 {
-    public partial class homeForm : Form
+    public partial class Home : Form
     {
+
         string username;
         connectionForm cf;
-        public homeForm()
+        Timer timer1;
+        //private bool groupWallet = false;
+        //private bool soloWallet = false;
+        public Home()
         {
             InitializeComponent();
 
@@ -31,16 +36,11 @@ namespace ExpenseApp
 
             cf = new connectionForm();
             otherFunc.checkInternet(cf, this);
-            Timer = new Timer();
-            Timer.Interval = 5000;
-            Timer.Tick += new EventHandler(timer1_Tick);
-            Timer.Start();
-        }
-
-        private async void homeForm_Load(object sender, EventArgs e)
-        {
-            lblFirstname.Text = "Hello, " + await otherFunc.getFirstname(username) + "!";
-            otherFunc.retrieveImage(username, pbProfile);
+            timer1 = new Timer();
+            timer1.Interval = 5000;
+            timer1.Tick += new EventHandler(timer1_Tick);
+            timer1.Start();
+            this.FormBorderStyle = FormBorderStyle.None;
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -49,20 +49,29 @@ namespace ExpenseApp
             if (!otherFunc.internetConn())
             {
                 otherFunc.checkInternet(cf, this);
-            }
-            else
+            }else
             {
                 otherFunc.checkInternet(cf, this);
             }
         }
 
-        private void homeForm_FormClosing(object sender, FormClosingEventArgs e)
+        private void Home_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Timer.Stop();
+            timer1.Stop();
             String username = FirebaseData.Instance.Username;
             otherFunc.UpdateAccStatusToOffline(username);
             otherFunc.RecordLogs(username, true, false);
             Application.Exit();
+        }
+
+        private void Home_Load(object sender, EventArgs e)
+        {
+            getFirstName(username);
+        }
+
+        private void guna2Panel3_Paint(object sender, PaintEventArgs e)
+        {
+
         }
 
         private void btnDashboard_Click(object sender, EventArgs e)
@@ -99,7 +108,7 @@ namespace ExpenseApp
                 addUserControl(wallet);
                 AddExpensesForm adf = new AddExpensesForm(new wallet(), false, null, new group());
                 AddingBalanceForm abf = new AddingBalanceForm(wallet, false, null, new group());
-
+                
                 //adf.SetWalletValues(groupWallet, soloWallet);
                 //abf.SetWalletValues(groupWallet, soloWallet);
 
@@ -136,7 +145,7 @@ namespace ExpenseApp
             }
         }
 
-        private void btnAccount_Click(object sender, EventArgs e)
+        private void btnTips_Click(object sender, EventArgs e)
         {
             btnAccount.FillColor = SystemColors.Control;
             btnAccount.ForeColor = Color.Black;
@@ -154,12 +163,12 @@ namespace ExpenseApp
             }
         }
 
-        private void btnLogout_Click(object sender, EventArgs e)
+        private void btnLogut_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("Do you really want to logout?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
-                Timer.Stop();
+                timer1.Stop();
                 String username = FirebaseData.Instance.Username;
                 otherFunc.UpdateAccStatusToOffline(username);
                 otherFunc.RecordLogs(username, true, false);
@@ -168,7 +177,12 @@ namespace ExpenseApp
                 login.Show();
             }
         }
-        public void addUserControl(UserControl userControl)
+
+        private void guna2Panel3_Paint_1(object sender, PaintEventArgs e)
+        {
+
+        }
+        private void addUserControl(UserControl userControl)
         {
             userControl.Dock = DockStyle.Fill;
             homePanel.Controls.Clear();
@@ -187,36 +201,30 @@ namespace ExpenseApp
             button2.ForeColor = Color.White;
             button3.ForeColor = Color.White;
         }
+        public async void getFirstName(string username)
+        {
+            otherFunc o = new otherFunc();
+            DocumentSnapshot snap = await o.logInFunc(username);
+            if (snap.Exists)
+            {
+                FirebaseData fd = snap.ConvertTo<FirebaseData>();
+                lblFirstname.Text = "Hello, " + fd.FirstName + "!";
+            }
+        }
         public async void checkGroupExists()
         {
             var db = otherFunc.FirestoreConn();
             CollectionReference userCollectionRef = db.Collection("Users");
             DocumentReference userDocRef = userCollectionRef.Document(username);
             DocumentSnapshot userDocSnap = await userDocRef.GetSnapshotAsync();
-            if (userDocSnap.Exists && userDocSnap.ContainsField("Groups"))
-            {
+            if (userDocSnap.Exists && userDocSnap.ContainsField("Groups")){
                 group groupControl = new group();
                 addUserControl(groupControl);
             }
-            else
-            {
+            else{                
                 NoGroupUC ng = new NoGroupUC();
                 addUserControl(ng);
             }
-        }
-
-        private void cbExit_Click(object sender, EventArgs e)
-        {
-            DialogResult result = MessageBox.Show("Do you really want to close the application?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (result == DialogResult.Yes)
-            {
-                this.Close();
-            }
-        }
-
-        private void cbMinimize_Click(object sender, EventArgs e)
-        {
-            this.WindowState = FormWindowState.Minimized;
         }
     }
 }

@@ -63,7 +63,7 @@ namespace ExpenseApp
             return false;
         }
 
-        public async static void checkInternet(connectionForm c, homeForm h)
+        public async static void checkInternet(connectionForm c, Home h)
         {
             if (!internetConn())
             {
@@ -733,7 +733,7 @@ namespace ExpenseApp
             return false;
         }
 
-        public static bool areControlEmpty(params string[] textboxes)
+        public bool areControlEmpty(params string[] textboxes)
         {
             foreach (string textbox in textboxes)
             {
@@ -821,28 +821,7 @@ namespace ExpenseApp
             await docRef.UpdateAsync(data);
         }
 
-        public bool isValidPassword(string password)
-        {
-            bool isPasswordValid = Regex.IsMatch(password, @"^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@#$%^&+=!])[A-Za-z\d@#$%^&+=!]{8,}$");
 
-            return isPasswordValid;
-        }
-        public bool isValidUsername(string username)
-        {
-            
-            bool isUsernameValid = Regex.IsMatch(username, @"^[A-Za-z\d]{4,}$");
-            return isUsernameValid;
-        }
-        public bool isValidFirstname(string firstname)
-        {
-            bool isValidFname = Regex.IsMatch(firstname, @"^[A-Za-z]{4,}$");
-            return isValidFname;
-        }
-        public bool isValidLastname(string lastname)
-        {
-            bool isValidLName = Regex.IsMatch(lastname, @"^[A-Za-z]{2,}$");
-            return isValidLName;
-        }
 
         public async void signingUp(String username, String fname, String lname, String email, String password, String repeatpass, System.Windows.Forms.CheckBox terms, Signup s)
         {
@@ -851,7 +830,7 @@ namespace ExpenseApp
             bool validEmail = otherFunc.isValidEmail(email);
             bool validUsername = await otherFunc.isUsernameExistingAsync(username);
             bool isEmpty = areControlEmpty(fname, lname, email, username, password, repeatpass);
-            bool passwordMatched = function.passwordMatched(password, repeatpass);
+            bool passwordMatched = function.passwordMatched(Security.Decrypt(password), repeatpass);
             int generatedID = await generateUserID();
             if (!isEmpty)
             {
@@ -867,59 +846,38 @@ namespace ExpenseApp
                     {
                         if (passwordMatched)
                         {
-                            if (function.isValidFirstname(fname))
+                            if (function.isValidPassword(password))
                             {
-                                if (function.isValidLastname(lname))
+                                try
                                 {
-                                    if (function.isValidUsername(username))
-                                    {
-                                        if (function.isValidPassword(password))
-                                        {
-                                            try
-                                            {
-                                                DocumentReference docRef = database.Collection("Users").Document(username);
-                                                Dictionary<string, object> data = new Dictionary<string, object>()
+                                    DocumentReference docRef = database.Collection("Users").Document(username);
+                                    Dictionary<string, object> data = new Dictionary<string, object>()
                                     {
                                         {"First Name", fname },
                                         {"Last Name", lname },
                                         {"Username", username },
                                         {"Email", email },
-                                        {"Password", Security.Encrypt(password)},
+                                        {"Password", password},
                                         {"ID", generatedID},
                                         {"DateCreated", FieldValue.ServerTimestamp},
                                         {"status", "offline"}
                                     };
-                                                await docRef.SetAsync(data);
+                                    await docRef.SetAsync(data);
 
-                                                DialogResult res = MessageBox.Show("Successfully created your account!", "Success", MessageBoxButtons.OK);
-                                                if (res == DialogResult.OK)
-                                                {
-                                                    s.Close();
-                                                }
-                                            }
-                                            catch (Exception ex)
-                                            {
-                                                MessageBox.Show("Cannot process your account", ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                            }
-                                        }
-                                        else
-                                        {
-                                            MessageBox.Show("Password do not meet the standards!", "Invalid Password", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                                        }
-                                    }
-                                    else
+                                    DialogResult res = MessageBox.Show("Successfully created your account!", "Success", MessageBoxButtons.OK);
+                                    if (res == DialogResult.OK)
                                     {
-                                        MessageBox.Show("Username must be at least 4 characters long and one digit", "Invalid Username", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                                    }  
+                                        s.Close();
+                                    }
                                 }
-                                else
+                                catch (Exception ex)
                                 {
-                                    MessageBox.Show("Last Name must be at least 2 characters", "Invalid Last Name", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                                    MessageBox.Show("Cannot process your account", ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 }
                             }
                             else
                             {
-                                MessageBox.Show("First Name must be at least 4 characters", "Invalid First Name", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                                MessageBox.Show("Password do not meet the standards!", "Invalid Password", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                             }
                         }
                         else
@@ -940,7 +898,7 @@ namespace ExpenseApp
         }
         public bool passwordMatched(string password1, string password2)
         {
-            return password1.Equals(password2);
+            return password1 == password2;
         }
 
         public static void populateCMBcategory(ctg category, AddExpensesForm f)
@@ -995,9 +953,9 @@ namespace ExpenseApp
             var database = FirestoreConn();
             otherFunc function = new otherFunc();
             bool validEmail = otherFunc.isValidEmail(email);
-            bool isEmpty = areControlEmpty(fname, lname, email, password, confirmPass);
+            bool isEmpty = areControlEmpty(fname, lname, email, password);
             bool validUsername = await otherFunc.isUsernameExistingAsync(username);
-            bool passMatched = function.passwordMatched(password, confirmPass);
+            bool passMatched = function.passwordMatched(Security.Decrypt(password), confirmPass);
 
             if (!isEmpty)
             {
@@ -1009,13 +967,13 @@ namespace ExpenseApp
                         {
                             DocumentReference docref = database.Collection("Users").Document(username);
                             Dictionary<string, object> data = new Dictionary<string, object>()
-                            {
+                        {
                             {"First Name", fname},
                             {"Last Name", lname},
                             {"Email", email},
                             {"Bio", bio},
                             {"Password", Security.Encrypt(password)},
-                            };
+                        };
                             DocumentSnapshot snap = await docref.GetSnapshotAsync();
                             if (snap.Exists)
                             {
@@ -1420,28 +1378,22 @@ namespace ExpenseApp
                 }
             }
         }
-        public static void sendOTP(string email, bool flag)
+        public static void sendOTP(string email, changePassword cp)
         {
-            changePassword cp = new changePassword();
-            Signup sign = new Signup();
-            Tuple<string, DateTime,string> savedOTP = OTPManager.LoadOTP();
-            if (flag)
+            Tuple<string, DateTime> savedOTP = OTPManager.LoadOTP();
+            if (savedOTP != null && DateTime.Now < savedOTP.Item2)
             {
-                if (savedOTP != null && DateTime.Now < savedOTP.Item2 && email.Equals(savedOTP.Item3))
-                {
-                    MessageBox.Show("You still have a valid OTP. Please use the existing one.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return;
-                } 
+                MessageBox.Show("You still have a valid OTP. Please use the existing one.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
             }
             // Generate new OTP
             Tuple<string, DateTime> otpTuple = generateOTPWithExpiration();
             string otp = otpTuple.Item1;
             cp.myOTP = otp;
-            sign.otp = otp;
             DateTime expirationTime = otpTuple.Item2;
 
             // Save the new OTP
-            OTPManager.SaveOTP(otp, expirationTime, email);
+            OTPManager.SaveOTP(otp, expirationTime);
 
             MailMessage message = new MailMessage();
             message.From = new MailAddress("expensetracker273@gmail.com");
@@ -1459,21 +1411,20 @@ namespace ExpenseApp
             try
             {
                 smtpClient.Send(message);
-                MessageBox.Show("OTP sent successfully!");
-
+                MessageBox.Show("Email sent successfully!");
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error: " + ex.Message);
             }
         }
-        public static Tuple<string, DateTime> generateOTPWithExpiration()
+        private static Tuple<string, DateTime> generateOTPWithExpiration()
         {
             Random ran = new Random();
             int otp = ran.Next(100000, 999999);
 
-            // Set expiration time to 3 minutes from the current time
-            DateTime expirationTime = DateTime.Now.AddMinutes(3);
+            // Set expiration time to 5 minutes from the current time
+            DateTime expirationTime = DateTime.Now.AddMinutes(5);
 
             return new Tuple<string, DateTime>(otp.ToString(), expirationTime);
         }
@@ -1522,47 +1473,6 @@ namespace ExpenseApp
 
             return expensesTable;
         }
-        public static async Task<DataTable> GetGxpensesGroupedByCategories(string groupCode)
-        {
-            var db = otherFunc.FirestoreConn();
-            CollectionReference expensesCollection = editInsideGroup(groupCode).Collection("Expenses");
-            QuerySnapshot expensesSnapshot = await expensesCollection.GetSnapshotAsync();
-
-            DataTable expensesTable = new DataTable();
-            expensesTable.Columns.Add("Date", typeof(string));
-            expensesTable.Columns.Add("Category", typeof(string));
-            expensesTable.Columns.Add("Amount", typeof(double));
-
-            foreach (DocumentSnapshot expenseDoc in expensesSnapshot.Documents)
-            {
-                Dictionary<string, object> expenseData = expenseDoc.ToDictionary();
-                if (expenseData.TryGetValue("Date", out var dateObj) &&
-                    DateTime.TryParseExact(dateObj.ToString(), "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime date) &&
-                    expenseData.TryGetValue("Category", out var categoryObj) &&
-                    expenseData.TryGetValue("Amount", out var amountObj) &&
-                    double.TryParse(amountObj.ToString(), out double amount))
-                {
-                    DataRow existingRow = expensesTable.Rows.Cast<DataRow>()
-                            .FirstOrDefault(row => (string)row["Category"] == categoryObj.ToString() &&
-                            DateTime.TryParse(row["Date"].ToString(), out DateTime rowDate) &&
-                            rowDate == date);
-
-                    if (existingRow != null)
-                    {
-                        existingRow["Amount"] = (double)existingRow["Amount"] + amount;
-                    }
-                    else
-                    {
-                        DataRow newRow = expensesTable.NewRow();
-                        newRow["Date"] = date;
-                        newRow["Category"] = categoryObj.ToString();
-                        newRow["Amount"] = amount;
-                        expensesTable.Rows.Add(newRow);
-                    }
-                }
-            }
-            return expensesTable;
-        }
         public static async Task<DataTable> GetExpensesGroupedByCategories(string username)
         {
             var db = otherFunc.FirestoreConn();
@@ -1603,31 +1513,6 @@ namespace ExpenseApp
                 }
             }
             return expensesTable;
-        }
-        public static async Task<DataTable> getGroupExpenses(string groupCode)
-        {
-            var db = FirestoreConn();
-            CollectionReference expensesCol = editInsideGroup(groupCode).Collection("Expenses");
-            QuerySnapshot expenseSnap = await expensesCol.GetSnapshotAsync();
-            DataTable tbl = new DataTable();
-            tbl.Columns.Add("Date", typeof(DateTime));
-            tbl.Columns.Add("Amount", typeof(double));
-
-            foreach (DocumentSnapshot doc in expenseSnap.Documents)
-            {
-                Dictionary<string, object> expenseData = doc.ToDictionary();
-                if (expenseData.TryGetValue("Date", out var dateObj) &&
-                   DateTime.TryParseExact(dateObj.ToString(), "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime date) &&
-                   expenseData.TryGetValue("Amount", out var amountObj) &&
-                   double.TryParse(amountObj.ToString(), out double amount))
-                {
-                    DataRow newRow = tbl.NewRow();
-                    newRow["Date"] = date;
-                    newRow["Amount"] = amount;
-                    tbl.Rows.Add(newRow);
-                }
-            }
-            return tbl;
         }
         public static async Task<DataTable> GetTransactions(string username)
         {
@@ -1891,7 +1776,7 @@ namespace ExpenseApp
             }
             return null;
         }
-        public static async Task<string> getFirstname(string username)
+        public async Task<string> getFirstname(string username)
         {
             var db = otherFunc.FirestoreConn();
             DocumentReference colref = db.Collection("Users").Document(username);

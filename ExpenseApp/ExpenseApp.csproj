@@ -274,11 +274,11 @@
     <Compile Include="group.Designer.cs">
       <DependentUpon>group.cs</DependentUpon>
     </Compile>
-    <Compile Include="homeForm.cs">
+    <Compile Include="Home.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="homeForm.Designer.cs">
-      <DependentUpon>homeForm.cs</DependentUpon>
+    <Compile Include="Home.Designer.cs">
+      <DependentUpon>Home.cs</DependentUpon>
     </Compile>
     <Compile Include="LocationForm.cs">
       <SubType>Form</SubType>
@@ -393,8 +393,8 @@
     <EmbeddedResource Include="group.resx">
       <DependentUpon>group.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="homeForm.resx">
-      <DependentUpon>homeForm.cs</DependentUpon>
+    <EmbeddedResource Include="Home.resx">
+      <DependentUpon>Home.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LocationForm.resx">
       <DependentUpon>LocationForm.cs</DependentUpon>
@@ -449,18 +449,12 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\verify.png" />
-    <None Include="Resources\user.png" />
     <None Include="Resources\search.png" />
     <None Include="Resources\red arrow.png" />
     <None Include="Resources\profileBG1.png" />
     <None Include="Resources\show.png" />
     <None Include="Resources\transportation.png" />
     <None Include="Resources\add.png" />
-    <None Include="Resources\calendar.png" />
-    <None Include="Resources\background1.jpg" />
-    <None Include="Resources\eAccount.png" />
-    <None Include="Resources\edit.png" />
     <Content Include="Resources\GeoLite2-City.mmdb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

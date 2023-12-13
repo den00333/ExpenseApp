@@ -41,7 +41,6 @@
             this.rtbBio = new System.Windows.Forms.RichTextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.guna2ShadowPanel3 = new Guna.UI2.WinForms.Guna2ShadowPanel();
-            this.checkPass = new System.Windows.Forms.Label();
             this.txtConfirmPass = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtNewPass = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtCurrentPassword = new Guna.UI2.WinForms.Guna2TextBox();
@@ -50,18 +49,13 @@
             this.label7 = new System.Windows.Forms.Label();
             this.guna2AnimateWindow1 = new Guna.UI2.WinForms.Guna2AnimateWindow(this.components);
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
-            this.btnSendOTP = new Guna.UI2.WinForms.Guna2Button();
-            this.btnVerify = new Guna.UI2.WinForms.Guna2Button();
-            this.ptbVerified = new System.Windows.Forms.PictureBox();
-            this.txtOTP = new Guna.UI2.WinForms.Guna2TextBox();
-            this.otpTimer = new System.Windows.Forms.Timer(this.components);
+            this.checkPass = new System.Windows.Forms.Label();
             this.guna2ShadowPanel1.SuspendLayout();
             this.guna2GradientPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbPic)).BeginInit();
             this.guna2ShadowPanel2.SuspendLayout();
             this.guna2ShadowPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ptbVerified)).BeginInit();
             this.SuspendLayout();
             // 
             // guna2BorderlessForm1
@@ -134,10 +128,6 @@
             // guna2ShadowPanel2
             // 
             this.guna2ShadowPanel2.BackColor = System.Drawing.Color.Transparent;
-            this.guna2ShadowPanel2.Controls.Add(this.txtOTP);
-            this.guna2ShadowPanel2.Controls.Add(this.ptbVerified);
-            this.guna2ShadowPanel2.Controls.Add(this.btnVerify);
-            this.guna2ShadowPanel2.Controls.Add(this.btnSendOTP);
             this.guna2ShadowPanel2.Controls.Add(this.txtEmail);
             this.guna2ShadowPanel2.Controls.Add(this.txtLastname);
             this.guna2ShadowPanel2.Controls.Add(this.txtFirstname);
@@ -175,7 +165,7 @@
             this.txtEmail.PasswordChar = '\0';
             this.txtEmail.PlaceholderText = "Email";
             this.txtEmail.SelectedText = "";
-            this.txtEmail.Size = new System.Drawing.Size(350, 35);
+            this.txtEmail.Size = new System.Drawing.Size(412, 35);
             this.txtEmail.TabIndex = 15;
             // 
             // txtLastname
@@ -262,16 +252,6 @@
             this.guna2ShadowPanel3.ShadowStyle = Guna.UI2.WinForms.Guna2ShadowPanel.ShadowMode.ForwardDiagonal;
             this.guna2ShadowPanel3.Size = new System.Drawing.Size(480, 145);
             this.guna2ShadowPanel3.TabIndex = 2;
-            // 
-            // checkPass
-            // 
-            this.checkPass.AutoSize = true;
-            this.checkPass.Font = new System.Drawing.Font("Poppins SemiBold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkPass.ForeColor = System.Drawing.Color.Black;
-            this.checkPass.Location = new System.Drawing.Point(31, 107);
-            this.checkPass.Name = "checkPass";
-            this.checkPass.Size = new System.Drawing.Size(0, 26);
-            this.checkPass.TabIndex = 22;
             // 
             // txtConfirmPass
             // 
@@ -406,82 +386,15 @@
             // 
             this.errorProvider.ContainerControl = this;
             // 
-            // btnSendOTP
+            // checkPass
             // 
-            this.btnSendOTP.AutoRoundedCorners = true;
-            this.btnSendOTP.BorderRadius = 16;
-            this.btnSendOTP.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnSendOTP.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnSendOTP.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnSendOTP.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnSendOTP.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(123)))), ((int)(((byte)(47)))));
-            this.btnSendOTP.Font = new System.Drawing.Font("Poppins", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSendOTP.ForeColor = System.Drawing.Color.White;
-            this.btnSendOTP.Location = new System.Drawing.Point(391, 64);
-            this.btnSendOTP.Name = "btnSendOTP";
-            this.btnSendOTP.Size = new System.Drawing.Size(57, 35);
-            this.btnSendOTP.TabIndex = 24;
-            this.btnSendOTP.Text = "OTP";
-            this.btnSendOTP.TextOffset = new System.Drawing.Point(0, 2);
-            this.btnSendOTP.Click += new System.EventHandler(this.btnSendOTP_Click);
-            // 
-            // btnVerify
-            // 
-            this.btnVerify.AutoRoundedCorners = true;
-            this.btnVerify.BorderRadius = 17;
-            this.btnVerify.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnVerify.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnVerify.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnVerify.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnVerify.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(123)))), ((int)(((byte)(47)))));
-            this.btnVerify.Font = new System.Drawing.Font("Poppins", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVerify.ForeColor = System.Drawing.Color.White;
-            this.btnVerify.Location = new System.Drawing.Point(391, 62);
-            this.btnVerify.Name = "btnVerify";
-            this.btnVerify.Size = new System.Drawing.Size(60, 37);
-            this.btnVerify.TabIndex = 26;
-            this.btnVerify.Text = "Verify";
-            this.btnVerify.TextOffset = new System.Drawing.Point(0, 2);
-            this.btnVerify.Visible = false;
-            this.btnVerify.Click += new System.EventHandler(this.btnVerify_Click);
-            // 
-            // ptbVerified
-            // 
-            this.ptbVerified.BackColor = System.Drawing.Color.Transparent;
-            this.ptbVerified.Image = global::ExpenseApp.Properties.Resources.verify;
-            this.ptbVerified.Location = new System.Drawing.Point(403, 62);
-            this.ptbVerified.Name = "ptbVerified";
-            this.ptbVerified.Size = new System.Drawing.Size(37, 37);
-            this.ptbVerified.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.ptbVerified.TabIndex = 27;
-            this.ptbVerified.TabStop = false;
-            this.ptbVerified.Visible = false;
-            // 
-            // txtOTP
-            // 
-            this.txtOTP.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(123)))), ((int)(((byte)(47)))));
-            this.txtOTP.BorderRadius = 10;
-            this.txtOTP.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtOTP.DefaultText = "";
-            this.txtOTP.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtOTP.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtOTP.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtOTP.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtOTP.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtOTP.Font = new System.Drawing.Font("Poppins", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtOTP.ForeColor = System.Drawing.Color.Black;
-            this.txtOTP.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtOTP.Location = new System.Drawing.Point(36, 64);
-            this.txtOTP.Margin = new System.Windows.Forms.Padding(4);
-            this.txtOTP.MaxLength = 6;
-            this.txtOTP.Name = "txtOTP";
-            this.txtOTP.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.txtOTP.PasswordChar = '\0';
-            this.txtOTP.PlaceholderText = "One-Time Password";
-            this.txtOTP.SelectedText = "";
-            this.txtOTP.Size = new System.Drawing.Size(350, 35);
-            this.txtOTP.TabIndex = 28;
-            this.txtOTP.Visible = false;
+            this.checkPass.AutoSize = true;
+            this.checkPass.Font = new System.Drawing.Font("Poppins SemiBold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkPass.ForeColor = System.Drawing.Color.Black;
+            this.checkPass.Location = new System.Drawing.Point(31, 107);
+            this.checkPass.Name = "checkPass";
+            this.checkPass.Size = new System.Drawing.Size(0, 26);
+            this.checkPass.TabIndex = 22;
             // 
             // updateAcc
             // 
@@ -510,7 +423,6 @@
             this.guna2ShadowPanel3.ResumeLayout(false);
             this.guna2ShadowPanel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ptbVerified)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -539,10 +451,5 @@
         private Guna.UI2.WinForms.Guna2TextBox txtNewPass;
         private System.Windows.Forms.ErrorProvider errorProvider;
         private System.Windows.Forms.Label checkPass;
-        private Guna.UI2.WinForms.Guna2Button btnSendOTP;
-        public Guna.UI2.WinForms.Guna2Button btnVerify;
-        private System.Windows.Forms.PictureBox ptbVerified;
-        public Guna.UI2.WinForms.Guna2TextBox txtOTP;
-        private System.Windows.Forms.Timer otpTimer;
     }
 }
