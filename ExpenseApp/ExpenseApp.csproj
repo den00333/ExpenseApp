@@ -320,6 +320,7 @@
       <DependentUpon>RecurringExpensesForm.cs</DependentUpon>
     </Compile>
     <Compile Include="RegionData.cs" />
+    <Compile Include="Resources.cs" />
     <Compile Include="Security.cs" />
     <Compile Include="findYourAccount.cs">
       <SubType>Form</SubType>
@@ -405,13 +406,13 @@
     <EmbeddedResource Include="NoGroupUC.resx">
       <DependentUpon>NoGroupUC.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <SubType>Designer</SubType>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
     <EmbeddedResource Include="findYourAccount.resx">
       <DependentUpon>findYourAccount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="RecurringExpensesForm.resx">
       <DependentUpon>RecurringExpensesForm.cs</DependentUpon>
@@ -446,6 +447,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\profileBG.png" />
     <None Include="Resources\search.png" />
     <None Include="Resources\red arrow.png" />
     <None Include="Resources\profileBG1.png" />
@@ -532,6 +534,7 @@
     <None Include="Resources\members.png" />
     <None Include="Resources\online.png" />
     <None Include="Resources\offline.png" />
+    <None Include="Resources\password.png" />
     <Content Include="Resources\philippine_provinces_cities_municipalities_and_barangays_2019v2.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

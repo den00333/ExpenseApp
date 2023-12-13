@@ -1,4 +1,5 @@
-﻿namespace ExpenseApp
+﻿using ExpenseApp.Properties;
+namespace ExpenseApp
 {
     partial class NoConnectionUC
     {

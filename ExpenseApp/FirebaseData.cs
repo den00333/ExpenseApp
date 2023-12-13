@@ -55,6 +55,8 @@ namespace ExpenseApp
         public string status {  get; set; }
         [FirestoreProperty]
         public string Creator { get; set; }
+        [FirestoreProperty]
+        public Timestamp DateCreated { get; set; }
 
     }
 

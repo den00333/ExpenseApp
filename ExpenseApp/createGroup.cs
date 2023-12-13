@@ -57,7 +57,7 @@ namespace ExpenseApp
             else {
                 await userDocRef.UpdateAsync("Groups", FieldValue.ArrayUnion(groupCode));
             }
-             Home h = new Home();
+            homeForm h = new homeForm();
             h.checkGroupExists();
         }
         public string generateCode()

@@ -139,7 +139,7 @@ namespace ExpenseApp
                     panelPassword.BringToFront();
                 }
                 else{
-                    Tuple<string, DateTime> otpData = OTPManager.LoadOTP();
+                    Tuple<string, DateTime,string> otpData = OTPManager.LoadOTP();
                     if (otpData != null)
                     {
                         DateTime expirationTime = otpData.Item2;

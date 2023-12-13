@@ -239,7 +239,7 @@
             this.btnLocation.FillColor = System.Drawing.Color.Empty;
             this.btnLocation.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLocation.ForeColor = System.Drawing.Color.Black;
-            this.btnLocation.Image = global::ExpenseApp.Properties.Resources.location;
+            this.btnLocation.Image = global::ExpenseApp.Resources.location;
             this.btnLocation.ImageSize = new System.Drawing.Size(30, 30);
             this.btnLocation.Location = new System.Drawing.Point(287, 301);
             this.btnLocation.Name = "btnLocation";

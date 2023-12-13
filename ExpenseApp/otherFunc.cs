@@ -37,7 +37,7 @@ using static Google.Cloud.Firestore.V1.Firestore;
 using System.Web;
 using System.Collections.Specialized;
 using System.Data;
-
+using ExpenseApp.Properties;
 namespace ExpenseApp
 {
     internal class otherFunc
@@ -63,7 +63,7 @@ namespace ExpenseApp
             return false;
         }
 
-        public async static void checkInternet(connectionForm c, Home h)
+        public async static void checkInternet(connectionForm c, homeForm h)
         {
             if (!internetConn())
             {
@@ -1380,7 +1380,7 @@ namespace ExpenseApp
         }
         public static void sendOTP(string email, changePassword cp)
         {
-            Tuple<string, DateTime> savedOTP = OTPManager.LoadOTP();
+            Tuple<string, DateTime,string> savedOTP = OTPManager.LoadOTP();
             if (savedOTP != null && DateTime.Now < savedOTP.Item2)
             {
                 MessageBox.Show("You still have a valid OTP. Please use the existing one.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -1393,7 +1393,7 @@ namespace ExpenseApp
             DateTime expirationTime = otpTuple.Item2;
 
             // Save the new OTP
-            OTPManager.SaveOTP(otp, expirationTime);
+            OTPManager.SaveOTP(otp, expirationTime, email);
 
             MailMessage message = new MailMessage();
             message.From = new MailAddress("expensetracker273@gmail.com");
@@ -1776,7 +1776,7 @@ namespace ExpenseApp
             }
             return null;
         }
-        public async Task<string> getFirstname(string username)
+        public static async Task<string> getFirstname(string username)
         {
             var db = otherFunc.FirestoreConn();
             DocumentReference colref = db.Collection("Users").Document(username);

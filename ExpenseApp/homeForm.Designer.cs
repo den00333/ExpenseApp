@@ -1,4 +1,5 @@
-﻿namespace ExpenseApp
+﻿using ExpenseApp.Properties;
+namespace ExpenseApp
 {
     partial class homeForm
     {
@@ -66,7 +67,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::ExpenseApp.Properties.Resources.logo1;
+            this.pictureBox1.Image = global::ExpenseApp.Properties.Resources.logo;
             this.pictureBox1.Location = new System.Drawing.Point(19, 12);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(40, 40);

@@ -110,7 +110,7 @@ namespace ExpenseApp
             // closeBTN
             // 
             this.closeBTN.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.closeBTN.Image = global::ExpenseApp.Properties.Resources.delete;
+            this.closeBTN.Image = global::ExpenseApp.Properties.Resources.close;
             this.closeBTN.Location = new System.Drawing.Point(372, 5);
             this.closeBTN.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.closeBTN.Name = "closeBTN";
@@ -149,7 +149,6 @@ namespace ExpenseApp
             this.passwordTB.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.passwordTB.ForeColor = System.Drawing.Color.Black;
             this.passwordTB.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.passwordTB.IconRight = global::ExpenseApp.Properties.Resources.show;
             this.passwordTB.IconRightOffset = new System.Drawing.Point(15, 0);
             this.passwordTB.IconRightSize = new System.Drawing.Size(25, 25);
             this.passwordTB.Location = new System.Drawing.Point(55, 370);
