@@ -28,14 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            Guna.UI2.AnimatorNS.Animation animation1 = new Guna.UI2.AnimatorNS.Animation();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(offWalletUC));
-            this.toolTip2 = new System.Windows.Forms.ToolTip(this.components);
             this.flpExpenses = new System.Windows.Forms.FlowLayoutPanel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.guna2Transition1 = new Guna.UI2.WinForms.Guna2Transition();
             this.label1 = new System.Windows.Forms.Label();
             this.btnAddXpns = new Guna.UI2.WinForms.Guna2Button();
             this.guna2ShadowPanel1 = new Guna.UI2.WinForms.Guna2ShadowPanel();
@@ -50,7 +45,6 @@
             this.panelTitle = new Guna.UI2.WinForms.Guna2Panel();
             this.label7 = new System.Windows.Forms.Label();
             this.guna2ShadowPanel2 = new Guna.UI2.WinForms.Guna2ShadowPanel();
-            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.guna2ShadowPanel1.SuspendLayout();
@@ -65,7 +59,6 @@
             this.flpExpenses.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.flpExpenses.AutoScroll = true;
             this.flpExpenses.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.guna2Transition1.SetDecoration(this.flpExpenses, Guna.UI2.AnimatorNS.DecorationType.None);
             this.flpExpenses.Location = new System.Drawing.Point(9, 4);
             this.flpExpenses.Margin = new System.Windows.Forms.Padding(4);
             this.flpExpenses.Name = "flpExpenses";
@@ -80,7 +73,6 @@
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.Controls.Add(this.flpExpenses, 0, 0);
-            this.guna2Transition1.SetDecoration(this.tableLayoutPanel1, Guna.UI2.AnimatorNS.DecorationType.None);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4);
@@ -93,37 +85,15 @@
             // panel1
             // 
             this.panel1.Controls.Add(this.tableLayoutPanel1);
-            this.guna2Transition1.SetDecoration(this.panel1, Guna.UI2.AnimatorNS.DecorationType.None);
             this.panel1.Location = new System.Drawing.Point(41, 359);
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(925, 375);
             this.panel1.TabIndex = 16;
             // 
-            // guna2Transition1
-            // 
-            this.guna2Transition1.Cursor = null;
-            animation1.AnimateOnlyDifferences = true;
-            animation1.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.BlindCoeff")));
-            animation1.LeafCoeff = 0F;
-            animation1.MaxTime = 1F;
-            animation1.MinTime = 0F;
-            animation1.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.MosaicCoeff")));
-            animation1.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation1.MosaicShift")));
-            animation1.MosaicSize = 0;
-            animation1.Padding = new System.Windows.Forms.Padding(0);
-            animation1.RotateCoeff = 0F;
-            animation1.RotateLimit = 0F;
-            animation1.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.ScaleCoeff")));
-            animation1.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.SlideCoeff")));
-            animation1.TimeCoeff = 0F;
-            animation1.TransparencyCoeff = 0F;
-            this.guna2Transition1.DefaultAnimation = animation1;
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.guna2Transition1.SetDecoration(this.label1, Guna.UI2.AnimatorNS.DecorationType.None);
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Black;
             this.label1.Location = new System.Drawing.Point(30, 28);
@@ -136,7 +106,6 @@
             // btnAddXpns
             // 
             this.btnAddXpns.BorderRadius = 15;
-            this.guna2Transition1.SetDecoration(this.btnAddXpns, Guna.UI2.AnimatorNS.DecorationType.None);
             this.btnAddXpns.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnAddXpns.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnAddXpns.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -156,7 +125,6 @@
             // 
             this.guna2ShadowPanel1.BackColor = System.Drawing.Color.Transparent;
             this.guna2ShadowPanel1.Controls.Add(this.guna2GradientPanel1);
-            this.guna2Transition1.SetDecoration(this.guna2ShadowPanel1, Guna.UI2.AnimatorNS.DecorationType.None);
             this.guna2ShadowPanel1.FillColor = System.Drawing.Color.White;
             this.guna2ShadowPanel1.Location = new System.Drawing.Point(41, 91);
             this.guna2ShadowPanel1.Margin = new System.Windows.Forms.Padding(4);
@@ -176,7 +144,6 @@
             this.guna2GradientPanel1.Controls.Add(this.btnAddMoney);
             this.guna2GradientPanel1.Controls.Add(this.lblBalance);
             this.guna2GradientPanel1.Controls.Add(this.label2);
-            this.guna2Transition1.SetDecoration(this.guna2GradientPanel1, Guna.UI2.AnimatorNS.DecorationType.None);
             this.guna2GradientPanel1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(180)))), ((int)(((byte)(72)))));
             this.guna2GradientPanel1.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(123)))), ((int)(((byte)(47)))));
             this.guna2GradientPanel1.Location = new System.Drawing.Point(0, 0);
@@ -189,7 +156,6 @@
             // 
             this.lblShort.AutoSize = true;
             this.lblShort.BackColor = System.Drawing.Color.Transparent;
-            this.guna2Transition1.SetDecoration(this.lblShort, Guna.UI2.AnimatorNS.DecorationType.None);
             this.lblShort.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblShort.ForeColor = System.Drawing.Color.White;
             this.lblShort.Location = new System.Drawing.Point(289, 15);
@@ -202,7 +168,6 @@
             // btnAddMoney
             // 
             this.btnAddMoney.BorderRadius = 15;
-            this.guna2Transition1.SetDecoration(this.btnAddMoney, Guna.UI2.AnimatorNS.DecorationType.None);
             this.btnAddMoney.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnAddMoney.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnAddMoney.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -221,7 +186,6 @@
             // lblBalance
             // 
             this.lblBalance.AutoSize = true;
-            this.guna2Transition1.SetDecoration(this.lblBalance, Guna.UI2.AnimatorNS.DecorationType.None);
             this.lblBalance.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblBalance.ForeColor = System.Drawing.Color.White;
             this.lblBalance.Location = new System.Drawing.Point(61, 62);
@@ -234,7 +198,6 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.guna2Transition1.SetDecoration(this.label2, Guna.UI2.AnimatorNS.DecorationType.None);
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(11, 9);
@@ -250,7 +213,6 @@
             this.guna2GradientPanel2.Controls.Add(this.lblExpenses);
             this.guna2GradientPanel2.Controls.Add(this.label3);
             this.guna2GradientPanel2.Controls.Add(this.btnAddXpns);
-            this.guna2Transition1.SetDecoration(this.guna2GradientPanel2, Guna.UI2.AnimatorNS.DecorationType.None);
             this.guna2GradientPanel2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(183)))), ((int)(((byte)(142)))), ((int)(((byte)(81)))));
             this.guna2GradientPanel2.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(66)))), ((int)(((byte)(86)))));
             this.guna2GradientPanel2.Location = new System.Drawing.Point(0, 0);
@@ -262,7 +224,6 @@
             // lblExpenses
             // 
             this.lblExpenses.AutoSize = true;
-            this.guna2Transition1.SetDecoration(this.lblExpenses, Guna.UI2.AnimatorNS.DecorationType.None);
             this.lblExpenses.Font = new System.Drawing.Font("Microsoft Sans Serif", 25.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblExpenses.ForeColor = System.Drawing.Color.White;
             this.lblExpenses.Location = new System.Drawing.Point(49, 62);
@@ -275,7 +236,6 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.guna2Transition1.SetDecoration(this.label3, Guna.UI2.AnimatorNS.DecorationType.None);
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.White;
             this.label3.Location = new System.Drawing.Point(12, 9);
@@ -289,7 +249,6 @@
             // 
             this.panelTitle.BorderRadius = 15;
             this.panelTitle.Controls.Add(this.label7);
-            this.guna2Transition1.SetDecoration(this.panelTitle, Guna.UI2.AnimatorNS.DecorationType.None);
             this.panelTitle.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(123)))), ((int)(((byte)(47)))));
             this.panelTitle.Location = new System.Drawing.Point(41, 303);
             this.panelTitle.Margin = new System.Windows.Forms.Padding(4);
@@ -301,7 +260,6 @@
             // 
             this.label7.AutoSize = true;
             this.label7.BackColor = System.Drawing.Color.Transparent;
-            this.guna2Transition1.SetDecoration(this.label7, Guna.UI2.AnimatorNS.DecorationType.None);
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.White;
             this.label7.Location = new System.Drawing.Point(40, 9);
@@ -315,7 +273,6 @@
             // 
             this.guna2ShadowPanel2.BackColor = System.Drawing.Color.Transparent;
             this.guna2ShadowPanel2.Controls.Add(this.guna2GradientPanel2);
-            this.guna2Transition1.SetDecoration(this.guna2ShadowPanel2, Guna.UI2.AnimatorNS.DecorationType.None);
             this.guna2ShadowPanel2.FillColor = System.Drawing.Color.White;
             this.guna2ShadowPanel2.Location = new System.Drawing.Point(512, 91);
             this.guna2ShadowPanel2.Margin = new System.Windows.Forms.Padding(4);
@@ -337,7 +294,6 @@
             this.Controls.Add(this.guna2ShadowPanel1);
             this.Controls.Add(this.panelTitle);
             this.Controls.Add(this.guna2ShadowPanel2);
-            this.guna2Transition1.SetDecoration(this, Guna.UI2.AnimatorNS.DecorationType.None);
             this.Name = "offWalletUC";
             this.Size = new System.Drawing.Size(1016, 763);
             this.Load += new System.EventHandler(this.offWalletUC_Load);
@@ -358,9 +314,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.ToolTip toolTip2;
-        private Guna.UI2.WinForms.Guna2Transition guna2Transition1;
         public System.Windows.Forms.FlowLayoutPanel flpExpenses;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Panel panel1;
@@ -378,6 +331,5 @@
         private Guna.UI2.WinForms.Guna2Panel panelTitle;
         private System.Windows.Forms.Label label7;
         private Guna.UI2.WinForms.Guna2ShadowPanel guna2ShadowPanel2;
-        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

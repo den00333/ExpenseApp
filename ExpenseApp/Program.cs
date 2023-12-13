@@ -16,7 +16,7 @@ namespace ExpenseApp
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new offWallet(null));
+            Application.Run(new Login());
         }
     }
 }

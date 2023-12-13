@@ -427,6 +427,9 @@
     <EmbeddedResource Include="findYourAccount.resx">
       <DependentUpon>findYourAccount.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="offWalletUC.resx">
+      <DependentUpon>offWalletUC.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
