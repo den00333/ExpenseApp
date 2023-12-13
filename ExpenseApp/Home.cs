@@ -103,7 +103,6 @@ namespace ExpenseApp
 
             if (otherFunc.internetConn())
             {
-
                 wallet wallet = new wallet();
                 addUserControl(wallet);
                 AddExpensesForm adf = new AddExpensesForm(new wallet(), false, null, new group());
@@ -116,8 +115,8 @@ namespace ExpenseApp
             }
             else
             {
-                NoConnectionUC nc = new NoConnectionUC();
-                addUserControl(nc);
+                wallet wallet = new wallet();
+                addUserControl(wallet);
             }
         }
 

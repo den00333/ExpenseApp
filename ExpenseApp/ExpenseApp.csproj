@@ -280,6 +280,12 @@
     <Compile Include="Home.Designer.cs">
       <DependentUpon>Home.cs</DependentUpon>
     </Compile>
+    <Compile Include="ListOfOfflineDatacs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ListOfOfflineDatacs.Designer.cs">
+      <DependentUpon>ListOfOfflineDatacs.cs</DependentUpon>
+    </Compile>
     <Compile Include="LocationForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -303,6 +309,19 @@
     </Compile>
     <Compile Include="NoGroupUC.Designer.cs">
       <DependentUpon>NoGroupUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="offlineFunc.cs" />
+    <Compile Include="offWallet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="offWallet.Designer.cs">
+      <DependentUpon>offWallet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="offWalletUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="offWalletUC.Designer.cs">
+      <DependentUpon>offWalletUC.cs</DependentUpon>
     </Compile>
     <Compile Include="otherFunc.cs" />
     <Compile Include="OTPManager.cs" />
@@ -396,6 +415,9 @@
     <EmbeddedResource Include="Home.resx">
       <DependentUpon>Home.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ListOfOfflineDatacs.resx">
+      <DependentUpon>ListOfOfflineDatacs.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LocationForm.resx">
       <DependentUpon>LocationForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -407,6 +429,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="NoGroupUC.resx">
       <DependentUpon>NoGroupUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="offWallet.resx">
+      <DependentUpon>offWallet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="offWalletUC.resx">
+      <DependentUpon>offWalletUC.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

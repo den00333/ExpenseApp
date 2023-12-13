@@ -66,7 +66,10 @@ namespace ExpenseApp
         }
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            if (otherFunc.internetConn())
+            ListOfOfflineDatacs l = new ListOfOfflineDatacs();
+            l.Show();
+            this.Hide();
+            /*if (otherFunc.internetConn())
             {
                 logIn();
                 btnLogin.Enabled = false;
@@ -74,11 +77,13 @@ namespace ExpenseApp
             else
             {
                 DialogResult res = MessageBox.Show("No internet connection!\nDo you want to use our offline version?", "Connection", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if(res == DialogResult.Yes)
+                if (res == DialogResult.Yes)
                 {
-                    MessageBox.Show("Gagawin pa lang, antay ka lang");
+                    offWallet offWal = new offWallet();
+                    offWal.Show();
+                    this.Hide();
                 }
-            }
+            }*/
         }
 
         async void logIn()

@@ -23,7 +23,6 @@ namespace ExpenseApp
         {
             InitializeComponent();
         }
-
         private void wallet_Load(object sender, EventArgs e)
         {
             loadWallet();
@@ -32,8 +31,8 @@ namespace ExpenseApp
             //loadWallet();
             displayData();
             displayGoals();
+            
         }
-
         private async void loadWallet()
         {
             String username = FirebaseData.Instance.Username;
@@ -410,5 +409,13 @@ namespace ExpenseApp
             REF.StartPosition = FormStartPosition.CenterScreen;
             REF.ShowDialog();
         }
+
+        private void loadOfflineVersion()
+        {
+            lblBalance.Text = "0";
+            lblExpenses.Text = "0";
+            lblShort.Text = "0";
+        }
+
     }
 }
