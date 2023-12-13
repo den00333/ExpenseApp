@@ -274,11 +274,11 @@
     <Compile Include="group.Designer.cs">
       <DependentUpon>group.cs</DependentUpon>
     </Compile>
-    <Compile Include="Home.cs">
+    <Compile Include="homeForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Home.Designer.cs">
-      <DependentUpon>Home.cs</DependentUpon>
+    <Compile Include="homeForm.Designer.cs">
+      <DependentUpon>homeForm.cs</DependentUpon>
     </Compile>
     <Compile Include="LocationForm.cs">
       <SubType>Form</SubType>
@@ -392,9 +392,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="group.resx">
       <DependentUpon>group.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Home.resx">
-      <DependentUpon>Home.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LocationForm.resx">
       <DependentUpon>LocationForm.cs</DependentUpon>
