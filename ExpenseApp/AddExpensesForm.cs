@@ -1,7 +1,6 @@
 ﻿using Google.Cloud.Firestore;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -10,7 +9,7 @@ using DateTime = System.DateTime;
 namespace ExpenseApp
 {
     public partial class AddExpensesForm : Form
-    {   
+    {
 
         private wallet walletInstance;
         public int R { get; set; }
@@ -34,16 +33,6 @@ namespace ExpenseApp
             this.myGroup = groupCode;
             this.g = g;
         }
-        bool offlineFlag = false;
-        offWalletUC ouc;
-        public AddExpensesForm(bool fl, offWalletUC ow)
-        {
-            InitializeComponent();
-            initializeCMB();
-            this.offlineFlag = fl;
-            this.ouc = ow;
-        }
-
         private void initializeCMB()
         {
             catG = FileFunc.initializeData();
@@ -76,40 +65,6 @@ namespace ExpenseApp
             customizeCategory ccg = new customizeCategory(this);
             ccg.Show();
         }
-
-        private  void savingOffline()
-        {
-            offlineFunc of = new offlineFunc(ouc);
-            String path = ouc.p;
-            if (ouc.lblBalance.Text.Equals("0"))
-            {
-                MessageBox.Show("Insufficient amount");
-            }
-            else
-            {
-                if (File.Exists(path))
-                {
-
-                    if (of.minus(path, double.Parse(txtAmount.Text)))
-                    {
-                        String[] lines = File.ReadAllLines(path);
-                        lines[4] += $"{txtAmount.Text}|{cmbCategory.Text}|{dtpDate.Value.ToString("yyyy-MM-dd")}|{txtLocation.Text}|{richTxtDesc.Text}~";
-                        File.WriteAllLines(path, lines);
-                    }
-                }
-                else
-                {
-                    offlineFunc.createTXT(path);
-                    if (of.minus(path, double.Parse(txtAmount.Text)))
-                    {
-                        String[] lines = File.ReadAllLines(path);
-                        lines[4] += $"{txtAmount.Text}|{cmbCategory.Text}|{dtpDate.Value.ToString("yyyy-MM-dd")}|{txtLocation.Text}|{richTxtDesc.Text}~";
-                        File.WriteAllLines(path, lines);
-                    }
-                }
-            }
-        }
-
         private void btnSave_Click(object sender, EventArgs e)
         {
             Console.WriteLine($"flag{flag}");
@@ -121,25 +76,15 @@ namespace ExpenseApp
             //{
             //    updateUserExpenses();
             //}
-            if (offlineFlag)
+            if (flag)
             {
-                savingOffline();
-                ouc.flpExpenses.Controls.Clear();
-                
-                ouc.loadData(ouc.p);
+                updateGroupExpenses();
             }
             else
             {
-                if (flag)
-                {
-                    updateGroupExpenses();
-                }
-                else
-                {
-                    updateUserExpenses();
-                }
-                Console.WriteLine($"flag{flag}");
+                updateUserExpenses();
             }
+            Console.WriteLine($"flag{flag}");
            //onsole.WriteLine(groupWallet);
         }
         private async void updateGroupExpenses()
