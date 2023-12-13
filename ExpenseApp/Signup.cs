@@ -84,21 +84,29 @@ namespace ExpenseApp
                 MessageBox.Show("Password cannot contain whitespaces", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        
+
 
         private void txtPassword_Validating(object sender, CancelEventArgs e)
         {
             string pass = txtPassword.Text;
 
             //check if the passwordTB is empty, do not show error message when empty
-            if (!string.IsNullOrEmpty(txtPassword.Text)){
+            if (!string.IsNullOrEmpty(txtPassword.Text)) {
                 if (pass.Length > 0 && pass.Length < 8)
                 {
                     errorProvider.SetError(txtPassword, "Password must be at least 8 characters long");
                 }
-                else if ((!pass.Any(char.IsUpper) || !pass.Any(char.IsLower)))
+                else if (!pass.Any(char.IsUpper) || !pass.Any(char.IsLower))
                 {
-                    errorProvider.SetError(txtPassword, "Password must contain uppercase");
+                    errorProvider.SetError(txtPassword, "Password must contain upper and lower case");
+                }
+                else if (!pass.Any(char.IsSymbol))
+                {
+                    errorProvider.SetError(txtPassword, "Password must contain symbol(!@#$%^&)");
+                }
+                else
+                {
+                    errorProvider.Clear();
                 }
             }
             else{
@@ -179,7 +187,7 @@ namespace ExpenseApp
             fname = txtFirstname.Text.ToString().Trim();
             lname = txtLastname.Text.ToString().Trim();
             email = txtEmail.Text.ToString().Trim();
-            password = Security.Encrypt(txtPassword.Text.ToString());
+            password = txtPassword.Text.ToString();
             repeatpass = txtrepeatpass.Text.ToString().Trim();
             CheckBox terms = termsConditions;
 

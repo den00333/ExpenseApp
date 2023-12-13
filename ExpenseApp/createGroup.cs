@@ -57,8 +57,7 @@ namespace ExpenseApp
             else {
                 await userDocRef.UpdateAsync("Groups", FieldValue.ArrayUnion(groupCode));
             }
-             Home h = new Home();
-            h.checkGroupExists();
+            
         }
         public string generateCode()
         {
@@ -185,6 +184,9 @@ namespace ExpenseApp
                 try{
                     Create();
                     MessageBox.Show("Group created successfully", "Success", MessageBoxButtons.OK,MessageBoxIcon.Information);
+                    homeForm home = new homeForm();
+                    group g = new group();
+                    home.addUserControl(g);
                     this.Close();
                 }
                 catch{

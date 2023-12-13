@@ -274,11 +274,11 @@
     <Compile Include="group.Designer.cs">
       <DependentUpon>group.cs</DependentUpon>
     </Compile>
-    <Compile Include="Home.cs">
+    <Compile Include="homeForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Home.Designer.cs">
-      <DependentUpon>Home.cs</DependentUpon>
+    <Compile Include="homeForm.Designer.cs">
+      <DependentUpon>homeForm.cs</DependentUpon>
     </Compile>
     <Compile Include="LocationForm.cs">
       <SubType>Form</SubType>
@@ -393,8 +393,8 @@
     <EmbeddedResource Include="group.resx">
       <DependentUpon>group.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Home.resx">
-      <DependentUpon>Home.cs</DependentUpon>
+    <EmbeddedResource Include="homeForm.resx">
+      <DependentUpon>homeForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LocationForm.resx">
       <DependentUpon>LocationForm.cs</DependentUpon>
@@ -459,6 +459,7 @@
     <None Include="Resources\calendar.png" />
     <None Include="Resources\background1.jpg" />
     <None Include="Resources\eAccount.png" />
+    <None Include="Resources\edit.png" />
     <Content Include="Resources\GeoLite2-City.mmdb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

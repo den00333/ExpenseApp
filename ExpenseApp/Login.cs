@@ -107,7 +107,7 @@ namespace ExpenseApp
 
                     this.Hide();
                     FirebaseData.Instance.Username = username;
-                    Home home = new Home();
+                    homeForm home = new homeForm();
                     String userN = FirebaseData.Instance.Username;
                     bool hasExistingAcc = await otherFunc.checkLog(userN);
                     otherFunc.RecordLogs(userN, hasExistingAcc, true);
@@ -119,10 +119,12 @@ namespace ExpenseApp
                 {
 
                     MessageBox.Show("Invalid username or password", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    btnLogin.Enabled = true;
                 }
             }
             else{
                 MessageBox.Show("Invalid username or password!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                btnLogin.Enabled = true;
             }
         }
 

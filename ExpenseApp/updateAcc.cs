@@ -87,7 +87,7 @@ namespace ExpenseApp
             string lastname = txtLastname.Text;
             string email = txtEmail.Text;
             string bio = rtbBio.Text;
-            string password = Security.Encrypt(txtNewPass.Text);
+            string password = txtNewPass.Text;
             string confirmPass = txtConfirmPass.Text;
             profile p = profile;
 

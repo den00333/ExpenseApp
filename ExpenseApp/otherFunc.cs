@@ -63,7 +63,7 @@ namespace ExpenseApp
             return false;
         }
 
-        public async static void checkInternet(connectionForm c, Home h)
+        public async static void checkInternet(connectionForm c, homeForm h)
         {
             if (!internetConn())
             {
@@ -821,7 +821,28 @@ namespace ExpenseApp
             await docRef.UpdateAsync(data);
         }
 
+        public bool isValidPassword(string password)
+        {
+            bool isPasswordValid = Regex.IsMatch(password, @"^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@#$%^&+=!])[A-Za-z\d@#$%^&+=!]{8,}$");
 
+            return isPasswordValid;
+        }
+        public bool isValidUsername(string username)
+        {
+            
+            bool isUsernameValid = Regex.IsMatch(username, @"^[A-Za-z\d]{4,}$");
+            return isUsernameValid;
+        }
+        public bool isValidFirstname(string firstname)
+        {
+            bool isValidFname = Regex.IsMatch(firstname, @"^[A-Za-z]{4,}$");
+            return isValidFname;
+        }
+        public bool isValidLastname(string lastname)
+        {
+            bool isValidLName = Regex.IsMatch(lastname, @"^[A-Za-z]{2,}$");
+            return isValidLName;
+        }
 
         public async void signingUp(String username, String fname, String lname, String email, String password, String repeatpass, System.Windows.Forms.CheckBox terms, Signup s)
         {
@@ -830,7 +851,7 @@ namespace ExpenseApp
             bool validEmail = otherFunc.isValidEmail(email);
             bool validUsername = await otherFunc.isUsernameExistingAsync(username);
             bool isEmpty = areControlEmpty(fname, lname, email, username, password, repeatpass);
-            bool passwordMatched = function.passwordMatched(Security.Decrypt(password), repeatpass);
+            bool passwordMatched = function.passwordMatched(password, repeatpass);
             int generatedID = await generateUserID();
             if (!isEmpty)
             {
@@ -846,38 +867,59 @@ namespace ExpenseApp
                     {
                         if (passwordMatched)
                         {
-                            if (function.isValidPassword(password))
+                            if (function.isValidFirstname(fname))
                             {
-                                try
+                                if (function.isValidLastname(lname))
                                 {
-                                    DocumentReference docRef = database.Collection("Users").Document(username);
-                                    Dictionary<string, object> data = new Dictionary<string, object>()
+                                    if (function.isValidUsername(username))
+                                    {
+                                        if (function.isValidPassword(password))
+                                        {
+                                            try
+                                            {
+                                                DocumentReference docRef = database.Collection("Users").Document(username);
+                                                Dictionary<string, object> data = new Dictionary<string, object>()
                                     {
                                         {"First Name", fname },
                                         {"Last Name", lname },
                                         {"Username", username },
                                         {"Email", email },
-                                        {"Password", password},
+                                        {"Password", Security.Encrypt(password)},
                                         {"ID", generatedID},
                                         {"DateCreated", FieldValue.ServerTimestamp},
                                         {"status", "offline"}
                                     };
-                                    await docRef.SetAsync(data);
+                                                await docRef.SetAsync(data);
 
-                                    DialogResult res = MessageBox.Show("Successfully created your account!", "Success", MessageBoxButtons.OK);
-                                    if (res == DialogResult.OK)
-                                    {
-                                        s.Close();
+                                                DialogResult res = MessageBox.Show("Successfully created your account!", "Success", MessageBoxButtons.OK);
+                                                if (res == DialogResult.OK)
+                                                {
+                                                    s.Close();
+                                                }
+                                            }
+                                            catch (Exception ex)
+                                            {
+                                                MessageBox.Show("Cannot process your account", ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                            }
+                                        }
+                                        else
+                                        {
+                                            MessageBox.Show("Password do not meet the standards!", "Invalid Password", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                                        }
                                     }
+                                    else
+                                    {
+                                        MessageBox.Show("Username must be at least 4 characters long and one digit", "Invalid Username", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                                    }  
                                 }
-                                catch (Exception ex)
+                                else
                                 {
-                                    MessageBox.Show("Cannot process your account", ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    MessageBox.Show("Last Name must be at least 2 characters", "Invalid Last Name", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                                 }
                             }
                             else
                             {
-                                MessageBox.Show("Password do not meet the standards!", "Invalid Password", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                                MessageBox.Show("First Name must be at least 4 characters", "Invalid First Name", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                             }
                         }
                         else
@@ -898,7 +940,7 @@ namespace ExpenseApp
         }
         public bool passwordMatched(string password1, string password2)
         {
-            return password1 == password2;
+            return password1.Equals(password2);
         }
 
         public static void populateCMBcategory(ctg category, AddExpensesForm f)
@@ -909,11 +951,7 @@ namespace ExpenseApp
                 f.cmbCategory.Items.Add(c);
             }
         }
-        public bool isValidPassword(string password)
-        {
-            String pattern = @"^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@#$%^&+=!])[A-Za-z\d@#$%^&+=!]{8,}$";
-            return Regex.IsMatch(password, pattern);
-        }
+        
         public bool validDate(String date)
         {
             DateTime parsedDate;
@@ -954,7 +992,7 @@ namespace ExpenseApp
             bool validEmail = otherFunc.isValidEmail(email);
             bool isEmpty = areControlEmpty(fname, lname, email, password);
             bool validUsername = await otherFunc.isUsernameExistingAsync(username);
-            bool passMatched = function.passwordMatched(Security.Decrypt(password), confirmPass);
+            bool passMatched = function.passwordMatched(password, confirmPass);
 
             if (!isEmpty)
             {
@@ -1774,7 +1812,7 @@ namespace ExpenseApp
             }
             return null;
         }
-        public async Task<string> getFirstname(string username)
+        public static async Task<string> getFirstname(string username)
         {
             var db = otherFunc.FirestoreConn();
             DocumentReference colref = db.Collection("Users").Document(username);
