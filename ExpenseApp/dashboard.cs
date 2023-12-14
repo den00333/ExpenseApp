@@ -30,6 +30,7 @@ namespace ExpenseApp
         private DataTable groupSpendings;
         private DataTable groupCat;
         private DataTable totalGroupExpenses;
+        private DataTable logAmount;
         public dashboard()
         {
             InitializeComponent();
@@ -39,11 +40,13 @@ namespace ExpenseApp
             expensesDataTable = await otherFunc.GetExpensesGroupedByDate(username);
             expensesCatDataTable = await otherFunc.GetExpensesGroupedByCategories(username);
             totalExpensesTable = await otherFunc.GetTransactions(username);
+            logAmount = await GetLogAmount(username);
             displayExpensesChart(expensesDataTable);
             displayDonut(expensesCatDataTable);
             displayExpensesTransaction(totalExpensesTable);
             group = await populateCmbGroupCode();
             populateGroupCombo(group);
+            displayLogAmount(logAmount, totalExpensesTable);
         }
         private void displayExpensesChart(DataTable tbl)
         {
@@ -463,10 +466,12 @@ namespace ExpenseApp
                 groupSpendings = await otherFunc.getGroupExpenses(groupCode);
                 groupCat = await otherFunc.GetGxpensesGroupedByCategories(groupCode);
                 totalGroupExpenses = await otherFunc.GetGroupExpensesGroupedByDate(groupCode);
-
+                logAmount = await GetGroupLogAmount(groupCode);
                 displayExpensesChart(totalGroupExpenses);
                 displayDonut(groupCat);
                 displayExpensesTransaction(groupSpendings);
+                displayLogAmount(logAmount, totalExpensesTable);
+
             }
             else
             {
@@ -485,12 +490,112 @@ namespace ExpenseApp
                 displayExpensesChart(expensesDataTable);
                 displayDonut(expensesCatDataTable);
                 displayExpensesTransaction(totalExpensesTable);
+                displayLogAmount(logAmount, totalExpensesTable);
+
             }
             else
             {
                 flag = true;
                 btnSwitch.Text = "Group";
                 cmbGroup.Enabled = true;
+            }
+        }
+        private void displayLogAmount(DataTable tbl, DataTable tbl1)
+        {
+            float totalsum = getTotalExpenses(tbl);
+            float totalspend = getTotalExpenses(tbl1);
+
+            string beautifiedCashIn = otherFunc.amountBeautify(totalsum);
+            lblCashedIn.Text = beautifiedCashIn;
+            float marginPercentage = CalculateMarginPercentage(totalsum, totalspend);
+            lblMarginPercentage.Text = $"{marginPercentage:F2}%";
+            if(marginPercentage < 0)
+            {
+                lblMarginPercentage.ForeColor = Color.FromArgb(210, 4, 45);
+            }
+            else
+            {
+                lblMarginPercentage.ForeColor = Color.FromArgb(83, 123, 47);
+            }
+        }
+        private async Task<DataTable> GetLogAmount(string username)
+        {
+            DataTable logAmountDataTable = new DataTable();
+            var db = otherFunc.FirestoreConn();
+            DocumentReference docRef = db.Collection("Users").Document(username).Collection("Wallets").Document("LogWallet");
+            DocumentSnapshot docSnap = await docRef.GetSnapshotAsync();
+
+            if (docSnap != null && docSnap.Exists)
+            {
+                if (docSnap.TryGetValue("LogWallet", out object yourArrayField))
+                {
+                    if (yourArrayField is List<object> arrayValues)
+                    {
+                        logAmountDataTable.Columns.Add("Amount", typeof(string));
+                        foreach (object value in arrayValues)
+                        {
+                            string[] parts = value.ToString().Split('|');
+
+                            if (parts.Length > 0)
+                            {
+                                DataRow newRow = logAmountDataTable.NewRow();
+                                newRow["Amount"] = parts[0];
+                                logAmountDataTable.Rows.Add(newRow);
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Array field not found or has a different type.");
+                }
+            }
+            return logAmountDataTable;
+        }
+        private async Task<DataTable> GetGroupLogAmount(string groupCode)
+        {
+            DataTable logAmountDataTable = new DataTable();
+            var db = otherFunc.FirestoreConn();
+            DocumentReference docRef = db.Collection("Groups").Document(groupCode).Collection("Wallets").Document("LogWallet");
+            DocumentSnapshot docSnap = await docRef.GetSnapshotAsync();
+
+            if (docSnap != null && docSnap.Exists)
+            {
+                if (docSnap.TryGetValue("LogWallet", out object yourArrayField))
+                {
+                    if (yourArrayField is List<object> arrayValues)
+                    {
+                        logAmountDataTable.Columns.Add("Amount", typeof(string));
+                        foreach (object value in arrayValues)
+                        {
+                            string[] parts = value.ToString().Split('|');
+
+                            if (parts.Length > 0)
+                            {
+                                DataRow newRow = logAmountDataTable.NewRow();
+                                newRow["Amount"] = parts[0];
+                                logAmountDataTable.Rows.Add(newRow);
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Array field not found or has a different type.");
+                }
+            }
+            return logAmountDataTable;
+        }
+        private float CalculateMarginPercentage(float totalCashedIn, float totalSpendings)
+        {
+            if (totalCashedIn != 0)
+            {
+                float marginPercentage = ((totalCashedIn - totalSpendings) / totalCashedIn) * 100;
+                return marginPercentage;
+            }
+            else
+            {
+                return 0;
             }
         }
     }

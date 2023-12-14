@@ -1372,43 +1372,55 @@ namespace ExpenseApp
                 using (HttpClient hc = new HttpClient())
                 {
                     HttpResponseMessage timeResponse = await hc.GetAsync(timeApiUrl);
-                    if (timeResponse.IsSuccessStatusCode)
+                    try
                     {
-                        DateTime localTime = currentUtcDateTime.ToLocalTime();
-                        String Date = localTime.Date.ToString("yyyy-MM-dd");
-                        String Time = localTime.TimeOfDay.ToString(@"hh\:mm\:ss");
-
-                        var db = FirestoreConn();
-                        DocumentReference docRef = db.Collection("Users").Document(username).Collection("Logs").Document(Date);
-                        Dictionary<String, object> data = new Dictionary<String, object>();
-                        DocumentSnapshot docsnap = await docRef.GetSnapshotAsync();
-                        String item = Time + "|" + address;
-                        if (HasAccount)
+                        if (timeResponse.IsSuccessStatusCode)
                         {
-                            if (!docsnap.Exists)
+                            DateTime localTime = currentUtcDateTime.ToLocalTime();
+                            String Date = localTime.Date.ToString("yyyy-MM-dd");
+                            String Time = localTime.TimeOfDay.ToString(@"hh\:mm\:ss");
+
+                            var db = FirestoreConn();
+                            DocumentReference docRef = db.Collection("Users").Document(username).Collection("Logs").Document(Date);
+                            Dictionary<String, object> data = new Dictionary<String, object>();
+                            DocumentSnapshot docsnap = await docRef.GetSnapshotAsync();
+                            String item = Time + "|" + address;
+                            if (HasAccount)
                             {
-                                await docRef.SetAsync(new Dictionary<String, object>()); //Create current date document if does not exists
-                            }
-                            if (LoggingIn)
-                            {
-                                await docRef.UpdateAsync("Login", FieldValue.ArrayUnion(item));
+                                if (!docsnap.Exists)
+                                {
+                                    await docRef.SetAsync(new Dictionary<String, object>()); //Create current date document if does not exists
+                                }
+                                if (LoggingIn)
+                                {
+                                    await docRef.UpdateAsync("Login", FieldValue.ArrayUnion(item));
+                                }
+                                else
+                                {
+                                    await docRef.UpdateAsync("Logout", FieldValue.ArrayUnion(Time));
+                                }
                             }
                             else
                             {
-                                await docRef.UpdateAsync("Logout", FieldValue.ArrayUnion(Time));
+
+                                ArrayList Log = new ArrayList();
+                                Log.Add(item);
+
+
+                                data.Add("Login", Log);
+
+                                await docRef.SetAsync(data);
                             }
                         }
                         else
                         {
-
-                            ArrayList Log = new ArrayList();
-                            Log.Add(item);
-
-
-                            data.Add("Login", Log);
-
-                            await docRef.SetAsync(data);
+                            Console.WriteLine("Error");
                         }
+                    }
+                    catch (Exception)
+                    {
+
+                        throw;
                     }
                 }
             }
