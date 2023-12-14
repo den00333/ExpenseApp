@@ -1602,6 +1602,7 @@ namespace ExpenseApp
             DataTable transactionsTable = new DataTable();
             transactionsTable.Columns.Add("Date", typeof(string));
             transactionsTable.Columns.Add("Amount", typeof(double));
+            transactionsTable.Columns.Add("Category", typeof(string));
 
             foreach (DocumentSnapshot expenseDoc in expensesSnapshot.Documents)
             {
@@ -1609,11 +1610,14 @@ namespace ExpenseApp
                 if (expenseData.TryGetValue("Date", out var dateObj) &&
                     DateTime.TryParseExact(dateObj.ToString(), "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime date) &&
                     expenseData.TryGetValue("Amount", out var amountObj) &&
-                    double.TryParse(amountObj.ToString(), out double amount))
+                    double.TryParse(amountObj.ToString(), out double amount) &&
+                    expenseData.TryGetValue("Category", out var categoryObj) &&
+                    categoryObj is string category)
                 {
                     DataRow newRow = transactionsTable.NewRow();
                     newRow["Date"] = date;
                     newRow["Amount"] = amount;
+                    newRow["Category"] = category;
                     transactionsTable.Rows.Add(newRow);
                 }
             }
