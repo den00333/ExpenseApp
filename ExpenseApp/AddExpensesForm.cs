@@ -49,7 +49,6 @@ namespace ExpenseApp
         {
             catG = FileFunc.initializeData();
             otherFunc.populateCMBcategory(catG, this);
-            richTextNote.Margin = new Padding(10);
         }
         private void btnLocation_Click(object sender, EventArgs e)
         {
@@ -262,6 +261,7 @@ namespace ExpenseApp
                                         {"Date", date},
                                         {"Location", location},
                                         {"Name", name},
+                                        {"Creator", username},
                                         {"timestamp", FieldValue.ServerTimestamp}
                                     };
                                     await docRef.SetAsync(data);
