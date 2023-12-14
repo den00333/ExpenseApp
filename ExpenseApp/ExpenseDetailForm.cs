@@ -63,7 +63,7 @@ namespace ExpenseApp
                 lblCategory.Text = category;
                 lblDate.Text = data["Date"].ToString();
                 lblLocation.Text = data["Location"].ToString();
-                lblName.Text = data["Description"].ToString();
+                lblName.Text = data["Name"].ToString();
                 String fullName = await otherFunc.getFullName(username);
                 lblCreator.Text = $"By: {fullName}";
                 Console.WriteLine(category);

@@ -1,6 +1,7 @@
 ﻿using FireSharp.Interfaces;
 using Google.Cloud.Firestore;
 using Google.Protobuf;
+using Guna.UI2.WinForms;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -206,6 +207,26 @@ namespace ExpenseApp
             else
             {
                 MessageBox.Show("Please enter your OTP", "Invalid", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+        }
+
+        private void txtLastname_TextChanged(object sender, EventArgs e)
+        {
+            Guna2TextBox textBox = (Guna2TextBox)sender;
+            if (!string.IsNullOrEmpty(textBox.Text) && char.IsLower(textBox.Text[0]))
+            {
+                textBox.Text = char.ToUpper(textBox.Text[0]) + textBox.Text.Substring(1);
+                textBox.SelectionStart = textBox.Text.Length;
+            }
+        }
+
+        private void txtFirstname_TextChanged(object sender, EventArgs e)
+        {
+            Guna2TextBox textBox = (Guna2TextBox)sender;
+            if (!string.IsNullOrEmpty(textBox.Text) && char.IsLower(textBox.Text[0]))
+            {
+                textBox.Text = char.ToUpper(textBox.Text[0]) + textBox.Text.Substring(1);
+                textBox.SelectionStart = textBox.Text.Length;
             }
         }
 

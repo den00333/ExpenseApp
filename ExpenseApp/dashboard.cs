@@ -44,9 +44,10 @@ namespace ExpenseApp
             displayExpensesChart(expensesDataTable);
             displayDonut(expensesCatDataTable);
             displayExpensesTransaction(totalExpensesTable);
+            displayLogAmount(logAmount, totalExpensesTable);
             group = await populateCmbGroupCode();
             populateGroupCombo(group);
-            displayLogAmount(logAmount, totalExpensesTable);
+
         }
         private void displayExpensesChart(DataTable tbl)
         {
@@ -470,7 +471,8 @@ namespace ExpenseApp
                 displayExpensesChart(totalGroupExpenses);
                 displayDonut(groupCat);
                 displayExpensesTransaction(groupSpendings);
-                displayLogAmount(logAmount, totalExpensesTable);
+                displayLogAmount(logAmount, totalGroupExpenses);
+
 
             }
             else
@@ -480,13 +482,14 @@ namespace ExpenseApp
         }
         
         bool flag = false;
-        private void btnSwitch_Click(object sender, EventArgs e)
+        private async void btnSwitch_Click(object sender, EventArgs e)
         {
             if (flag)
             {
                 flag = false;
                 btnSwitch.Text = "User";
                 cmbGroup.Enabled = false;
+                logAmount = await GetLogAmount(username);
                 displayExpensesChart(expensesDataTable);
                 displayDonut(expensesCatDataTable);
                 displayExpensesTransaction(totalExpensesTable);
@@ -590,7 +593,8 @@ namespace ExpenseApp
         {
             if (totalCashedIn != 0)
             {
-                float marginPercentage = ((totalCashedIn - totalSpendings) / totalCashedIn) * 100;
+                float marginPercentage = 100- ((totalSpendings / totalCashedIn) * 100);
+
                 return marginPercentage;
             }
             else

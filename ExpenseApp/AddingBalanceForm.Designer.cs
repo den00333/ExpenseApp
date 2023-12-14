@@ -47,14 +47,15 @@
             this.guna2ShadowPanel1.BackColor = System.Drawing.Color.Transparent;
             this.guna2ShadowPanel1.Controls.Add(this.panel);
             this.guna2ShadowPanel1.FillColor = System.Drawing.Color.White;
-            this.guna2ShadowPanel1.Location = new System.Drawing.Point(16, 12);
+            this.guna2ShadowPanel1.Location = new System.Drawing.Point(21, 15);
+            this.guna2ShadowPanel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.guna2ShadowPanel1.Name = "guna2ShadowPanel1";
             this.guna2ShadowPanel1.Radius = 10;
             this.guna2ShadowPanel1.ShadowColor = System.Drawing.Color.Black;
             this.guna2ShadowPanel1.ShadowDepth = 130;
             this.guna2ShadowPanel1.ShadowShift = 10;
             this.guna2ShadowPanel1.ShadowStyle = Guna.UI2.WinForms.Guna2ShadowPanel.ShadowMode.ForwardDiagonal;
-            this.guna2ShadowPanel1.Size = new System.Drawing.Size(379, 70);
+            this.guna2ShadowPanel1.Size = new System.Drawing.Size(505, 86);
             this.guna2ShadowPanel1.TabIndex = 4;
             // 
             // panel
@@ -65,8 +66,9 @@
             this.panel.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(180)))), ((int)(((byte)(72)))));
             this.panel.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(123)))), ((int)(((byte)(47)))));
             this.panel.Location = new System.Drawing.Point(0, 0);
+            this.panel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel.Name = "panel";
-            this.panel.Size = new System.Drawing.Size(372, 60);
+            this.panel.Size = new System.Drawing.Size(496, 74);
             this.panel.TabIndex = 5;
             // 
             // btnChangeWallet
@@ -79,10 +81,11 @@
             this.btnChangeWallet.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(180)))), ((int)(((byte)(72)))));
             this.btnChangeWallet.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnChangeWallet.ForeColor = System.Drawing.Color.White;
-            this.btnChangeWallet.Location = new System.Drawing.Point(256, 13);
+            this.btnChangeWallet.Location = new System.Drawing.Point(341, 16);
+            this.btnChangeWallet.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnChangeWallet.Name = "btnChangeWallet";
             this.btnChangeWallet.PressedDepth = 34;
-            this.btnChangeWallet.Size = new System.Drawing.Size(103, 33);
+            this.btnChangeWallet.Size = new System.Drawing.Size(137, 41);
             this.btnChangeWallet.TabIndex = 18;
             this.btnChangeWallet.Text = "Expenses";
             this.btnChangeWallet.Click += new System.EventHandler(this.btnChangeWallet_Click);
@@ -93,9 +96,10 @@
             this.lblAdd.BackColor = System.Drawing.Color.Transparent;
             this.lblAdd.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAdd.ForeColor = System.Drawing.Color.White;
-            this.lblAdd.Location = new System.Drawing.Point(15, 13);
+            this.lblAdd.Location = new System.Drawing.Point(20, 16);
+            this.lblAdd.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblAdd.Name = "lblAdd";
-            this.lblAdd.Size = new System.Drawing.Size(223, 34);
+            this.lblAdd.Size = new System.Drawing.Size(276, 42);
             this.lblAdd.TabIndex = 0;
             this.lblAdd.Text = "Add Balance Amount:";
             // 
@@ -110,10 +114,10 @@
             // 
             this.closeBTN.Cursor = System.Windows.Forms.Cursors.Hand;
             this.closeBTN.Image = global::ExpenseApp.Properties.Resources.delete;
-            this.closeBTN.Location = new System.Drawing.Point(429, 7);
-            this.closeBTN.Margin = new System.Windows.Forms.Padding(2);
+            this.closeBTN.Location = new System.Drawing.Point(572, 9);
+            this.closeBTN.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.closeBTN.Name = "closeBTN";
-            this.closeBTN.Size = new System.Drawing.Size(45, 27);
+            this.closeBTN.Size = new System.Drawing.Size(60, 33);
             this.closeBTN.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.closeBTN.TabIndex = 16;
             this.closeBTN.TabStop = false;
@@ -134,13 +138,14 @@
             this.txtAmount.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAmount.ForeColor = System.Drawing.Color.Black;
             this.txtAmount.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtAmount.Location = new System.Drawing.Point(16, 88);
-            this.txtAmount.Margin = new System.Windows.Forms.Padding(2, 8, 2, 8);
+            this.txtAmount.Location = new System.Drawing.Point(21, 108);
+            this.txtAmount.Margin = new System.Windows.Forms.Padding(3, 10, 3, 10);
+            this.txtAmount.MaxLength = 6;
             this.txtAmount.Name = "txtAmount";
             this.txtAmount.PasswordChar = '\0';
             this.txtAmount.PlaceholderText = "Add New Amount";
             this.txtAmount.SelectedText = "";
-            this.txtAmount.Size = new System.Drawing.Size(316, 52);
+            this.txtAmount.Size = new System.Drawing.Size(421, 64);
             this.txtAmount.TabIndex = 17;
             this.txtAmount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAmount_KeyPress);
             // 
@@ -155,27 +160,29 @@
             this.btnAddAmount.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(123)))), ((int)(((byte)(47)))));
             this.btnAddAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddAmount.ForeColor = System.Drawing.Color.White;
-            this.btnAddAmount.Location = new System.Drawing.Point(337, 88);
+            this.btnAddAmount.Location = new System.Drawing.Point(449, 108);
+            this.btnAddAmount.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnAddAmount.Name = "btnAddAmount";
             this.btnAddAmount.PressedDepth = 34;
-            this.btnAddAmount.Size = new System.Drawing.Size(58, 54);
+            this.btnAddAmount.Size = new System.Drawing.Size(77, 66);
             this.btnAddAmount.TabIndex = 19;
             this.btnAddAmount.Text = "+";
             this.btnAddAmount.Click += new System.EventHandler(this.btnAddAmount_Click);
             // 
             // AddingBalanceForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::ExpenseApp.Properties.Resources.profileBG;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(484, 158);
+            this.ClientSize = new System.Drawing.Size(645, 194);
             this.Controls.Add(this.btnAddAmount);
             this.Controls.Add(this.txtAmount);
             this.Controls.Add(this.closeBTN);
             this.Controls.Add(this.guna2ShadowPanel1);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "AddingBalanceForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AddingBalanceForm";
