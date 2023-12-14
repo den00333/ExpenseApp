@@ -579,6 +579,22 @@ namespace ExpenseApp
         //    docRef.UpdateAsync(data);
         //}
 
+        public async static Task<float[]> get3label()
+        {
+            String col = "Wallets";
+            String username = FirebaseData.Instance.Username;
+            DocumentReference docRefBalance = editInsideUser(username).Collection(col).Document("Balance");
+            DocumentReference docRefexpense = editInsideUser(username).Collection(col).Document("Expense");
+
+            DocumentSnapshot dsnapBalance = await docRefBalance.GetSnapshotAsync();
+            DocumentSnapshot dsnapExpense = await docRefexpense.GetSnapshotAsync();
+            float[] getvalues = new float[3];
+            getvalues[0] = dsnapBalance.GetValue<float>("Amount");
+            getvalues[1] = dsnapExpense.GetValue<float>("Amount");
+            getvalues[2] = dsnapExpense.GetValue<float>("short");
+            return getvalues;
+        }
+
         public async static Task<float> getShort(String username)
         {
             float shrt = 0;

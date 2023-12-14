@@ -14,16 +14,19 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Web;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace ExpenseApp
 {
     public partial class ListOfOfflineDatacs : Form
     {
         bool flagOFForON = true;
-        public ListOfOfflineDatacs(bool f)
+        wallet w;
+        public ListOfOfflineDatacs(bool f, wallet wal)
         {
             InitializeComponent();
             this.flagOFForON = f;
+            this.w = wal;
             if (!flagOFForON)
             {
                 txtTitle.Enabled = false;
@@ -43,7 +46,8 @@ namespace ExpenseApp
                 addTitle("listOfOffline.txt", t + "|");
                 txtTitle.Clear();
 
-                flpTitles.Controls.Clear();
+                
+                w.flpExpenses.Controls.Clear();
                 loadTitles(path);
             }
             else
@@ -125,6 +129,7 @@ namespace ExpenseApp
             lines[0] = lines[0].Replace(name+"|", "");
             File.WriteAllLines(path, lines);
             flpTitles.Controls.Clear();
+
             loadTitles(path);
             File.Delete(name);
         }
@@ -155,7 +160,33 @@ namespace ExpenseApp
             await uploadWES(pathOfChosenFile, username);
             await uploadLogs(pathOfChosenFile, username);
             await uploadExpenses(pathOfChosenFile, username);
+            File.Delete(pathOfChosenFile);
+
+            flpTitles.Controls.Clear();
+
+            String path = "listOfOffline.txt";
+            loadTitles(path);
             MessageBox.Show("uploaded successfully!");
+            float[] threelbl = await otherFunc.get3label();
+
+            String[] lines = File.ReadAllLines(path);
+            lines[0] = lines[0].Replace(pathOfChosenFile + "|", "");
+            File.WriteAllLines(path, lines);
+
+            w.flpExpenses.Controls.Clear();
+            w.displayData();
+            w.lblBalance.Text = otherFunc.amountBeautify(threelbl[0]);
+            w.lblExpenses.Text = otherFunc.amountBeautify(threelbl[1]);
+            if (threelbl[2] >= 0)
+            {
+                w.lblShort.Hide();
+
+            }
+            else
+            {
+                w.lblShort.Text = otherFunc.amountBeautify(threelbl[2]);
+                w.lblShort.ForeColor = Color.Red;
+            }
 
 
         }
@@ -235,6 +266,10 @@ namespace ExpenseApp
             String[] lines = File.ReadAllLines(path);
             ArrayList ldata = new ArrayList();
             String[] records = lines[3].Split('!');
+            if (records[1] == "")
+            {
+                return;
+            }
             String[] each_record = records[1].Split('~');
             Console.WriteLine(each_record.Length+" the line" + records[1]);
             for (int i = 0; i < each_record.Length - 1; i++)
@@ -273,6 +308,10 @@ namespace ExpenseApp
             
             String[] lines = File.ReadAllLines(path);
             String[] splitted = lines[4].Split(':');
+            if (splitted[1] == "")
+            {
+                return;
+            }
             String[] E = splitted[1].Split('~');
             int e_len = E.Length - 1;
             for(int i = 0; i <= e_len-1; i++)

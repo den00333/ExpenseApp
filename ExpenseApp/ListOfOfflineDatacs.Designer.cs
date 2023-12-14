@@ -194,6 +194,8 @@
             this.Controls.Add(this.label5);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(2);
+            this.MaximumSize = new System.Drawing.Size(530, 488);
+            this.MinimumSize = new System.Drawing.Size(530, 488);
             this.Name = "ListOfOfflineDatacs";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ListOfOfflineDatacs";

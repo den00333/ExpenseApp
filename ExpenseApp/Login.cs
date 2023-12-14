@@ -77,7 +77,7 @@ namespace ExpenseApp
                 DialogResult res = MessageBox.Show("No internet connection!\nDo you want to use our offline version?", "Connection", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (res == DialogResult.Yes)
                 {
-                    ListOfOfflineDatacs l = new ListOfOfflineDatacs(true);
+                    ListOfOfflineDatacs l = new ListOfOfflineDatacs(true, new wallet());
                     l.Show();
                     this.Hide();
                 }
@@ -220,7 +220,7 @@ namespace ExpenseApp
 
         private void btnOfflineMode_Click(object sender, EventArgs e)
         {
-            ListOfOfflineDatacs l = new ListOfOfflineDatacs(true);
+            ListOfOfflineDatacs l = new ListOfOfflineDatacs(true, new wallet());
             l.Show();
             this.Hide();
         }

@@ -49,7 +49,6 @@ namespace ExpenseApp
         {
             catG = FileFunc.initializeData();
             otherFunc.populateCMBcategory(catG, this);
-            richTextNote.Margin = new Padding(10);
         }
         private void btnLocation_Click(object sender, EventArgs e)
         {
@@ -125,6 +124,12 @@ namespace ExpenseApp
             if (offlineFlag)
             {
                 savingOffline();
+                txtAmount.Clear();
+                cmbCategory.SelectedIndex = -1;
+                dtpDate.Value = DateTime.Today;
+                txtLocation.Clear();
+                richTxtDesc.Clear();
+
                 ouc.flpExpenses.Controls.Clear();
 
                 ouc.loadData(ouc.p);
