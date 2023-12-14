@@ -139,6 +139,8 @@ namespace ExpenseApp
                         float fAmount = float.Parse(offlineFunc.readTxt(path, 0));
                         owuc.lblBalance.Text = otherFunc.amountBeautify(fAmount);
                         addWalletLogs(path, amount.ToString(), walletN);
+
+                        
                     }
                     else
                     {
@@ -179,6 +181,7 @@ namespace ExpenseApp
                             {
                                 addWalletTXT(path, 1, amount.ToString(), true);
                             }
+                            
                         }
                         else
                         {
@@ -228,6 +231,7 @@ namespace ExpenseApp
 
                     }
                 }
+                txtAmount.Clear();
 
             }
             else

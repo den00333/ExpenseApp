@@ -37,9 +37,9 @@
             // pnlWallet
             // 
             this.pnlWallet.Location = new System.Drawing.Point(11, 59);
-            this.pnlWallet.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pnlWallet.Margin = new System.Windows.Forms.Padding(2);
             this.pnlWallet.Name = "pnlWallet";
-            this.pnlWallet.Size = new System.Drawing.Size(1082, 568);
+            this.pnlWallet.Size = new System.Drawing.Size(763, 610);
             this.pnlWallet.TabIndex = 0;
             // 
             // guna2BorderlessForm1
@@ -74,11 +74,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1028, 652);
+            this.ClientSize = new System.Drawing.Size(786, 680);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.pnlWallet);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
+            this.MaximumSize = new System.Drawing.Size(786, 680);
+            this.MinimumSize = new System.Drawing.Size(786, 680);
             this.Name = "offWallet";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "offWallet";

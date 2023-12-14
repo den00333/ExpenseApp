@@ -124,6 +124,12 @@ namespace ExpenseApp
             if (offlineFlag)
             {
                 savingOffline();
+                txtAmount.Clear();
+                cmbCategory.SelectedIndex = -1;
+                dtpDate.Value = DateTime.Today;
+                txtLocation.Clear();
+                richTxtDesc.Clear();
+
                 ouc.flpExpenses.Controls.Clear();
 
                 ouc.loadData(ouc.p);

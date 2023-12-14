@@ -435,7 +435,7 @@ namespace ExpenseApp
 
         private void btnUploadData_Click(object sender, EventArgs e)
         {
-            ListOfOfflineDatacs l = new ListOfOfflineDatacs(false);
+            ListOfOfflineDatacs l = new ListOfOfflineDatacs(false, this);
             l.Show();
         }
     }

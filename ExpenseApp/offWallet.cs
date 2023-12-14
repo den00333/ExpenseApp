@@ -35,7 +35,7 @@ namespace ExpenseApp
 
         private void btnBack_Click(object sender, EventArgs e)
         {
-            ListOfOfflineDatacs l = new ListOfOfflineDatacs(true);
+            ListOfOfflineDatacs l = new ListOfOfflineDatacs(true, new wallet());
             this.Hide();
             l.Show();
             
