@@ -431,5 +431,11 @@ namespace ExpenseApp
             Logs log = new Logs();
             log.ShowDialog();
         }
+
+        private void btnUploadData_Click(object sender, EventArgs e)
+        {
+            ListOfOfflineDatacs l = new ListOfOfflineDatacs(false);
+            l.Show();
+        }
     }
 }

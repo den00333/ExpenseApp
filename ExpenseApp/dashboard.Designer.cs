@@ -52,8 +52,6 @@
             this.btnMonth = new Guna.UI2.WinForms.Guna2Button();
             this.cmbGroup = new Guna.UI2.WinForms.Guna2ComboBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.btnUploadData = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2Panel5 = new Guna.UI2.WinForms.Guna2Panel();
             this.btnSwitch = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Panel1.SuspendLayout();
             this.guna2Panel2.SuspendLayout();
@@ -61,7 +59,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.expensesChart)).BeginInit();
             this.guna2Panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.expenseCategoryDonut)).BeginInit();
-            this.guna2Panel5.SuspendLayout();
             this.SuspendLayout();
             // 
             // guna2Panel1
@@ -341,6 +338,13 @@
             this.cmbGroup.TabIndex = 18;
             this.cmbGroup.SelectedIndexChanged += new System.EventHandler(this.cmbGroup_SelectedIndexChanged);
             // 
+            // label2
+            // 
+            this.label2.Location = new System.Drawing.Point(0, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(100, 23);
+            this.label2.TabIndex = 22;
+            // 
             // btnSwitch
             // 
             this.btnSwitch.BorderRadius = 10;
@@ -359,40 +363,10 @@
             this.btnSwitch.Text = "User";
             this.btnSwitch.Click += new System.EventHandler(this.btnSwitch_Click);
             // 
-            // btnUploadData
-            // 
-            this.btnUploadData.BackColor = System.Drawing.Color.Transparent;
-            this.btnUploadData.BorderRadius = 10;
-            this.btnUploadData.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnUploadData.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnUploadData.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnUploadData.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnUploadData.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(180)))), ((int)(((byte)(72)))));
-            this.btnUploadData.Font = new System.Drawing.Font("Poppins", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUploadData.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnUploadData.Location = new System.Drawing.Point(183, 9);
-            this.btnUploadData.Margin = new System.Windows.Forms.Padding(2);
-            this.btnUploadData.Name = "btnUploadData";
-            this.btnUploadData.Size = new System.Drawing.Size(85, 44);
-            this.btnUploadData.TabIndex = 20;
-            this.btnUploadData.Text = "Uplaod your txt";
-            this.btnUploadData.Click += new System.EventHandler(this.btnUploadData_Click);
-            // 
-            // guna2Panel5
-            // 
-            this.guna2Panel5.BorderRadius = 15;
-            this.guna2Panel5.Controls.Add(this.btnUploadData);
-            this.guna2Panel5.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(123)))), ((int)(((byte)(47)))));
-            this.guna2Panel5.Location = new System.Drawing.Point(789, 140);
-            this.guna2Panel5.Name = "guna2Panel5";
-            this.guna2Panel5.Size = new System.Drawing.Size(281, 61);
-            this.guna2Panel5.TabIndex = 21;
-            // 
             // dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.guna2Panel5);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnSwitch);
             this.Controls.Add(this.cmbGroup);
@@ -420,7 +394,6 @@
             this.guna2Panel4.ResumeLayout(false);
             this.guna2Panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.expenseCategoryDonut)).EndInit();
-            this.guna2Panel5.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -446,8 +419,6 @@
         private System.Windows.Forms.DataVisualization.Charting.Chart expensesChart;
         private Guna.UI2.WinForms.Guna2ComboBox cmbGroup;
         private System.Windows.Forms.Label label2;
-        private Guna.UI2.WinForms.Guna2Button btnUploadData;
-        private Guna.UI2.WinForms.Guna2Panel guna2Panel5;
         private Guna.UI2.WinForms.Guna2Button btnSwitch;
     }
 }
