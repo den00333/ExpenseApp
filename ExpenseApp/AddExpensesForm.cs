@@ -262,6 +262,7 @@ namespace ExpenseApp
                                         {"Date", date},
                                         {"Location", location},
                                         {"Name", name},
+                                        {"Creator", username},
                                         {"timestamp", FieldValue.ServerTimestamp}
                                     };
                                     await docRef.SetAsync(data);
