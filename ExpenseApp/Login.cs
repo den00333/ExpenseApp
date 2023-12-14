@@ -68,15 +68,18 @@ namespace ExpenseApp
         {
             if (otherFunc.internetConn())
             {
-                logIn();
                 btnLogin.Enabled = false;
+                logIn();
+                
             }
             else
             {
                 DialogResult res = MessageBox.Show("No internet connection!\nDo you want to use our offline version?", "Connection", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if(res == DialogResult.Yes)
+                if (res == DialogResult.Yes)
                 {
-                    MessageBox.Show("Gagawin pa lang, antay ka lang");
+                    ListOfOfflineDatacs l = new ListOfOfflineDatacs(true);
+                    l.Show();
+                    this.Hide();
                 }
             }
         }
@@ -90,6 +93,7 @@ namespace ExpenseApp
 
             if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password)){
                 MessageBox.Show("Please fill in the required information. \n Your username & password", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                btnLogin.Enabled = true;
             }
             else if (docSnap.Exists){
                 FirebaseData userData = docSnap.ConvertTo<FirebaseData>();
@@ -212,6 +216,13 @@ namespace ExpenseApp
             {
                 btnLogin.PerformClick();
             }
+        }
+
+        private void btnOfflineMode_Click(object sender, EventArgs e)
+        {
+            ListOfOfflineDatacs l = new ListOfOfflineDatacs(true);
+            l.Show();
+            this.Hide();
         }
     }
 }

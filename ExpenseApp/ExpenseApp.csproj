@@ -412,6 +412,9 @@
     <EmbeddedResource Include="group.resx">
       <DependentUpon>group.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ListOfOfflineDatacs.resx">
+      <DependentUpon>ListOfOfflineDatacs.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LocationForm.resx">
       <DependentUpon>LocationForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -426,6 +429,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="findYourAccount.resx">
       <DependentUpon>findYourAccount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="offWallet.resx">
+      <DependentUpon>offWallet.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="offWalletUC.resx">
       <DependentUpon>offWalletUC.cs</DependentUpon>

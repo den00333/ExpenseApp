@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title3 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.lblSpendings = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -52,12 +52,15 @@
             this.btnMonth = new Guna.UI2.WinForms.Guna2Button();
             this.cmbGroup = new Guna.UI2.WinForms.Guna2ComboBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.btnUploadData = new Guna.UI2.WinForms.Guna2Button();
+            this.guna2Panel5 = new Guna.UI2.WinForms.Guna2Panel();
             this.guna2Panel1.SuspendLayout();
             this.guna2Panel2.SuspendLayout();
             this.guna2Panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.expensesChart)).BeginInit();
             this.guna2Panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.expenseCategoryDonut)).BeginInit();
+            this.guna2Panel5.SuspendLayout();
             this.SuspendLayout();
             // 
             // guna2Panel1
@@ -93,7 +96,7 @@
             this.label1.Location = new System.Drawing.Point(66, 46);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(168, 33);
+            this.label1.Size = new System.Drawing.Size(168, 34);
             this.label1.TabIndex = 0;
             this.label1.Text = "Total Spendings";
             // 
@@ -151,43 +154,43 @@
             // 
             this.expensesChart.BorderlineColor = System.Drawing.Color.Transparent;
             this.expensesChart.BorderlineWidth = 0;
-            chartArea3.AxisX.IsLabelAutoFit = false;
-            chartArea3.AxisX.LabelStyle.Font = new System.Drawing.Font("Poppins", 12.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea3.AxisX.LineWidth = 0;
-            chartArea3.AxisX.MajorGrid.LineColor = System.Drawing.Color.White;
-            chartArea3.AxisX.MajorGrid.LineWidth = 0;
-            chartArea3.AxisX.MajorTickMark.LineColor = System.Drawing.Color.Transparent;
-            chartArea3.AxisX.MajorTickMark.LineWidth = 0;
-            chartArea3.AxisX.MajorTickMark.Size = 5F;
-            chartArea3.AxisY.IsLabelAutoFit = false;
-            chartArea3.AxisY.LabelStyle.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea3.AxisY.LabelStyle.Format = "₱{0}";
-            chartArea3.AxisY.LineWidth = 0;
-            chartArea3.AxisY.MajorGrid.LineWidth = 0;
-            chartArea3.AxisY.MajorTickMark.LineWidth = 0;
-            chartArea3.AxisY.MajorTickMark.Size = 5F;
-            chartArea3.Name = "ChartArea1";
-            this.expensesChart.ChartAreas.Add(chartArea3);
+            chartArea5.AxisX.IsLabelAutoFit = false;
+            chartArea5.AxisX.LabelStyle.Font = new System.Drawing.Font("Poppins", 12.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea5.AxisX.LineWidth = 0;
+            chartArea5.AxisX.MajorGrid.LineColor = System.Drawing.Color.White;
+            chartArea5.AxisX.MajorGrid.LineWidth = 0;
+            chartArea5.AxisX.MajorTickMark.LineColor = System.Drawing.Color.Transparent;
+            chartArea5.AxisX.MajorTickMark.LineWidth = 0;
+            chartArea5.AxisX.MajorTickMark.Size = 5F;
+            chartArea5.AxisY.IsLabelAutoFit = false;
+            chartArea5.AxisY.LabelStyle.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea5.AxisY.LabelStyle.Format = "₱{0}";
+            chartArea5.AxisY.LineWidth = 0;
+            chartArea5.AxisY.MajorGrid.LineWidth = 0;
+            chartArea5.AxisY.MajorTickMark.LineWidth = 0;
+            chartArea5.AxisY.MajorTickMark.Size = 5F;
+            chartArea5.Name = "ChartArea1";
+            this.expensesChart.ChartAreas.Add(chartArea5);
             this.expensesChart.Location = new System.Drawing.Point(6, 11);
             this.expensesChart.Margin = new System.Windows.Forms.Padding(2);
             this.expensesChart.Name = "expensesChart";
             this.expensesChart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Pastel;
-            series3.BorderWidth = 5;
-            series3.ChartArea = "ChartArea1";
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series3.MarkerColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            series3.MarkerSize = 10;
-            series3.Name = "Series1";
-            series3.YValuesPerPoint = 3;
-            this.expensesChart.Series.Add(series3);
+            series5.BorderWidth = 5;
+            series5.ChartArea = "ChartArea1";
+            series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series5.MarkerColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            series5.MarkerSize = 10;
+            series5.Name = "Series1";
+            series5.YValuesPerPoint = 3;
+            this.expensesChart.Series.Add(series5);
             this.expensesChart.Size = new System.Drawing.Size(711, 379);
             this.expensesChart.TabIndex = 3;
             this.expensesChart.Text = "chart1";
-            title2.Alignment = System.Drawing.ContentAlignment.TopLeft;
-            title2.Font = new System.Drawing.Font("Poppins SemiBold", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            title2.Name = "Title1";
-            title2.Text = "Spending Trend";
-            this.expensesChart.Titles.Add(title2);
+            title3.Alignment = System.Drawing.ContentAlignment.TopLeft;
+            title3.Font = new System.Drawing.Font("Poppins SemiBold", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            title3.Name = "Title1";
+            title3.Text = "Spending Trend";
+            this.expensesChart.Titles.Add(title3);
             this.expensesChart.MouseEnter += new System.EventHandler(this.expensesChart_MouseEnter);
             this.expensesChart.MouseLeave += new System.EventHandler(this.expensesChart_MouseLeave);
             this.expensesChart.MouseMove += new System.Windows.Forms.MouseEventHandler(this.expensesChart_MouseMove);
@@ -230,19 +233,19 @@
             // 
             // expenseCategoryDonut
             // 
-            chartArea4.Name = "ChartArea1";
-            this.expenseCategoryDonut.ChartAreas.Add(chartArea4);
-            legend2.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
-            legend2.Name = "Legend1";
-            this.expenseCategoryDonut.Legends.Add(legend2);
+            chartArea6.Name = "ChartArea1";
+            this.expenseCategoryDonut.ChartAreas.Add(chartArea6);
+            legend3.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
+            legend3.Name = "Legend1";
+            this.expenseCategoryDonut.Legends.Add(legend3);
             this.expenseCategoryDonut.Location = new System.Drawing.Point(11, 32);
             this.expenseCategoryDonut.Name = "expenseCategoryDonut";
             this.expenseCategoryDonut.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen;
-            series4.ChartArea = "ChartArea1";
-            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
-            series4.Legend = "Legend1";
-            series4.Name = "Series1";
-            this.expenseCategoryDonut.Series.Add(series4);
+            series6.ChartArea = "ChartArea1";
+            series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
+            series6.Legend = "Legend1";
+            series6.Name = "Series1";
+            this.expenseCategoryDonut.Series.Add(series6);
             this.expenseCategoryDonut.Size = new System.Drawing.Size(292, 301);
             this.expenseCategoryDonut.TabIndex = 6;
             this.expenseCategoryDonut.Text = "chart1";
@@ -350,10 +353,40 @@
             this.label2.TabIndex = 19;
             this.label2.Text = "Groups:";
             // 
+            // btnUploadData
+            // 
+            this.btnUploadData.BackColor = System.Drawing.Color.Transparent;
+            this.btnUploadData.BorderRadius = 10;
+            this.btnUploadData.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnUploadData.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnUploadData.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnUploadData.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnUploadData.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(180)))), ((int)(((byte)(72)))));
+            this.btnUploadData.Font = new System.Drawing.Font("Poppins", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUploadData.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnUploadData.Location = new System.Drawing.Point(183, 9);
+            this.btnUploadData.Margin = new System.Windows.Forms.Padding(2);
+            this.btnUploadData.Name = "btnUploadData";
+            this.btnUploadData.Size = new System.Drawing.Size(85, 44);
+            this.btnUploadData.TabIndex = 20;
+            this.btnUploadData.Text = "Uplaod your txt";
+            this.btnUploadData.Click += new System.EventHandler(this.btnUploadData_Click);
+            // 
+            // guna2Panel5
+            // 
+            this.guna2Panel5.BorderRadius = 15;
+            this.guna2Panel5.Controls.Add(this.btnUploadData);
+            this.guna2Panel5.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(123)))), ((int)(((byte)(47)))));
+            this.guna2Panel5.Location = new System.Drawing.Point(789, 140);
+            this.guna2Panel5.Name = "guna2Panel5";
+            this.guna2Panel5.Size = new System.Drawing.Size(281, 61);
+            this.guna2Panel5.TabIndex = 21;
+            // 
             // dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.guna2Panel5);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.cmbGroup);
             this.Controls.Add(this.btnMonth);
@@ -379,6 +412,7 @@
             this.guna2Panel4.ResumeLayout(false);
             this.guna2Panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.expenseCategoryDonut)).EndInit();
+            this.guna2Panel5.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -404,5 +438,7 @@
         private System.Windows.Forms.DataVisualization.Charting.Chart expensesChart;
         private Guna.UI2.WinForms.Guna2ComboBox cmbGroup;
         private System.Windows.Forms.Label label2;
+        private Guna.UI2.WinForms.Guna2Button btnUploadData;
+        private Guna.UI2.WinForms.Guna2Panel guna2Panel5;
     }
 }

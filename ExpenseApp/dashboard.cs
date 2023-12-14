@@ -540,5 +540,11 @@ namespace ExpenseApp
                 MessageBox.Show("Group not found", "Missing", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void btnUploadData_Click(object sender, EventArgs e)
+        {
+            ListOfOfflineDatacs l = new ListOfOfflineDatacs(false);
+            l.Show();
+        }
     }
 }
