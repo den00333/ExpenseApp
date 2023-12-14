@@ -1478,6 +1478,43 @@ namespace ExpenseApp
             }
             return otp.Equals(inputOTP);
         }
+        public static async Task<DataTable> GetGroupExpensesGroupedByDate(string groupCode)
+        {
+            var db = otherFunc.FirestoreConn();
+            CollectionReference expensesCollection = editInsideGroup(groupCode).Collection("Expenses");
+            QuerySnapshot expensesSnapshot = await expensesCollection.GetSnapshotAsync();
+
+            DataTable expensesTable = new DataTable();
+            expensesTable.Columns.Add("Date", typeof(DateTime));
+            expensesTable.Columns.Add("Amount", typeof(double));
+
+            foreach (DocumentSnapshot expenseDoc in expensesSnapshot.Documents)
+            {
+                Dictionary<string, object> expenseData = expenseDoc.ToDictionary();
+                if (expenseData.TryGetValue("Date", out var dateObj) &&
+                    DateTime.TryParseExact(dateObj.ToString(), "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime date) &&
+                    expenseData.TryGetValue("Amount", out var amountObj) &&
+                    double.TryParse(amountObj.ToString(), out double amount))
+                {
+                    DataRow existingRow = expensesTable.Rows.Cast<DataRow>()
+                        .FirstOrDefault(row => (DateTime)row["Date"] == date);
+
+                    if (existingRow != null)
+                    {
+                        existingRow["Amount"] = (double)existingRow["Amount"] + amount;
+                    }
+                    else
+                    {
+                        DataRow newRow = expensesTable.NewRow();
+                        newRow["Date"] = date;
+                        newRow["Amount"] = amount;
+                        expensesTable.Rows.Add(newRow);
+                    }
+                }
+            }
+
+            return expensesTable;
+        }
         public static async Task<DataTable> GetExpensesGroupedByDate(string username)
         {
             var db = otherFunc.FirestoreConn();
@@ -1565,6 +1602,7 @@ namespace ExpenseApp
             DataTable transactionsTable = new DataTable();
             transactionsTable.Columns.Add("Date", typeof(string));
             transactionsTable.Columns.Add("Amount", typeof(double));
+            transactionsTable.Columns.Add("Category", typeof(string));
 
             foreach (DocumentSnapshot expenseDoc in expensesSnapshot.Documents)
             {
@@ -1572,11 +1610,14 @@ namespace ExpenseApp
                 if (expenseData.TryGetValue("Date", out var dateObj) &&
                     DateTime.TryParseExact(dateObj.ToString(), "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime date) &&
                     expenseData.TryGetValue("Amount", out var amountObj) &&
-                    double.TryParse(amountObj.ToString(), out double amount))
+                    double.TryParse(amountObj.ToString(), out double amount) &&
+                    expenseData.TryGetValue("Category", out var categoryObj) &&
+                    categoryObj is string category)
                 {
                     DataRow newRow = transactionsTable.NewRow();
                     newRow["Date"] = date;
                     newRow["Amount"] = amount;
+                    newRow["Category"] = category;
                     transactionsTable.Rows.Add(newRow);
                 }
             }

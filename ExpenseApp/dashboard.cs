@@ -1,4 +1,5 @@
 ﻿using Google.Cloud.Firestore;
+using Google.Cloud.Firestore.V1;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -28,6 +29,7 @@ namespace ExpenseApp
         string groupCode = string.Empty;
         private DataTable groupSpendings;
         private DataTable groupCat;
+        private DataTable totalGroupExpenses;
         public dashboard()
         {
             InitializeComponent();
@@ -37,65 +39,18 @@ namespace ExpenseApp
             expensesDataTable = await otherFunc.GetExpensesGroupedByDate(username);
             expensesCatDataTable = await otherFunc.GetExpensesGroupedByCategories(username);
             totalExpensesTable = await otherFunc.GetTransactions(username);
-            displayExpensesChart();
-            displayDonut();
-            displayExpensesTransaction();
+            displayExpensesChart(expensesDataTable);
+            displayDonut(expensesCatDataTable);
+            displayExpensesTransaction(totalExpensesTable);
             group = await populateCmbGroupCode();
             populateGroupCombo(group);
         }
-        private void displayExpensesChartGroup()
+        private void displayExpensesChart(DataTable tbl)
         {
             expensesChart.Series.Clear();
-            if (groupSpendings == null) return;
+            if (tbl == null) return;
 
-            var groupedExpenses = groupSpendings.AsEnumerable()
-                .GroupBy(row => row.Field<DateTime>("Date").Date)
-                .Select(group => new
-                {
-                    Date = group.Key,
-                    TotalAmount = group.Sum(row => row.Field<double>("Amount"))
-                })
-                .OrderBy(item => item.Date);
-
-            Series splineSeries = new Series("Total Expenses")
-            {
-                ChartType = SeriesChartType.Spline,
-                BorderWidth = 3,
-                Color = System.Drawing.ColorTranslator.FromHtml("#FF1616"),
-                MarkerStyle = MarkerStyle.Circle,
-                MarkerSize = 10
-            };
-            Series areaSeries = new Series("Gradient Area")
-            {
-                ChartType = SeriesChartType.SplineArea,
-                BorderWidth = 0
-            };
-            areaSeries.BackGradientStyle = GradientStyle.TopBottom;
-
-            foreach (var item in groupedExpenses)
-            {
-                DateTime date = item.Date;
-                double totalAmount = item.TotalAmount;
-
-                DataPoint dataPoint = new DataPoint();
-                dataPoint.AxisLabel = date.ToString("MM/dd");
-                dataPoint.SetValueXY(date, totalAmount);
-
-                splineSeries.Points.AddXY(date.ToString("MM/dd"), totalAmount);
-                areaSeries.Points.AddXY(date.ToString("MM/dd"), totalAmount);
-                expensesDataPoints.Add(dataPoint);
-            }
-
-            areaSeries.Color = System.Drawing.Color.FromArgb(128, 255, 0, 0);
-            expensesChart.Series.Add(splineSeries);
-            expensesChart.Series.Add(areaSeries);
-        }
-        private void displayExpensesChart()
-        {
-            expensesChart.Series.Clear();
-            if (expensesDataTable == null) return;
-
-            var sortedExpenses = expensesDataTable.AsEnumerable()
+            var sortedExpenses = tbl.AsEnumerable()
                 .OrderBy(row => row.Field<DateTime>("Date"));
 
             Series splineSeries = new Series("Total Expenses")
@@ -129,11 +84,11 @@ namespace ExpenseApp
             expensesChart.Series.Add(splineSeries);
             expensesChart.Series.Add(areaSeries);
         }
-        private void displayDonut()
+        private void displayDonut(DataTable tbl)
         {
             Series series = expenseCategoryDonut.Series["Series1"];
             series.Points.Clear();
-            DataTable expensesDataTable = expensesCatDataTable;
+            DataTable expensesDataTable = tbl;
 
             var expensesByCategory = new Dictionary<string, double>();
 
@@ -170,60 +125,11 @@ namespace ExpenseApp
                 series.Points.Add(datapoint);
             }
         }
-        private void displayGroupDonut()
+        private void displayExpensesTransaction(DataTable tbl)
         {
-            Series series = expenseCategoryDonut.Series["Series1"];
-            series.Points.Clear();
-            DataTable expensesDataTable = groupCat;
-
-            var expensesByCategory = new Dictionary<string, double>();
-
-            foreach (DataRow row in expensesDataTable.Rows)
-            {
-                if (row["Category"] != null && row["Amount"] != null &&
-                    double.TryParse(row["Amount"].ToString(), out double amount))
-                {
-                    string category = row["Category"].ToString();
-
-                    if (expensesByCategory.ContainsKey(category))
-                    {
-                        expensesByCategory[category] += amount;
-                    }
-                    else
-                    {
-                        expensesByCategory[category] = amount;
-                    }
-                }
-            }
-            double totalExpenses = expensesByCategory.Values.Sum();
-
-            foreach (var entry in expensesByCategory)
-            {
-                double percentage = (entry.Value / totalExpenses) * 100;
-
-                DataPoint datapoint = new DataPoint();
-                datapoint.AxisLabel = "";
-                datapoint.Label = $"{percentage:F2}%";
-                datapoint.YValues = new double[] { entry.Value };
-                datapoint.LegendText = entry.Key;
-                datapoint.LabelForeColor = System.Drawing.Color.White;
-                datapoint.Font = new Font("Poppins Regular", 8, FontStyle.Bold);
-                series.Points.Add(datapoint);
-            }
-        }
-        private void displayExpensesTransaction()
-        {
-            int totalTransaction = getTotalTransactions(totalExpensesTable);
+            int totalTransaction = getTotalTransactions(tbl);
             lblTransaction.Text = totalTransaction.ToString();
-            float totalSpending = getTotalExpenses(expensesDataTable);
-            string spendingBeautify = otherFunc.amountBeautify(totalSpending);
-            lblSpendings.Text = spendingBeautify;
-        }
-        private void displayGroupExpensesTransction()
-        {
-            int totalTransaction = getTotalGroupTransaction(groupSpendings);
-            lblTransaction.Text = totalTransaction.ToString();
-            float totalSpending = getGroupTotalExpenses(groupSpendings);
+            float totalSpending = getTotalExpenses(tbl);
             string spendingBeautify = otherFunc.amountBeautify(totalSpending);
             lblSpendings.Text = spendingBeautify;
         }
@@ -231,20 +137,9 @@ namespace ExpenseApp
         {
             return expensesDataTable.Rows.Count;
         }
-        private int getTotalGroupTransaction(DataTable expensesGroupData)
-        {
-            return expensesGroupData.Rows.Count;
-        }
         private float getTotalExpenses(DataTable expensesDataTable)
         {
             float totalAmount = expensesDataTable.AsEnumerable()
-            .Where(row => !row.IsNull("Amount"))
-            .Sum(row => Convert.ToSingle(row["Amount"]));
-            return totalAmount;
-        }
-        private float getGroupTotalExpenses(DataTable dataTable)
-        {
-            float totalAmount = dataTable.AsEnumerable()
             .Where(row => !row.IsNull("Amount"))
             .Sum(row => Convert.ToSingle(row["Amount"]));
             return totalAmount;
@@ -288,11 +183,10 @@ namespace ExpenseApp
                 tooltip.Show($"Category: {category}\nTotal Amount: {yValue:C}", expenseCategoryDonut, pos.X, pos.Y - 15);
             }
         }
-
-        private void displayExpensesChart(int days)
+        private void displayExpensesChart(DataTable tbl, int days)
         {
             expensesChart.Series.Clear();
-            Dictionary<DateTime, double> expensesByDate = customDayExpenses(expensesDataTable, days);
+            Dictionary<DateTime, double> expensesByDate = customDayExpenses(tbl, days);
             var sortedExpenses = expensesByDate.OrderBy(x => x.Key);
             Series splineSeries = new Series("Total Expenses")
             {
@@ -323,11 +217,11 @@ namespace ExpenseApp
             expensesChart.Series.Add(splineSeries);
             expensesChart.Series.Add(areaSeries);
         }
-        private void displayDonut(int days)
+        private void displayDonut(DataTable tbl, int days)
         {
             Series series = expenseCategoryDonut.Series["Series1"];
             series.Points.Clear();
-            Dictionary<string, double> expensesByCategory = customDayCategories(expensesCatDataTable, days);
+            Dictionary<string, double> expensesByCategory = customDayCategories(tbl, days);
             double totalExpenses = expensesByCategory.Values.Sum();
             foreach (var entry in expensesByCategory)
             {
@@ -344,35 +238,73 @@ namespace ExpenseApp
         }
         private void btnAllExpenses_Click(object sender, EventArgs e)
         {
-            displayExpensesChart();
-            displayDonut();
-            displayExpensesTransaction();
+            if (!flag)
+            {
+                displayExpensesChart(expensesDataTable);
+                displayDonut(expensesCatDataTable);
+                displayExpensesTransaction(totalExpensesTable);
+            }
+            else
+            {
+                displayExpensesChart(totalGroupExpenses);
+                displayDonut(groupCat);
+                displayExpensesTransaction(groupSpendings);
+            }
         }
-        private void displayCustomExpensesTransaction(int days)
+        private void displayCustomExpensesTransaction(DataTable tbl, int days)
         {
-            int totalTransaction = customTotalTransactions(expensesDataTable, days);
+            int totalTransaction = customTotalTransactions(tbl, days);
             lblTransaction.Text = totalTransaction.ToString();
-            float totalSpending = customTotalExpenses(expensesDataTable, days);
+            float totalSpending = customTotalExpenses(tbl, days);
             string spendingBeautify = otherFunc.amountBeautify(totalSpending);
             lblSpendings.Text = spendingBeautify;
         }
         private void btnWeek_Click(object sender, EventArgs e)
         {
-            displayCustomExpensesTransaction(7);
-            displayDonut(7);
-            displayExpensesChart(7);
+            if (!flag)
+            {
+                displayCustomExpensesTransaction(expensesDataTable, 7);
+                displayDonut(expensesCatDataTable, 7);
+                displayExpensesChart(expensesDataTable, 7);
+            }
+            else
+            {
+                displayExpensesChart(totalGroupExpenses, 7);
+                displayDonut(groupCat, 7);
+                displayCustomExpensesTransaction(groupSpendings, 7);
+            }
+
         }
         private void btnMonth_Click(object sender, EventArgs e)
         {
-            displayCustomExpensesTransaction(30);
-            displayDonut(30);
-            displayExpensesChart(30);
+            if (!flag)
+            {
+                displayCustomExpensesTransaction(expensesDataTable, 30);
+                displayDonut(expensesCatDataTable, 30);
+                displayExpensesChart(expensesDataTable, 30);
+            }
+            else
+            {
+                displayCustomExpensesTransaction(groupSpendings, 30);
+                displayDonut(groupCat, 30);
+                displayExpensesChart(totalGroupExpenses, 30);
+            }
         }
         private void btnToday_Click(object sender, EventArgs e)
         {
-            displayCustomExpensesTransaction(0);
-            displayDonut(0);
-            displayExpensesChart(0);
+            if (!flag)
+            {
+                displayCustomExpensesTransaction(expensesDataTable, 0);
+                displayDonut(expensesCatDataTable, 0);
+                displayExpensesChart(expensesDataTable, 0);
+            }
+            else
+            {
+                displayCustomExpensesTransaction(groupSpendings, 0);
+                displayDonut(groupCat, 0);
+                displayExpensesChart(totalGroupExpenses, 0);
+            }
+
         }
         private static int customTotalTransactions(DataTable expensesDataTable, int customDays = 0)
         {
@@ -456,7 +388,6 @@ namespace ExpenseApp
             }
             return expensesByDate;
         }
-
         private static Dictionary<string, double> customDayCategories(DataTable expensesCatDataTable, int days)
         {
             DateTime startDate = DateTime.UtcNow.Date.AddDays(-days);
@@ -531,20 +462,41 @@ namespace ExpenseApp
                 MessageBox.Show(groupCode);
                 groupSpendings = await otherFunc.getGroupExpenses(groupCode);
                 groupCat = await otherFunc.GetGxpensesGroupedByCategories(groupCode);
-                displayExpensesChartGroup();
-                displayGroupDonut();
-                displayGroupExpensesTransction();
+                totalGroupExpenses = await otherFunc.GetGroupExpensesGroupedByDate(groupCode);
+
+                displayExpensesChart(totalGroupExpenses);
+                displayDonut(groupCat);
+                displayExpensesTransaction(groupSpendings);
             }
             else
             {
                 MessageBox.Show("Group not found", "Missing", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         private void btnUploadData_Click(object sender, EventArgs e)
         {
             ListOfOfflineDatacs l = new ListOfOfflineDatacs(false);
             l.Show();
+        }
+        
+        bool flag = false;
+        private void btnSwitch_Click(object sender, EventArgs e)
+        {
+            if (flag)
+            {
+                flag = false;
+                btnSwitch.Text = "User";
+                cmbGroup.Enabled = false;
+                displayExpensesChart(expensesDataTable);
+                displayDonut(expensesCatDataTable);
+                displayExpensesTransaction(totalExpensesTable);
+            }
+            else
+            {
+                flag = true;
+                btnSwitch.Text = "Group";
+                cmbGroup.Enabled = true;
+            }
         }
     }
 }
