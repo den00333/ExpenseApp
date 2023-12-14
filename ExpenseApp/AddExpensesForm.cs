@@ -1,4 +1,5 @@
 ﻿using Google.Cloud.Firestore;
+using Google.Type;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -160,7 +161,15 @@ namespace ExpenseApp
                         otherFunc.setShortGroup(newNegativeVal, myGroup);
                         DocumentReference dRef = await o.SavingWalletAmountOfGroup(myGroup, "Balance");
                         float currentWalletAmount = await o.getWalletAmount(dRef);
-                        float newBalance = currentWalletAmount + arrNum[1];
+                        float newBalance = 0;
+                        if (currentWalletAmount <= 0)
+                        {
+                            newBalance = 0;
+                        }
+                        else
+                        {
+                            newBalance = currentWalletAmount + arrNum[1];
+                        }
                         Dictionary<String, object> data = new Dictionary<String, object>
                         {
                             {"Amount", newBalance}
@@ -205,29 +214,80 @@ namespace ExpenseApp
                     string name = richTxtDesc.Text.ToString();
                     try
                     {
-                        DocumentReference docRef = await o.saveGroupExpenses(myGroup);
-                        Dictionary<String, object> data = new Dictionary<string, object>(){
-                            {"Amount", amount},
-                            {"Category", category},
-                            {"Date", date},
-                            {"Location", location},
-                            {"Description", name},
-                            {"Creator", username},
-                            {"timestamp", FieldValue.ServerTimestamp}
-                        };
-                        await docRef.SetAsync(data);
-                        DialogResult res = MessageBox.Show("Succesfully added to your expenses!", "Saved Expenses!", MessageBoxButtons.OK);
-                        if (res == DialogResult.OK)
+                        bool f = await o.checkSubtractCurrentExpenses(amount, username);
+                        if (f)
                         {
-                            txtAmount.Clear();
-                            cmbCategory.Text = null;
-                            dtpDate.Value = DateTime.Now;
-                            txtLocation.Clear();
-                            richTxtDesc.Clear();
-                            g.flpExpenses.Controls.Clear();
-                            g.displayData();
-                            this.DialogResult = DialogResult.OK;
-                            this.Hide();
+                            DocumentReference docRef = await o.saveGroupExpenses(myGroup);
+                            Dictionary<String, object> data = new Dictionary<string, object>(){
+                                {"Amount", amount},
+                                {"Category", category},
+                                {"Date", date},
+                                {"Location", location},
+                                {"Description", name},
+                                {"Creator", username},
+                                {"timestamp", FieldValue.ServerTimestamp}
+                            };
+                            await docRef.SetAsync(data);
+                            DialogResult res = MessageBox.Show("Succesfully added to your expenses!", "Saved Expenses!", MessageBoxButtons.OK);
+                            if (res == DialogResult.OK)
+                            {
+                                txtAmount.Clear();
+                                cmbCategory.Text = null;
+                                dtpDate.Value = DateTime.Now;
+                                txtLocation.Clear();
+                                richTxtDesc.Clear();
+                                g.flpExpenses.Controls.Clear();
+                                g.displayData();
+                                this.DialogResult = DialogResult.OK;
+                                this.Hide();
+                            }
+                        }
+                        else
+                        {
+                            DialogResult res = MessageBox.Show("Insufficient Balance. Do you want to deduct from your savings?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                            if (res == DialogResult.Yes)
+                            {
+                                DocumentReference docRefWallet = await o.SavingWalletAmountOfGroup(myGroup, "Expense");
+                                float currentAmountInExpenses = await o.getWalletAmount(docRefWallet);
+
+                                DocumentReference docRefBal = await o.SavingWalletAmountOfGroup(myGroup, "Balance");
+                                float currentAmountInBal = await o.getWalletAmount(docRefBal);
+                                float total = currentAmountInExpenses + currentAmountInBal;
+                                if (total >= amount)
+                                {
+                                    DocumentReference docRef = await o.saveGroupExpenses(myGroup);
+                                    Dictionary<String, object> data = new Dictionary<string, object>(){
+                                        {"Amount", amount},
+                                        {"Category", category},
+                                        {"Date", date},
+                                        {"Location", location},
+                                        {"Name", name},
+                                        {"timestamp", FieldValue.ServerTimestamp}
+                                    };
+                                    await docRef.SetAsync(data);
+                                    DialogResult ress = MessageBox.Show("Succesfully added to your expenses!", "Saved Expenses!", MessageBoxButtons.OK);
+                                    if (ress == DialogResult.OK)
+                                    {
+                                        txtAmount.Clear();
+                                        cmbCategory.Text = null;
+                                        dtpDate.Value = DateTime.Now;
+                                        txtLocation.Clear();
+                                        richTxtDesc.Clear();
+                                        g.flpExpenses.Controls.Clear();
+                                        g.displayData();
+                                        this.DialogResult = DialogResult.OK;
+                                        this.Hide();
+                                    }
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Insufficient Balance", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                                }
+                            }
+                            else
+                            {
+                                MessageBox.Show("Insufficient Balance", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                            }
                         }
                     }
                     catch

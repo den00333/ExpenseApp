@@ -95,7 +95,7 @@
             this.lblAdd.ForeColor = System.Drawing.Color.White;
             this.lblAdd.Location = new System.Drawing.Point(15, 13);
             this.lblAdd.Name = "lblAdd";
-            this.lblAdd.Size = new System.Drawing.Size(223, 33);
+            this.lblAdd.Size = new System.Drawing.Size(223, 34);
             this.lblAdd.TabIndex = 0;
             this.lblAdd.Text = "Add Balance Amount:";
             // 
@@ -179,6 +179,7 @@
             this.Name = "AddingBalanceForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AddingBalanceForm";
+            this.Load += new System.EventHandler(this.AddingBalanceForm_Load);
             this.guna2ShadowPanel1.ResumeLayout(false);
             this.panel.ResumeLayout(false);
             this.panel.PerformLayout();

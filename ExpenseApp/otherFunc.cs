@@ -201,9 +201,9 @@ namespace ExpenseApp
         public async Task<DocumentReference> SavingNewExpenses(String username)
         {
             int docNum = await DocNameForExpenses(username);
-            Console.WriteLine("docNum: " + docNum);
+            //Console.WriteLine("docNum: " + docNum);
             String docName = string.Concat("E", (docNum + 1).ToString());
-            Console.WriteLine("docName: " + docName);
+            //Console.WriteLine("docName: " + docName);
             FirestoreDb database = FirestoreConn();
             DocumentReference docRef = database.Collection("Users").Document(username).Collection("Expenses").Document(docName);
 
@@ -327,6 +327,7 @@ namespace ExpenseApp
                 {
                     {"Amount", 0}
                 };
+                Console.WriteLine("ETO ETO ETO ETO" + walletName);
                 await docRef.SetAsync(data);
             }
             return docRef;
@@ -424,6 +425,24 @@ namespace ExpenseApp
         public async Task<bool> checkSubtractCurrentExpenses(double useramount, String username)
         {
             DocumentReference docRefWallet = await SavingWalletAmount(username, "Expense");
+            float currentAmountInExpenses = await getWalletAmount(docRefWallet);
+
+            double newBal = currentAmountInExpenses - useramount;
+
+            if (newBal < 0)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+
+        }
+
+        public async Task<bool> checkSubtractCurrentExpensesGroup(double useramount, String groupCode)
+        {
+            DocumentReference docRefWallet = await SavingWalletAmountOfGroup(groupCode, "Expense");
             float currentAmountInExpenses = await getWalletAmount(docRefWallet);
 
             double newBal = currentAmountInExpenses - useramount;
@@ -576,7 +595,7 @@ namespace ExpenseApp
                 {
                     {"short", 0}
                 };
-                await docRef.SetAsync(data);
+                await docRef.UpdateAsync(data);
                 return shrt;
             }
         }
