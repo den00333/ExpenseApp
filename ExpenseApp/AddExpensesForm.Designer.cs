@@ -42,14 +42,10 @@
             this.label2 = new System.Windows.Forms.Label();
             this.btnLocation = new Guna.UI2.WinForms.Guna2Button();
             this.label3 = new System.Windows.Forms.Label();
-            this.richTextNote = new System.Windows.Forms.RichTextBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.guna2ShadowPanel4 = new Guna.UI2.WinForms.Guna2ShadowPanel();
             this.guna2ShadowPanel1 = new Guna.UI2.WinForms.Guna2ShadowPanel();
             this.richTxtDesc = new System.Windows.Forms.RichTextBox();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
-            this.guna2ShadowPanel4.SuspendLayout();
             this.guna2ShadowPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
@@ -265,30 +261,6 @@
             this.label3.TabIndex = 25;
             this.label3.Text = "Name/Description:";
             // 
-            // richTextNote
-            // 
-            this.richTextNote.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.richTextNote.Font = new System.Drawing.Font("Poppins", 12F);
-            this.richTextNote.Location = new System.Drawing.Point(13, 15);
-            this.richTextNote.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.richTextNote.Name = "richTextNote";
-            this.richTextNote.Size = new System.Drawing.Size(432, 110);
-            this.richTextNote.TabIndex = 26;
-            this.richTextNote.Text = "Note";
-            this.richTextNote.Enter += new System.EventHandler(this.richTextNote_Enter);
-            this.richTextNote.Leave += new System.EventHandler(this.richTextNote_Leave);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(467, 249);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(79, 42);
-            this.label4.TabIndex = 27;
-            this.label4.Text = "Note:";
-            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -299,23 +271,6 @@
             this.label5.Size = new System.Drawing.Size(250, 60);
             this.label5.TabIndex = 28;
             this.label5.Text = "New Expense";
-            // 
-            // guna2ShadowPanel4
-            // 
-            this.guna2ShadowPanel4.BackColor = System.Drawing.Color.Transparent;
-            this.guna2ShadowPanel4.Controls.Add(this.richTextNote);
-            this.guna2ShadowPanel4.FillColor = System.Drawing.Color.White;
-            this.guna2ShadowPanel4.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2ShadowPanel4.Location = new System.Drawing.Point(472, 292);
-            this.guna2ShadowPanel4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.guna2ShadowPanel4.Name = "guna2ShadowPanel4";
-            this.guna2ShadowPanel4.Radius = 10;
-            this.guna2ShadowPanel4.ShadowColor = System.Drawing.Color.Black;
-            this.guna2ShadowPanel4.ShadowDepth = 130;
-            this.guna2ShadowPanel4.ShadowShift = 10;
-            this.guna2ShadowPanel4.ShadowStyle = Guna.UI2.WinForms.Guna2ShadowPanel.ShadowMode.ForwardDiagonal;
-            this.guna2ShadowPanel4.Size = new System.Drawing.Size(475, 148);
-            this.guna2ShadowPanel4.TabIndex = 30;
             // 
             // guna2ShadowPanel1
             // 
@@ -359,7 +314,6 @@
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(973, 528);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnCustomize);
@@ -372,7 +326,6 @@
             this.Controls.Add(this.txtLocation);
             this.Controls.Add(this.btnLocation);
             this.Controls.Add(this.guna2ShadowPanel1);
-            this.Controls.Add(this.guna2ShadowPanel4);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
@@ -381,7 +334,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AddExpensesForm";
             this.Load += new System.EventHandler(this.AddExpensesForm_Load);
-            this.guna2ShadowPanel4.ResumeLayout(false);
             this.guna2ShadowPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
@@ -402,10 +354,7 @@
         public Guna.UI2.WinForms.Guna2ComboBox cmbCategory;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.RichTextBox richTextNote;
         private System.Windows.Forms.Label label5;
-        private Guna.UI2.WinForms.Guna2ShadowPanel guna2ShadowPanel4;
         private Guna.UI2.WinForms.Guna2ShadowPanel guna2ShadowPanel1;
         private System.Windows.Forms.RichTextBox richTxtDesc;
         private System.Windows.Forms.ErrorProvider errorProvider;
