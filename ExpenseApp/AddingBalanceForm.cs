@@ -58,7 +58,7 @@ namespace ExpenseApp
             }
         }
 
-        private void addWalletAmount_Offline(String path, String wName, double wAmount)
+        /*private void addWalletAmount_Offline(String path, String wName, double wAmount)
         {
             List<Double> list = new List<Double>();
             list.Add(wAmount);
@@ -70,8 +70,19 @@ namespace ExpenseApp
             {
                 var data = new { wName = list };
             }
-        }
+        }*/
+        
+        private void addWalletLogs(String path, String amount, String walletName)
+        {
+            String d = System.DateTime.Now.ToString("yyyy-MM-dd");
+            String t = System.DateTime.Now.ToString("HH:mm:ss");
 
+            String[] lines = File.ReadAllLines(path);
+            lines[3] += $"{amount}|{walletName}|{d}|{t}~";
+
+            File.WriteAllLines(path, lines);
+
+        }
 
         private void addWalletTXT(String path, int loc, String toBeAdded, bool flag)
         {
@@ -127,12 +138,13 @@ namespace ExpenseApp
                         addWalletTXT(path, 0, amount.ToString(), true);
                         float fAmount = float.Parse(offlineFunc.readTxt(path, 0));
                         owuc.lblBalance.Text = otherFunc.amountBeautify(fAmount);
+                        addWalletLogs(path, amount.ToString(), walletN);
                     }
                     else
                     {
                         walletN = "Expense";
 
-
+                        addWalletLogs(path, amount.ToString(), walletN);
                         double currentShort = double.Parse(offlineFunc.readTxt(path, 2));
                         if (currentShort < 0)
                         {
@@ -203,6 +215,7 @@ namespace ExpenseApp
                         addWalletTXT(path, 0, amount.ToString(), true);
                         float fAmount = float.Parse(offlineFunc.readTxt(path, 0));
                         owuc.lblBalance.Text = otherFunc.amountBeautify(fAmount);
+                        addWalletLogs(path, amount.ToString(), walletN);
 
                     }
                     else
@@ -211,6 +224,7 @@ namespace ExpenseApp
                         addWalletTXT(path, 1, amount.ToString(), true);
                         float fAmount = float.Parse(offlineFunc.readTxt(path, 1));
                         owuc.lblExpenses.Text = otherFunc.amountBeautify(fAmount);
+                        addWalletLogs(path, amount.ToString(), walletN);
 
                     }
                 }

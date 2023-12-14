@@ -33,6 +33,12 @@ namespace ExpenseApp
             userControl.BringToFront();
         }
 
-
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            ListOfOfflineDatacs l = new ListOfOfflineDatacs(true);
+            this.Hide();
+            l.Show();
+            
+        }
     }
 }
