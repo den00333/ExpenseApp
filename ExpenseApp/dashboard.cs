@@ -471,7 +471,7 @@ namespace ExpenseApp
                 displayExpensesChart(totalGroupExpenses);
                 displayDonut(groupCat);
                 displayExpensesTransaction(groupSpendings);
-                displayLogAmount(logAmount, totalExpensesTable);
+                displayLogAmount(logAmount, totalGroupExpenses);
 
 
             }
@@ -494,7 +494,6 @@ namespace ExpenseApp
                 displayDonut(expensesCatDataTable);
                 displayExpensesTransaction(totalExpensesTable);
                 displayLogAmount(logAmount, totalExpensesTable);
-
 
             }
             else
@@ -594,7 +593,8 @@ namespace ExpenseApp
         {
             if (totalCashedIn != 0)
             {
-                float marginPercentage = ((totalCashedIn - totalSpendings) / totalCashedIn) * 100;
+                float marginPercentage = 100- ((totalSpendings / totalCashedIn) * 100);
+
                 return marginPercentage;
             }
             else
