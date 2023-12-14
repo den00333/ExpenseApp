@@ -1225,7 +1225,7 @@ namespace ExpenseApp
             return data;
 
         }
-
+  
         public async Task<List<(string DocName, DocumentSnapshot DocSnapshot)>> displayDataWithDocNames(string username)
         {
             CollectionReference colRef = editInsideUser(username).Collection("Expenses");

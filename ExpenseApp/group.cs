@@ -138,6 +138,9 @@ namespace ExpenseApp
             groupCode = gc;
             AddExpensesForm adf = new AddExpensesForm(new wallet(), true, groupCode, this);
             lblGN.Text = groupN;
+            lblGroupcode.Text = "Group Code: " + groupCode;
+            pnlGroupWallet.Visible = true;
+            pnlMemberbox.Visible = true;
             loadWalletGroup();
             flpMembers.Controls.Clear();
             displayMembers(groupCode);
@@ -315,8 +318,8 @@ namespace ExpenseApp
             string expenseId = dn;
             Dictionary<string, object> data = await function.getItemsInsideExpenseIdGroup(groupCode, expenseId);
 
-            ExpenseDetailForm edf = new ExpenseDetailForm();
-
+            ExpenseDetailForm edf = new ExpenseDetailForm(dn, new wallet(), this, false);
+            edf.groupCode = groupCode;
             await edf.displayExpenseDetails(data, false);
             edf.StartPosition = FormStartPosition.CenterScreen;
             edf.ShowDialog();

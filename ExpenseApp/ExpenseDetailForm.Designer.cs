@@ -44,12 +44,14 @@
             this.label7 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.guna2AnimateWindow1 = new Guna.UI2.WinForms.Guna2AnimateWindow(this.components);
-            this.pnlBack = new Guna.UI2.WinForms.Guna2Panel();
             this.lblCreator = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
+            this.pnlCreator = new System.Windows.Forms.Panel();
             this.guna2GradientPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.closeBTN)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.pnlBack.SuspendLayout();
+            this.pnlCreator.SuspendLayout();
             this.SuspendLayout();
             // 
             // guna2BorderlessForm1
@@ -105,7 +107,7 @@
             this.lblAmount.Location = new System.Drawing.Point(181, 152);
             this.lblAmount.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblAmount.Name = "lblAmount";
-            this.lblAmount.Size = new System.Drawing.Size(146, 50);
+            this.lblAmount.Size = new System.Drawing.Size(146, 49);
             this.lblAmount.TabIndex = 3;
             this.lblAmount.Text = "P100,000";
             // 
@@ -117,7 +119,7 @@
             this.lblCategory.Location = new System.Drawing.Point(176, 93);
             this.lblCategory.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblCategory.Name = "lblCategory";
-            this.lblCategory.Size = new System.Drawing.Size(153, 82);
+            this.lblCategory.Size = new System.Drawing.Size(153, 83);
             this.lblCategory.TabIndex = 5;
             this.lblCategory.Text = "Food";
             // 
@@ -141,7 +143,7 @@
             this.lblLocation.Location = new System.Drawing.Point(44, 317);
             this.lblLocation.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblLocation.Name = "lblLocation";
-            this.lblLocation.Size = new System.Drawing.Size(169, 34);
+            this.lblLocation.Size = new System.Drawing.Size(169, 33);
             this.lblLocation.TabIndex = 7;
             this.lblLocation.Text = "Victoria, Laguna";
             // 
@@ -163,7 +165,7 @@
             this.lblDate.Location = new System.Drawing.Point(44, 248);
             this.lblDate.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblDate.Name = "lblDate";
-            this.lblDate.Size = new System.Drawing.Size(175, 34);
+            this.lblDate.Size = new System.Drawing.Size(175, 33);
             this.lblDate.TabIndex = 9;
             this.lblDate.Text = "October 30, 2023";
             // 
@@ -186,7 +188,7 @@
             this.lblName.Location = new System.Drawing.Point(362, 248);
             this.lblName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(54, 34);
+            this.lblName.Size = new System.Drawing.Size(54, 33);
             this.lblName.TabIndex = 11;
             this.lblName.Text = "Title";
             // 
@@ -198,7 +200,7 @@
             this.label7.Location = new System.Drawing.Point(340, 215);
             this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(130, 34);
+            this.label7.Size = new System.Drawing.Size(130, 33);
             this.label7.TabIndex = 10;
             this.label7.Text = "Description:";
             // 
@@ -218,29 +220,57 @@
             this.guna2AnimateWindow1.Interval = 50;
             this.guna2AnimateWindow1.TargetForm = this;
             // 
-            // pnlBack
-            // 
-            this.pnlBack.BackColor = System.Drawing.Color.Transparent;
-            this.pnlBack.BorderRadius = 15;
-            this.pnlBack.Controls.Add(this.lblCreator);
-            this.pnlBack.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(123)))), ((int)(((byte)(47)))));
-            this.pnlBack.Location = new System.Drawing.Point(404, 306);
-            this.pnlBack.Name = "pnlBack";
-            this.pnlBack.Size = new System.Drawing.Size(289, 45);
-            this.pnlBack.TabIndex = 16;
-            // 
             // lblCreator
             // 
             this.lblCreator.AutoSize = true;
             this.lblCreator.BackColor = System.Drawing.Color.Transparent;
-            this.lblCreator.Font = new System.Drawing.Font("Poppins SemiBold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCreator.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lblCreator.Location = new System.Drawing.Point(2, 8);
+            this.lblCreator.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCreator.ForeColor = System.Drawing.Color.Black;
+            this.lblCreator.Location = new System.Drawing.Point(26, 37);
             this.lblCreator.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblCreator.Name = "lblCreator";
-            this.lblCreator.Size = new System.Drawing.Size(187, 34);
+            this.lblCreator.Size = new System.Drawing.Size(183, 33);
             this.lblCreator.TabIndex = 15;
             this.lblCreator.Text = "By: Creator Name";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Poppins SemiBold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(2, 0);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(125, 37);
+            this.label3.TabIndex = 17;
+            this.label3.Text = "Added By:";
+            // 
+            // guna2Button1
+            // 
+            this.guna2Button1.BackColor = System.Drawing.Color.Transparent;
+            this.guna2Button1.BorderRadius = 10;
+            this.guna2Button1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.guna2Button1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.guna2Button1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(66)))), ((int)(((byte)(86)))));
+            this.guna2Button1.Font = new System.Drawing.Font("Poppins SemiBold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2Button1.ForeColor = System.Drawing.Color.White;
+            this.guna2Button1.Location = new System.Drawing.Point(491, 372);
+            this.guna2Button1.Name = "guna2Button1";
+            this.guna2Button1.Size = new System.Drawing.Size(135, 45);
+            this.guna2Button1.TabIndex = 18;
+            this.guna2Button1.Text = "Delete";
+            this.guna2Button1.Click += new System.EventHandler(this.guna2Button1_Click);
+            // 
+            // pnlCreator
+            // 
+            this.pnlCreator.BackColor = System.Drawing.Color.Transparent;
+            this.pnlCreator.Controls.Add(this.lblCreator);
+            this.pnlCreator.Controls.Add(this.label3);
+            this.pnlCreator.Location = new System.Drawing.Point(18, 353);
+            this.pnlCreator.Name = "pnlCreator";
+            this.pnlCreator.Size = new System.Drawing.Size(257, 76);
+            this.pnlCreator.TabIndex = 19;
             // 
             // ExpenseDetailForm
             // 
@@ -248,8 +278,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::ExpenseApp.Properties.Resources.profileBG;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(666, 366);
-            this.Controls.Add(this.pnlBack);
+            this.ClientSize = new System.Drawing.Size(666, 435);
+            this.Controls.Add(this.pnlCreator);
+            this.Controls.Add(this.guna2Button1);
             this.Controls.Add(this.lblAmount);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.pictureBox1);
@@ -271,8 +302,8 @@
             this.guna2GradientPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.closeBTN)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.pnlBack.ResumeLayout(false);
-            this.pnlBack.PerformLayout();
+            this.pnlCreator.ResumeLayout(false);
+            this.pnlCreator.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -295,7 +326,9 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.PictureBox pictureBox1;
         private Guna.UI2.WinForms.Guna2AnimateWindow guna2AnimateWindow1;
-        private Guna.UI2.WinForms.Guna2Panel pnlBack;
         private System.Windows.Forms.Label lblCreator;
+        private System.Windows.Forms.Label label3;
+        private Guna.UI2.WinForms.Guna2Button guna2Button1;
+        private System.Windows.Forms.Panel pnlCreator;
     }
 }

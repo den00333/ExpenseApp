@@ -10,6 +10,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 using System.Web.UI.WebControls;
 using System.Windows.Forms;
 using static Google.Api.ResourceDescriptor.Types;
@@ -18,20 +19,21 @@ namespace ExpenseApp
 {
     public partial class wallet : UserControl
     {
+        private ctg catG;
         string username = FirebaseData.Instance.Username;
         public wallet()
         {
             InitializeComponent();
         }
+
         private void wallet_Load(object sender, EventArgs e)
         {
             loadWallet();
             //displayExpenses();
             //ExpenseGridDesign();
             //loadWallet();
-            displayData();
             displayGoals();
-
+            displayData();
         }
         private async void loadWallet()
         {
@@ -318,8 +320,8 @@ namespace ExpenseApp
                 FirebaseData fd = docsnap.ConvertTo<FirebaseData>();
                 if (docsnap.Exists)
                 {
-                    string dn = docName;
                     string category = fd.Category;
+                    string dn = docName;
                     string amount = fd.Amount.ToString();
                     string date = fd.Date.ToString();
 
@@ -375,16 +377,18 @@ namespace ExpenseApp
                     pnl.Controls.Add(lbldocname);
                     pnl.Controls.Add(lblDate);
                     flpExpenses.Controls.Add(pnl);
+                    
                 }
             }
         }
+
         public async void PnlExpenses_DoubleClick(object sender, EventArgs e, string dn)
         {
             otherFunc function = new otherFunc();
             string expenseId = dn;
             Dictionary<string, object> data = await function.getItemsInsideExpenseId(username, expenseId);
 
-            ExpenseDetailForm edf = new ExpenseDetailForm();
+            ExpenseDetailForm edf = new ExpenseDetailForm(dn, this, new group(), true);
             await edf.displayExpenseDetails(data, true);
             edf.StartPosition = FormStartPosition.CenterScreen;
             edf.ShowDialog();
@@ -417,5 +421,15 @@ namespace ExpenseApp
             lblShort.Text = "0";
         }
 
+        private void cmbCategories_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnLog_Click(object sender, EventArgs e)
+        {
+            Logs log = new Logs();
+            log.ShowDialog();
+        }
     }
 }
