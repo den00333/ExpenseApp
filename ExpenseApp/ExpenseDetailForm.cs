@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Google.Cloud.Firestore;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,9 +14,19 @@ namespace ExpenseApp
 {
     public partial class ExpenseDetailForm : Form
     {
-        public ExpenseDetailForm()
+        private string docname;
+        private wallet w;
+        private group g;
+        private string username = FirebaseData.Instance.Username;
+        private bool flag;
+        public string groupCode { get; set; }
+        public ExpenseDetailForm(string dn, wallet pitaka, group grupo, bool f)
         {
             InitializeComponent();
+            this.docname = dn;
+            this.g = grupo;
+            this.w = pitaka;
+            this.flag = f;
         }
         public async Task displayExpenseDetails(Dictionary<string, object> data, bool flag)
         {
@@ -35,8 +46,7 @@ namespace ExpenseApp
                 lblDate.Text = data["Date"].ToString();
                 lblLocation.Text = data["Location"].ToString();
                 lblName.Text = data["Name"].ToString();
-                lblCreator.Hide();
-                pnlBack.Hide();
+                pnlCreator.Visible = false;
                 Console.WriteLine(category);
             }
             else
@@ -87,6 +97,33 @@ namespace ExpenseApp
         private void closeBTN_Click(object sender, EventArgs e)
         {
             this.Hide();    
+        }
+
+        private void guna2Button1_Click(object sender, EventArgs e)
+        {
+            DialogResult res = MessageBox.Show("Are you sure you want to delete?", "Confirm Deletion", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (res == DialogResult.Yes)
+            {
+
+                if (flag)
+                {
+                    var db = otherFunc.FirestoreConn();
+                    DocumentReference docref = db.Collection("Users").Document(username).Collection("Expenses").Document(docname);
+                    docref.DeleteAsync();
+                    this.Hide();
+                    w.flpExpenses.Controls.Clear();
+                    w.displayData(); 
+                }
+                else
+                {
+                    var db = otherFunc.FirestoreConn();
+                    DocumentReference docref = db.Collection("Groups").Document(groupCode).Collection("Expenses").Document(docname);
+                    docref.DeleteAsync();
+                    this.Hide();
+                    g.flpExpenses.Controls.Clear();
+                    g.displayData();
+                }
+            }
         }
     }
 }

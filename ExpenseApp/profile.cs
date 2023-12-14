@@ -66,7 +66,7 @@ namespace ExpenseApp
             List<List<String>> arrL = new List<List<String>>();
             foreach(DocumentSnapshot docsnap in qsnap.Documents)
             {
-                List<String> arrLogs = docsnap.GetValue<List<String>>("Login");
+                 List<String> arrLogs = docsnap.GetValue<List<String>>("Login");
                 arrL.Add(arrLogs);
             }
             return arrL;
@@ -83,15 +83,16 @@ namespace ExpenseApp
                     string time = timeLocation[0];
                     string location = timeLocation[1];
 
-                    Guna2Panel pnl = new Guna2Panel();
-                    pnl.Size = new Size(465, 100);
+                    Guna2GradientPanel pnl = new Guna2GradientPanel();
+                    pnl.Size = new Size(446, 76);
                     pnl.BorderRadius = 15;
-                    pnl.FillColor = Color.FromArgb(83, 123, 47);
+                    pnl.FillColor = Color.FromArgb(183, 142, 81);
+                    pnl.FillColor2 = Color.FromArgb(222, 66, 86);
 
                     Label lblTime = new Label();
                     lblTime.Font = new Font("Poppins", 9.75f, FontStyle.Regular);
                     lblTime.Size = new Size(131, 23);
-                    lblTime.Location = new Point(38, 19);
+                    lblTime.Location = new Point(27, 12);
                     lblTime.BackColor = Color.Transparent;
                     lblTime.ForeColor = Color.White;
                     lblTime.Text = time;
@@ -99,7 +100,7 @@ namespace ExpenseApp
                     Label lblLocation = new Label();
                     lblLocation.Font = new Font("Poppins", 9.75f, FontStyle.Regular);
                     lblLocation.Size = new Size(380, 23);
-                    lblLocation.Location = new Point(38, 46);
+                    lblLocation.Location = new Point(27, 39);
                     lblLocation.BackColor = Color.Transparent;
                     lblLocation.ForeColor = Color.White;
                     lblLocation.Text = location;

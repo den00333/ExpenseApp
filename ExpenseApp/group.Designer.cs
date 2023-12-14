@@ -43,7 +43,7 @@
             this.btnAdd = new Guna.UI2.WinForms.Guna2Button();
             this.panelTitle = new Guna.UI2.WinForms.Guna2Panel();
             this.label7 = new System.Windows.Forms.Label();
-            this.panel3 = new System.Windows.Forms.Panel();
+            this.pnlGroupWallet = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.flpGoals = new System.Windows.Forms.FlowLayoutPanel();
@@ -78,6 +78,8 @@
             this.label6 = new System.Windows.Forms.Label();
             this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
             this.label5 = new System.Windows.Forms.Label();
+            this.lblGroupcode = new System.Windows.Forms.Label();
+            this.pnlMemberbox = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.pnlMembers.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -88,7 +90,7 @@
             this.tableLayoutPanel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panelTitle.SuspendLayout();
-            this.panel3.SuspendLayout();
+            this.pnlGroupWallet.SuspendLayout();
             this.panel4.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.flpGoals.SuspendLayout();
@@ -105,19 +107,18 @@
             this.guna2GradientPanel1.SuspendLayout();
             this.guna2Panel3.SuspendLayout();
             this.guna2Panel2.SuspendLayout();
+            this.pnlMemberbox.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.pnlMembers);
+            this.panel1.Controls.Add(this.pnlMemberbox);
             this.panel1.Controls.Add(this.pnlGroups);
             this.panel1.Controls.Add(this.panel2);
-            this.panel1.Controls.Add(this.panelTitle);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(356, 763);
+            this.panel1.Size = new System.Drawing.Size(267, 620);
             this.panel1.TabIndex = 0;
             // 
             // pnlMembers
@@ -125,10 +126,9 @@
             this.pnlMembers.BackColor = System.Drawing.Color.Transparent;
             this.pnlMembers.BorderThickness = 5;
             this.pnlMembers.Controls.Add(this.tableLayoutPanel2);
-            this.pnlMembers.Location = new System.Drawing.Point(11, 422);
-            this.pnlMembers.Margin = new System.Windows.Forms.Padding(4);
+            this.pnlMembers.Location = new System.Drawing.Point(3, 45);
             this.pnlMembers.Name = "pnlMembers";
-            this.pnlMembers.Size = new System.Drawing.Size(332, 300);
+            this.pnlMembers.Size = new System.Drawing.Size(249, 244);
             this.pnlMembers.TabIndex = 17;
             // 
             // tableLayoutPanel2
@@ -142,11 +142,10 @@
             this.tableLayoutPanel2.Controls.Add(this.flpMembers, 0, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(332, 300);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(249, 244);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // flpMembers
@@ -155,31 +154,29 @@
             this.flpMembers.AutoScroll = true;
             this.flpMembers.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.flpMembers.Controls.Add(this.panel6);
-            this.flpMembers.Location = new System.Drawing.Point(16, 4);
-            this.flpMembers.Margin = new System.Windows.Forms.Padding(4);
+            this.flpMembers.Location = new System.Drawing.Point(12, 3);
             this.flpMembers.Name = "flpMembers";
-            this.flpMembers.Size = new System.Drawing.Size(299, 292);
+            this.flpMembers.Size = new System.Drawing.Size(224, 238);
             this.flpMembers.TabIndex = 0;
             // 
             // panel6
             // 
             this.panel6.Controls.Add(this.ptbActiveStatus);
             this.panel6.Controls.Add(this.label9);
-            this.panel6.Location = new System.Drawing.Point(4, 4);
-            this.panel6.Margin = new System.Windows.Forms.Padding(4);
+            this.panel6.Location = new System.Drawing.Point(3, 3);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(305, 49);
+            this.panel6.Size = new System.Drawing.Size(229, 40);
             this.panel6.TabIndex = 0;
             // 
             // ptbActiveStatus
             // 
             this.ptbActiveStatus.Image = global::ExpenseApp.Properties.Resources.offline;
             this.ptbActiveStatus.ImageRotate = 0F;
-            this.ptbActiveStatus.Location = new System.Drawing.Point(13, 11);
-            this.ptbActiveStatus.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.ptbActiveStatus.Location = new System.Drawing.Point(10, 9);
+            this.ptbActiveStatus.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.ptbActiveStatus.Name = "ptbActiveStatus";
             this.ptbActiveStatus.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            this.ptbActiveStatus.Size = new System.Drawing.Size(28, 26);
+            this.ptbActiveStatus.Size = new System.Drawing.Size(21, 21);
             this.ptbActiveStatus.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.ptbActiveStatus.TabIndex = 1;
             this.ptbActiveStatus.TabStop = false;
@@ -188,20 +185,18 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(47, 11);
-            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label9.Location = new System.Drawing.Point(35, 9);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(283, 30);
+            this.label9.Size = new System.Drawing.Size(220, 23);
             this.label9.TabIndex = 0;
             this.label9.Text = "label9dsadassdfsdfdfdsfsdfsfsd";
             // 
             // pnlGroups
             // 
             this.pnlGroups.Controls.Add(this.tableLayoutPanel1);
-            this.pnlGroups.Location = new System.Drawing.Point(11, 84);
-            this.pnlGroups.Margin = new System.Windows.Forms.Padding(4);
+            this.pnlGroups.Location = new System.Drawing.Point(8, 68);
             this.pnlGroups.Name = "pnlGroups";
-            this.pnlGroups.Size = new System.Drawing.Size(332, 260);
+            this.pnlGroups.Size = new System.Drawing.Size(249, 211);
             this.pnlGroups.TabIndex = 16;
             // 
             // tableLayoutPanel1
@@ -214,21 +209,19 @@
             this.tableLayoutPanel1.Controls.Add(this.flpGroup, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(332, 260);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(249, 211);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // flpGroup
             // 
             this.flpGroup.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.flpGroup.AutoScroll = true;
-            this.flpGroup.Location = new System.Drawing.Point(5, 4);
-            this.flpGroup.Margin = new System.Windows.Forms.Padding(4);
+            this.flpGroup.Location = new System.Drawing.Point(3, 3);
             this.flpGroup.Name = "flpGroup";
-            this.flpGroup.Size = new System.Drawing.Size(322, 252);
+            this.flpGroup.Size = new System.Drawing.Size(242, 205);
             this.flpGroup.TabIndex = 0;
             // 
             // panel2
@@ -237,9 +230,8 @@
             this.panel2.Controls.Add(this.btnAdd);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(356, 76);
+            this.panel2.Size = new System.Drawing.Size(267, 62);
             this.panel2.TabIndex = 15;
             // 
             // label1
@@ -248,10 +240,9 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Poppins SemiBold", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(22, 11);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(16, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(117, 53);
+            this.label1.Size = new System.Drawing.Size(93, 42);
             this.label1.TabIndex = 0;
             this.label1.Text = "Group";
             // 
@@ -263,15 +254,15 @@
             this.btnAdd.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnAdd.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnAdd.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(123)))), ((int)(((byte)(47)))));
-            this.btnAdd.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdd.Font = new System.Drawing.Font("Poppins", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAdd.ForeColor = System.Drawing.Color.White;
-            this.btnAdd.Image = global::ExpenseApp.Properties.Resources.add;
             this.btnAdd.ImageSize = new System.Drawing.Size(25, 25);
-            this.btnAdd.Location = new System.Drawing.Point(255, 11);
-            this.btnAdd.Margin = new System.Windows.Forms.Padding(4);
+            this.btnAdd.Location = new System.Drawing.Point(206, 10);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(61, 48);
+            this.btnAdd.Size = new System.Drawing.Size(41, 41);
             this.btnAdd.TabIndex = 14;
+            this.btnAdd.Text = "+";
+            this.btnAdd.TextOffset = new System.Drawing.Point(2, 0);
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // panelTitle
@@ -279,10 +270,9 @@
             this.panelTitle.BorderRadius = 15;
             this.panelTitle.Controls.Add(this.label7);
             this.panelTitle.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(123)))), ((int)(((byte)(47)))));
-            this.panelTitle.Location = new System.Drawing.Point(11, 382);
-            this.panelTitle.Margin = new System.Windows.Forms.Padding(4);
+            this.panelTitle.Location = new System.Drawing.Point(3, 12);
             this.panelTitle.Name = "panelTitle";
-            this.panelTitle.Size = new System.Drawing.Size(199, 64);
+            this.panelTitle.Size = new System.Drawing.Size(149, 52);
             this.panelTitle.TabIndex = 18;
             // 
             // label7
@@ -291,37 +281,36 @@
             this.label7.BackColor = System.Drawing.Color.Transparent;
             this.label7.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(41, 6);
-            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label7.Location = new System.Drawing.Point(31, 5);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(108, 36);
+            this.label7.Size = new System.Drawing.Size(87, 28);
             this.label7.TabIndex = 8;
             this.label7.Text = "Members";
             // 
-            // panel3
+            // pnlGroupWallet
             // 
-            this.panel3.Controls.Add(this.panel4);
-            this.panel3.Controls.Add(this.guna2ShadowPanel5);
-            this.panel3.Controls.Add(this.panel5);
-            this.panel3.Controls.Add(this.lblGN);
-            this.panel3.Controls.Add(this.guna2ShadowPanel2);
-            this.panel3.Controls.Add(this.guna2ShadowPanel1);
-            this.panel3.Controls.Add(this.guna2Panel3);
-            this.panel3.Controls.Add(this.guna2Panel2);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(356, 0);
-            this.panel3.Margin = new System.Windows.Forms.Padding(4);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1123, 763);
-            this.panel3.TabIndex = 1;
+            this.pnlGroupWallet.Controls.Add(this.lblGroupcode);
+            this.pnlGroupWallet.Controls.Add(this.panel4);
+            this.pnlGroupWallet.Controls.Add(this.guna2ShadowPanel5);
+            this.pnlGroupWallet.Controls.Add(this.panel5);
+            this.pnlGroupWallet.Controls.Add(this.lblGN);
+            this.pnlGroupWallet.Controls.Add(this.guna2ShadowPanel2);
+            this.pnlGroupWallet.Controls.Add(this.guna2ShadowPanel1);
+            this.pnlGroupWallet.Controls.Add(this.guna2Panel3);
+            this.pnlGroupWallet.Controls.Add(this.guna2Panel2);
+            this.pnlGroupWallet.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlGroupWallet.Location = new System.Drawing.Point(267, 0);
+            this.pnlGroupWallet.Name = "pnlGroupWallet";
+            this.pnlGroupWallet.Size = new System.Drawing.Size(842, 620);
+            this.pnlGroupWallet.TabIndex = 1;
+            this.pnlGroupWallet.Visible = false;
             // 
             // panel4
             // 
             this.panel4.Controls.Add(this.tableLayoutPanel4);
-            this.panel4.Location = new System.Drawing.Point(687, 350);
-            this.panel4.Margin = new System.Windows.Forms.Padding(4);
+            this.panel4.Location = new System.Drawing.Point(515, 284);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(424, 377);
+            this.panel4.Size = new System.Drawing.Size(318, 306);
             this.panel4.TabIndex = 21;
             // 
             // tableLayoutPanel4
@@ -335,11 +324,10 @@
             this.tableLayoutPanel4.Controls.Add(this.flpGoals, 0, 0);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel4.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 1;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(424, 377);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(318, 306);
             this.tableLayoutPanel4.TabIndex = 0;
             // 
             // flpGoals
@@ -348,10 +336,9 @@
             this.flpGoals.AutoScroll = true;
             this.flpGoals.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.flpGoals.Controls.Add(this.guna2GradientPanel4);
-            this.flpGoals.Location = new System.Drawing.Point(4, 4);
-            this.flpGoals.Margin = new System.Windows.Forms.Padding(4);
+            this.flpGoals.Location = new System.Drawing.Point(3, 3);
             this.flpGoals.Name = "flpGoals";
-            this.flpGoals.Size = new System.Drawing.Size(416, 369);
+            this.flpGoals.Size = new System.Drawing.Size(312, 300);
             this.flpGoals.TabIndex = 0;
             // 
             // guna2GradientPanel4
@@ -362,10 +349,9 @@
             this.guna2GradientPanel4.Controls.Add(this.label16);
             this.guna2GradientPanel4.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(180)))), ((int)(((byte)(72)))));
             this.guna2GradientPanel4.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(123)))), ((int)(((byte)(47)))));
-            this.guna2GradientPanel4.Location = new System.Drawing.Point(4, 4);
-            this.guna2GradientPanel4.Margin = new System.Windows.Forms.Padding(4);
+            this.guna2GradientPanel4.Location = new System.Drawing.Point(3, 3);
             this.guna2GradientPanel4.Name = "guna2GradientPanel4";
-            this.guna2GradientPanel4.Size = new System.Drawing.Size(408, 132);
+            this.guna2GradientPanel4.Size = new System.Drawing.Size(306, 107);
             this.guna2GradientPanel4.TabIndex = 11;
             this.guna2GradientPanel4.UseTransparentBackground = true;
             // 
@@ -374,10 +360,9 @@
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label14.ForeColor = System.Drawing.Color.White;
-            this.label14.Location = new System.Drawing.Point(49, 64);
-            this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label14.Location = new System.Drawing.Point(37, 52);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(154, 30);
+            this.label14.Size = new System.Drawing.Size(118, 23);
             this.label14.TabIndex = 9;
             this.label14.Text = "Current Balance:";
             // 
@@ -386,10 +371,9 @@
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label16.ForeColor = System.Drawing.Color.White;
-            this.label16.Location = new System.Drawing.Point(49, 23);
-            this.label16.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label16.Location = new System.Drawing.Point(37, 19);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(175, 34);
+            this.label16.Size = new System.Drawing.Size(138, 26);
             this.label16.TabIndex = 7;
             this.label16.Text = "Current Balance:";
             // 
@@ -398,15 +382,14 @@
             this.guna2ShadowPanel5.BackColor = System.Drawing.Color.Transparent;
             this.guna2ShadowPanel5.Controls.Add(this.panelSwitch);
             this.guna2ShadowPanel5.FillColor = System.Drawing.Color.White;
-            this.guna2ShadowPanel5.Location = new System.Drawing.Point(821, 204);
-            this.guna2ShadowPanel5.Margin = new System.Windows.Forms.Padding(4);
+            this.guna2ShadowPanel5.Location = new System.Drawing.Point(616, 166);
             this.guna2ShadowPanel5.Name = "guna2ShadowPanel5";
             this.guna2ShadowPanel5.Radius = 6;
             this.guna2ShadowPanel5.ShadowColor = System.Drawing.Color.Black;
             this.guna2ShadowPanel5.ShadowDepth = 130;
             this.guna2ShadowPanel5.ShadowShift = 10;
             this.guna2ShadowPanel5.ShadowStyle = Guna.UI2.WinForms.Guna2ShadowPanel.ShadowMode.ForwardDiagonal;
-            this.guna2ShadowPanel5.Size = new System.Drawing.Size(285, 89);
+            this.guna2ShadowPanel5.Size = new System.Drawing.Size(214, 72);
             this.guna2ShadowPanel5.TabIndex = 20;
             // 
             // panelSwitch
@@ -416,10 +399,9 @@
             this.panelSwitch.Controls.Add(this.btnAddGoal);
             this.panelSwitch.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(187)))), ((int)(((byte)(141)))), ((int)(((byte)(228)))));
             this.panelSwitch.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(148)))), ((int)(((byte)(98)))));
-            this.panelSwitch.Location = new System.Drawing.Point(0, 4);
-            this.panelSwitch.Margin = new System.Windows.Forms.Padding(4);
+            this.panelSwitch.Location = new System.Drawing.Point(0, 3);
             this.panelSwitch.Name = "panelSwitch";
-            this.panelSwitch.Size = new System.Drawing.Size(281, 73);
+            this.panelSwitch.Size = new System.Drawing.Size(211, 59);
             this.panelSwitch.TabIndex = 0;
             // 
             // label8
@@ -427,10 +409,9 @@
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(27, 20);
-            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label8.Location = new System.Drawing.Point(20, 16);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(133, 29);
+            this.label8.Size = new System.Drawing.Size(100, 22);
             this.label8.TabIndex = 8;
             this.label8.Text = "Your Goals";
             // 
@@ -445,10 +426,9 @@
             this.btnAddGoal.FocusedColor = System.Drawing.Color.DarkOrchid;
             this.btnAddGoal.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddGoal.ForeColor = System.Drawing.Color.White;
-            this.btnAddGoal.Location = new System.Drawing.Point(192, 11);
-            this.btnAddGoal.Margin = new System.Windows.Forms.Padding(4);
+            this.btnAddGoal.Location = new System.Drawing.Point(144, 9);
             this.btnAddGoal.Name = "btnAddGoal";
-            this.btnAddGoal.Size = new System.Drawing.Size(56, 43);
+            this.btnAddGoal.Size = new System.Drawing.Size(42, 35);
             this.btnAddGoal.TabIndex = 3;
             this.btnAddGoal.Text = "+";
             this.btnAddGoal.Click += new System.EventHandler(this.btnAddGoal_Click);
@@ -456,10 +436,9 @@
             // panel5
             // 
             this.panel5.Controls.Add(this.tableLayoutPanel3);
-            this.panel5.Location = new System.Drawing.Point(39, 351);
-            this.panel5.Margin = new System.Windows.Forms.Padding(4);
+            this.panel5.Location = new System.Drawing.Point(29, 285);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(640, 375);
+            this.panel5.Size = new System.Drawing.Size(480, 305);
             this.panel5.TabIndex = 17;
             // 
             // tableLayoutPanel3
@@ -473,11 +452,10 @@
             this.tableLayoutPanel3.Controls.Add(this.flpExpenses, 0, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(640, 375);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(480, 305);
             this.tableLayoutPanel3.TabIndex = 0;
             // 
             // flpExpenses
@@ -486,10 +464,9 @@
             this.flpExpenses.AutoScroll = true;
             this.flpExpenses.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.flpExpenses.Controls.Add(this.guna2GradientPanel3);
-            this.flpExpenses.Location = new System.Drawing.Point(4, 4);
-            this.flpExpenses.Margin = new System.Windows.Forms.Padding(4);
+            this.flpExpenses.Location = new System.Drawing.Point(3, 3);
             this.flpExpenses.Name = "flpExpenses";
-            this.flpExpenses.Size = new System.Drawing.Size(632, 367);
+            this.flpExpenses.Size = new System.Drawing.Size(474, 299);
             this.flpExpenses.TabIndex = 0;
             // 
             // guna2GradientPanel3
@@ -502,10 +479,9 @@
             this.guna2GradientPanel3.Controls.Add(this.label4);
             this.guna2GradientPanel3.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(180)))), ((int)(((byte)(72)))));
             this.guna2GradientPanel3.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(123)))), ((int)(((byte)(47)))));
-            this.guna2GradientPanel3.Location = new System.Drawing.Point(4, 4);
-            this.guna2GradientPanel3.Margin = new System.Windows.Forms.Padding(4);
+            this.guna2GradientPanel3.Location = new System.Drawing.Point(3, 3);
             this.guna2GradientPanel3.Name = "guna2GradientPanel3";
-            this.guna2GradientPanel3.Size = new System.Drawing.Size(624, 130);
+            this.guna2GradientPanel3.Size = new System.Drawing.Size(468, 106);
             this.guna2GradientPanel3.TabIndex = 1;
             this.guna2GradientPanel3.UseTransparentBackground = true;
             // 
@@ -514,10 +490,9 @@
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.ForeColor = System.Drawing.Color.White;
-            this.label12.Location = new System.Drawing.Point(425, 64);
-            this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label12.Location = new System.Drawing.Point(319, 52);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(154, 30);
+            this.label12.Size = new System.Drawing.Size(118, 23);
             this.label12.TabIndex = 10;
             this.label12.Text = "Current Balance:";
             // 
@@ -526,10 +501,9 @@
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.White;
-            this.label11.Location = new System.Drawing.Point(49, 64);
-            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label11.Location = new System.Drawing.Point(37, 52);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(154, 30);
+            this.label11.Size = new System.Drawing.Size(118, 23);
             this.label11.TabIndex = 9;
             this.label11.Text = "Current Balance:";
             // 
@@ -538,10 +512,9 @@
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.White;
-            this.label10.Location = new System.Drawing.Point(403, 23);
-            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label10.Location = new System.Drawing.Point(302, 19);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(175, 34);
+            this.label10.Size = new System.Drawing.Size(138, 26);
             this.label10.TabIndex = 8;
             this.label10.Text = "Current Balance:";
             // 
@@ -550,10 +523,9 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(49, 23);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Location = new System.Drawing.Point(37, 19);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(175, 34);
+            this.label4.Size = new System.Drawing.Size(138, 26);
             this.label4.TabIndex = 7;
             this.label4.Text = "Current Balance:";
             // 
@@ -561,12 +533,11 @@
             // 
             this.lblGN.AutoSize = true;
             this.lblGN.BackColor = System.Drawing.Color.Transparent;
-            this.lblGN.Font = new System.Drawing.Font("Poppins SemiBold", 26F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblGN.Font = new System.Drawing.Font("Poppins SemiBold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblGN.ForeColor = System.Drawing.Color.Black;
-            this.lblGN.Location = new System.Drawing.Point(4, 5);
-            this.lblGN.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblGN.Location = new System.Drawing.Point(21, 6);
             this.lblGN.Name = "lblGN";
-            this.lblGN.Size = new System.Drawing.Size(317, 78);
+            this.lblGN.Size = new System.Drawing.Size(151, 37);
             this.lblGN.TabIndex = 15;
             this.lblGN.Text = "Group Name";
             // 
@@ -575,15 +546,14 @@
             this.guna2ShadowPanel2.BackColor = System.Drawing.Color.Transparent;
             this.guna2ShadowPanel2.Controls.Add(this.guna2GradientPanel2);
             this.guna2ShadowPanel2.FillColor = System.Drawing.Color.White;
-            this.guna2ShadowPanel2.Location = new System.Drawing.Point(437, 87);
-            this.guna2ShadowPanel2.Margin = new System.Windows.Forms.Padding(4);
+            this.guna2ShadowPanel2.Location = new System.Drawing.Point(328, 71);
             this.guna2ShadowPanel2.Name = "guna2ShadowPanel2";
             this.guna2ShadowPanel2.Radius = 10;
             this.guna2ShadowPanel2.ShadowColor = System.Drawing.Color.Black;
             this.guna2ShadowPanel2.ShadowDepth = 130;
             this.guna2ShadowPanel2.ShadowShift = 10;
             this.guna2ShadowPanel2.ShadowStyle = Guna.UI2.WinForms.Guna2ShadowPanel.ShadowMode.ForwardDiagonal;
-            this.guna2ShadowPanel2.Size = new System.Drawing.Size(376, 206);
+            this.guna2ShadowPanel2.Size = new System.Drawing.Size(282, 167);
             this.guna2ShadowPanel2.TabIndex = 6;
             // 
             // guna2GradientPanel2
@@ -595,9 +565,8 @@
             this.guna2GradientPanel2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(183)))), ((int)(((byte)(142)))), ((int)(((byte)(81)))));
             this.guna2GradientPanel2.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(66)))), ((int)(((byte)(86)))));
             this.guna2GradientPanel2.Location = new System.Drawing.Point(0, 0);
-            this.guna2GradientPanel2.Margin = new System.Windows.Forms.Padding(4);
             this.guna2GradientPanel2.Name = "guna2GradientPanel2";
-            this.guna2GradientPanel2.Size = new System.Drawing.Size(372, 193);
+            this.guna2GradientPanel2.Size = new System.Drawing.Size(279, 157);
             this.guna2GradientPanel2.TabIndex = 0;
             // 
             // lblExpenses
@@ -605,10 +574,9 @@
             this.lblExpenses.AutoSize = true;
             this.lblExpenses.Font = new System.Drawing.Font("Poppins", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblExpenses.ForeColor = System.Drawing.Color.White;
-            this.lblExpenses.Location = new System.Drawing.Point(85, 69);
-            this.lblExpenses.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblExpenses.Location = new System.Drawing.Point(64, 56);
             this.lblExpenses.Name = "lblExpenses";
-            this.lblExpenses.Size = new System.Drawing.Size(127, 53);
+            this.lblExpenses.Size = new System.Drawing.Size(101, 42);
             this.lblExpenses.TabIndex = 8;
             this.lblExpenses.Text = "₱2,500";
             // 
@@ -617,10 +585,9 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(12, 14);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(9, 11);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(173, 34);
+            this.label3.Size = new System.Drawing.Size(135, 26);
             this.label3.TabIndex = 7;
             this.label3.Text = "Wallet Expenses:";
             // 
@@ -634,10 +601,9 @@
             this.btnAddXpns.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(182)))), ((int)(((byte)(66)))), ((int)(((byte)(86)))));
             this.btnAddXpns.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddXpns.ForeColor = System.Drawing.Color.White;
-            this.btnAddXpns.Location = new System.Drawing.Point(85, 150);
-            this.btnAddXpns.Margin = new System.Windows.Forms.Padding(4);
+            this.btnAddXpns.Location = new System.Drawing.Point(64, 122);
             this.btnAddXpns.Name = "btnAddXpns";
-            this.btnAddXpns.Size = new System.Drawing.Size(209, 55);
+            this.btnAddXpns.Size = new System.Drawing.Size(157, 45);
             this.btnAddXpns.TabIndex = 2;
             this.btnAddXpns.Text = "Add Expenses";
             this.btnAddXpns.Click += new System.EventHandler(this.btnAddXpns_Click);
@@ -647,15 +613,14 @@
             this.guna2ShadowPanel1.BackColor = System.Drawing.Color.Transparent;
             this.guna2ShadowPanel1.Controls.Add(this.guna2GradientPanel1);
             this.guna2ShadowPanel1.FillColor = System.Drawing.Color.White;
-            this.guna2ShadowPanel1.Location = new System.Drawing.Point(37, 87);
-            this.guna2ShadowPanel1.Margin = new System.Windows.Forms.Padding(4);
+            this.guna2ShadowPanel1.Location = new System.Drawing.Point(28, 71);
             this.guna2ShadowPanel1.Name = "guna2ShadowPanel1";
             this.guna2ShadowPanel1.Radius = 10;
             this.guna2ShadowPanel1.ShadowColor = System.Drawing.Color.Black;
             this.guna2ShadowPanel1.ShadowDepth = 130;
             this.guna2ShadowPanel1.ShadowShift = 10;
             this.guna2ShadowPanel1.ShadowStyle = Guna.UI2.WinForms.Guna2ShadowPanel.ShadowMode.ForwardDiagonal;
-            this.guna2ShadowPanel1.Size = new System.Drawing.Size(376, 206);
+            this.guna2ShadowPanel1.Size = new System.Drawing.Size(282, 167);
             this.guna2ShadowPanel1.TabIndex = 5;
             // 
             // guna2GradientPanel1
@@ -668,9 +633,8 @@
             this.guna2GradientPanel1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(180)))), ((int)(((byte)(72)))));
             this.guna2GradientPanel1.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(123)))), ((int)(((byte)(47)))));
             this.guna2GradientPanel1.Location = new System.Drawing.Point(0, 0);
-            this.guna2GradientPanel1.Margin = new System.Windows.Forms.Padding(4);
             this.guna2GradientPanel1.Name = "guna2GradientPanel1";
-            this.guna2GradientPanel1.Size = new System.Drawing.Size(372, 193);
+            this.guna2GradientPanel1.Size = new System.Drawing.Size(279, 157);
             this.guna2GradientPanel1.TabIndex = 0;
             // 
             // lblShort
@@ -679,10 +643,9 @@
             this.lblShort.BackColor = System.Drawing.Color.Transparent;
             this.lblShort.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblShort.ForeColor = System.Drawing.Color.White;
-            this.lblShort.Location = new System.Drawing.Point(235, 14);
-            this.lblShort.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblShort.Location = new System.Drawing.Point(176, 11);
             this.lblShort.Name = "lblShort";
-            this.lblShort.Size = new System.Drawing.Size(24, 30);
+            this.lblShort.Size = new System.Drawing.Size(18, 23);
             this.lblShort.TabIndex = 10;
             this.lblShort.Text = "0";
             // 
@@ -696,10 +659,9 @@
             this.btnAddMoney.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(123)))), ((int)(((byte)(47)))));
             this.btnAddMoney.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddMoney.ForeColor = System.Drawing.Color.White;
-            this.btnAddMoney.Location = new System.Drawing.Point(79, 150);
-            this.btnAddMoney.Margin = new System.Windows.Forms.Padding(4);
+            this.btnAddMoney.Location = new System.Drawing.Point(59, 122);
             this.btnAddMoney.Name = "btnAddMoney";
-            this.btnAddMoney.Size = new System.Drawing.Size(209, 55);
+            this.btnAddMoney.Size = new System.Drawing.Size(157, 45);
             this.btnAddMoney.TabIndex = 9;
             this.btnAddMoney.Text = "Add Balance";
             this.btnAddMoney.Click += new System.EventHandler(this.btnAddMoney_Click);
@@ -709,10 +671,9 @@
             this.lblBalance.AutoSize = true;
             this.lblBalance.Font = new System.Drawing.Font("Poppins", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblBalance.ForeColor = System.Drawing.Color.White;
-            this.lblBalance.Location = new System.Drawing.Point(71, 69);
-            this.lblBalance.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblBalance.Location = new System.Drawing.Point(53, 56);
             this.lblBalance.Name = "lblBalance";
-            this.lblBalance.Size = new System.Drawing.Size(66, 53);
+            this.lblBalance.Size = new System.Drawing.Size(52, 42);
             this.lblBalance.TabIndex = 7;
             this.lblBalance.Text = "₱0";
             // 
@@ -721,10 +682,9 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(11, 11);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(8, 9);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(175, 34);
+            this.label2.Size = new System.Drawing.Size(138, 26);
             this.label2.TabIndex = 6;
             this.label2.Text = "Current Balance:";
             // 
@@ -733,10 +693,9 @@
             this.guna2Panel3.BorderRadius = 15;
             this.guna2Panel3.Controls.Add(this.label6);
             this.guna2Panel3.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(123)))), ((int)(((byte)(47)))));
-            this.guna2Panel3.Location = new System.Drawing.Point(39, 306);
-            this.guna2Panel3.Margin = new System.Windows.Forms.Padding(4);
+            this.guna2Panel3.Location = new System.Drawing.Point(29, 249);
             this.guna2Panel3.Name = "guna2Panel3";
-            this.guna2Panel3.Size = new System.Drawing.Size(273, 64);
+            this.guna2Panel3.Size = new System.Drawing.Size(205, 52);
             this.guna2Panel3.TabIndex = 19;
             // 
             // label6
@@ -745,10 +704,9 @@
             this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(57, 6);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Location = new System.Drawing.Point(43, 5);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(144, 36);
+            this.label6.Size = new System.Drawing.Size(115, 28);
             this.label6.TabIndex = 8;
             this.label6.Text = "Transactions";
             // 
@@ -757,10 +715,9 @@
             this.guna2Panel2.BorderRadius = 15;
             this.guna2Panel2.Controls.Add(this.label5);
             this.guna2Panel2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(187)))), ((int)(((byte)(141)))), ((int)(((byte)(228)))));
-            this.guna2Panel2.Location = new System.Drawing.Point(911, 306);
-            this.guna2Panel2.Margin = new System.Windows.Forms.Padding(4);
+            this.guna2Panel2.Location = new System.Drawing.Point(683, 249);
             this.guna2Panel2.Name = "guna2Panel2";
-            this.guna2Panel2.Size = new System.Drawing.Size(200, 64);
+            this.guna2Panel2.Size = new System.Drawing.Size(150, 52);
             this.guna2Panel2.TabIndex = 22;
             // 
             // label5
@@ -769,23 +726,43 @@
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(56, 4);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Location = new System.Drawing.Point(42, 3);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(85, 31);
+            this.label5.Size = new System.Drawing.Size(68, 25);
             this.label5.TabIndex = 8;
             this.label5.Text = "Goals";
             // 
+            // lblGroupcode
+            // 
+            this.lblGroupcode.AutoSize = true;
+            this.lblGroupcode.BackColor = System.Drawing.Color.Transparent;
+            this.lblGroupcode.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblGroupcode.ForeColor = System.Drawing.Color.Gray;
+            this.lblGroupcode.Location = new System.Drawing.Point(23, 34);
+            this.lblGroupcode.Name = "lblGroupcode";
+            this.lblGroupcode.Size = new System.Drawing.Size(113, 28);
+            this.lblGroupcode.TabIndex = 23;
+            this.lblGroupcode.Text = "Group Name";
+            // 
+            // pnlMemberbox
+            // 
+            this.pnlMemberbox.Controls.Add(this.pnlMembers);
+            this.pnlMemberbox.Controls.Add(this.panelTitle);
+            this.pnlMemberbox.Location = new System.Drawing.Point(8, 297);
+            this.pnlMemberbox.Name = "pnlMemberbox";
+            this.pnlMemberbox.Size = new System.Drawing.Size(259, 301);
+            this.pnlMemberbox.TabIndex = 19;
+            this.pnlMemberbox.Visible = false;
+            // 
             // group
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.Controls.Add(this.panel3);
+            this.Controls.Add(this.pnlGroupWallet);
             this.Controls.Add(this.panel1);
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "group";
-            this.Size = new System.Drawing.Size(1479, 763);
+            this.Size = new System.Drawing.Size(1109, 620);
             this.Load += new System.EventHandler(this.group_Load);
             this.panel1.ResumeLayout(false);
             this.pnlMembers.ResumeLayout(false);
@@ -802,8 +779,8 @@
             this.panel2.PerformLayout();
             this.panelTitle.ResumeLayout(false);
             this.panelTitle.PerformLayout();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
+            this.pnlGroupWallet.ResumeLayout(false);
+            this.pnlGroupWallet.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             this.tableLayoutPanel4.ResumeLayout(false);
@@ -829,6 +806,7 @@
             this.guna2Panel3.PerformLayout();
             this.guna2Panel2.ResumeLayout(false);
             this.guna2Panel2.PerformLayout();
+            this.pnlMemberbox.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -847,7 +825,7 @@
         private System.Windows.Forms.FlowLayoutPanel flpMembers;
         private Guna.UI2.WinForms.Guna2Panel panelTitle;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel pnlGroupWallet;
         private Guna.UI2.WinForms.Guna2ShadowPanel guna2ShadowPanel2;
         private Guna.UI2.WinForms.Guna2GradientPanel guna2GradientPanel2;
         public System.Windows.Forms.Label lblExpenses;
@@ -885,5 +863,7 @@
         private Guna.UI2.WinForms.Guna2GradientPanel guna2GradientPanel4;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label lblGroupcode;
+        private System.Windows.Forms.Panel pnlMemberbox;
     }
 }

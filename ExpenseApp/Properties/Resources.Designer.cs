@@ -103,6 +103,16 @@ namespace ExpenseApp.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap bgProfile {
+            get {
+                object obj = ResourceManager.GetObject("bgProfile", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap close {
             get {
                 object obj = ResourceManager.GetObject("close", resourceCulture);
@@ -456,6 +466,16 @@ namespace ExpenseApp.Properties {
         internal static System.Drawing.Bitmap profileBG11 {
             get {
                 object obj = ResourceManager.GetObject("profileBG11", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap profileBG12 {
+            get {
+                object obj = ResourceManager.GetObject("profileBG12", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
