@@ -14,10 +14,11 @@ namespace ExpenseApp
     public partial class createGroup : Form
     {
         private string username = FirebaseData.Instance.Username;
-        
-        public createGroup()
+        private homeForm home;
+        public createGroup(homeForm h)
         {
             InitializeComponent();
+            this.home = h;
         }
 
         private void closeBTN_Click(object sender, EventArgs e)
@@ -40,6 +41,7 @@ namespace ExpenseApp
                 {"MaxParticipants", numberOfParticipants},
                 {"GroupCode", groupCode},
                 {"Members", initialMembers},
+                {"Creator", username}
             };
             await groupDocRef.SetAsync(groupData);
 
@@ -148,7 +150,8 @@ namespace ExpenseApp
                 }
                 else{
                     Join();
-                    this.Close();
+
+                    this.Hide();
                 }
             }
             else MessageBox.Show("No Internet Connection!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -185,7 +188,8 @@ namespace ExpenseApp
                 try{
                     Create();
                     MessageBox.Show("Group created successfully", "Success", MessageBoxButtons.OK,MessageBoxIcon.Information);
-                    this.Close();
+                    
+                    this.Hide();
                 }
                 catch{
                     MessageBox.Show("Error encountered during saving!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);

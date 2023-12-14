@@ -33,13 +33,13 @@ namespace ExpenseApp
         private void btnGroup_Click(object sender, EventArgs e)
         {
             
-            createGroup cg = new createGroup();
+            createGroup cg = new createGroup(new homeForm());
             cg.ShowDialog();
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            createGroup cg = new createGroup();
+            createGroup cg = new createGroup(new homeForm());
             cg.ShowDialog();
         }
 
