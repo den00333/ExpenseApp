@@ -1,4 +1,5 @@
 ﻿using Google.Cloud.Firestore;
+using Google.Cloud.Firestore.V1;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -472,6 +473,12 @@ namespace ExpenseApp
                 MessageBox.Show("Group not found", "Missing", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        private void btnUploadData_Click(object sender, EventArgs e)
+        {
+            ListOfOfflineDatacs l = new ListOfOfflineDatacs(false);
+            l.Show();
+        }
+        
         bool flag = false;
         private void btnSwitch_Click(object sender, EventArgs e)
         {
