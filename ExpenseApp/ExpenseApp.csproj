@@ -483,6 +483,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\view.png" />
     <None Include="Resources\user.png" />
     <None Include="Resources\verify.png" />
     <None Include="Resources\profileBG.png" />

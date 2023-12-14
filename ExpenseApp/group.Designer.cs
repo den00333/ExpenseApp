@@ -29,21 +29,23 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.pnlMemberbox = new System.Windows.Forms.Panel();
             this.pnlMembers = new Guna.UI2.WinForms.Guna2Panel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.flpMembers = new System.Windows.Forms.FlowLayoutPanel();
             this.panel6 = new System.Windows.Forms.Panel();
             this.ptbActiveStatus = new Guna.UI2.WinForms.Guna2CirclePictureBox();
             this.label9 = new System.Windows.Forms.Label();
+            this.panelTitle = new Guna.UI2.WinForms.Guna2Panel();
+            this.label7 = new System.Windows.Forms.Label();
             this.pnlGroups = new Guna.UI2.WinForms.Guna2Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.flpGroup = new System.Windows.Forms.FlowLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.btnAdd = new Guna.UI2.WinForms.Guna2Button();
-            this.panelTitle = new Guna.UI2.WinForms.Guna2Panel();
-            this.label7 = new System.Windows.Forms.Label();
             this.pnlGroupWallet = new System.Windows.Forms.Panel();
+            this.lblGroupcode = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.flpGoals = new System.Windows.Forms.FlowLayoutPanel();
@@ -78,18 +80,17 @@
             this.label6 = new System.Windows.Forms.Label();
             this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
             this.label5 = new System.Windows.Forms.Label();
-            this.lblGroupcode = new System.Windows.Forms.Label();
-            this.pnlMemberbox = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
+            this.pnlMemberbox.SuspendLayout();
             this.pnlMembers.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.flpMembers.SuspendLayout();
             this.panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ptbActiveStatus)).BeginInit();
+            this.panelTitle.SuspendLayout();
             this.pnlGroups.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel2.SuspendLayout();
-            this.panelTitle.SuspendLayout();
             this.pnlGroupWallet.SuspendLayout();
             this.panel4.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
@@ -107,7 +108,6 @@
             this.guna2GradientPanel1.SuspendLayout();
             this.guna2Panel3.SuspendLayout();
             this.guna2Panel2.SuspendLayout();
-            this.pnlMemberbox.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -118,8 +118,18 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(267, 620);
+            this.panel1.Size = new System.Drawing.Size(267, 575);
             this.panel1.TabIndex = 0;
+            // 
+            // pnlMemberbox
+            // 
+            this.pnlMemberbox.Controls.Add(this.pnlMembers);
+            this.pnlMemberbox.Controls.Add(this.panelTitle);
+            this.pnlMemberbox.Location = new System.Drawing.Point(8, 297);
+            this.pnlMemberbox.Name = "pnlMemberbox";
+            this.pnlMemberbox.Size = new System.Drawing.Size(259, 301);
+            this.pnlMemberbox.TabIndex = 19;
+            this.pnlMemberbox.Visible = false;
             // 
             // pnlMembers
             // 
@@ -128,7 +138,7 @@
             this.pnlMembers.Controls.Add(this.tableLayoutPanel2);
             this.pnlMembers.Location = new System.Drawing.Point(3, 45);
             this.pnlMembers.Name = "pnlMembers";
-            this.pnlMembers.Size = new System.Drawing.Size(249, 244);
+            this.pnlMembers.Size = new System.Drawing.Size(249, 218);
             this.pnlMembers.TabIndex = 17;
             // 
             // tableLayoutPanel2
@@ -145,7 +155,7 @@
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(249, 244);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(249, 218);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // flpMembers
@@ -156,7 +166,7 @@
             this.flpMembers.Controls.Add(this.panel6);
             this.flpMembers.Location = new System.Drawing.Point(12, 3);
             this.flpMembers.Name = "flpMembers";
-            this.flpMembers.Size = new System.Drawing.Size(224, 238);
+            this.flpMembers.Size = new System.Drawing.Size(224, 212);
             this.flpMembers.TabIndex = 0;
             // 
             // panel6
@@ -173,7 +183,7 @@
             this.ptbActiveStatus.Image = global::ExpenseApp.Properties.Resources.offline;
             this.ptbActiveStatus.ImageRotate = 0F;
             this.ptbActiveStatus.Location = new System.Drawing.Point(10, 9);
-            this.ptbActiveStatus.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ptbActiveStatus.Margin = new System.Windows.Forms.Padding(2);
             this.ptbActiveStatus.Name = "ptbActiveStatus";
             this.ptbActiveStatus.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
             this.ptbActiveStatus.Size = new System.Drawing.Size(21, 21);
@@ -190,6 +200,28 @@
             this.label9.Size = new System.Drawing.Size(220, 23);
             this.label9.TabIndex = 0;
             this.label9.Text = "label9dsadassdfsdfdfdsfsdfsfsd";
+            // 
+            // panelTitle
+            // 
+            this.panelTitle.BorderRadius = 15;
+            this.panelTitle.Controls.Add(this.label7);
+            this.panelTitle.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(123)))), ((int)(((byte)(47)))));
+            this.panelTitle.Location = new System.Drawing.Point(3, 12);
+            this.panelTitle.Name = "panelTitle";
+            this.panelTitle.Size = new System.Drawing.Size(149, 52);
+            this.panelTitle.TabIndex = 18;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.Color.Transparent;
+            this.label7.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.White;
+            this.label7.Location = new System.Drawing.Point(31, 5);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(87, 28);
+            this.label7.TabIndex = 8;
+            this.label7.Text = "Members";
             // 
             // pnlGroups
             // 
@@ -265,28 +297,6 @@
             this.btnAdd.TextOffset = new System.Drawing.Point(2, 0);
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
-            // panelTitle
-            // 
-            this.panelTitle.BorderRadius = 15;
-            this.panelTitle.Controls.Add(this.label7);
-            this.panelTitle.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(123)))), ((int)(((byte)(47)))));
-            this.panelTitle.Location = new System.Drawing.Point(3, 12);
-            this.panelTitle.Name = "panelTitle";
-            this.panelTitle.Size = new System.Drawing.Size(149, 52);
-            this.panelTitle.TabIndex = 18;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.BackColor = System.Drawing.Color.Transparent;
-            this.label7.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(31, 5);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(87, 28);
-            this.label7.TabIndex = 8;
-            this.label7.Text = "Members";
-            // 
             // pnlGroupWallet
             // 
             this.pnlGroupWallet.Controls.Add(this.lblGroupcode);
@@ -301,16 +311,28 @@
             this.pnlGroupWallet.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlGroupWallet.Location = new System.Drawing.Point(267, 0);
             this.pnlGroupWallet.Name = "pnlGroupWallet";
-            this.pnlGroupWallet.Size = new System.Drawing.Size(842, 620);
+            this.pnlGroupWallet.Size = new System.Drawing.Size(835, 575);
             this.pnlGroupWallet.TabIndex = 1;
             this.pnlGroupWallet.Visible = false;
+            // 
+            // lblGroupcode
+            // 
+            this.lblGroupcode.AutoSize = true;
+            this.lblGroupcode.BackColor = System.Drawing.Color.Transparent;
+            this.lblGroupcode.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblGroupcode.ForeColor = System.Drawing.Color.Gray;
+            this.lblGroupcode.Location = new System.Drawing.Point(23, 38);
+            this.lblGroupcode.Name = "lblGroupcode";
+            this.lblGroupcode.Size = new System.Drawing.Size(113, 28);
+            this.lblGroupcode.TabIndex = 23;
+            this.lblGroupcode.Text = "Group Name";
             // 
             // panel4
             // 
             this.panel4.Controls.Add(this.tableLayoutPanel4);
-            this.panel4.Location = new System.Drawing.Point(515, 284);
+            this.panel4.Location = new System.Drawing.Point(501, 284);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(318, 306);
+            this.panel4.Size = new System.Drawing.Size(318, 276);
             this.panel4.TabIndex = 21;
             // 
             // tableLayoutPanel4
@@ -327,7 +349,7 @@
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 1;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(318, 306);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(318, 276);
             this.tableLayoutPanel4.TabIndex = 0;
             // 
             // flpGoals
@@ -338,7 +360,7 @@
             this.flpGoals.Controls.Add(this.guna2GradientPanel4);
             this.flpGoals.Location = new System.Drawing.Point(3, 3);
             this.flpGoals.Name = "flpGoals";
-            this.flpGoals.Size = new System.Drawing.Size(312, 300);
+            this.flpGoals.Size = new System.Drawing.Size(312, 270);
             this.flpGoals.TabIndex = 0;
             // 
             // guna2GradientPanel4
@@ -382,7 +404,7 @@
             this.guna2ShadowPanel5.BackColor = System.Drawing.Color.Transparent;
             this.guna2ShadowPanel5.Controls.Add(this.panelSwitch);
             this.guna2ShadowPanel5.FillColor = System.Drawing.Color.White;
-            this.guna2ShadowPanel5.Location = new System.Drawing.Point(616, 166);
+            this.guna2ShadowPanel5.Location = new System.Drawing.Point(604, 166);
             this.guna2ShadowPanel5.Name = "guna2ShadowPanel5";
             this.guna2ShadowPanel5.Radius = 6;
             this.guna2ShadowPanel5.ShadowColor = System.Drawing.Color.Black;
@@ -436,9 +458,9 @@
             // panel5
             // 
             this.panel5.Controls.Add(this.tableLayoutPanel3);
-            this.panel5.Location = new System.Drawing.Point(29, 285);
+            this.panel5.Location = new System.Drawing.Point(15, 285);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(480, 305);
+            this.panel5.Size = new System.Drawing.Size(480, 275);
             this.panel5.TabIndex = 17;
             // 
             // tableLayoutPanel3
@@ -455,7 +477,7 @@
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(480, 305);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(480, 275);
             this.tableLayoutPanel3.TabIndex = 0;
             // 
             // flpExpenses
@@ -466,7 +488,7 @@
             this.flpExpenses.Controls.Add(this.guna2GradientPanel3);
             this.flpExpenses.Location = new System.Drawing.Point(3, 3);
             this.flpExpenses.Name = "flpExpenses";
-            this.flpExpenses.Size = new System.Drawing.Size(474, 299);
+            this.flpExpenses.Size = new System.Drawing.Size(474, 269);
             this.flpExpenses.TabIndex = 0;
             // 
             // guna2GradientPanel3
@@ -546,7 +568,7 @@
             this.guna2ShadowPanel2.BackColor = System.Drawing.Color.Transparent;
             this.guna2ShadowPanel2.Controls.Add(this.guna2GradientPanel2);
             this.guna2ShadowPanel2.FillColor = System.Drawing.Color.White;
-            this.guna2ShadowPanel2.Location = new System.Drawing.Point(328, 71);
+            this.guna2ShadowPanel2.Location = new System.Drawing.Point(316, 71);
             this.guna2ShadowPanel2.Name = "guna2ShadowPanel2";
             this.guna2ShadowPanel2.Radius = 10;
             this.guna2ShadowPanel2.ShadowColor = System.Drawing.Color.Black;
@@ -613,7 +635,7 @@
             this.guna2ShadowPanel1.BackColor = System.Drawing.Color.Transparent;
             this.guna2ShadowPanel1.Controls.Add(this.guna2GradientPanel1);
             this.guna2ShadowPanel1.FillColor = System.Drawing.Color.White;
-            this.guna2ShadowPanel1.Location = new System.Drawing.Point(28, 71);
+            this.guna2ShadowPanel1.Location = new System.Drawing.Point(16, 71);
             this.guna2ShadowPanel1.Name = "guna2ShadowPanel1";
             this.guna2ShadowPanel1.Radius = 10;
             this.guna2ShadowPanel1.ShadowColor = System.Drawing.Color.Black;
@@ -693,7 +715,7 @@
             this.guna2Panel3.BorderRadius = 15;
             this.guna2Panel3.Controls.Add(this.label6);
             this.guna2Panel3.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(123)))), ((int)(((byte)(47)))));
-            this.guna2Panel3.Location = new System.Drawing.Point(29, 249);
+            this.guna2Panel3.Location = new System.Drawing.Point(15, 249);
             this.guna2Panel3.Name = "guna2Panel3";
             this.guna2Panel3.Size = new System.Drawing.Size(205, 52);
             this.guna2Panel3.TabIndex = 19;
@@ -715,7 +737,7 @@
             this.guna2Panel2.BorderRadius = 15;
             this.guna2Panel2.Controls.Add(this.label5);
             this.guna2Panel2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(187)))), ((int)(((byte)(141)))), ((int)(((byte)(228)))));
-            this.guna2Panel2.Location = new System.Drawing.Point(683, 249);
+            this.guna2Panel2.Location = new System.Drawing.Point(667, 249);
             this.guna2Panel2.Name = "guna2Panel2";
             this.guna2Panel2.Size = new System.Drawing.Size(150, 52);
             this.guna2Panel2.TabIndex = 22;
@@ -732,28 +754,6 @@
             this.label5.TabIndex = 8;
             this.label5.Text = "Goals";
             // 
-            // lblGroupcode
-            // 
-            this.lblGroupcode.AutoSize = true;
-            this.lblGroupcode.BackColor = System.Drawing.Color.Transparent;
-            this.lblGroupcode.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblGroupcode.ForeColor = System.Drawing.Color.Gray;
-            this.lblGroupcode.Location = new System.Drawing.Point(23, 34);
-            this.lblGroupcode.Name = "lblGroupcode";
-            this.lblGroupcode.Size = new System.Drawing.Size(113, 28);
-            this.lblGroupcode.TabIndex = 23;
-            this.lblGroupcode.Text = "Group Name";
-            // 
-            // pnlMemberbox
-            // 
-            this.pnlMemberbox.Controls.Add(this.pnlMembers);
-            this.pnlMemberbox.Controls.Add(this.panelTitle);
-            this.pnlMemberbox.Location = new System.Drawing.Point(8, 297);
-            this.pnlMemberbox.Name = "pnlMemberbox";
-            this.pnlMemberbox.Size = new System.Drawing.Size(259, 301);
-            this.pnlMemberbox.TabIndex = 19;
-            this.pnlMemberbox.Visible = false;
-            // 
             // group
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -762,9 +762,10 @@
             this.Controls.Add(this.pnlGroupWallet);
             this.Controls.Add(this.panel1);
             this.Name = "group";
-            this.Size = new System.Drawing.Size(1109, 620);
+            this.Size = new System.Drawing.Size(1102, 575);
             this.Load += new System.EventHandler(this.group_Load);
             this.panel1.ResumeLayout(false);
+            this.pnlMemberbox.ResumeLayout(false);
             this.pnlMembers.ResumeLayout(false);
             this.pnlMembers.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
@@ -772,13 +773,13 @@
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ptbActiveStatus)).EndInit();
+            this.panelTitle.ResumeLayout(false);
+            this.panelTitle.PerformLayout();
             this.pnlGroups.ResumeLayout(false);
             this.pnlGroups.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            this.panelTitle.ResumeLayout(false);
-            this.panelTitle.PerformLayout();
             this.pnlGroupWallet.ResumeLayout(false);
             this.pnlGroupWallet.PerformLayout();
             this.panel4.ResumeLayout(false);
@@ -806,7 +807,6 @@
             this.guna2Panel3.PerformLayout();
             this.guna2Panel2.ResumeLayout(false);
             this.guna2Panel2.PerformLayout();
-            this.pnlMemberbox.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
