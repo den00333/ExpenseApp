@@ -26,26 +26,27 @@ namespace ExpenseApp
             InitializeComponent();
         }
 
-        private void wallet_Load(object sender, EventArgs e)
+        private async void wallet_Load(object sender, EventArgs e)
         {
-            loadWallet();
+            await loadWallet();
             //displayExpenses();
             //ExpenseGridDesign();
             //loadWallet();
             displayGoals();
             displayData();
         }
-        private async void loadWallet()
+        private async Task loadWallet()
         {
             String username = FirebaseData.Instance.Username;
             otherFunc o = new otherFunc();
-            DocumentReference docRef = await o.SavingWalletAmount(username, "Balance");
-            float BalanceAmount = await o.getWalletAmount(docRef);
-            lblBalance.Text = otherFunc.amountBeautify(BalanceAmount);
 
             DocumentReference docRef2 = await o.SavingWalletAmount(username, "Expense");
             float ExpenseAmount = await o.getWalletAmount(docRef2);
             lblExpenses.Text = otherFunc.amountBeautify(ExpenseAmount);
+
+            DocumentReference docRef = await o.SavingWalletAmount(username, "Balance");
+            float BalanceAmount = await o.getWalletAmount(docRef);
+            lblBalance.Text = otherFunc.amountBeautify(BalanceAmount);
 
             float negVal = await otherFunc.getShort(username);
             if (negVal != 0)

@@ -22,7 +22,7 @@ namespace ExpenseApp
                 "Wallets|Balance|Amount:0" + Environment.NewLine +
                 "Wallets|Expense|Amount:0" + Environment.NewLine +
                 "Wallets|Expense|Short:0" + Environment.NewLine +
-                "Wallets|LogWallet|LogWallet:" + Environment.NewLine +
+                "Wallets|LogWallet|LogWallet!" + Environment.NewLine +
                 "Expenses:";
 
             // Write the content to the text file

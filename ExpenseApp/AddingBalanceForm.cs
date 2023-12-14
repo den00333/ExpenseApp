@@ -607,5 +607,10 @@ namespace ExpenseApp
             }
 
         }
+
+        private void AddingBalanceForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

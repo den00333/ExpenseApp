@@ -140,8 +140,8 @@ namespace ExpenseApp
             }
             else
             {
-                MessageBox.Show("asd");
-                //uploadingOfflineDataToFirestore(title);
+                //LOADING TIME
+                uploadingOfflineDataToFirestore(title);
             }
         }
         //WES -> Wallets|Balance|Amount
@@ -153,6 +153,10 @@ namespace ExpenseApp
         {
             String username = FirebaseData.Instance.Username;
             await uploadWES(pathOfChosenFile, username);
+            await uploadLogs(pathOfChosenFile, username);
+            await uploadExpenses(pathOfChosenFile, username);
+            MessageBox.Show("uploaded successfully!");
+
 
         }
 
@@ -164,12 +168,16 @@ namespace ExpenseApp
             DocumentReference drefBalance = otherFunc.editInsideUser(username).Collection(col).Document("Balance");
             DocumentReference drefExpense = otherFunc.editInsideUser(username).Collection(col).Document("Expense");
 
+
             DocumentSnapshot dSnapBalance = await drefBalance.GetSnapshotAsync();
             DocumentSnapshot dSnapExpense = await drefExpense.GetSnapshotAsync();
 
+            
+
             double current_balance = dSnapBalance.GetValue<double>("Amount");
-            double current_expense = dSnapExpense.GetValue<double>("Amount");
             double current_short = dSnapExpense.GetValue<double>("short");
+            double current_expense = dSnapExpense.GetValue<double>("Amount");
+            
 
             Dictionary<String, object> data = new Dictionary<String, object>();
             double newTotal;
@@ -181,32 +189,58 @@ namespace ExpenseApp
                     case 0:
                         newTotal = current_balance + double.Parse(off_data[1]);
                         data.Add("Amount", newTotal);
-                        await drefBalance.UpdateAsync(data);
+                        if (dSnapBalance.Exists)
+                        {
+                            await drefBalance.UpdateAsync(data);
+                        }
+                        else
+                        {
+                            await drefBalance.SetAsync(data);
+                        }
+                        data.Clear();
                         break;
                     case 1:
                         newTotal = current_expense + double.Parse(off_data[1]);
                         data.Add("Amount", newTotal);
-                        await drefExpense.UpdateAsync(data);
+                        if (dSnapExpense.Exists)
+                        {
+                            await drefExpense.UpdateAsync(data);
+                        }
+                        else
+                        {
+                            await drefExpense.SetAsync(data);
+                        }
+                        data.Clear();
                         break;
                     case 2:
                         newTotal = current_short + double.Parse(off_data[1]);
                         data.Add("short", newTotal);
-                        await drefExpense.UpdateAsync(data);
+                        if (dSnapExpense.Exists)
+                        {
+                            await drefExpense.UpdateAsync(data);
+                        }
+                        else
+                        {
+                            await drefExpense.SetAsync(data);
+                        }
+                        data.Clear();
                         break;
                 }
             }
         }
         
-        private async void uploadLogs(String path, String username)
+        private async Task uploadLogs(String path, String username)
         {
             String col = "Wallets";
             String[] lines = File.ReadAllLines(path);
             ArrayList ldata = new ArrayList();
-            String[] records = lines[3].Split(':');
+            String[] records = lines[3].Split('!');
             String[] each_record = records[1].Split('~');
-            for(int i = 0; i < each_record.Length - 1; i++)
+            Console.WriteLine(each_record.Length+" the line" + records[1]);
+            for (int i = 0; i < each_record.Length - 1; i++)
             {
                 ldata.Add(each_record[i]);
+                Console.WriteLine(i + " each record " + each_record[i]);
             }
 
             Dictionary<String, object> data = new Dictionary<String, object>
@@ -216,19 +250,53 @@ namespace ExpenseApp
 
             DocumentReference docref = otherFunc.editInsideUser(username).Collection(col).Document("LogWallet");
             DocumentSnapshot dsnap = await docref.GetSnapshotAsync();
-
+            Console.WriteLine("is it existing?" + dsnap.Exists);
             if (dsnap.Exists)
             {
-                for (int i = 0; i < each_record.Length - 1; i++)
+                /*for (int i = 0; i < each_record.Length - 1; i++)
                 {
                     await docref.UpdateAsync("LogWallet", FieldValue.ArrayUnion(each_record[i]));
-                }
+                }*/
+                await docref.SetAsync(data, SetOptions.MergeAll);
             }
             else
             {
                 await docref.SetAsync(data);
             }
             
+
+        }
+
+        private async Task uploadExpenses(String path, String username)
+        {
+            otherFunc o = new otherFunc();
+            
+            String[] lines = File.ReadAllLines(path);
+            String[] splitted = lines[4].Split(':');
+            String[] E = splitted[1].Split('~');
+            int e_len = E.Length - 1;
+            for(int i = 0; i <= e_len-1; i++)
+            {
+                String[] inside_E = E[i].Split('|');
+                /*String amount = inside_E[0];
+                String category = inside_E[1];
+                String Date = inside_E[2];
+                String loc = inside_E[3];
+                String desc = inside_E[4];*/
+                Dictionary<String, object> data = new Dictionary<String, object>
+                {
+                    {"Amount", double.Parse(inside_E[0]) },
+                    {"Category", inside_E[1]},
+                    {"Date", inside_E[2]},
+                    {"Location", inside_E[3]},
+                    {"Name", inside_E[4]},
+                    {"timestamp", FieldValue.ServerTimestamp}
+                };
+
+                DocumentReference docRef = await o.SavingNewExpenses(username);
+                await docRef.SetAsync(data);
+
+            }
 
         }
 
@@ -250,9 +318,16 @@ namespace ExpenseApp
 
         private void btnBack_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            Login l = new Login();
-            l.Show();
+            if (!flagOFForON)
+            {
+                this.Hide();
+            }
+            else
+            {
+                this.Hide();
+                Login l = new Login();
+                l.Show();
+            }
         }
         bool flagShow = false;
         private void btnAccessDelete_Click(object sender, EventArgs e)
